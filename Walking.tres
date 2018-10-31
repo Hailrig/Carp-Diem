@@ -1,0 +1,21 @@
+[gd_resource type="Animation" format=2]
+
+[resource]
+
+resource_name = "Walking"
+length = 1.0
+loop = false
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ Rect2( 5, 42, 5, 25 ), Rect2( 16, 41, 15, 27 ), Rect2( 37, 40, 16, 27 ) ]
+}
+

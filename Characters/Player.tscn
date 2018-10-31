@@ -11,7 +11,7 @@
 custom_solver_bias = 0.0
 extents = Vector2( 13.0104, 19.6733 )
 
-[node name="Player" index="0" instance=ExtResource( 1 )]
+[node name="Player" instance=ExtResource( 1 )]
 
 position = Vector2( 0.71199, 0.639025 )
 collision_layer = 2
@@ -80,7 +80,7 @@ position = Vector2( -0.0852581, 0.328298 )
 anchor_mode = 1
 rotating = false
 current = true
-zoom = Vector2( 1, 1 )
+zoom = Vector2( 1.5, 1.5 )
 limit_left = -10000000
 limit_top = -10000000
 limit_right = 10000000

@@ -7,7 +7,7 @@
 [sub_resource type="CircleShape2D" id=1]
 
 custom_solver_bias = 0.0
-radius = 2.54698
+radius = 5.54973
 
 [node name="PlayerBullet" instance=ExtResource( 1 )]
 
@@ -23,7 +23,7 @@ lifetime = 10.0
 
 texture = ExtResource( 3 )
 region_enabled = true
-region_rect = Rect2( 32, 14, 6, 5 )
+region_rect = Rect2( 29, 11, 12, 11 )
 _sections_unfolded = [ "Region" ]
 
 [node name="CollisionShape2D" parent="." index="1"]

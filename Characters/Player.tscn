@@ -10,7 +10,7 @@
 custom_solver_bias = 0.0
 extents = Vector2( 10.0377, 19.6733 )
 
-[node name="Player" instance=ExtResource( 1 )]
+[node name="Player" index="0" instance=ExtResource( 1 )]
 
 position = Vector2( 0.71199, 0.639025 )
 collision_layer = 2
@@ -27,7 +27,7 @@ starting_health = 3
 
 texture = ExtResource( 4 )
 region_enabled = true
-region_rect = Rect2( 12, 126, 22, 40 )
+region_rect = Rect2( 62, 174, 20, 40 )
 _sections_unfolded = [ "Animation", "Offset", "Region", "Transform" ]
 
 [node name="Weapon" parent="." index="1"]

@@ -38,7 +38,7 @@ func control(delta):
 func getrekt():
 		var currentScene = get_tree().get_current_scene().get_filename()
 		get_tree().change_scene(currentScene)
-
+		
 
 func _on_RollTime_timeout():
 	set_collision_layer_bit(1, true)

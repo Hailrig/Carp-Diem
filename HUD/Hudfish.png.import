@@ -2,12 +2,12 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Hudfish.png-ab5212d7f857b7328c62a9bd22107143.stex"
+path="res://.import/Hudfish.png-9c89ae1b6438e60f15ee8141297ccd29.stex"
 
 [deps]
 
-source_file="res://Hudfish.png"
-dest_files=[ "res://.import/Hudfish.png-ab5212d7f857b7328c62a9bd22107143.stex" ]
+source_file="res://HUD/Hudfish.png"
+dest_files=[ "res://.import/Hudfish.png-9c89ae1b6438e60f15ee8141297ccd29.stex" ]
 
 [params]
 

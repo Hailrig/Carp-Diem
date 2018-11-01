@@ -36,6 +36,11 @@ func _physics_process(delta):
 	control(delta)
 	move_and_slide(velocity)
 	
+func change_anim(angle, velocity):
+	if velocity.x == 0 and velocity.y == 0:
+		pass
+
+	
 func take_damage(amount):
 	health -= amount
 	emit_signal('health_changed', health)

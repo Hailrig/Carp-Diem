@@ -17,6 +17,13 @@ export (String) var back_idle
 export (String) var back_left_idle
 export (String) var back_right_idle
 
+export (String) var front_walk
+export (String) var front_right_walk
+export (String) var front_left_walk
+export (String) var back_walk
+export (String) var back_left_walk
+export (String) var back_right_walk
+
 var velocity = Vector2()
 var can_shoot = true
 var alive = true
@@ -66,7 +73,24 @@ func change_anim(angle, velocity):
 			$Body/AnimationPlayer.play(back_right_idle)
 			playing_anim = 6
 	else:
-		pass #playwalks
+		if angle > 0 and angle <= 45 and playing_anim != 1:
+			$Body/AnimationPlayer.play(front_right_walk)
+			playing_anim = 1
+		if angle > 45 and angle <= 135 and playing_anim != 2:
+			$Body/AnimationPlayer.play(front_walk)
+			playing_anim = 2
+		if angle > 135  and angle <= 180 and playing_anim != 3:
+			$Body/AnimationPlayer.play(front_left_walk)
+			playing_anim = 3
+		if angle > -180 and angle <= -135 and playing_anim != 4:
+			$Body/AnimationPlayer.play(back_left_walk)
+			playing_anim = 4
+		if angle > -135 and angle <= -45 and playing_anim != 5:
+			$Body/AnimationPlayer.play(back_walk)
+			playing_anim = 5
+		if angle > -45 and angle <= 0 and playing_anim != 6:
+			$Body/AnimationPlayer.play(back_right_walk)
+			playing_anim = 6
 
 	
 func take_damage(amount):

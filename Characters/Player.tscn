@@ -35,6 +35,12 @@ front_left_idle = "front_left_idle"
 back_idle = "back_idle"
 back_left_idle = "back_left_idle"
 back_right_idle = "back_right_idle"
+front_walk = "front_idle"
+front_right_walk = "front_right_idle"
+front_left_walk = "front_left_idle"
+back_walk = "back_idle"
+back_left_walk = "back_left_idle"
+back_right_walk = "back_right_idle"
 
 [node name="Body" parent="." index="0"]
 

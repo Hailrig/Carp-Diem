@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Maps/Map.gd" type="Script" id=1]
-[ext_resource path="res://HUD.tscn" type="PackedScene" id=2]
+[ext_resource path="res://HUD/HUD.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Maps/Tileset.tres" type="TileSet" id=3]
 [ext_resource path="res://Characters/Player.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Characters/EvilFish.tscn" type="PackedScene" id=5]
@@ -36,7 +36,6 @@ _sections_unfolded = [ "Cell" ]
 [node name="Player" parent="." index="2" instance=ExtResource( 4 )]
 
 position = Vector2( 75, 225 )
-starting_health = 3
 
 [node name="EvilFish" parent="." index="3" instance=ExtResource( 5 )]
 

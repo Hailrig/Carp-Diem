@@ -21,6 +21,18 @@ speed = 200
 weapon_cooldown = 1.0
 max_health = 2
 starting_health = 2
+front_idle = "a"
+front_right_idle = "a"
+front_left_idle = "a"
+back_idle = "a"
+back_left_idle = "a"
+back_right_idle = "a"
+front_walk = "a"
+front_right_walk = "a"
+front_left_walk = "a"
+back_walk = "a"
+back_left_walk = "a"
+back_right_walk = "a"
 detect_radius = 500
 
 [node name="Body" parent="." index="0"]

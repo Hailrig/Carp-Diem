@@ -2,12 +2,12 @@
 
 [resource]
 
-resource_name = "Front_Right_Idle"
+resource_name = "front_right_idle"
 length = 1.0
 loop = false
 step = 0.1
 tracks/0/type = "value"
-tracks/0/path = NodePath(".:region_rect")
+tracks/0/path = NodePath("Body:region_rect")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false

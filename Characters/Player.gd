@@ -34,7 +34,8 @@ func control(delta):
 	
 	if Input.is_action_just_pressed('reset'):
 		getrekt()
-		
+
+
 func getrekt():
 		var currentScene = get_tree().get_current_scene().get_filename()
 		get_tree().change_scene(currentScene)

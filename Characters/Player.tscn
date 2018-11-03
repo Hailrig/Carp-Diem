@@ -19,16 +19,16 @@ extents = Vector2( 10.0377, 19.6733 )
 
 [node name="Player" index="0" instance=ExtResource( 1 )]
 
-position = Vector2( 0.71199, 0.639025 )
 collision_layer = 2
 collision_mask = 5
 script = ExtResource( 2 )
-_sections_unfolded = [ "Collision" ]
+_sections_unfolded = [ "Collision", "Transform" ]
 Bullet = ExtResource( 3 )
 speed = 150
 weapon_cooldown = 0.3
 max_health = 10
 starting_health = 3
+weapon_offset = 13
 front_idle = "front_idle"
 front_right_idle = "front_right_idle"
 front_left_idle = "front_left_idle"
@@ -46,7 +46,7 @@ back_right_walk = "back_right_idle"
 
 texture = ExtResource( 4 )
 region_enabled = true
-region_rect = Rect2( 62, 126, 20, 39 )
+region_rect = Rect2( 62, 174, 22, 40 )
 _sections_unfolded = [ "Animation", "Offset", "Region", "Transform" ]
 
 [node name="AnimationPlayer" parent="Body" index="0"]
@@ -61,20 +61,27 @@ anims/front_right_idle = ExtResource( 11 )
 
 [node name="Weapon" parent="." index="1"]
 
+position = Vector2( 13, 8 )
 texture = ExtResource( 4 )
-offset = Vector2( 15, 5 )
 region_enabled = true
-region_rect = Rect2( 22, 16, 6, 5 )
-_sections_unfolded = [ "Offset", "Region" ]
+region_rect = Rect2( 78, 315, 10, 6 )
+_sections_unfolded = [ "Animation", "Material", "Offset", "Region", "Transform", "Visibility", "Z Index" ]
 
 [node name="Muzzle" parent="Weapon" index="0"]
 
-position = Vector2( 20, 3 )
+position = Vector2( 7.47388, -2.68315 )
 _sections_unfolded = [ "Transform" ]
 
-[node name="CollisionShape2D" parent="." index="2"]
+[node name="Arm" parent="." index="2"]
 
-position = Vector2( -0.0568596, 0.00623472 )
+position = Vector2( -13, 12 )
+texture = ExtResource( 4 )
+region_enabled = true
+region_rect = Rect2( 78, 297, 5, 5 )
+_sections_unfolded = [ "Animation", "Offset", "Region", "Transform" ]
+
+[node name="CollisionShape2D" parent="." index="3"]
+
 shape = SubResource( 1 )
 _sections_unfolded = [ "Transform" ]
 
@@ -94,7 +101,6 @@ autostart = false
 
 [node name="Camera2D" type="Camera2D" parent="." index="6"]
 
-position = Vector2( 0.0571369, 0.755487 )
 anchor_mode = 1
 rotating = false
 current = true

@@ -75,24 +75,24 @@ func change_anim(angle, velocity):
 			$Body/AnimationPlayer.play(back_right_idle)
 			playing_anim = 6
 	else:
-		if angle > 0 and angle <= 45 and playing_anim != 1:
+		if angle > 0 and angle <= 45 and playing_anim != 7:
 			$Body/AnimationPlayer.play(front_right_walk)
-			playing_anim = 1
-		if angle > 45 and angle <= 135 and playing_anim != 2:
+			playing_anim = 7
+		if angle > 45 and angle <= 135 and playing_anim != 8:
 			$Body/AnimationPlayer.play(front_walk)
-			playing_anim = 2
-		if angle > 135  and angle <= 180 and playing_anim != 3:
+			playing_anim = 8
+		if angle > 135  and angle <= 180 and playing_anim != 9:
 			$Body/AnimationPlayer.play(front_left_walk)
-			playing_anim = 3
-		if angle > -180 and angle <= -135 and playing_anim != 4:
+			playing_anim = 9
+		if angle > -180 and angle <= -135 and playing_anim != 10:
 			$Body/AnimationPlayer.play(back_left_walk)
-			playing_anim = 4
-		if angle > -135 and angle <= -45 and playing_anim != 5:
+			playing_anim = 10
+		if angle > -135 and angle <= -45 and playing_anim != 11:
 			$Body/AnimationPlayer.play(back_walk)
-			playing_anim = 5
-		if angle > -45 and angle <= 0 and playing_anim != 6:
+			playing_anim = 11
+		if angle > -45 and angle <= 0 and playing_anim != 12:
 			$Body/AnimationPlayer.play(back_right_walk)
-			playing_anim = 6
+			playing_anim = 12
 
 	if angle >= 105 or angle <= -105:
 		shot_dir = 'left'

@@ -2,7 +2,7 @@
 
 [ext_resource path="res://Weapons/Bullet.gd" type="Script" id=1]
 
-[node name="Bullet" type="Area2D"]
+[node name="Bullet" type="Area2D" index="0"]
 
 input_pickable = true
 gravity_vec = Vector2( 0, 1 )
@@ -12,6 +12,7 @@ angular_damp = 1.0
 audio_bus_override = false
 audio_bus_name = "Master"
 script = ExtResource( 1 )
+_sections_unfolded = [ "Z Index" ]
 speed = null
 damage = null
 lifetime = null

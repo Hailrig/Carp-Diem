@@ -42,14 +42,27 @@ func control(delta):
 func dont_shoot_yourself(gun_face):
 	if gun_face == 'right':
 		if $Weapon.global_rotation_degrees > 110:
-			$Weapon.global_rotation_degrees = 110 
+			if playing_anim < 4 or (playing_anim > 6 and playing_anim < 10):
+				$Weapon.global_rotation_degrees = 110 
+			else:
+				$Weapon.global_rotation_degrees = -110 
 		elif $Weapon.global_rotation_degrees < -110:
-			$Weapon.global_rotation_degrees = -110
+			if playing_anim < 4 or (playing_anim > 6 and playing_anim < 10):
+				$Weapon.global_rotation_degrees = 110 
+			else:
+				$Weapon.global_rotation_degrees = -100
+			
 	elif gun_face == 'left':
 		if $Weapon.global_rotation_degrees < 70 and $Weapon.global_rotation_degrees > 0:
-			$Weapon.global_rotation_degrees = 70 
+			if playing_anim < 4 or (playing_anim > 6 and playing_anim < 10):
+				$Weapon.global_rotation_degrees = 70 
+			else:
+				$Weapon.global_rotation_degrees = -70 
 		elif $Weapon.global_rotation_degrees > -70 and $Weapon.global_rotation_degrees < 0:
-			$Weapon.global_rotation_degrees = -70
+			if playing_anim < 4 or (playing_anim > 6 and playing_anim < 10):
+				$Weapon.global_rotation_degrees = 70 
+			else:
+				$Weapon.global_rotation_degrees = -70 
 
 
 func getrekt():

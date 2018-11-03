@@ -30,6 +30,7 @@ var can_shoot = true
 var alive = true
 var health
 var playing_anim = 0
+var shot_dir
 
 func _ready():
 	health = starting_health
@@ -94,13 +95,16 @@ func change_anim(angle, velocity):
 			playing_anim = 6
 
 	if angle >= 105 or angle <= -105:
+		shot_dir = 'left'
 		$Weapon.flip_v = true
 		$Weapon.position.x = -weapon_offset
 		$Arm.position.x = weapon_offset - 3
 	elif angle <= 75 and angle >= -75:
+		shot_dir = 'right'
 		$Weapon.flip_v = false
 		$Weapon.position.x = weapon_offset
 		$Arm.position.x = -weapon_offset + 3
+	
 		
 
 	

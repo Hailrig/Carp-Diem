@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Characters/Characters.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Characters/EvilFish.gd" type="Script" id=2]
 [ext_resource path="res://Weapons/EnemyBullet.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Characters/Spritesheet.png" type="Texture" id=4]
+[ext_resource path="res://Animations/evil_fish_test.tres" type="Animation" id=5]
 
 [sub_resource type="RectangleShape2D" id=1]
 
@@ -21,18 +22,18 @@ speed = 200
 weapon_cooldown = 1.0
 max_health = 2
 starting_health = 2
-front_idle = "a"
-front_right_idle = "a"
-front_left_idle = "a"
-back_idle = "a"
-back_left_idle = "a"
-back_right_idle = "a"
-front_walk = "a"
-front_right_walk = "a"
-front_left_walk = "a"
-back_walk = "a"
-back_left_walk = "a"
-back_right_walk = "a"
+front_idle = "evil_fish_test"
+front_right_idle = "evil_fish_test"
+front_left_idle = "evil_fish_test"
+back_idle = "evil_fish_test"
+back_left_idle = "evil_fish_test"
+back_right_idle = "evil_fish_test"
+front_walk = "evil_fish_test"
+front_right_walk = "evil_fish_test"
+front_left_walk = "evil_fish_test"
+back_walk = "evil_fish_test"
+back_left_walk = "evil_fish_test"
+back_right_walk = "evil_fish_test"
 detect_radius = 500
 
 [node name="Body" parent="." index="0"]
@@ -40,7 +41,11 @@ detect_radius = 500
 texture = ExtResource( 4 )
 region_enabled = true
 region_rect = Rect2( 44, 15, 21, 10 )
-_sections_unfolded = [ "Region" ]
+_sections_unfolded = [ "Offset", "Region" ]
+
+[node name="AnimationPlayer" parent="Body" index="0"]
+
+anims/evil_fish_test = ExtResource( 5 )
 
 [node name="Weapon" parent="." index="1"]
 

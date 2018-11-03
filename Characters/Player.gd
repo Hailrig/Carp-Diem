@@ -2,7 +2,6 @@ extends "res://Characters/Characters.gd"
 
 var direction
 
-
 func control(delta):
 	$Weapon.look_at(get_global_mouse_position())
 	velocity = Vector2()
@@ -34,12 +33,22 @@ func control(delta):
 	
 	if Input.is_action_just_pressed('reset'):
 		getrekt()
+		
+	_camera_shift()
+	
 
 
 func getrekt():
 		var currentScene = get_tree().get_current_scene().get_filename()
 		get_tree().change_scene(currentScene)
 		
+func _camera_shift():
+	$Camera2D.align()
+	$Camera2D.offset = Vector2(0,0)
+	var camera_offset = Vector2(get_global_mouse_position() - global_position)
+	camera_offset = camera_offset / 5
+	$Camera2D.offset += camera_offset
+
 
 func _on_RollTime_timeout():
 	set_collision_layer_bit(1, true)

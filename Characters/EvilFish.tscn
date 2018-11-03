@@ -22,6 +22,7 @@ speed = 200
 weapon_cooldown = 1.0
 max_health = 2
 starting_health = 2
+weapon_offset = 0
 front_idle = "evil_fish_test"
 front_right_idle = "evil_fish_test"
 front_left_idle = "evil_fish_test"

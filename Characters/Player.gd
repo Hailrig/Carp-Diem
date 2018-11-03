@@ -4,6 +4,7 @@ var direction
 
 func control(delta):
 	$Weapon.look_at(get_global_mouse_position())
+	
 	velocity = Vector2()
 	if Input.is_action_pressed('move_up'):
 		velocity += Vector2(0, -1)
@@ -24,6 +25,8 @@ func control(delta):
 		velocity = velocity.normalized() * speed * 3	
 	else:
 		velocity = velocity.normalized() * speed
+		
+	dont_shoot_yourself(shot_dir)
 	
 	if Input.is_action_just_pressed('fire'):
 		shoot()
@@ -36,6 +39,30 @@ func control(delta):
 		
 	_camera_shift()
 	
+func dont_shoot_yourself(gun_face):
+	if gun_face == 'right':
+		if $Weapon.global_rotation_degrees > 110:
+			if playing_anim < 4 or (playing_anim > 6 and playing_anim < 10):
+				$Weapon.global_rotation_degrees = 110 
+			else:
+				$Weapon.global_rotation_degrees = -110 
+		elif $Weapon.global_rotation_degrees < -110:
+			if playing_anim < 4 or (playing_anim > 6 and playing_anim < 10):
+				$Weapon.global_rotation_degrees = 110 
+			else:
+				$Weapon.global_rotation_degrees = -100
+			
+	elif gun_face == 'left':
+		if $Weapon.global_rotation_degrees < 70 and $Weapon.global_rotation_degrees > 0:
+			if playing_anim < 4 or (playing_anim > 6 and playing_anim < 10):
+				$Weapon.global_rotation_degrees = 70 
+			else:
+				$Weapon.global_rotation_degrees = -70 
+		elif $Weapon.global_rotation_degrees > -70 and $Weapon.global_rotation_degrees < 0:
+			if playing_anim < 4 or (playing_anim > 6 and playing_anim < 10):
+				$Weapon.global_rotation_degrees = 70 
+			else:
+				$Weapon.global_rotation_degrees = -70 
 
 
 func getrekt():

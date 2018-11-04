@@ -1,5 +1,6 @@
 extends "res://Characters/Characters.gd"
 
+signal charge
 var direction
 
 func control(delta):
@@ -25,6 +26,7 @@ func control(delta):
 		velocity = velocity.normalized() * speed * 3	
 	else:
 		velocity = velocity.normalized() * speed
+		emit_signal('charge')
 		
 	dont_shoot_yourself(shot_dir)
 	

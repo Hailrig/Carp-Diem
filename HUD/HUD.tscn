@@ -3,9 +3,7 @@
 [ext_resource path="res://HUD/HUD.gd" type="Script" id=1]
 [ext_resource path="res://HUD/Hudfish.png" type="Texture" id=2]
 
-
-
-[node name="HUD" type="CanvasLayer"]
+[node name="HUD" type="CanvasLayer" index="0"]
 
 layer = 1
 offset = Vector2( 0, 0 )
@@ -55,7 +53,7 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_right = 99.0
+margin_right = 90.0
 margin_bottom = 360.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
@@ -76,6 +74,6 @@ texture_progress = ExtResource( 2 )
 radial_fill_degrees = 360.0
 radial_center_offset = Vector2( 0, 0 )
 nine_patch_stretch = false
-_sections_unfolded = [ "Textures" ]
+_sections_unfolded = [ "Rect", "Textures" ]
 
 

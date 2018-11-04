@@ -2,7 +2,7 @@
 
 [ext_resource path="res://Characters/Characters.gd" type="Script" id=1]
 
-[node name="Characters" type="KinematicBody2D"]
+[node name="Characters" type="KinematicBody2D" index="0"]
 
 input_pickable = false
 collision_layer = 1
@@ -15,6 +15,7 @@ weapon_cooldown = null
 max_health = null
 starting_health = null
 weapon_offset = null
+clip_size = null
 front_idle = null
 front_right_idle = null
 front_left_idle = null

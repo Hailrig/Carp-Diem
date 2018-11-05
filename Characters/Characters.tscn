@@ -16,6 +16,7 @@ max_health = null
 starting_health = null
 weapon_offset = null
 clip_size = null
+reload_timer = null
 front_idle = null
 front_right_idle = null
 front_left_idle = null
@@ -56,6 +57,15 @@ wait_time = 1.0
 one_shot = false
 autostart = false
 
+[node name="ReloadTimer" type="Timer" parent="." index="5"]
+
+process_mode = 1
+wait_time = 1.0
+one_shot = true
+autostart = false
+
 [connection signal="timeout" from="WeaponTimer" to="." method="_on_WeaponTimer_timeout"]
+
+[connection signal="timeout" from="ReloadTimer" to="." method="_on_ReloadTimer_timeout"]
 
 

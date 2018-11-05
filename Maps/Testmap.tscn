@@ -8,7 +8,7 @@
 [ext_resource path="res://Characters/Player.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Characters/EvilFish.tscn" type="PackedScene" id=7]
 
-[node name="TestMap" type="Node2D" index="0"]
+[node name="TestMap" type="Node2D"]
 
 script = ExtResource( 1 )
 _sections_unfolded = [ "Transform", "Z Index" ]
@@ -112,6 +112,8 @@ position = Vector2( 407.725, 69.4644 )
 [node name="EvilFish7" parent="." index="11" instance=ExtResource( 7 )]
 
 position = Vector2( 404.707, 192.377 )
+
+[connection signal="ammo_changed" from="Player" to="HUD" method="update_ammobar"]
 
 [connection signal="charge" from="Player" to="." method="_calculate_new_path"]
 

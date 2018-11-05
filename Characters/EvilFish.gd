@@ -18,11 +18,12 @@ func _ready():
 	
 func _process(delta):
 	if target:
+		aim()
+#		var target_dir = (target.global_position - global_position).normalized()
+#		var current_dir = Vector2(1, 0).rotated($Weapon.global_rotation)
+#		$Weapon.global_rotation = target_dir.angle()
+#		shoot()
 		
-		var target_dir = (target.global_position - global_position).normalized()
-		var current_dir = Vector2(1, 0).rotated($Weapon.global_rotation)
-		$Weapon.global_rotation = target_dir.angle()
-		shoot()
 		
 	if path:
 				# The next point is the first member of the path array
@@ -43,7 +44,16 @@ func _process(delta):
 			# If we have no points left, remove path
 			if path.size() == 0:
 				path = null
-
+				
+func aim():
+	$Weapon.rotation = (target.position - position).angle()
+	var space_state = get_world_2d().direct_space_state
+	var result = space_state.intersect_ray(position, target.position, [self], collision_mask)
+	if result:
+		#hit_pos = result.position
+		if result.collider.name == "Player":
+			#$Weapon.rotation = (target.position - position).angle()
+			shoot()
 
 func _on_Area2D_body_entered(body):
 	if body.name == "Player":

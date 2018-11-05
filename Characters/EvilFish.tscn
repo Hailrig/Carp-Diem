@@ -14,7 +14,7 @@ extents = Vector2( 10.5914, 4.40319 )
 [node name="EvilFish" instance=ExtResource( 1 )]
 
 collision_layer = 4
-collision_mask = 3
+collision_mask = 7
 script = ExtResource( 2 )
 _sections_unfolded = [ "Collision", "Pickable" ]
 Bullet = ExtResource( 3 )
@@ -24,6 +24,7 @@ max_health = 2
 starting_health = 2
 weapon_offset = 0
 clip_size = 5
+reload_timer = 1
 front_idle = "evil_fish_test"
 front_right_idle = "evil_fish_test"
 front_left_idle = "evil_fish_test"

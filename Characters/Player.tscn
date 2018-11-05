@@ -31,6 +31,7 @@ max_health = 10
 starting_health = 3
 weapon_offset = 13
 clip_size = 8
+reload_timer = 1
 front_idle = "front_idle"
 front_right_idle = "front_right_idle"
 front_left_idle = "front_left_idle"

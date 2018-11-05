@@ -11,6 +11,7 @@ const POINT_RADIUS = 5
 var path
 
 func _ready():
+	add_to_group("enemies")
 	var circle = CircleShape2D.new()
 	$DetectRadius/CollisionShape2D.shape = circle
 	$DetectRadius/CollisionShape2D.shape.radius = detect_radius
@@ -42,7 +43,6 @@ func _process(delta):
 			# If we have no points left, remove path
 			if path.size() == 0:
 				path = null
-	
 
 
 func _on_Area2D_body_entered(body):

@@ -17,14 +17,15 @@ func _on_shoot(bullet, _position, _direction):
 	
 func _calculate_new_path():
 	# Finds path
-	if $EvilFish:
-		var path = $TileMap.get_path($EvilFish.position, $Player.position)
+		var enemies = get_tree().get_nodes_in_group("enemies")
+		for i in enemies:
+			var path = $TileMap.get_path(i.position, $Player.position)
 
 	# If we got a path...
-		if path:
-		
+			if path:
+
 		# Remove the first point (it's where the sidekick is)
-			path.remove(0)
-		
+				path.remove(0)
+
 		# Sets the sidekick's path
-			$EvilFish.path = path
+				i.path = path

@@ -1,7 +1,7 @@
 extends Node2D
 
 func _ready():
-	pass
+	Input.set_mouse_mode(0)
 #func set_camera_limits():
 #	var map_limits = $TileMap.get_used_rect()
 #	var map_cellsize = $TileMap.cell_size

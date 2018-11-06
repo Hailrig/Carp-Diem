@@ -35,6 +35,7 @@ var health
 var playing_anim = 0
 var shot_dir
 var _in_clip
+var can_be_hurt = true
 
 func _ready():
 	_in_clip = clip_size
@@ -123,10 +124,11 @@ func reload():
 	$ReloadTimer.start()
 	
 func take_damage(amount):
-	health -= amount
-	emit_signal('health_changed', health)
-	if health <= 0:
-		getrekt()
+	if can_be_hurt:
+		health -= amount
+		emit_signal('health_changed', health)
+		if health <= 0:
+			getrekt()
 		
 func getrekt():
 	queue_free()

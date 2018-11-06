@@ -1,7 +1,14 @@
 extends "res://Characters/Characters.gd"
 
 signal charge
+
+export (float) var gracetime
+
 var direction
+
+func _ready():
+	$GraceTime.wait_time = gracetime
+	add_to_group("players")
 
 func control(delta):
 	$Weapon.look_at(get_global_mouse_position())
@@ -70,6 +77,16 @@ func dont_shoot_yourself(gun_face):
 				$Weapon.global_rotation_degrees = -70 
 
 
+func take_damage(amount):
+	if can_be_hurt:
+		can_be_hurt = false
+		$GraceTime.start()
+		$Body/AnimationPlayer2.play('Invuln')
+		health -= amount
+		emit_signal('health_changed', health)
+		if health <= 0:
+			getrekt()
+
 func getrekt():
 		var currentScene = get_tree().get_current_scene().get_filename()
 		get_tree().change_scene(currentScene)
@@ -85,3 +102,6 @@ func _camera_shift():
 func _on_RollTime_timeout():
 	set_collision_layer_bit(1, true)
 	set_collision_layer_bit(4, false)
+
+func _on_GraceTime_timeout():
+	can_be_hurt = true

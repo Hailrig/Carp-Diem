@@ -79,7 +79,7 @@ _sections_unfolded = [ "Animation", "Material", "Offset", "Region", "Transform",
 
 [node name="Muzzle" parent="Weapon" index="0"]
 
-position = Vector2( 7.47388, -2.68315 )
+position = Vector2( 10, -2.5 )
 _sections_unfolded = [ "Transform" ]
 
 [node name="Arm" parent="." index="2"]

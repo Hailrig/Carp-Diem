@@ -1,5 +1,6 @@
 extends "res://Characters/Characters.gd"
 
+signal charge
 var direction
 
 func control(delta):
@@ -22,14 +23,18 @@ func control(delta):
 		$RollTime.start()
 		$RollCooldown.start()
 	if $RollTime.time_left > 0:
-		velocity = velocity.normalized() * speed * 3	
+		velocity = velocity.normalized() * speed * 3
 	else:
 		velocity = velocity.normalized() * speed
+		emit_signal('charge')
 		
 	dont_shoot_yourself(shot_dir)
 	
 	if Input.is_action_just_pressed('fire'):
 		shoot()
+		
+	if Input.is_action_just_pressed('reload'):
+		reload()
 		
 	if Input.is_action_just_pressed('quit'):
 		get_tree().quit()

@@ -3,6 +3,7 @@ extends KinematicBody2D
 signal shoot
 signal health_changed
 signal dead
+signal ammo_changed
 
 export (PackedScene) var Bullet
 export (int) var speed
@@ -10,6 +11,8 @@ export (float) var weapon_cooldown
 export (int) var max_health
 export (int) var starting_health
 export (int) var weapon_offset
+export (int) var clip_size
+export (int) var reload_timer
 
 export (String) var front_idle
 export (String) var front_right_idle
@@ -31,21 +34,31 @@ var alive = true
 var health
 var playing_anim = 0
 var shot_dir
+var _in_clip
 
 func _ready():
+	_in_clip = clip_size
 	health = starting_health
 	$WeaponTimer.wait_time = weapon_cooldown
+	$ReloadTimer.wait_time = reload_timer
 	emit_signal('health_changed', health)
+	emit_signal('ammo_changed', _in_clip)
 	
 func control(delta):
 	pass
 	
 func shoot():
+#		if _in_clip >= 0:
 	if can_shoot:
-		can_shoot = false
-		$WeaponTimer.start()
-		var dir = Vector2(1, 0).rotated($Weapon.global_rotation)
-		emit_signal('shoot', Bullet, $Weapon/Muzzle.global_position, dir)
+		if _in_clip > 0:
+			_in_clip -= 1
+			emit_signal('ammo_changed', _in_clip)
+			can_shoot = false
+			$WeaponTimer.start()
+			var dir = Vector2(1, 0).rotated($Weapon.global_rotation)
+			emit_signal('shoot', Bullet, $Weapon/Muzzle.global_position, dir)
+		elif $ReloadTimer.time_left == 0:
+			reload()
 
 func _physics_process(delta):
 	if not alive:
@@ -105,8 +118,9 @@ func change_anim(angle, velocity):
 		$Weapon.position.x = weapon_offset
 		$Arm.position.x = -weapon_offset + 3
 	
-		
-
+func reload():
+	_in_clip = 0
+	$ReloadTimer.start()
 	
 func take_damage(amount):
 	health -= amount
@@ -119,3 +133,8 @@ func getrekt():
 
 func _on_WeaponTimer_timeout():
 	can_shoot = true
+
+
+func _on_ReloadTimer_timeout():
+	_in_clip = clip_size
+	emit_signal('ammo_changed', _in_clip)

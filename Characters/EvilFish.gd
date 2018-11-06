@@ -25,25 +25,25 @@ func _process(delta):
 #		shoot()
 		
 		
-	if path:
+		if path:
 				# The next point is the first member of the path array
-		var path_target = path[0]
+			var path_target = path[0]
 
 		# Determine direction in which sidekick must move
-		var direction = (path_target - position).normalized()
+			var direction = (path_target - position).normalized()
 
 		# Move sidekick
-		position += direction * speed * delta
+			position += direction * speed * delta
 
 		# If we have reached the point...
-		if position.distance_to(path_target) < POINT_RADIUS:
+			if position.distance_to(path_target) < POINT_RADIUS:
 
 			# Remove first path point
-			path.remove(0)
+				path.remove(0)
 
 			# If we have no points left, remove path
-			if path.size() == 0:
-				path = null
+				if path.size() == 0:
+					path = null
 				
 func aim():
 	$Weapon.rotation = (target.position - position).angle()

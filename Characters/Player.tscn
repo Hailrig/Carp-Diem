@@ -49,10 +49,11 @@ gracetime = 1.0
 
 [node name="Body" parent="." index="0"]
 
+modulate = Color( 1, 1, 1, 1 )
 texture = ExtResource( 4 )
 region_enabled = true
 region_rect = Rect2( 62, 174, 22, 40 )
-_sections_unfolded = [ "Animation", "Offset", "Region", "Transform" ]
+_sections_unfolded = [ "Animation", "Offset", "Region", "Transform", "Visibility" ]
 
 [node name="AnimationPlayer" parent="Body" index="0"]
 
@@ -118,6 +119,7 @@ autostart = false
 
 [node name="Camera2D" type="Camera2D" parent="." index="9"]
 
+position = Vector2( -0.138889, 0.138885 )
 anchor_mode = 1
 rotating = false
 current = true

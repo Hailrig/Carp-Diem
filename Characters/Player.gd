@@ -5,6 +5,7 @@ signal charge
 export (float) var gracetime
 
 var direction
+var charge_target = null
 
 func _ready():
 	$GraceTime.wait_time = gracetime
@@ -26,16 +27,25 @@ func control(delta):
 	if Input.is_action_just_pressed('dash') and $RollCooldown.is_stopped():
 		set_collision_layer_bit(4, true)
 		set_collision_layer_bit(1, false)
-		
 		$RollTime.start()
 		$RollCooldown.start()
-	if $RollTime.time_left > 0:
+		
+	if charge_target:
+		var charge_target_dir = (charge_target.global_position - global_position).normalized()
+		velocity = charge_target_dir * speed * 3
+		if (charge_target.position.x - position.x < 50) and (charge_target.position.x - position.x > -50):
+			if (charge_target.position.y - position.y < 50) and (charge_target.position.y - position.y > -50):
+				chomp()
+	elif $RollTime.time_left > 0:
 		velocity = velocity.normalized() * speed * 3
 	else:
 		velocity = velocity.normalized() * speed
 		emit_signal('charge')
 		
 	dont_shoot_yourself(shot_dir)
+	
+	if Input.is_action_just_pressed('blood_dash'):
+		blood_dash()
 	
 	if Input.is_action_just_pressed('fire'):
 		shoot()
@@ -75,6 +85,25 @@ func dont_shoot_yourself(gun_face):
 				$Weapon.global_rotation_degrees = 70 
 			else:
 				$Weapon.global_rotation_degrees = -70 
+				
+func blood_dash():
+	var mouse_pos = get_global_mouse_position()
+	var bloodied_enemies = get_tree().get_nodes_in_group("bloodied_enemies")
+	for i in bloodied_enemies:
+		if (i.position.x - mouse_pos.x < 50) and (i.position.x - mouse_pos.x > -50):
+			if (i.position.y - mouse_pos.y < 50) and (i.position.y - mouse_pos.y > -50):
+					var space_state = get_world_2d().direct_space_state
+					var result = space_state.intersect_ray(position, i.position, [self], collision_mask)
+					if result:
+						if result.collider == i:
+							charge_target = i
+							can_be_hurt = false
+				
+func chomp():
+	charge_target.getrekt()
+	gain_life(1)
+	charge_target = null
+	can_be_hurt = true
 
 
 func take_damage(amount):

@@ -43,7 +43,6 @@ func control(delta):
 		if (charge_target_free.get_ref()):
 			var charge_target_dir = (charge_target.global_position - global_position).normalized()
 			velocity = charge_target_dir * speed * 5
-			print (velocity)
 			if (charge_target.position.x - position.x < 50) and (charge_target.position.x - position.x > -50):
 				if (charge_target.position.y - position.y < 50) and (charge_target.position.y - position.y > -50):
 					chomp(delta)

@@ -1,11 +1,14 @@
 extends "res://Characters/Characters.gd"
 
 signal charge
+signal bullet_time
+signal normal_time
 
 export (float) var gracetime
 
 var direction
 var charge_target = null
+var charge_target_free = null
 
 func _ready():
 	$GraceTime.wait_time = gracetime
@@ -30,12 +33,24 @@ func control(delta):
 		$RollTime.start()
 		$RollCooldown.start()
 		
+	if $BloodTimer.time_left > 0:
+		var knockback_enemies = get_tree().get_nodes_in_group("knockback")
+		for i in knockback_enemies:
+			var velocity1 = (i.position - position).normalized() * speed * 3
+			i.move_and_slide(velocity1)
+		
 	if charge_target:
-		var charge_target_dir = (charge_target.global_position - global_position).normalized()
-		velocity = charge_target_dir * speed * 3
-		if (charge_target.position.x - position.x < 50) and (charge_target.position.x - position.x > -50):
-			if (charge_target.position.y - position.y < 50) and (charge_target.position.y - position.y > -50):
-				chomp()
+		if (charge_target_free.get_ref()):
+			var charge_target_dir = (charge_target.global_position - global_position).normalized()
+			velocity = charge_target_dir * speed * 5
+			print (velocity)
+			if (charge_target.position.x - position.x < 50) and (charge_target.position.x - position.x > -50):
+				if (charge_target.position.y - position.y < 50) and (charge_target.position.y - position.y > -50):
+					chomp(delta)
+		else:
+			charge_target = null;
+			can_be_hurt = true;
+
 	elif $RollTime.time_left > 0:
 		velocity = velocity.normalized() * speed * 3
 	else:
@@ -87,6 +102,7 @@ func dont_shoot_yourself(gun_face):
 				$Weapon.global_rotation_degrees = -70 
 				
 func blood_dash():
+	emit_signal('normal_time')
 	var mouse_pos = get_global_mouse_position()
 	var bloodied_enemies = get_tree().get_nodes_in_group("bloodied_enemies")
 	for i in bloodied_enemies:
@@ -96,14 +112,31 @@ func blood_dash():
 					var result = space_state.intersect_ray(position, i.position, [self], collision_mask)
 					if result:
 						if result.collider == i:
-							charge_target = i
+							charge_target = i;
+							charge_target_free = weakref(i);
 							can_be_hurt = false
 				
-func chomp():
+func chomp(delta):
 	charge_target.getrekt()
 	gain_life(1)
+	var enemies = get_tree().get_nodes_in_group("enemies")
+	for i in enemies:
+		if (i.position.x - position.x < 150) and (i.position.x - position.x > -150):
+			if (i.position.y - position.y < 150) and (i.position.y - position.y > -150):
+				i.add_to_group("knockback")
+				i.knockback = true
 	charge_target = null
 	can_be_hurt = true
+	emit_signal('bullet_time')
+	$BloodTimer.start()
+	
+
+func _on_BloodTimer_timeout():
+	var knockback_enemies = get_tree().get_nodes_in_group("knockback")
+	for i in knockback_enemies:
+		i.knockback = false
+		i.remove_from_group("knockback")
+	blood_dash()
 
 
 func take_damage(amount):

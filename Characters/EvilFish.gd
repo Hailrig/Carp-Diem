@@ -5,6 +5,8 @@ signal charge
 export (int) var detect_radius
 
 var target = null
+var direction 
+var knockback = false
 
 const POINT_RADIUS = 5
 
@@ -25,12 +27,12 @@ func _process(delta):
 #		shoot()
 		
 		
-		if path:
+		if path and knockback == false:
 				# The next point is the first member of the path array
 			var path_target = path[0]
 
 		# Determine direction in which sidekick must move
-			var direction = (path_target - position).normalized()
+			direction = (path_target - position).normalized()
 
 		# Move sidekick
 			position += direction * speed * delta

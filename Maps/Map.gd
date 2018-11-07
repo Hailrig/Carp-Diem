@@ -1,6 +1,7 @@
 extends Node2D
 
 func _ready():
+	normal_time()
 	Input.set_mouse_mode(0)
 #func set_camera_limits():
 #	var map_limits = $TileMap.get_used_rect()
@@ -9,6 +10,14 @@ func _ready():
 #	$Player/Camera2D.limit_right = map_limits.end.x * map_cellsize.x
 #	$Player/Camera2D.limit_top = map_limits.position.y * map_cellsize.y
 #	$Player/Camera2D.limit_bottom = map_limits.end.y * map_cellsize.y
+
+func bullet_time():
+	Engine.time_scale = 0.2
+	self.material.set_shader_param("grayscale", true)
+
+func normal_time():
+	Engine.time_scale = 1
+	self.material.set_shader_param("grayscale", false)
 	
 func _on_shoot(bullet, _position, _direction):
 	var b = bullet.instance()

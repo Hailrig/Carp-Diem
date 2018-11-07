@@ -9,6 +9,7 @@ export (float) var gracetime
 var direction
 var charge_target = null
 var charge_target_free = null
+var time_stop = false
 
 func _ready():
 	$GraceTime.wait_time = gracetime
@@ -73,6 +74,12 @@ func control(delta):
 	if Input.is_action_just_pressed('reset'):
 		getrekt()
 		
+	if Input.is_action_just_pressed('time_stop'):
+		if time_stop:
+			normal_time()
+		else:
+			time_stop()
+		
 	_camera_shift()
 	
 func dont_shoot_yourself(gun_face):
@@ -128,7 +135,14 @@ func chomp(delta):
 	can_be_hurt = true
 	emit_signal('bullet_time')
 	$BloodTimer.start()
+
+func time_stop():
+	time_stop = true
+	emit_signal('bullet_time')
 	
+func normal_time():
+	time_stop = false
+	emit_signal('normal_time')
 
 func _on_BloodTimer_timeout():
 	var knockback_enemies = get_tree().get_nodes_in_group("knockback")

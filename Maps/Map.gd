@@ -3,6 +3,7 @@ extends Node2D
 func _ready():
 	normal_time()
 	Input.set_mouse_mode(0)
+	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 #func set_camera_limits():
 #	var map_limits = $TileMap.get_used_rect()
 #	var map_cellsize = $TileMap.cell_size

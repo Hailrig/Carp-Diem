@@ -2,7 +2,6 @@ extends Node2D
 
 func _ready():
 	normal_time()
-	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 #func set_camera_limits():
 #	var map_limits = $TileMap.get_used_rect()
 #	var map_cellsize = $TileMap.cell_size
@@ -10,9 +9,6 @@ func _ready():
 #	$Player/Camera2D.limit_right = map_limits.end.x * map_cellsize.x
 #	$Player/Camera2D.limit_top = map_limits.position.y * map_cellsize.y
 #	$Player/Camera2D.limit_bottom = map_limits.end.y * map_cellsize.y
-
-func _physics_process(delta):
-	$Mouse.position = get_global_mouse_position()
 
 func bullet_time():
 	Engine.time_scale = 0.2

@@ -3,16 +3,23 @@ extends "res://Characters/Characters.gd"
 signal charge
 signal bullet_time
 signal normal_time
+signal time_change
 
 export (float) var gracetime
+export (int) var max_slow_time
+#export (float) var slow_timer
 
 var direction
 var charge_target = null
 var charge_target_free = null
 var time_stop = false
+var slow_time
 
 func _ready():
+	slow_time = max_slow_time
+	emit_signal('time_change', slow_time)
 	$GraceTime.wait_time = gracetime
+	#$SlowTimer.wait_time = slow_timer
 	add_to_group("players")
 
 func control(delta):
@@ -79,7 +86,17 @@ func control(delta):
 			normal_time()
 		else:
 			time_stop()
-		
+	
+	if time_stop:
+		slow_time -= 1
+		emit_signal('time_change', slow_time)
+	elif time_stop == false and slow_time < max_slow_time:
+		slow_time += 1
+		emit_signal('time_change', slow_time)
+	
+	if slow_time <= 0:
+		normal_time()
+	
 	_camera_shift()
 	
 func dont_shoot_yourself(gun_face):
@@ -137,6 +154,7 @@ func chomp(delta):
 	$BloodTimer.start()
 
 func time_stop():
+	#$SlowTimer.start()
 	time_stop = true
 	emit_signal('bullet_time')
 	

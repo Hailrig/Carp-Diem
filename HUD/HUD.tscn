@@ -5,7 +5,7 @@
 [ext_resource path="res://HUD/Timebar.png" type="Texture" id=3]
 [ext_resource path="res://HUD/Pistolshrimpammo.png" type="Texture" id=4]
 
-[node name="HUD" type="CanvasLayer"]
+[node name="HUD" type="CanvasLayer" index="0"]
 
 layer = 1
 offset = Vector2( 0, 0 )
@@ -127,7 +127,7 @@ mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
 min_value = 0.0
-max_value = 250.0
+max_value = 400.0
 step = 1.0
 page = 0.0
 value = 0.0

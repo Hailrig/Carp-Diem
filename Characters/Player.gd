@@ -88,7 +88,7 @@ func control(delta):
 			time_stop()
 	
 	if time_stop:
-		slow_time -= 1
+		slow_time -= 4
 		emit_signal('time_change', slow_time)
 	elif time_stop == false and slow_time < max_slow_time:
 		slow_time += 1

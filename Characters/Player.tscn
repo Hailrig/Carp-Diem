@@ -1,16 +1,17 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://Characters/Characters.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Characters/Player.gd" type="Script" id=2]
 [ext_resource path="res://Weapons/PlayerBullet.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Characters/Spritesheet.png" type="Texture" id=4]
-[ext_resource path="res://Animations/Test.tres" type="Animation" id=5]
-[ext_resource path="res://Animations/back_idle.tres" type="Animation" id=6]
-[ext_resource path="res://Animations/back_left_idle.tres" type="Animation" id=7]
-[ext_resource path="res://Animations/back_right_idle.tres" type="Animation" id=8]
-[ext_resource path="res://Animations/front_idle.tres" type="Animation" id=9]
-[ext_resource path="res://Animations/front_left_idle.tres" type="Animation" id=10]
-[ext_resource path="res://Animations/front_right_idle.tres" type="Animation" id=11]
+[ext_resource path="res://Animations/Invuln.tres" type="Animation" id=5]
+[ext_resource path="res://Animations/Test.tres" type="Animation" id=6]
+[ext_resource path="res://Animations/back_idle.tres" type="Animation" id=7]
+[ext_resource path="res://Animations/back_left_idle.tres" type="Animation" id=8]
+[ext_resource path="res://Animations/back_right_idle.tres" type="Animation" id=9]
+[ext_resource path="res://Animations/front_idle.tres" type="Animation" id=10]
+[ext_resource path="res://Animations/front_left_idle.tres" type="Animation" id=11]
+[ext_resource path="res://Animations/front_right_idle.tres" type="Animation" id=12]
 
 [sub_resource type="RectangleShape2D" id=1]
 
@@ -23,7 +24,7 @@ z_index = 1
 collision_layer = 2
 collision_mask = 5
 script = ExtResource( 2 )
-_sections_unfolded = [ "Collision", "Transform", "Z Index" ]
+_sections_unfolded = [ "Collision", "Transform", "Visibility", "Z Index" ]
 Bullet = ExtResource( 3 )
 speed = 150
 weapon_cooldown = 0.3
@@ -44,23 +45,31 @@ front_left_walk = "front_left_idle"
 back_walk = "back_idle"
 back_left_walk = "back_left_idle"
 back_right_walk = "back_right_idle"
+gracetime = 1.0
+max_slow_time = 400
 
 [node name="Body" parent="." index="0"]
 
+modulate = Color( 1, 1, 1, 1 )
 texture = ExtResource( 4 )
 region_enabled = true
 region_rect = Rect2( 62, 174, 22, 40 )
-_sections_unfolded = [ "Animation", "Offset", "Region", "Transform" ]
+_sections_unfolded = [ "Animation", "Offset", "Region", "Transform", "Visibility" ]
 
 [node name="AnimationPlayer" parent="Body" index="0"]
 
-anims/Test = ExtResource( 5 )
-anims/back_idle = ExtResource( 6 )
-anims/back_left_idle = ExtResource( 7 )
-anims/back_right_idle = ExtResource( 8 )
-anims/front_idle = ExtResource( 9 )
-anims/front_left_idle = ExtResource( 10 )
-anims/front_right_idle = ExtResource( 11 )
+anims/Invuln = ExtResource( 5 )
+anims/Test = ExtResource( 6 )
+anims/back_idle = ExtResource( 7 )
+anims/back_left_idle = ExtResource( 8 )
+anims/back_right_idle = ExtResource( 9 )
+anims/front_idle = ExtResource( 10 )
+anims/front_left_idle = ExtResource( 11 )
+anims/front_right_idle = ExtResource( 12 )
+
+[node name="AnimationPlayer2" parent="Body" index="1"]
+
+anims/Invuln = ExtResource( 5 )
 
 [node name="Weapon" parent="." index="1"]
 
@@ -72,7 +81,7 @@ _sections_unfolded = [ "Animation", "Material", "Offset", "Region", "Transform",
 
 [node name="Muzzle" parent="Weapon" index="0"]
 
-position = Vector2( 7.47388, -2.68315 )
+position = Vector2( 10, -2.5 )
 _sections_unfolded = [ "Transform" ]
 
 [node name="Arm" parent="." index="2"]
@@ -88,22 +97,44 @@ _sections_unfolded = [ "Animation", "Offset", "Region", "Transform" ]
 shape = SubResource( 1 )
 _sections_unfolded = [ "Transform" ]
 
-[node name="RollTime" type="Timer" parent="." index="4"]
+[node name="RollTime" type="Timer" parent="." index="6"]
 
 process_mode = 1
-wait_time = 0.1
+wait_time = 0.15
 one_shot = true
 autostart = false
 
-[node name="RollCooldown" type="Timer" parent="." index="5"]
+[node name="RollCooldown" type="Timer" parent="." index="7"]
 
 process_mode = 1
 wait_time = 0.8
 one_shot = true
 autostart = false
 
-[node name="Camera2D" type="Camera2D" parent="." index="6"]
+[node name="GraceTime" type="Timer" parent="." index="8"]
 
+process_mode = 1
+wait_time = 1.0
+one_shot = true
+autostart = false
+
+[node name="BloodTimer" type="Timer" parent="." index="9"]
+
+process_mode = 1
+wait_time = 0.2
+one_shot = true
+autostart = false
+
+[node name="SlowTimer" type="Timer" parent="." index="10"]
+
+process_mode = 1
+wait_time = 1.0
+one_shot = false
+autostart = false
+
+[node name="Camera2D" type="Camera2D" parent="." index="11"]
+
+position = Vector2( -3.8147e-006, 0.277771 )
 anchor_mode = 1
 rotating = false
 current = true
@@ -129,5 +160,9 @@ editor_draw_drag_margin = false
 _sections_unfolded = [ "Drag Margin", "Editor", "Limit", "Material", "Offset", "Pause", "Smoothing", "Transform", "Visibility", "Z Index" ]
 
 [connection signal="timeout" from="RollTime" to="." method="_on_RollTime_timeout"]
+
+[connection signal="timeout" from="GraceTime" to="." method="_on_GraceTime_timeout"]
+
+[connection signal="timeout" from="BloodTimer" to="." method="_on_BloodTimer_timeout"]
 
 

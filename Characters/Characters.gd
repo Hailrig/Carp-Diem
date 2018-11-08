@@ -35,6 +35,8 @@ var health
 var playing_anim = 0
 var shot_dir
 var _in_clip
+var can_be_hurt = true
+var bloodied = false
 
 func _ready():
 	_in_clip = clip_size
@@ -117,17 +119,31 @@ func change_anim(angle, velocity):
 		$Weapon.flip_v = false
 		$Weapon.position.x = weapon_offset
 		$Arm.position.x = -weapon_offset + 3
+		
+	if bloodied:
+		$Body.self_modulate = Color(255, 0, 0, 255)
 	
 func reload():
 	_in_clip = 0
 	$ReloadTimer.start()
 	
 func take_damage(amount):
-	health -= amount
-	emit_signal('health_changed', health)
-	if health <= 0:
-		getrekt()
+	if can_be_hurt:
+		health -= amount
+		emit_signal('health_changed', health)
+		if health <= 0:
+			getrekt()
+		if health <= (starting_health/2):
+			bloodied = true
+			add_to_group("bloodied_enemies")
 		
+func gain_life(amount):
+	if (health + amount) < max_health:
+		health += amount
+	else:
+		health = max_health
+	emit_signal('health_changed', health)
+	
 func getrekt():
 	queue_free()
 

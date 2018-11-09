@@ -44,7 +44,7 @@ detect_radius = 500
 texture = ExtResource( 4 )
 region_enabled = true
 region_rect = Rect2( 44, 15, 21, 10 )
-_sections_unfolded = [ "Offset", "Region" ]
+_sections_unfolded = [ "Offset", "Region", "Visibility" ]
 
 [node name="AnimationPlayer" parent="Body" index="0"]
 

@@ -48,7 +48,7 @@ func control(delta):
 			i.move_and_slide(velocity1)
 		
 	if charge_target:
-		if (charge_target_free.get_ref()):
+		if charge_target.alive == true:
 			var charge_target_dir = (charge_target.global_position - global_position).normalized()
 			velocity = charge_target_dir * speed * 5
 			if (charge_target.position.x - position.x < 50) and (charge_target.position.x - position.x > -50):
@@ -140,7 +140,6 @@ func blood_dash():
 							can_be_hurt = false
 				
 func chomp(delta):
-	charge_target.getrekt()
 	gain_life(1)
 	var enemies = get_tree().get_nodes_in_group("enemies")
 	for i in enemies:
@@ -148,6 +147,7 @@ func chomp(delta):
 			if (i.position.y - position.y < 150) and (i.position.y - position.y > -150):
 				i.add_to_group("knockback")
 				i.knockback = true
+	charge_target.getrekt()
 	charge_target = null
 	can_be_hurt = true
 	emit_signal('bullet_time')

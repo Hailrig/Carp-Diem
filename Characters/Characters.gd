@@ -158,7 +158,6 @@ func getrekt():
 	$Body/AudioStreamPlayer2D.play()
 	remove_from_group('enemies')
 	remove_from_group('bloodied_enemies')
-	#$CollisionShape2D.queue_free()
 	$Weapon.queue_free()
 	alive = false
 

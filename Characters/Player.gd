@@ -14,6 +14,7 @@ var charge_target = null
 var charge_target_free = null
 var time_stop = false
 var slow_time
+var camera_offset
 
 func _ready():
 	slow_time = max_slow_time
@@ -187,7 +188,7 @@ func getrekt():
 func _camera_shift():
 	$Camera2D.align()
 	$Camera2D.offset = Vector2(0,0)
-	var camera_offset = Vector2(get_global_mouse_position() - global_position)
+	camera_offset = Vector2(get_global_mouse_position() - global_position)
 	camera_offset = camera_offset / 5
 	$Camera2D.offset += camera_offset
 

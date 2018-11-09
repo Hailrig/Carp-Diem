@@ -33,7 +33,7 @@ length = 1.0
 loop = false
 step = 0.1
 
-[node name="Characters" type="KinematicBody2D" index="0"]
+[node name="Characters" type="KinematicBody2D"]
 
 pause_mode = 2
 material = SubResource( 3 )

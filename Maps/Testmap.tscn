@@ -34,7 +34,7 @@ shader = SubResource( 1 )
 shader_param/grayscale = false
 _sections_unfolded = [ "Resource", "shader_param" ]
 
-[node name="TestMap" type="Node2D"]
+[node name="TestMap" type="Node2D" index="0"]
 
 material = SubResource( 2 )
 script = ExtResource( 1 )
@@ -131,37 +131,25 @@ position = Vector2( 573.232, 133.623 )
 
 pause_mode = 0
 material = null
-position = Vector2( 575.91, 282.35 )
+position = Vector2( 504.643, 299.681 )
 
 [node name="EvilFish3" parent="." index="8" instance=ExtResource( 8 )]
 
 pause_mode = 0
 material = null
-position = Vector2( 407.126, 253.832 )
+position = Vector2( 606.624, 346.61 )
 
 [node name="EvilFish4" parent="." index="9" instance=ExtResource( 8 )]
 
 pause_mode = 0
 material = null
-position = Vector2( 236.999, 386.694 )
+position = Vector2( 594.892, 236.507 )
 
-[node name="EvilFish5" parent="." index="10" instance=ExtResource( 8 )]
-
-pause_mode = 0
-material = null
-position = Vector2( 401.02, 384.889 )
-
-[node name="EvilFish6" parent="." index="11" instance=ExtResource( 8 )]
+[node name="EvilFish6" parent="." index="10" instance=ExtResource( 8 )]
 
 pause_mode = 0
 material = null
-position = Vector2( 407.725, 69.4644 )
-
-[node name="EvilFish7" parent="." index="12" instance=ExtResource( 8 )]
-
-pause_mode = 0
-material = null
-position = Vector2( 404.707, 192.377 )
+position = Vector2( 469.446, 146.258 )
 
 [connection signal="ammo_changed" from="Player" to="HUD" method="update_ammobar"]
 
@@ -183,11 +171,15 @@ position = Vector2( 404.707, 192.377 )
 
 [connection signal="take_damage" from="EvilFish" to="Pause" method="pause_game"]
 
+[connection signal="take_damage" from="EvilFish" to="Player/Camera2D" method="shake"]
+
 [connection signal="charge" from="EvilFish2" to="." method="_calculate_new_path"]
 
 [connection signal="shoot" from="EvilFish2" to="." method="_on_shoot"]
 
 [connection signal="take_damage" from="EvilFish2" to="Pause" method="pause_game"]
+
+[connection signal="take_damage" from="EvilFish2" to="Player/Camera2D" method="shake"]
 
 [connection signal="charge" from="EvilFish3" to="." method="_calculate_new_path"]
 
@@ -195,17 +187,15 @@ position = Vector2( 404.707, 192.377 )
 
 [connection signal="take_damage" from="EvilFish3" to="Pause" method="pause_game"]
 
+[connection signal="take_damage" from="EvilFish3" to="Player/Camera2D" method="shake"]
+
 [connection signal="charge" from="EvilFish4" to="." method="_calculate_new_path"]
 
 [connection signal="shoot" from="EvilFish4" to="." method="_on_shoot"]
 
 [connection signal="take_damage" from="EvilFish4" to="Pause" method="pause_game"]
 
-[connection signal="charge" from="EvilFish5" to="." method="_calculate_new_path"]
-
-[connection signal="shoot" from="EvilFish5" to="." method="_on_shoot"]
-
-[connection signal="take_damage" from="EvilFish5" to="Pause" method="pause_game"]
+[connection signal="take_damage" from="EvilFish4" to="Player/Camera2D" method="shake"]
 
 [connection signal="charge" from="EvilFish6" to="." method="_calculate_new_path"]
 
@@ -213,10 +203,6 @@ position = Vector2( 404.707, 192.377 )
 
 [connection signal="take_damage" from="EvilFish6" to="Pause" method="pause_game"]
 
-[connection signal="charge" from="EvilFish7" to="." method="_calculate_new_path"]
-
-[connection signal="shoot" from="EvilFish7" to="." method="_on_shoot"]
-
-[connection signal="take_damage" from="EvilFish7" to="Pause" method="pause_game"]
+[connection signal="take_damage" from="EvilFish6" to="Player/Camera2D" method="shake"]
 
 

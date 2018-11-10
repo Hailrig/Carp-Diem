@@ -37,6 +37,18 @@ front_left_walk = "evil_fish_test"
 back_walk = "evil_fish_test"
 back_left_walk = "evil_fish_test"
 back_right_walk = "evil_fish_test"
+front_dash = "evil_fish_test"
+front_right_dash = "evil_fish_test"
+front_left_dash = "evil_fish_test"
+back_dash = "evil_fish_test"
+back_left_dash = "evil_fish_test"
+back_right_dash = "evil_fish_test"
+front_blood = "evil_fish_test"
+front_right_blood = "evil_fish_test"
+front_left_blood = "evil_fish_test"
+back_blood = "evil_fish_test"
+back_left_blood = "evil_fish_test"
+back_right_blood = "evil_fish_test"
 detect_radius = 500
 
 [node name="Body" parent="." index="0"]
@@ -44,7 +56,7 @@ detect_radius = 500
 texture = ExtResource( 4 )
 region_enabled = true
 region_rect = Rect2( 44, 15, 21, 10 )
-_sections_unfolded = [ "Offset", "Region" ]
+_sections_unfolded = [ "Offset", "Region", "Visibility" ]
 
 [node name="AnimationPlayer" parent="Body" index="0"]
 

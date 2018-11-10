@@ -1,19 +1,96 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=37 format=2]
 
 [ext_resource path="res://Characters/Characters.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Characters/Player.gd" type="Script" id=2]
 [ext_resource path="res://Weapons/PlayerBullet.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Characters/Spritesheet.png" type="Texture" id=4]
-[ext_resource path="res://Animations/Invuln.tres" type="Animation" id=5]
-[ext_resource path="res://Animations/Test.tres" type="Animation" id=6]
-[ext_resource path="res://Animations/back_idle.tres" type="Animation" id=7]
-[ext_resource path="res://Animations/back_left_idle.tres" type="Animation" id=8]
-[ext_resource path="res://Animations/back_right_idle.tres" type="Animation" id=9]
-[ext_resource path="res://Animations/front_idle.tres" type="Animation" id=10]
-[ext_resource path="res://Animations/front_left_idle.tres" type="Animation" id=11]
-[ext_resource path="res://Animations/front_right_idle.tres" type="Animation" id=12]
+[ext_resource path="res://Animations/Back_Idle.tres" type="Animation" id=5]
+[ext_resource path="res://Animations/Back_Left_Idle.tres" type="Animation" id=6]
+[ext_resource path="res://Animations/Invuln.tres" type="Animation" id=7]
+[ext_resource path="res://Animations/Test.tres" type="Animation" id=8]
+[ext_resource path="res://Animations/back_blood.tres" type="Animation" id=9]
+[ext_resource path="res://Animations/back_dash.tres" type="Animation" id=10]
+[ext_resource path="res://Animations/back_idle.tres" type="Animation" id=11]
+[ext_resource path="res://Animations/back_left_blood.tres" type="Animation" id=12]
+[ext_resource path="res://Animations/back_left_dash.tres" type="Animation" id=13]
+[ext_resource path="res://Animations/back_left_idle.tres" type="Animation" id=14]
+[ext_resource path="res://Animations/back_left_walk.tres" type="Animation" id=15]
+[ext_resource path="res://Animations/back_right_blood.tres" type="Animation" id=16]
+[ext_resource path="res://Animations/back_right_dash.tres" type="Animation" id=17]
+[ext_resource path="res://Animations/back_right_idle.tres" type="Animation" id=18]
+[ext_resource path="res://Animations/back_right_walk.tres" type="Animation" id=19]
+[ext_resource path="res://Animations/back_walk.tres" type="Animation" id=20]
+[ext_resource path="res://Animations/front_dash.tres" type="Animation" id=21]
+[ext_resource path="res://Animations/front_idle.tres" type="Animation" id=22]
+[ext_resource path="res://Animations/front_right_blood.tres" type="Animation" id=23]
+[ext_resource path="res://Animations/front_left_dash.tres" type="Animation" id=24]
+[ext_resource path="res://Animations/front_left_idle.tres" type="Animation" id=25]
+[ext_resource path="res://Animations/front_left_walk.tres" type="Animation" id=26]
+[ext_resource path="res://Animations/front_right_dash.tres" type="Animation" id=27]
+[ext_resource path="res://Animations/front_right_idle.tres" type="Animation" id=28]
+[ext_resource path="res://Animations/front_right_walk.tres" type="Animation" id=29]
+[ext_resource path="res://Animations/front_walk.tres" type="Animation" id=30]
 
-[sub_resource type="RectangleShape2D" id=1]
+[sub_resource type="Animation" id=1]
+
+resource_name = "balk_walk"
+length = 1.0
+loop = false
+step = 0.1
+
+[sub_resource type="Animation" id=2]
+
+resource_name = "blood_front"
+length = 1.0
+loop = false
+step = 0.1
+
+[sub_resource type="Animation" id=3]
+
+resource_name = "dash_front_right"
+length = 1.0
+loop = false
+step = 0.1
+
+[sub_resource type="Animation" id=4]
+
+resource_name = "front_blood"
+length = 1.0
+loop = false
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("Body:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Rect2( 403, 356, 21, 33 ) ]
+}
+
+[sub_resource type="Animation" id=5]
+
+resource_name = "front_right_blood"
+length = 1.0
+loop = false
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("Body:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Rect2( 448, 359, 32, 27 ) ]
+}
+
+[sub_resource type="RectangleShape2D" id=6]
 
 custom_solver_bias = 0.0
 extents = Vector2( 10.0377, 19.6733 )
@@ -39,12 +116,24 @@ front_left_idle = "front_left_idle"
 back_idle = "back_idle"
 back_left_idle = "back_left_idle"
 back_right_idle = "back_right_idle"
-front_walk = "front_idle"
-front_right_walk = "front_right_idle"
-front_left_walk = "front_left_idle"
-back_walk = "back_idle"
-back_left_walk = "back_left_idle"
-back_right_walk = "back_right_idle"
+front_walk = "front_walk"
+front_right_walk = "front_right_walk"
+front_left_walk = "front_left_walk"
+back_walk = "back_walk"
+back_left_walk = "back_left_walk"
+back_right_walk = "back_right_walk"
+front_dash = "front_dash"
+front_right_dash = "front_right_dash"
+front_left_dash = "front_left_dash"
+back_dash = "back_dash"
+back_left_dash = "back_left_dash"
+back_right_dash = "back_right_dash"
+front_blood = "front_blood"
+front_right_blood = "front_right_blood"
+front_left_blood = "front_left_blood"
+back_blood = "back_blood"
+back_left_blood = "back_left_blood"
+back_right_blood = "back_right_blood"
 gracetime = 1.0
 max_slow_time = 400
 
@@ -53,35 +142,59 @@ max_slow_time = 400
 modulate = Color( 1, 1, 1, 1 )
 texture = ExtResource( 4 )
 region_enabled = true
-region_rect = Rect2( 62, 174, 22, 40 )
+region_rect = Rect2( 353, 260, 29, 28 )
 _sections_unfolded = [ "Animation", "Offset", "Region", "Transform", "Visibility" ]
 
 [node name="AnimationPlayer" parent="Body" index="0"]
 
-anims/Invuln = ExtResource( 5 )
-anims/Test = ExtResource( 6 )
-anims/back_idle = ExtResource( 7 )
-anims/back_left_idle = ExtResource( 8 )
-anims/back_right_idle = ExtResource( 9 )
-anims/front_idle = ExtResource( 10 )
-anims/front_left_idle = ExtResource( 11 )
-anims/front_right_idle = ExtResource( 12 )
+anims/Back_Idle = ExtResource( 5 )
+anims/Back_Left_Idle = ExtResource( 6 )
+anims/Invuln = ExtResource( 7 )
+anims/Test = ExtResource( 8 )
+anims/back_blood = ExtResource( 9 )
+anims/back_dash = ExtResource( 10 )
+anims/back_idle = ExtResource( 11 )
+anims/back_left_blood = ExtResource( 12 )
+anims/back_left_dash = ExtResource( 13 )
+anims/back_left_idle = ExtResource( 14 )
+anims/back_left_walk = ExtResource( 15 )
+anims/back_right_blood = ExtResource( 16 )
+anims/back_right_dash = ExtResource( 17 )
+anims/back_right_idle = ExtResource( 18 )
+anims/back_right_walk = ExtResource( 19 )
+anims/back_walk = ExtResource( 20 )
+anims/balk_walk = SubResource( 1 )
+anims/blood_front = SubResource( 2 )
+anims/dash_front_right = SubResource( 3 )
+anims/front_blood = SubResource( 4 )
+anims/front_dash = ExtResource( 21 )
+anims/front_idle = ExtResource( 22 )
+anims/front_left_blood = ExtResource( 23 )
+anims/front_left_dash = ExtResource( 24 )
+anims/front_left_idle = ExtResource( 25 )
+anims/front_left_walk = ExtResource( 26 )
+anims/front_right_blood = SubResource( 5 )
+anims/front_right_dash = ExtResource( 27 )
+anims/front_right_idle = ExtResource( 28 )
+anims/front_right_walk = ExtResource( 29 )
+anims/front_walk = ExtResource( 30 )
 
 [node name="AnimationPlayer2" parent="Body" index="1"]
 
-anims/Invuln = ExtResource( 5 )
+anims/Invuln = ExtResource( 7 )
 
 [node name="Weapon" parent="." index="1"]
 
-position = Vector2( 13, 8 )
+position = Vector2( 13, 9 )
 texture = ExtResource( 4 )
+offset = Vector2( 5, -1 )
 region_enabled = true
-region_rect = Rect2( 78, 315, 10, 6 )
+region_rect = Rect2( 323, 102, 14, 8 )
 _sections_unfolded = [ "Animation", "Material", "Offset", "Region", "Transform", "Visibility", "Z Index" ]
 
 [node name="Muzzle" parent="Weapon" index="0"]
 
-position = Vector2( 10, -2.5 )
+position = Vector2( 15.1958, -2.5 )
 _sections_unfolded = [ "Transform" ]
 
 [node name="Arm" parent="." index="2"]
@@ -94,7 +207,7 @@ _sections_unfolded = [ "Animation", "Offset", "Region", "Transform" ]
 
 [node name="CollisionShape2D" parent="." index="3"]
 
-shape = SubResource( 1 )
+shape = SubResource( 6 )
 _sections_unfolded = [ "Transform" ]
 
 [node name="RollTime" type="Timer" parent="." index="6"]

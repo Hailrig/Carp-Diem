@@ -40,6 +40,7 @@ func control(delta):
 		set_collision_layer_bit(1, false)
 		$RollTime.start()
 		$RollCooldown.start()
+		dashing = true
 		
 	if $BloodTimer.time_left > 0:
 		var knockback_enemies = get_tree().get_nodes_in_group("knockback")
@@ -138,6 +139,7 @@ func blood_dash():
 							charge_target = i;
 							charge_target_free = weakref(i);
 							can_be_hurt = false
+							zoom = true
 				
 func chomp(delta):
 	charge_target.getrekt()
@@ -152,6 +154,7 @@ func chomp(delta):
 	can_be_hurt = true
 	emit_signal('bullet_time')
 	$BloodTimer.start()
+	zoom = false
 
 func time_stop():
 	#$SlowTimer.start()
@@ -195,6 +198,7 @@ func _camera_shift():
 func _on_RollTime_timeout():
 	set_collision_layer_bit(1, true)
 	set_collision_layer_bit(4, false)
+	dashing = false
 
 func _on_GraceTime_timeout():
 	can_be_hurt = true

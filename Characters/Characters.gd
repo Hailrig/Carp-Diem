@@ -29,6 +29,20 @@ export (String) var back_walk
 export (String) var back_left_walk
 export (String) var back_right_walk
 
+export (String) var front_dash
+export (String) var front_right_dash
+export (String) var front_left_dash
+export (String) var back_dash
+export (String) var back_left_dash
+export (String) var back_right_dash
+
+export (String) var front_blood
+export (String) var front_right_blood
+export (String) var front_left_blood
+export (String) var back_blood
+export (String) var back_left_blood
+export (String) var back_right_blood
+
 var velocity = Vector2()
 var can_shoot = true
 var alive = true
@@ -38,6 +52,8 @@ var shot_dir
 var _in_clip
 var can_be_hurt = true
 var bloodied = false
+var dashing = false
+var zoom = false
 
 func _ready():
 	_in_clip = clip_size
@@ -91,6 +107,44 @@ func change_anim(angle, velocity):
 		if angle > -45 and angle <= 0 and playing_anim != 6:
 			$Body/AnimationPlayer.play(back_right_idle)
 			playing_anim = 6
+	elif dashing == true:
+		if angle > 0 and angle <= 45 and playing_anim != 13:
+			$Body/AnimationPlayer.play(front_right_dash)
+			playing_anim = 13
+		if angle > 45 and angle <= 135 and playing_anim != 14:
+			$Body/AnimationPlayer.play(front_dash)
+			playing_anim = 14
+		if angle > 135  and angle <= 180 and playing_anim != 15:
+			$Body/AnimationPlayer.play(front_left_dash)
+			playing_anim = 15
+		if angle > -180 and angle <= -135 and playing_anim != 16:
+			$Body/AnimationPlayer.play(back_left_dash)
+			playing_anim = 16
+		if angle > -135 and angle <= -45 and playing_anim != 17:
+			$Body/AnimationPlayer.play(back_dash)
+			playing_anim = 17
+		if angle > -45 and angle <= 0 and playing_anim != 18:
+			$Body/AnimationPlayer.play(back_right_dash)
+			playing_anim = 18
+	elif zoom == true:
+		if angle > 0 and angle <= 45 and playing_anim != 19:
+			$Body/AnimationPlayer.play(front_right_blood)
+			playing_anim = 19
+		if angle > 45 and angle <= 135 and playing_anim != 20:
+			$Body/AnimationPlayer.play(front_blood)
+			playing_anim = 20
+		if angle > 135  and angle <= 180 and playing_anim != 20:
+			$Body/AnimationPlayer.play(front_left_blood)
+			playing_anim = 20
+		if angle > -180 and angle <= -135 and playing_anim != 20:
+			$Body/AnimationPlayer.play(back_left_blood)
+			playing_anim = 20
+		if angle > -135 and angle <= -45 and playing_anim != 20:
+			$Body/AnimationPlayer.play(back_blood)
+			playing_anim = 20
+		if angle > -45 and angle <= 0 and playing_anim != 20:
+			$Body/AnimationPlayer.play(back_right_blood)
+			playing_anim = 20
 	else:
 		if angle > 0 and angle <= 45 and playing_anim != 7:
 			$Body/AnimationPlayer.play(front_right_walk)

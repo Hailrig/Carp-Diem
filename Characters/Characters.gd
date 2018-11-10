@@ -152,8 +152,6 @@ func getrekt():
 	set_collision_layer_bit(2, false)
 	set_collision_mask_bit(1, false)
 	set_collision_mask_bit(2, false)
-	for i in 20:
-		print(get_collision_mask_bit(i))
 	$Body.self_modulate = Color(1, 1, 1, .5)
 	$Body/AudioStreamPlayer2D.play()
 	remove_from_group('enemies')

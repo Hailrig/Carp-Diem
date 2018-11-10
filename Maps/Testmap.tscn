@@ -34,7 +34,7 @@ shader = SubResource( 1 )
 shader_param/grayscale = false
 _sections_unfolded = [ "Resource", "shader_param" ]
 
-[node name="TestMap" type="Node2D" index="0"]
+[node name="TestMap" type="Node2D"]
 
 material = SubResource( 2 )
 script = ExtResource( 1 )
@@ -129,7 +129,8 @@ position = Vector2( 422.517, 103.841 )
 
 [node name="EvilFish2" parent="." index="7" instance=ExtResource( 8 )]
 
-
+pause_mode = 0
+material = null
 position = Vector2( 427.664, 388.974 )
 front_dash = null
 front_right_dash = null
@@ -143,13 +144,11 @@ front_left_blood = null
 back_blood = null
 back_left_blood = null
 back_right_blood = null
-pause_mode = 0
-material = null
-
 
 [node name="EvilFish7" parent="." index="8" instance=ExtResource( 8 )]
 
-
+pause_mode = 0
+material = null
 position = Vector2( 675.291, 406.428 )
 front_dash = null
 front_right_dash = null
@@ -163,13 +162,11 @@ front_left_blood = null
 back_blood = null
 back_left_blood = null
 back_right_blood = null
-pause_mode = 0
-material = null
-
 
 [node name="EvilFish3" parent="." index="9" instance=ExtResource( 8 )]
 
-
+pause_mode = 0
+material = null
 position = Vector2( 456.811, 243.726 )
 front_dash = null
 front_right_dash = null
@@ -183,12 +180,11 @@ front_left_blood = null
 back_blood = null
 back_left_blood = null
 back_right_blood = null
-pause_mode = 0
-material = null
 
 [node name="EvilFish4" parent="." index="10" instance=ExtResource( 8 )]
 
-
+pause_mode = 0
+material = null
 position = Vector2( 513.668, 180.552 )
 front_dash = null
 front_right_dash = null
@@ -202,13 +198,11 @@ front_left_blood = null
 back_blood = null
 back_left_blood = null
 back_right_blood = null
-pause_mode = 0
-material = null
-
 
 [node name="EvilFish5" parent="." index="11" instance=ExtResource( 8 )]
 
-
+pause_mode = 0
+material = null
 position = Vector2( 516.375, 290.656 )
 front_dash = null
 front_right_dash = null
@@ -222,13 +216,11 @@ front_left_blood = null
 back_blood = null
 back_left_blood = null
 back_right_blood = null
-pause_mode = 0
-material = null
-
 
 [node name="EvilFish6" parent="." index="12" instance=ExtResource( 8 )]
 
-
+pause_mode = 0
+material = null
 position = Vector2( 545.255, 234.701 )
 front_dash = null
 front_right_dash = null
@@ -242,10 +234,6 @@ front_left_blood = null
 back_blood = null
 back_left_blood = null
 back_right_blood = null
-
-pause_mode = 0
-material = null
-
 
 [connection signal="ammo_changed" from="Player" to="HUD" method="update_ammobar"]
 

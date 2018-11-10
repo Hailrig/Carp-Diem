@@ -4,6 +4,7 @@ signal shoot
 signal health_changed
 signal dead
 signal ammo_changed
+signal take_damage
 
 export (PackedScene) var Bullet
 export (int) var speed
@@ -54,6 +55,7 @@ func shoot():
 	if can_shoot:
 		if _in_clip > 0:
 			_in_clip -= 1
+			$Weapon/AudioStreamPlayer2D.play()
 			emit_signal('ammo_changed', _in_clip)
 			can_shoot = false
 			$WeaponTimer.start()
@@ -129,6 +131,7 @@ func reload():
 	
 func take_damage(amount):
 	if can_be_hurt:
+		emit_signal('take_damage', 0.1)
 		health -= amount
 		emit_signal('health_changed', health)
 		if health <= 0:
@@ -145,7 +148,16 @@ func gain_life(amount):
 	emit_signal('health_changed', health)
 	
 func getrekt():
-	queue_free()
+	set_collision_layer_bit(5, true)
+	set_collision_layer_bit(2, false)
+	set_collision_mask_bit(1, false)
+	set_collision_mask_bit(2, false)
+	$Body.self_modulate = Color(1, 1, 1, .5)
+	$Body/AudioStreamPlayer2D.play()
+	remove_from_group('enemies')
+	remove_from_group('bloodied_enemies')
+	$Weapon.queue_free()
+	alive = false
 
 func _on_WeaponTimer_timeout():
 	can_shoot = true

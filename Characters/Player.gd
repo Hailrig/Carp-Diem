@@ -14,6 +14,7 @@ var charge_target = null
 var charge_target_free = null
 var time_stop = false
 var slow_time
+var camera_offset
 
 func _ready():
 	slow_time = max_slow_time
@@ -48,7 +49,7 @@ func control(delta):
 			i.move_and_slide(velocity1)
 		
 	if charge_target:
-		if (charge_target_free.get_ref()):
+		if charge_target.alive == true:
 			var charge_target_dir = (charge_target.global_position - global_position).normalized()
 			velocity = charge_target_dir * speed * 5
 			if (charge_target.position.x - position.x < 50) and (charge_target.position.x - position.x > -50):
@@ -131,16 +132,15 @@ func blood_dash():
 	for i in bloodied_enemies:
 		if (i.position.x - mouse_pos.x < 50) and (i.position.x - mouse_pos.x > -50):
 			if (i.position.y - mouse_pos.y < 50) and (i.position.y - mouse_pos.y > -50):
-					var space_state = get_world_2d().direct_space_state
-					var result = space_state.intersect_ray(position, i.position, [self], collision_mask)
-					if result:
-						if result.collider == i:
-							charge_target = i;
-							charge_target_free = weakref(i);
-							can_be_hurt = false
+				var space_state = get_world_2d().direct_space_state
+				var result = space_state.intersect_ray(position, i.position, [self], collision_mask)
+				if result:
+					if result.collider == i:
+						charge_target = i;
+						charge_target_free = weakref(i);
+						can_be_hurt = false
 				
 func chomp(delta):
-	charge_target.getrekt()
 	gain_life(1)
 	var enemies = get_tree().get_nodes_in_group("enemies")
 	for i in enemies:
@@ -148,6 +148,7 @@ func chomp(delta):
 			if (i.position.y - position.y < 150) and (i.position.y - position.y > -150):
 				i.add_to_group("knockback")
 				i.knockback = true
+	charge_target.getrekt()
 	charge_target = null
 	can_be_hurt = true
 	emit_signal('bullet_time')
@@ -187,7 +188,7 @@ func getrekt():
 func _camera_shift():
 	$Camera2D.align()
 	$Camera2D.offset = Vector2(0,0)
-	var camera_offset = Vector2(get_global_mouse_position() - global_position)
+	camera_offset = Vector2(get_global_mouse_position() - global_position)
 	camera_offset = camera_offset / 5
 	$Camera2D.offset += camera_offset
 

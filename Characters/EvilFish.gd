@@ -19,6 +19,8 @@ func _ready():
 	$DetectRadius/CollisionShape2D.shape.radius = detect_radius
 	
 func _process(delta):
+	if not alive:
+		return
 	if target:
 		aim()
 #		var target_dir = (target.global_position - global_position).normalized()

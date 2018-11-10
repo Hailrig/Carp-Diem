@@ -1,0 +1,22 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://HUD/Pause.gd" type="Script" id=1]
+
+[node name="Pause" type="Node2D"]
+
+pause_mode = 2
+script = ExtResource( 1 )
+_sections_unfolded = [ "Pause" ]
+
+[node name="PauseTimer" type="Timer" parent="." index="0"]
+
+pause_mode = 2
+process_mode = 1
+wait_time = 1.0
+one_shot = true
+autostart = false
+_sections_unfolded = [ "Pause" ]
+
+[connection signal="timeout" from="PauseTimer" to="." method="_on_PauseTimer_timeout"]
+
+

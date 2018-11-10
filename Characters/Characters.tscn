@@ -1,14 +1,48 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Characters/Characters.gd" type="Script" id=1]
 
+[sub_resource type="Shader" id=2]
+
+code = "shader_type canvas_item;
+render_mode unshaded;
+
+uniform bool grayscale = false;
+
+void fragment() {
+	
+if (grayscale) {
+COLOR = texture(TEXTURE, UV);//setup the default image 
+float lum = (COLOR.r+COLOR.g+COLOR.b)/3.0;//get the average 
+COLOR.xyz = vec3(lum);//set the average to get grayscale 
+}else{
+COLOR = texture(TEXTURE, UV);//setup the default image 
+}
+}"
+
+[sub_resource type="ShaderMaterial" id=3]
+
+render_priority = 0
+shader = SubResource( 2 )
+shader_param/grayscale = null
+
+[sub_resource type="Animation" id=1]
+
+resource_name = "pistol_gunshot"
+length = 1.0
+loop = false
+step = 0.1
+
 [node name="Characters" type="KinematicBody2D"]
 
+pause_mode = 2
+material = SubResource( 3 )
 input_pickable = false
 collision_layer = 1
 collision_mask = 1
 collision/safe_margin = 0.08
 script = ExtResource( 1 )
+_sections_unfolded = [ "Material", "Pause" ]
 Bullet = null
 speed = null
 weapon_cooldown = null
@@ -33,7 +67,8 @@ back_right_walk = null
 [node name="Body" type="Sprite" parent="." index="0"]
 
 modulate = Color( 0.9375, 0, 0, 1 )
-_sections_unfolded = [ "Visibility" ]
+use_parent_material = true
+_sections_unfolded = [ "Material", "Visibility" ]
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Body" index="0"]
 
@@ -55,11 +90,49 @@ playback_speed = 1.0
 blend_times = [  ]
 _sections_unfolded = [ "Pause", "Playback Options" ]
 
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="Body" index="2"]
+
+stream = null
+volume_db = 0.0
+pitch_scale = 1.0
+autoplay = false
+max_distance = 2000.0
+attenuation = 1.0
+bus = "Master"
+area_mask = 1
+
 [node name="Weapon" type="Sprite" parent="." index="1"]
+
+use_parent_material = true
+_sections_unfolded = [ "Material" ]
 
 [node name="Muzzle" type="Position2D" parent="Weapon" index="0"]
 
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Weapon" index="1"]
+
+root_node = NodePath("..")
+autoplay = ""
+playback_process_mode = 1
+playback_default_blend_time = 0.0
+playback_speed = 1.0
+anims/pistol_gunshot = SubResource( 1 )
+blend_times = [  ]
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="Weapon" index="2"]
+
+stream = null
+volume_db = 0.0
+pitch_scale = 1.0
+autoplay = false
+max_distance = 2000.0
+attenuation = 1.0
+bus = "Master"
+area_mask = 1
+
 [node name="Arm" type="Sprite" parent="." index="2"]
+
+use_parent_material = true
+_sections_unfolded = [ "Material" ]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." index="3"]
 

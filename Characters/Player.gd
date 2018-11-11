@@ -57,6 +57,7 @@ func control(delta):
 				if (charge_target.position.y - position.y < 50) and (charge_target.position.y - position.y > -50):
 					chomp(delta)
 		else:
+			zoom = false
 			charge_target = null;
 			can_be_hurt = true;
 

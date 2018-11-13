@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=2]
+[gd_scene load_steps=40 format=2]
 
 [ext_resource path="res://Characters/Characters.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Characters/Player.gd" type="Script" id=2]
@@ -30,8 +30,9 @@
 [ext_resource path="res://Animations/front_right_walk.tres" type="Animation" id=28]
 [ext_resource path="res://Animations/front_walk.tres" type="Animation" id=29]
 [ext_resource path="res://Audio/roblox_death.wav" type="AudioStream" id=30]
-[ext_resource path="res://Audio/BLAM.wav" type="AudioStream" id=31]
-[ext_resource path="res://Characters/Camera2D.gd" type="Script" id=32]
+[ext_resource path="res://Animations/idle_arms.tres" type="Animation" id=31]
+[ext_resource path="res://Audio/BLAM.wav" type="AudioStream" id=32]
+[ext_resource path="res://Characters/Camera2D.gd" type="Script" id=33]
 
 [sub_resource type="Animation" id=1]
 
@@ -191,7 +192,7 @@ stream = ExtResource( 30 )
 
 [node name="Weapon" parent="." index="1"]
 
-position = Vector2( 13, 9 )
+position = Vector2( 13, 7 )
 texture = ExtResource( 4 )
 offset = Vector2( 5, -1 )
 region_enabled = true
@@ -203,13 +204,17 @@ _sections_unfolded = [ "Animation", "Material", "Offset", "Region", "Transform",
 position = Vector2( 15.1958, -2.5 )
 _sections_unfolded = [ "Transform" ]
 
+[node name="AnimationPlayer" parent="Weapon" index="1"]
+
+anims/idle_arms = ExtResource( 31 )
+
 [node name="AudioStreamPlayer2D" parent="Weapon" index="2"]
 
-stream = ExtResource( 31 )
+stream = ExtResource( 32 )
 
 [node name="Arm" parent="." index="2"]
 
-position = Vector2( -13, 12 )
+position = Vector2( -13, 10 )
 texture = ExtResource( 4 )
 region_enabled = true
 region_rect = Rect2( 78, 297, 5, 5 )
@@ -280,7 +285,7 @@ drag_margin_bottom = 0.2
 editor_draw_screen = true
 editor_draw_limits = false
 editor_draw_drag_margin = false
-script = ExtResource( 32 )
+script = ExtResource( 33 )
 _sections_unfolded = [ "Drag Margin", "Editor", "Limit", "Material", "Offset", "Pause", "Smoothing", "Transform", "Visibility", "Z Index" ]
 
 [node name="ShakeTween" type="Tween" parent="Camera2D" index="0"]

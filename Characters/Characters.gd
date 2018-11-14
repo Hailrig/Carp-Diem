@@ -14,6 +14,7 @@ export (int) var starting_health
 export (int) var weapon_offset
 export (int) var clip_size
 export (int) var reload_timer
+export (int) var weapon_shift
 
 export (String) var front_idle
 export (String) var front_right_idle
@@ -170,11 +171,13 @@ func change_anim(angle, velocity):
 		$Weapon.flip_v = true
 		$Weapon.position.x = -weapon_offset
 		$Arm.position.x = weapon_offset - 3
+		$Weapon.offset.y = weapon_shift
 	elif angle <= 75 and angle >= -75:
 		shot_dir = 'right'
 		$Weapon.flip_v = false
 		$Weapon.position.x = weapon_offset
 		$Arm.position.x = -weapon_offset + 3
+		$Weapon.offset.y = -weapon_shift
 		
 	if bloodied:
 		$Body.self_modulate = Color(255, 0, 0, 255)

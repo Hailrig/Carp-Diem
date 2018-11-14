@@ -1,5 +1,7 @@
 extends Node2D
 
+var path = null
+
 func _ready():
 	normal_time()
 #func set_camera_limits():
@@ -28,13 +30,17 @@ func _calculate_new_path():
 	# Finds path
 		var enemies = get_tree().get_nodes_in_group("enemies")
 		for i in enemies:
-			var path = $TileMap.get_path(i.position, $Player.position)
+			if i.target:
+				path = $TileMap.get_path(i.position, $Player.position)
+				if path:
+					path.remove(0)
+					i.path = path
 
-	# If we got a path...
-			if path:
-
-		# Remove the first point (it's where the sidekick is)
-				path.remove(0)
-
-		# Sets the sidekick's path
-				i.path = path
+#	# If we got a path...
+#			if path:
+#
+#		# Remove the first point (it's where the sidekick is)
+#				path.remove(0)
+#
+#		# Sets the sidekick's path
+#				i.path = path

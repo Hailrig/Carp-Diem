@@ -117,4 +117,28 @@ bounce = 0.0
 build_mode = 0
 polygon = PoolVector2Array( -16, 16, 16, 16, 16, -16, -16, -16, -16, 16 )
 
+[node name="Pit" type="Sprite" parent="." index="8"]
+
+position = Vector2( 64, 0 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 0, 0, 32, 32 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Pit" index="0"]
+
+input_pickable = false
+collision_layer = 32
+collision_mask = 3
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+_sections_unfolded = [ "Collision" ]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Pit/StaticBody2D" index="0"]
+
+build_mode = 0
+polygon = PoolVector2Array( -16, -16, 16, -16, 16, 16, -16, 16, -16, -16 )
+
 

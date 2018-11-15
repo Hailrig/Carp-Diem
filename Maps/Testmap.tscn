@@ -52,6 +52,7 @@ _sections_unfolded = [ "Pause" ]
 
 [node name="TileMap" type="TileMap" parent="." index="2"]
 
+visible = false
 mode = 0
 tile_set = ExtResource( 4 )
 cell_size = Vector2( 32, 32 )

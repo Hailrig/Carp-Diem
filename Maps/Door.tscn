@@ -1,44 +1,96 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Maps/Door.gd" type="Script" id=1]
 [ext_resource path="res://Characters/Spritesheet.png" type="Texture" id=2]
+[ext_resource path="res://Animations/door_close.tres" type="Animation" id=3]
+[ext_resource path="res://Animations/door_open.tres" type="Animation" id=4]
+
+[sub_resource type="RectangleShape2D" id=2]
+
+custom_solver_bias = 0.0
+extents = Vector2( 2.89289, 63.7339 )
 
 [sub_resource type="RectangleShape2D" id=1]
 
 custom_solver_bias = 0.0
 extents = Vector2( 64.0241, 2.8584 )
 
-[node name="Door" type="Area2D" index="0"]
+[sub_resource type="RectangleShape2D" id=3]
+
+custom_solver_bias = 0.0
+extents = Vector2( 3.23093, 63.8242 )
+
+[node name="Door" type="KinematicBody2D"]
+
+input_pickable = false
+collision_layer = 1
+collision_mask = 6
+collision/safe_margin = 0.08
+script = ExtResource( 1 )
+_sections_unfolded = [ "Collision", "Transform", "Z Index" ]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="0"]
+
+shape = SubResource( 2 )
+
+[node name="Sprite" type="Sprite" parent="." index="1"]
+
+position = Vector2( -2.43106, -63.9321 )
+texture = ExtResource( 2 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 141, 0, 5, 128 )
+_sections_unfolded = [ "Animation", "Offset", "Region", "Transform" ]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite" index="0"]
+
+root_node = NodePath("..")
+autoplay = ""
+playback_process_mode = 1
+playback_default_blend_time = 0.0
+playback_speed = 1.0
+anims/door_close = ExtResource( 3 )
+anims/door_open = ExtResource( 4 )
+blend_times = [  ]
+
+[node name="Area2D" type="Area2D" parent="." index="2"]
+
+position = Vector2( -5.23012, -0.581125 )
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+audio_bus_override = false
+audio_bus_name = "Master"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" index="0"]
+
+position = Vector2( -3.10346, 0.335751 )
+rotation = 1.5708
+scale = Vector2( 1, 1.67219 )
+shape = SubResource( 1 )
+
+[node name="Area2D2" type="Area2D" parent="." index="3"]
 
 input_pickable = true
 gravity_vec = Vector2( 0, 1 )
 gravity = 98.0
 linear_damp = 0.1
 angular_damp = 1.0
-collision_mask = 6145
 audio_bus_override = false
 audio_bus_name = "Master"
-script = ExtResource( 1 )
 _sections_unfolded = [ "Collision" ]
 
-[node name="Sprite" type="Sprite" parent="." index="0"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D2" index="0"]
 
-texture = ExtResource( 2 )
-region_enabled = true
-region_rect = Rect2( 141, 0, 5, 128 )
-_sections_unfolded = [ "Region" ]
+position = Vector2( 6.98726, -0.122757 )
+shape = SubResource( 3 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="1"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]
 
-position = Vector2( -3.97272, -0.0705568 )
-rotation = 1.5708
-scale = Vector2( 1, 1.67219 )
-shape = SubResource( 1 )
-one_way_collision = true
-_sections_unfolded = [ "Transform" ]
+[connection signal="body_exited" from="Area2D" to="." method="_on_Area2D_body_exited"]
 
-[connection signal="body_entered" from="." to="." method="_on_Door_body_entered"]
-
-[connection signal="body_exited" from="." to="." method="_on_Door_body_exited"]
+[connection signal="body_entered" from="Area2D2" to="." method="_on_Area2D2_body_entered"]
 
 

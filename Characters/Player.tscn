@@ -102,7 +102,7 @@ extents = Vector2( 10.0377, 19.6733 )
 
 z_index = 1
 collision_layer = 2
-collision_mask = 5
+collision_mask = 7
 script = ExtResource( 2 )
 _sections_unfolded = [ "Collision", "Material", "Pause", "Transform", "Visibility", "Z Index" ]
 Bullet = ExtResource( 3 )
@@ -114,6 +114,7 @@ weapon_offset = 13
 clip_size = 8
 reload_timer = 1
 weapon_shift = 1
+current_room = "a"
 front_idle = "front_idle"
 front_right_idle = "front_right_idle"
 front_left_idle = "front_left_idle"

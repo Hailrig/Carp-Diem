@@ -13,6 +13,7 @@ const POINT_RADIUS = 5
 var path
 
 func _ready():
+	add_to_group(current_room)
 	add_to_group("enemies")
 	var circle = CircleShape2D.new()
 	$DetectRadius/CollisionShape2D.shape = circle
@@ -20,6 +21,8 @@ func _ready():
 	
 func _process(delta):
 	if not alive:
+		return
+	if current_room != get_parent().get_node("Player").get("current_room"):
 		return
 	if target:
 		aim()
@@ -62,7 +65,6 @@ func aim():
 func _on_Area2D_body_entered(body):
 	if body.name == "Player":
 		target = body
-		emit_signal('charge')
 
 
 func _on_Area2D_body_exited(body):

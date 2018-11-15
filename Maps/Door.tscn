@@ -5,12 +5,12 @@
 [ext_resource path="res://Animations/door_close.tres" type="Animation" id=3]
 [ext_resource path="res://Animations/door_open.tres" type="Animation" id=4]
 
-[sub_resource type="RectangleShape2D" id=2]
+[sub_resource type="RectangleShape2D" id=1]
 
 custom_solver_bias = 0.0
 extents = Vector2( 2.89289, 63.7339 )
 
-[sub_resource type="RectangleShape2D" id=1]
+[sub_resource type="RectangleShape2D" id=2]
 
 custom_solver_bias = 0.0
 extents = Vector2( 64.0241, 2.8584 )
@@ -20,7 +20,9 @@ extents = Vector2( 64.0241, 2.8584 )
 custom_solver_bias = 0.0
 extents = Vector2( 3.23093, 63.8242 )
 
-[node name="Door" type="KinematicBody2D"]
+[node name="Door" type="KinematicBody2D" groups=[
+"Persist",
+]]
 
 input_pickable = false
 collision_layer = 1
@@ -31,7 +33,7 @@ _sections_unfolded = [ "Collision", "Transform", "Z Index" ]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." index="0"]
 
-shape = SubResource( 2 )
+shape = SubResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="." index="1"]
 
@@ -69,7 +71,7 @@ audio_bus_name = "Master"
 position = Vector2( -3.10346, 0.335751 )
 rotation = 1.5708
 scale = Vector2( 1, 1.67219 )
-shape = SubResource( 1 )
+shape = SubResource( 2 )
 
 [node name="Area2D2" type="Area2D" parent="." index="3"]
 

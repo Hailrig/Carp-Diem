@@ -4,7 +4,7 @@
 
 resource_name = "back_left_walk"
 length = 1.0
-loop = false
+loop = true
 step = 0.05
 tracks/0/type = "value"
 tracks/0/path = NodePath("Body:region_rect")

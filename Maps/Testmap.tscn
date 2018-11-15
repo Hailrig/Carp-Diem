@@ -149,6 +149,7 @@ room = "first"
 [node name="Door" parent="." index="7" instance=ExtResource( 8 )]
 
 position = Vector2( 24.8747, 233.262 )
+_sections_unfolded = [ "Collision", "Material", "Pickable", "Transform", "Visibility", "Z Index", "collision" ]
 
 [node name="Player" parent="." index="8" instance=ExtResource( 9 )]
 
@@ -859,10 +860,6 @@ scroll_following = false
 selection_enabled = false
 override_selected_font_color = false
 _sections_unfolded = [ "BBCode" ]
-
-[connection signal="room_clear" from="Fog" to="Door" method="perma_open"]
-
-[connection signal="room_entered" from="Door" to="Fog" method="_reveal"]
 
 [connection signal="ammo_changed" from="Player" to="HUD" method="update_ammobar"]
 

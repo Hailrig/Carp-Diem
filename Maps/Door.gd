@@ -2,7 +2,10 @@ extends KinematicBody2D
 
 signal room_entered
 
-var door_stop
+var door_stop = false
+
+func _ready():
+	connect("room_entered", get_parent().get_node("Fog"), "_reveal")
 
 func _on_Area2D_body_entered(body):
 	if body.name == "Player":
@@ -33,3 +36,15 @@ func perma_open():
 	$CollisionShape2D.disabled = true
 	$Sprite/AnimationPlayer.play('door_open')
 	door_stop=true
+
+func save():
+    var save_dict = {
+		"filename" : get_filename(),
+		"name" : name,
+		"parent" : get_parent().get_path(),
+		"pos_x" : position.x, # Vector2 is not supported by JSON
+		"pos_y" : position.y,
+		"door_stop" : door_stop,
+		"rotation" : rotation
+    }
+    return save_dict

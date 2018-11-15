@@ -16,6 +16,8 @@ export (int) var clip_size
 export (int) var reload_timer
 export (int) var weapon_shift
 
+export (String) var current_room
+
 export (String) var front_idle
 export (String) var front_right_idle
 export (String) var front_left_idle
@@ -213,6 +215,7 @@ func getrekt():
 	$Body/AudioStreamPlayer2D.play()
 	remove_from_group('enemies')
 	remove_from_group('bloodied_enemies')
+	remove_from_group(current_room)
 	$Weapon.queue_free()
 	alive = false
 

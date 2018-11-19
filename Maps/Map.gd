@@ -30,20 +30,20 @@ func _calculate_new_path():
 	# Finds path
 		var enemies = get_tree().get_nodes_in_group("enemies")
 		for i in enemies:
-			if i.target:
+			if i.current_room == get_node("Player").get("current_room"):
 				path = $TileMap.get_path(i.position, $Player.position)
 				if path:
 					path.remove(0)
 					i.path = path
 
-func save_game():
-	var save_game = File.new()
-	save_game.open("user://savegame.save", File.WRITE)
-	var save_nodes = get_tree().get_nodes_in_group("Persist")
-	for i in save_nodes:
-		var node_data = i.save();
-		save_game.store_line(to_json(node_data))
-	save_game.close()
+#func save_game():
+#	var save_game = File.new()
+#	save_game.open("user://savegame.save", File.WRITE)
+#	var save_nodes = get_tree().get_nodes_in_group("Persist")
+#	for i in save_nodes:
+#		var node_data = i.save();
+#		save_game.store_line(to_json(node_data))
+#	save_game.close()
 
 #func load_game():
 #	var save_game = File.new()
@@ -69,3 +69,6 @@ func save_game():
 #			continue
 #		new_object.set(i, current_line[i])
 #	save_game.close()
+
+func calculate_new_path():
+	pass # replace with function body

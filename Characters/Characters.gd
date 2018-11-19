@@ -88,9 +88,9 @@ func _physics_process(delta):
 		return
 	control(delta)
 	move_and_slide(velocity)
-	change_anim(rad2deg($Body.get_angle_to(get_global_mouse_position())), velocity)
+	change_anim(rad2deg($Body.get_angle_to(get_global_mouse_position())), rad2deg($Weapon.global_rotation), velocity)
 	
-func change_anim(angle, velocity):
+func change_anim(body_angle, angle, velocity):
 	if velocity.x == 0 and velocity.y == 0:
 		if angle > 0 and angle <= 45 and playing_anim != 1:
 			$Body/AnimationPlayer.play(front_right_idle)
@@ -168,13 +168,13 @@ func change_anim(angle, velocity):
 			$Body/AnimationPlayer.play(back_right_walk)
 			playing_anim = 12
 
-	if angle >= 105 or angle <= -105:
+	if body_angle >= 105 or body_angle <= -105:
 		shot_dir = 'left'
 		$Weapon.flip_v = true
 		$Weapon.position.x = -weapon_offset
 		$Arm.position.x = weapon_offset - 3
 		$Weapon.offset.y = weapon_shift
-	elif angle <= 75 and angle >= -75:
+	elif body_angle <= 75 and body_angle >= -75:
 		shot_dir = 'right'
 		$Weapon.flip_v = false
 		$Weapon.position.x = weapon_offset

@@ -1,0 +1,145 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://Maps/Map.gd" type="Script" id=1]
+[ext_resource path="res://Maps/Tileset.tres" type="TileSet" id=2]
+[ext_resource path="res://Maps/TileMap.gd" type="Script" id=3]
+[ext_resource path="res://Characters/Player.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Characters/EvilFish.tscn" type="PackedScene" id=5]
+[ext_resource path="res://HUD/HUD.tscn" type="PackedScene" id=6]
+[ext_resource path="res://HUD/Pause.tscn" type="PackedScene" id=7]
+
+[sub_resource type="Shader" id=1]
+
+code = "shader_type canvas_item;
+render_mode unshaded;
+
+uniform bool grayscale = false;
+
+void fragment() {
+	
+if (grayscale) {
+COLOR = texture(TEXTURE, UV);//setup the default image 
+float lum = (COLOR.r+COLOR.g+COLOR.b)/3.0;//get the average 
+COLOR.xyz = vec3(lum);//set the average to get grayscale 
+}else{
+COLOR = texture(TEXTURE, UV);//setup the default image 
+}
+}"
+_sections_unfolded = [ "Resource" ]
+
+[sub_resource type="ShaderMaterial" id=2]
+
+render_priority = 0
+shader = SubResource( 1 )
+shader_param/grayscale = false
+_sections_unfolded = [ "Resource", "shader_param" ]
+
+[node name="Map 2" type="Node2D"]
+
+material = SubResource( 2 )
+script = ExtResource( 1 )
+_sections_unfolded = [ "Material", "Pause", "Visibility" ]
+
+[node name="TileMap" type="TileMap" parent="." index="0"]
+
+use_parent_material = true
+position = Vector2( 0, 1 )
+mode = 0
+tile_set = ExtResource( 2 )
+cell_size = Vector2( 32, 32 )
+cell_quadrant_size = 16
+cell_custom_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+cell_half_offset = 2
+cell_tile_origin = 0
+cell_y_sort = false
+cell_clip_uv = false
+collision_use_kinematic = false
+collision_friction = 1.0
+collision_bounce = 0.0
+collision_layer = 1
+collision_mask = 1
+occluder_light_mask = 1
+format = 1
+tile_data = PoolIntArray( -131077, 1, 0, -131076, 1, 0, -131073, 1, 0, -196608, 1, 0, -196607, 1, 0, -196606, 1, 0, -196605, 1, 0, -196604, 1, 0, -196601, 1, 0, -196600, 1, 0, -65541, 1, 0, -65540, 1, 0, -65537, 1, 0, -131072, 1, 0, -131071, 1, 0, -131070, 1, 0, -131069, 1, 0, -131068, 1, 0, -131065, 1, 0, -131064, 1, 0, -5, 1, 0, -4, 1, 0, -1, 1, 0, -65536, 1, 0, -65533, 1, 0, -65532, 1, 0, -65529, 1, 0, -65528, 1, 0, 65531, 1, 0, 65532, 1, 0, 65535, 1, 0, 0, 1, 0, 3, 1, 0, 4, 1, 0, 7, 1, 0, 8, 1, 0, 131067, 1, 0, 131068, 1, 0, 131071, 1, 0, 65536, 1, 0, 65539, 1, 0, 65540, 1, 0, 65543, 1, 0, 65544, 1, 0, 196603, 1, 0, 196604, 1, 0, 196607, 1, 0, 131072, 1, 0, 131075, 1, 0, 131076, 1, 0, 131079, 1, 0, 131080, 1, 0, 262139, 1, 0, 262140, 1, 0, 262141, 1, 0, 262142, 1, 0, 262143, 1, 0, 196608, 1, 0, 196611, 1, 0, 196612, 1, 0, 196613, 1, 0, 196614, 1, 0, 196615, 1, 0, 196616, 1, 0, 327675, 1, 0, 327676, 1, 0, 327677, 1, 0, 327678, 1, 0, 327679, 1, 0, 262144, 1, 0, 262147, 1, 0, 262148, 1, 0, 262149, 1, 0, 262150, 1, 0, 262151, 1, 0, 262152, 1, 0 )
+script = ExtResource( 3 )
+_sections_unfolded = [ "Cell", "Material" ]
+
+[node name="Environment" type="TileMap" parent="." index="1"]
+
+use_parent_material = true
+mode = 0
+tile_set = ExtResource( 2 )
+cell_size = Vector2( 32, 32 )
+cell_quadrant_size = 16
+cell_custom_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+cell_half_offset = 2
+cell_tile_origin = 0
+cell_y_sort = false
+cell_clip_uv = false
+collision_use_kinematic = false
+collision_friction = 1.0
+collision_bounce = 0.0
+collision_layer = 1
+collision_mask = 1
+occluder_light_mask = 1
+format = 1
+tile_data = PoolIntArray( -196614, 4, 0, -196613, 4, 0, -196612, 4, 0, -196611, 4, 0, -196610, 4, 0, -196609, 4, 0, -262144, 4, 0, -262143, 4, 0, -262142, 4, 0, -262141, 4, 0, -262140, 4, 0, -262139, 4, 0, -262138, 4, 0, -262137, 4, 0, -262136, 4, 0, -262135, 4, 0, -131078, 4, 0, -131075, 4, 0, -131074, 4, 0, -196603, 4, 0, -196602, 4, 0, -196599, 4, 0, -65542, 4, 0, -65539, 4, 0, -65538, 4, 0, -131067, 4, 0, -131066, 4, 0, -131063, 4, 0, -6, 4, 0, -3, 4, 0, -2, 4, 0, -65535, 4, 0, -65534, 4, 0, -65531, 4, 0, -65530, 4, 0, -65527, 4, 0, 65530, 4, 0, 65533, 4, 0, 65534, 4, 0, 1, 4, 0, 2, 4, 0, 5, 4, 0, 6, 4, 0, 9, 4, 0, 131066, 4, 0, 131069, 4, 0, 131070, 4, 0, 65537, 4, 0, 65538, 4, 0, 65541, 4, 0, 65542, 4, 0, 65545, 4, 0, 196602, 4, 0, 196605, 4, 0, 196606, 4, 0, 131073, 4, 0, 131074, 4, 0, 131077, 4, 0, 131078, 4, 0, 131081, 4, 0, 262138, 4, 0, 196609, 4, 0, 196610, 4, 0, 196617, 4, 0, 327674, 4, 0, 262145, 4, 0, 262146, 4, 0, 262153, 4, 0, 393210, 4, 0, 393211, 4, 0, 393212, 4, 0, 393213, 4, 0, 393214, 4, 0, 393215, 4, 0, 327680, 4, 0, 327681, 4, 0, 327682, 4, 0, 327683, 4, 0, 327684, 4, 0, 327685, 4, 0, 327686, 4, 0, 327687, 4, 0, 327688, 4, 0, 327689, 4, 0 )
+_sections_unfolded = [ "Cell", "Material" ]
+
+[node name="Foreground" type="TileMap" parent="." index="2"]
+
+use_parent_material = true
+mode = 0
+tile_set = ExtResource( 2 )
+cell_size = Vector2( 32, 32 )
+cell_quadrant_size = 16
+cell_custom_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+cell_half_offset = 2
+cell_tile_origin = 0
+cell_y_sort = false
+cell_clip_uv = false
+collision_use_kinematic = false
+collision_friction = 1.0
+collision_bounce = 0.0
+collision_layer = 1
+collision_mask = 1
+occluder_light_mask = 1
+format = 1
+tile_data = PoolIntArray(  )
+_sections_unfolded = [ "Cell", "Material" ]
+
+[node name="Player" parent="." index="3" instance=ExtResource( 4 )]
+
+position = Vector2( -123.644, 112.924 )
+
+[node name="EvilFish" parent="." index="4" instance=ExtResource( 5 )]
+
+position = Vector2( 239.619, 124.326 )
+
+[node name="HUD" parent="." index="5" instance=ExtResource( 6 )]
+
+[node name="Pause" parent="." index="6" instance=ExtResource( 7 )]
+
+position = Vector2( 0.973389, 37.1758 )
+
+[connection signal="ammo_changed" from="Player" to="HUD" method="update_ammobar"]
+
+[connection signal="bullet_time" from="Player" to="." method="bullet_time"]
+
+[connection signal="charge" from="Player" to="." method="_calculate_new_path"]
+
+[connection signal="health_changed" from="Player" to="HUD" method="update_healthbar"]
+
+[connection signal="normal_time" from="Player" to="." method="normal_time"]
+
+[connection signal="shoot" from="Player" to="." method="_on_shoot"]
+
+[connection signal="time_change" from="Player" to="HUD" method="update_timebar"]
+
+[connection signal="charge" from="EvilFish" to="." method="_calculate_new_path"]
+
+[connection signal="shoot" from="EvilFish" to="." method="_on_shoot"]
+
+[connection signal="take_damage" from="EvilFish" to="Player/Camera2D" method="shake"]
+
+

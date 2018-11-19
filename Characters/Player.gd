@@ -84,6 +84,12 @@ func control(delta):
 	if Input.is_action_just_pressed('reset'):
 		getrekt()
 		
+	if Input.is_action_just_pressed('save'):
+		get_parent().get_parent().get_node("Saver").save_game()
+	
+	if Input.is_action_just_pressed('load'):
+		get_parent().get_parent().get_node("Loader").load_game()
+		
 	if Input.is_action_just_pressed('time_stop'):
 		if time_stop:
 			normal_time()
@@ -189,8 +195,10 @@ func take_damage(amount):
 			getrekt()
 
 func getrekt():
-		var currentScene = get_tree().get_current_scene().get_filename()
-		get_tree().change_scene(currentScene)
+#		var currentScene = get_tree().get_current_scene().get_filename()
+#		get_tree().change_scene(currentScene)
+		get_tree().reload_current_scene()
+		#Loader.load_game()
 		
 func _camera_shift():
 	$Camera2D.align()

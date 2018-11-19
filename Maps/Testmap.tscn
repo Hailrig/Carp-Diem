@@ -37,7 +37,7 @@ shader = SubResource( 1 )
 shader_param/grayscale = false
 _sections_unfolded = [ "Resource", "shader_param" ]
 
-[node name="TestMap" type="Node2D" index="0"]
+[node name="TestMap" type="Node2D"]
 
 material = SubResource( 2 )
 script = ExtResource( 1 )
@@ -270,7 +270,6 @@ room = "r10"
 
 [node name="Fog" parent="." index="25" instance=ExtResource( 8 )]
 
-visible = false
 position = Vector2( 397.353, 210.802 )
 scale = Vector2( 14.8275, 10.9123 )
 _sections_unfolded = [ "Transform", "Visibility", "Z Index" ]
@@ -278,7 +277,6 @@ room = "r1"
 
 [node name="Fog2" parent="." index="26" instance=ExtResource( 8 )]
 
-visible = false
 position = Vector2( 1386.43, 579.395 )
 scale = Vector2( 16.2732, 8.03397 )
 _sections_unfolded = [ "Transform", "Visibility", "Z Index" ]
@@ -286,7 +284,6 @@ room = "r2"
 
 [node name="Fog3" parent="." index="27" instance=ExtResource( 8 )]
 
-visible = false
 position = Vector2( 2287.75, -287.873 )
 scale = Vector2( 17.7184, 13.1239 )
 _sections_unfolded = [ "Transform", "Visibility", "Z Index" ]
@@ -294,7 +291,6 @@ room = "r3"
 
 [node name="Fog4" parent="." index="28" instance=ExtResource( 8 )]
 
-visible = false
 position = Vector2( 1337.76, -378.482 )
 scale = Vector2( 11.4767, 14.1613 )
 _sections_unfolded = [ "Transform", "Visibility", "Z Index" ]
@@ -302,7 +298,6 @@ room = "r4"
 
 [node name="Fog5" parent="." index="29" instance=ExtResource( 8 )]
 
-visible = false
 position = Vector2( 1138.78, -908.606 )
 scale = Vector2( 10.6337, 8.21658 )
 _sections_unfolded = [ "Transform", "Visibility", "Z Index" ]
@@ -310,7 +305,6 @@ room = "r5"
 
 [node name="Fog6" parent="." index="30" instance=ExtResource( 8 )]
 
-visible = false
 position = Vector2( 1254.57, -2041.51 )
 scale = Vector2( 34.7315, 23.5797 )
 _sections_unfolded = [ "Transform", "Visibility", "Z Index" ]
@@ -318,7 +312,6 @@ room = "r6"
 
 [node name="Fog7" parent="." index="31" instance=ExtResource( 8 )]
 
-visible = false
 position = Vector2( 1611.34, 988.146 )
 scale = Vector2( 10.9689, 5.14075 )
 _sections_unfolded = [ "Transform", "Visibility", "Z Index" ]
@@ -326,7 +319,6 @@ room = "r7"
 
 [node name="Fog8" parent="." index="32" instance=ExtResource( 8 )]
 
-visible = false
 position = Vector2( 1612.57, 1340.21 )
 scale = Vector2( 10.9689, 6.46438 )
 _sections_unfolded = [ "Transform", "Visibility", "Z Index" ]
@@ -334,7 +326,6 @@ room = "r8"
 
 [node name="Fog9" parent="." index="33" instance=ExtResource( 8 )]
 
-visible = false
 position = Vector2( 857.027, 1405.98 )
 scale = Vector2( 10.9689, 10.9966 )
 _sections_unfolded = [ "Transform", "Visibility", "Z Index" ]
@@ -342,7 +333,6 @@ room = "r9"
 
 [node name="Fog10" parent="." index="34" instance=ExtResource( 8 )]
 
-visible = false
 position = Vector2( 2467.73, 1834.35 )
 scale = Vector2( 16.9361, 10.9966 )
 _sections_unfolded = [ "Transform", "Visibility", "Z Index" ]
@@ -351,7 +341,7 @@ room = "r10"
 [node name="FogBack" parent="." index="35" instance=ExtResource( 8 )]
 
 visible = false
-position = Vector2( 1819.63, -41.3345 )
+position = Vector2( 1819.63, -42.3345 )
 scale = Vector2( 166.209, 127.792 )
 z_index = -1000
 _sections_unfolded = [ "Transform", "Visibility", "Z Index" ]
@@ -361,7 +351,7 @@ room = "0"
 
 pause_mode = 0
 material = null
-position = Vector2( -462.621, 209.486 )
+position = Vector2( -466.061, 210.824 )
 max_health = 5
 
 [node name="EvilFish" parent="." index="37" instance=ExtResource( 10 )]
@@ -427,7 +417,7 @@ back_right_blood = null
 [node name="EvilFish5" parent="." index="41" instance=ExtResource( 10 )]
 
 pause_mode = 0
-position = Vector2( 260.772, 135.433 )
+position = Vector2( 259.772, 135.433 )
 current_room = "r1"
 front_dash = null
 front_right_dash = null
@@ -1075,10 +1065,10 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = -461.0
-margin_top = 137.0
-margin_right = -179.0
-margin_bottom = 206.0
+margin_left = -422.0
+margin_top = 136.0
+margin_right = -140.0
+margin_bottom = 205.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = true
 mouse_filter = 0
@@ -1147,15 +1137,15 @@ _sections_unfolded = [ "BBCode" ]
 
 [connection signal="room_entered" from="Door10" to="Fog10" method="_reveal"]
 
-[connection signal="room_clear" from="Fog" to="Door" method="perma_open"]
-
 [connection signal="room_clear" from="Fog" to="Doorb" method="perma_open"]
 
-[connection signal="room_clear" from="Fog2" to="Door2" method="perma_open"]
+[connection signal="room_clear" from="Fog" to="Door" method="perma_open"]
+
+[connection signal="room_clear" from="Fog2" to="Door2c" method="perma_open"]
 
 [connection signal="room_clear" from="Fog2" to="Door2b" method="perma_open"]
 
-[connection signal="room_clear" from="Fog2" to="Door2c" method="perma_open"]
+[connection signal="room_clear" from="Fog2" to="Door2" method="perma_open"]
 
 [connection signal="room_clear" from="Fog3" to="Door3" method="perma_open"]
 

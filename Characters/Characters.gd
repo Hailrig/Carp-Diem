@@ -57,6 +57,7 @@ var can_be_hurt = true
 var bloodied = false
 var dashing = false
 var zoom = false
+var path = null
 
 func _ready():
 	_in_clip = clip_size
@@ -91,7 +92,7 @@ func _physics_process(delta):
 	change_anim(rad2deg($Body.get_angle_to(get_global_mouse_position())), rad2deg($Weapon.global_rotation), velocity)
 	
 func change_anim(body_angle, angle, velocity):
-	if velocity.x == 0 and velocity.y == 0:
+	if velocity.x == 0 and velocity.y == 0 and path == null:
 		if angle > 0 and angle <= 45 and playing_anim != 1:
 			$Body/AnimationPlayer.play(front_right_idle)
 			playing_anim = 1

@@ -10,7 +10,6 @@ var knockback = false
 
 const POINT_RADIUS = 5
 
-var path
 
 func _ready():
 	add_to_group(current_room)

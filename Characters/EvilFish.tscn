@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://Characters/Characters.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Characters/EvilFish.gd" type="Script" id=2]
@@ -6,20 +6,26 @@
 [ext_resource path="res://Characters/Spritesheet.png" type="Texture" id=4]
 [ext_resource path="res://Animations/Carp/back_idle_carp.tres" type="Animation" id=5]
 [ext_resource path="res://Animations/Carp/back_left_idle_carp.tres" type="Animation" id=6]
-[ext_resource path="res://Animations/Carp/back_right_idle_carp.tres" type="Animation" id=7]
-[ext_resource path="res://Animations/evil_fish_test.tres" type="Animation" id=8]
-[ext_resource path="res://Animations/Carp/front_idle_carp.tres" type="Animation" id=9]
-[ext_resource path="res://Animations/Carp/front_left_idle_carp.tres" type="Animation" id=10]
-[ext_resource path="res://Animations/Carp/front_right_idle_carp.tres" type="Animation" id=11]
-[ext_resource path="res://Audio/roblox_death.wav" type="AudioStream" id=12]
-[ext_resource path="res://Audio/BLAM.wav" type="AudioStream" id=13]
+[ext_resource path="res://Animations/Carp/back_left_walk_carp.tres" type="Animation" id=7]
+[ext_resource path="res://Animations/Carp/back_right_idle_carp.tres" type="Animation" id=8]
+[ext_resource path="res://Animations/Carp/back_right_walk_carp.tres" type="Animation" id=9]
+[ext_resource path="res://Animations/Carp/back_walk_carp.tres" type="Animation" id=10]
+[ext_resource path="res://Animations/evil_fish_test.tres" type="Animation" id=11]
+[ext_resource path="res://Animations/Carp/front_idle_carp.tres" type="Animation" id=12]
+[ext_resource path="res://Animations/Carp/front_left_idle_carp.tres" type="Animation" id=13]
+[ext_resource path="res://Animations/Carp/front_left_walk_carp.tres" type="Animation" id=14]
+[ext_resource path="res://Animations/Carp/front_right_idle_carp.tres" type="Animation" id=15]
+[ext_resource path="res://Animations/Carp/front_right_walk_carp.tres" type="Animation" id=16]
+[ext_resource path="res://Animations/Carp/front_walk_carp.tres" type="Animation" id=17]
+[ext_resource path="res://Audio/roblox_death.wav" type="AudioStream" id=18]
+[ext_resource path="res://Audio/BLAM.wav" type="AudioStream" id=19]
 
 [sub_resource type="RectangleShape2D" id=1]
 
 custom_solver_bias = 0.0
 extents = Vector2( 9.18079, 18.1302 )
 
-[node name="EvilFish" instance=ExtResource( 1 )]
+[node name="EvilFish" index="0" instance=ExtResource( 1 )]
 
 material = null
 z_as_relative = false
@@ -43,12 +49,12 @@ front_left_idle = "front_left_idle_carp"
 back_idle = "back_idle_carp"
 back_left_idle = "back_left_idle_carp"
 back_right_idle = "back_right_idle_carp"
-front_walk = "front_idle_carp"
-front_right_walk = "front_right_idle_carp"
-front_left_walk = "front_left_idle_carp"
-back_walk = "back_idle_carp"
-back_left_walk = "back_left_idle_carp"
-back_right_walk = "back_right_idle_carp"
+front_walk = "front_walk_carp"
+front_right_walk = "front_right_walk_carp"
+front_left_walk = "front_left_walk_carp"
+back_walk = "back_walk_carp"
+back_left_walk = "back_left_walk_carp"
+back_right_walk = "back_right_walk_carp"
 front_dash = "evil_fish_test"
 front_right_dash = "evil_fish_test"
 front_left_dash = "evil_fish_test"
@@ -68,22 +74,28 @@ detect_radius = 1500
 modulate = Color( 1, 1, 1, 1 )
 texture = ExtResource( 4 )
 region_enabled = true
-region_rect = Rect2( 503, 8, 22, 38 )
+region_rect = Rect2( 505, 158, 22, 38 )
 _sections_unfolded = [ "Material", "Offset", "Region", "Visibility" ]
 
 [node name="AnimationPlayer" parent="Body" index="0"]
 
 anims/back_idle_carp = ExtResource( 5 )
 anims/back_left_idle_carp = ExtResource( 6 )
-anims/back_right_idle_carp = ExtResource( 7 )
-anims/evil_fish_test = ExtResource( 8 )
-anims/front_idle_carp = ExtResource( 9 )
-anims/front_left_idle_carp = ExtResource( 10 )
-anims/front_right_idle_carp = ExtResource( 11 )
+anims/back_left_walk_carp = ExtResource( 7 )
+anims/back_right_idle_carp = ExtResource( 8 )
+anims/back_right_walk_carp = ExtResource( 9 )
+anims/back_walk_carp = ExtResource( 10 )
+anims/evil_fish_test = ExtResource( 11 )
+anims/front_idle_carp = ExtResource( 12 )
+anims/front_left_idle_carp = ExtResource( 13 )
+anims/front_left_walk_carp = ExtResource( 14 )
+anims/front_right_idle_carp = ExtResource( 15 )
+anims/front_right_walk_carp = ExtResource( 16 )
+anims/front_walk_carp = ExtResource( 17 )
 
 [node name="AudioStreamPlayer2D" parent="Body" index="2"]
 
-stream = ExtResource( 12 )
+stream = ExtResource( 18 )
 
 [node name="Weapon" parent="." index="1"]
 
@@ -100,7 +112,7 @@ _sections_unfolded = [ "Transform" ]
 
 [node name="AudioStreamPlayer2D" parent="Weapon" index="2"]
 
-stream = ExtResource( 13 )
+stream = ExtResource( 19 )
 
 [node name="CollisionShape2D" parent="." index="3"]
 

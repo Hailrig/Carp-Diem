@@ -26,6 +26,12 @@ func _on_shoot(bullet, _position, _direction):
 	b.start(_position, _direction)
 	pass
 	
+func _clip_fly(clip, _position):
+	var s = clip.instance()
+	add_child(s)
+	s.start(_position)
+	pass
+	
 func _calculate_new_path():
 	# Finds path
 		var enemies = get_tree().get_nodes_in_group("enemies")

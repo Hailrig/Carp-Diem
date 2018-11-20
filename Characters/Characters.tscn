@@ -43,6 +43,7 @@ collision/safe_margin = 0.08
 script = ExtResource( 1 )
 _sections_unfolded = [ "Material", "Pause" ]
 Bullet = null
+clip = null
 speed = null
 weapon_cooldown = null
 max_health = null
@@ -51,6 +52,7 @@ weapon_offset = null
 clip_size = null
 reload_timer = null
 weapon_shift = null
+clip_timer = null
 current_room = null
 front_idle = null
 front_right_idle = null
@@ -76,6 +78,7 @@ front_left_blood = null
 back_blood = null
 back_left_blood = null
 back_right_blood = null
+reload = null
 
 [node name="Body" type="Sprite" parent="." index="0"]
 
@@ -163,8 +166,17 @@ wait_time = 1.0
 one_shot = true
 autostart = false
 
+[node name="ClipTimer" type="Timer" parent="." index="6"]
+
+process_mode = 1
+wait_time = 1.0
+one_shot = true
+autostart = false
+
 [connection signal="timeout" from="WeaponTimer" to="." method="_on_WeaponTimer_timeout"]
 
 [connection signal="timeout" from="ReloadTimer" to="." method="_on_ReloadTimer_timeout"]
+
+[connection signal="timeout" from="ClipTimer" to="." method="_on_ClipTimer_timeout"]
 
 

@@ -5,8 +5,10 @@ signal health_changed
 signal dead
 signal ammo_changed
 signal take_damage
+signal clip_fly
 
 export (PackedScene) var Bullet
+export (PackedScene) var clip
 export (int) var speed
 export (float) var weapon_cooldown
 export (int) var max_health
@@ -15,6 +17,7 @@ export (int) var weapon_offset
 export (int) var clip_size
 export (int) var reload_timer
 export (int) var weapon_shift
+export (float) var clip_timer
 
 export (String) var current_room
 
@@ -46,6 +49,9 @@ export (String) var back_blood
 export (String) var back_left_blood
 export (String) var back_right_blood
 
+export (String) var reload_right
+export (String) var reload_left
+
 var velocity = Vector2()
 var can_shoot = true
 var alive = true
@@ -64,6 +70,7 @@ func _ready():
 	health = starting_health
 	$WeaponTimer.wait_time = weapon_cooldown
 	$ReloadTimer.wait_time = reload_timer
+	$ClipTimer.wait_time = clip_timer
 	emit_signal('health_changed', health)
 	emit_signal('ammo_changed', _in_clip)
 	
@@ -169,24 +176,34 @@ func change_anim(body_angle, angle, velocity):
 			$Body/AnimationPlayer.play(back_right_walk)
 			playing_anim = 12
 
-	if body_angle >= 105 or body_angle <= -105:
-		shot_dir = 'left'
-		$Weapon.flip_v = true
-		$Weapon.position.x = -weapon_offset
-		$Arm.position.x = weapon_offset - 3
-		$Weapon.offset.y = weapon_shift
-	elif body_angle <= 75 and body_angle >= -75:
-		shot_dir = 'right'
-		$Weapon.flip_v = false
-		$Weapon.position.x = weapon_offset
-		$Arm.position.x = -weapon_offset + 3
-		$Weapon.offset.y = -weapon_shift
+	if $ReloadTimer.time_left > 0:
+		pass
+	else:
+		if body_angle >= 105 or body_angle <= -105:
+			shot_dir = 'left'
+			$Weapon.flip_v = true
+			$Weapon.position.x = -weapon_offset
+			$Arm.position.x = weapon_offset - 3
+			$Weapon.offset.y = weapon_shift
+		elif body_angle <= 75 and body_angle >= -75:
+			shot_dir = 'right'
+			$Weapon.flip_v = false
+			$Weapon.position.x = weapon_offset
+			$Arm.position.x = -weapon_offset + 3
+			$Weapon.offset.y = -weapon_shift
 		
 	if bloodied:
 		$Body.self_modulate = Color(255, 0, 0, 255)
 	
 func reload():
 	_in_clip = 0
+	if shot_dir == 'right':
+		$Weapon/AnimationPlayer.play(reload_right)
+	elif shot_dir == 'left':
+		$Weapon/AnimationPlayer.play(reload_left)
+#		pass play left offset animation
+#	emit_signal("clip_fly", clip, $Weapon.global_position)
+	$ClipTimer.start()
 	$ReloadTimer.start()
 	
 func take_damage(amount):
@@ -208,6 +225,8 @@ func gain_life(amount):
 	emit_signal('health_changed', health)
 	
 func getrekt():
+	path = null
+	change_anim(rad2deg($Body.get_angle_to(get_global_mouse_position())), rad2deg($Weapon.global_rotation), velocity)
 	set_collision_layer_bit(5, true)
 	set_collision_layer_bit(2, false)
 	set_collision_mask_bit(1, false)
@@ -227,3 +246,7 @@ func _on_WeaponTimer_timeout():
 func _on_ReloadTimer_timeout():
 	_in_clip = clip_size
 	emit_signal('ammo_changed', _in_clip)
+
+
+func _on_ClipTimer_timeout():
+	emit_signal("clip_fly", clip, $Weapon.global_position)

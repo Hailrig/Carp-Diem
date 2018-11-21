@@ -40,6 +40,8 @@ func perma_open():
 	$Sprite/AnimationPlayer.play('door_open')
 	door_stop=true
 	$AudioStreamPlayer2D.play()
+	$Area2D.queue_free()
+	$Area2D2.queue_free()
 
 func save():
 	var save_dict = {

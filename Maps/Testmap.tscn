@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://Maps/Map.gd" type="Script" id=1]
 [ext_resource path="res://HUD/Pause.tscn" type="PackedScene" id=2]
@@ -9,7 +9,10 @@
 [ext_resource path="res://Maps/Door.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Maps/Fog.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Characters/Player.tscn" type="PackedScene" id=9]
-[ext_resource path="res://Characters/EvilFish.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Characters/BuffPuff.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Weapons/EnemyBullet.tscn" type="PackedScene" id=11]
+[ext_resource path="res://Weapons/Shrimpclip.tscn" type="PackedScene" id=12]
+[ext_resource path="res://Characters/EvilFish.tscn" type="PackedScene" id=13]
 
 [sub_resource type="Shader" id=1]
 
@@ -268,77 +271,91 @@ position = Vector2( 2026.5, 1845.48 )
 _sections_unfolded = [ "Collision", "Material", "Pickable", "Transform", "Visibility", "Z Index", "collision" ]
 room = "r10"
 
-[node name="Fog" parent="." index="25" instance=ExtResource( 8 )]
+[node name="Door11" parent="." index="25" instance=ExtResource( 7 )]
+
+position = Vector2( 2363.24, 596.957 )
+_sections_unfolded = [ "Collision", "Material", "Pickable", "Transform", "Visibility", "Z Index", "collision" ]
+room = "r11"
+
+[node name="Fog" parent="." index="26" instance=ExtResource( 8 )]
 
 position = Vector2( 397.353, 210.802 )
 scale = Vector2( 14.8275, 10.9123 )
 _sections_unfolded = [ "Transform", "Visibility", "Z Index" ]
 room = "r1"
 
-[node name="Fog2" parent="." index="26" instance=ExtResource( 8 )]
+[node name="Fog2" parent="." index="27" instance=ExtResource( 8 )]
 
 position = Vector2( 1386.43, 579.395 )
 scale = Vector2( 16.2732, 8.03397 )
 _sections_unfolded = [ "Transform", "Visibility", "Z Index" ]
 room = "r2"
 
-[node name="Fog3" parent="." index="27" instance=ExtResource( 8 )]
+[node name="Fog3" parent="." index="28" instance=ExtResource( 8 )]
 
 position = Vector2( 2287.75, -287.873 )
 scale = Vector2( 17.7184, 13.1239 )
 _sections_unfolded = [ "Transform", "Visibility", "Z Index" ]
 room = "r3"
 
-[node name="Fog4" parent="." index="28" instance=ExtResource( 8 )]
+[node name="Fog4" parent="." index="29" instance=ExtResource( 8 )]
 
 position = Vector2( 1337.76, -378.482 )
 scale = Vector2( 11.4767, 14.1613 )
 _sections_unfolded = [ "Transform", "Visibility", "Z Index" ]
 room = "r4"
 
-[node name="Fog5" parent="." index="29" instance=ExtResource( 8 )]
+[node name="Fog5" parent="." index="30" instance=ExtResource( 8 )]
 
 position = Vector2( 1138.78, -908.606 )
 scale = Vector2( 10.6337, 8.21658 )
 _sections_unfolded = [ "Transform", "Visibility", "Z Index" ]
 room = "r5"
 
-[node name="Fog6" parent="." index="30" instance=ExtResource( 8 )]
+[node name="Fog6" parent="." index="31" instance=ExtResource( 8 )]
 
 position = Vector2( 1254.57, -2041.51 )
 scale = Vector2( 34.7315, 23.5797 )
 _sections_unfolded = [ "Transform", "Visibility", "Z Index" ]
 room = "r6"
 
-[node name="Fog7" parent="." index="31" instance=ExtResource( 8 )]
+[node name="Fog7" parent="." index="32" instance=ExtResource( 8 )]
 
 position = Vector2( 1611.34, 988.146 )
 scale = Vector2( 10.9689, 5.14075 )
 _sections_unfolded = [ "Transform", "Visibility", "Z Index" ]
 room = "r7"
 
-[node name="Fog8" parent="." index="32" instance=ExtResource( 8 )]
+[node name="Fog8" parent="." index="33" instance=ExtResource( 8 )]
 
 position = Vector2( 1612.57, 1340.21 )
 scale = Vector2( 10.9689, 6.46438 )
 _sections_unfolded = [ "Transform", "Visibility", "Z Index" ]
 room = "r8"
 
-[node name="Fog9" parent="." index="33" instance=ExtResource( 8 )]
+[node name="Fog9" parent="." index="34" instance=ExtResource( 8 )]
 
 position = Vector2( 857.027, 1405.98 )
 scale = Vector2( 10.9689, 10.9966 )
 _sections_unfolded = [ "Transform", "Visibility", "Z Index" ]
 room = "r9"
 
-[node name="Fog10" parent="." index="34" instance=ExtResource( 8 )]
+[node name="Fog10" parent="." index="35" instance=ExtResource( 8 )]
 
-position = Vector2( 2467.73, 1834.35 )
+position = Vector2( 2495.55, 1831.26 )
 scale = Vector2( 16.9361, 10.9966 )
 _sections_unfolded = [ "Transform", "Visibility", "Z Index" ]
 room = "r10"
 
-[node name="FogBack" parent="." index="35" instance=ExtResource( 8 )]
+[node name="Fog11" parent="." index="36" instance=ExtResource( 8 )]
+
+visible = false
+position = Vector2( 3017.51, 691.454 )
+scale = Vector2( 23.8785, 33.7169 )
+_sections_unfolded = [ "Transform", "Visibility", "Z Index" ]
+room = "r11"
+
+[node name="FogBack" parent="." index="37" instance=ExtResource( 8 )]
 
 visible = false
 position = Vector2( 1819.63, -42.3345 )
@@ -347,22 +364,56 @@ z_index = -1000
 _sections_unfolded = [ "Transform", "Visibility", "Z Index" ]
 room = "0"
 
-[node name="Player" parent="." index="36" instance=ExtResource( 9 )]
+[node name="Player" parent="." index="38" instance=ExtResource( 9 )]
 
 pause_mode = 0
 material = null
 position = Vector2( -466.061, 210.824 )
 max_health = 5
 
-[node name="EvilFish" parent="." index="37" instance=ExtResource( 10 )]
+[node name="BuffPuff" parent="." index="39" instance=ExtResource( 10 )]
+
+position = Vector2( 3053.34, 586.327 )
+Bullet = ExtResource( 11 )
+clip = ExtResource( 12 )
+speed = 100
+weapon_cooldown = 0.2
+max_health = 100
+starting_health = 100
+weapon_offset = 0
+clip_size = 20
+reload_timer = 1
+weapon_shift = 1
+clip_timer = 1.0
+current_room = "r11"
+front_idle = "the_buff_puff"
+front_right_idle = "the_buff_puff"
+front_left_idle = "the_buff_puff"
+back_idle = "the_buff_puff"
+back_left_idle = "the_buff_puff"
+back_right_idle = "the_buff_puff"
+front_walk = "the_buff_puff"
+front_right_walk = "the_buff_puff"
+front_left_walk = "the_buff_puff"
+back_walk = "the_buff_puff"
+back_left_walk = "the_buff_puff"
+back_right_walk = "the_buff_puff"
+front_dash = "the_buff_puff"
+front_right_dash = "the_buff_puff"
+front_left_dash = "the_buff_puff"
+back_dash = "Null"
+reload_right = "the_buff_puff"
+reload_left = "the_buff_puff"
+detect_radius = 1500
+
+[node name="EvilFish" parent="." index="40" instance=ExtResource( 13 )]
 
 pause_mode = 0
 position = Vector2( 1544.38, 1331.87 )
+_sections_unfolded = [ "Collision", "Material", "Pause", "Pickable", "Transform", "Visibility", "Z Index", "collision" ]
 current_room = "r8"
-reload_right = null
-reload_left = null
 
-[node name="EvilFish2" parent="." index="38" instance=ExtResource( 10 )]
+[node name="EvilFish2" parent="." index="41" instance=ExtResource( 13 )]
 
 pause_mode = 0
 position = Vector2( 1707.98, 1335.45 )
@@ -379,10 +430,8 @@ front_left_blood = null
 back_blood = null
 back_left_blood = null
 back_right_blood = null
-reload_right = null
-reload_left = null
 
-[node name="EvilFish3" parent="." index="39" instance=ExtResource( 10 )]
+[node name="EvilFish3" parent="." index="42" instance=ExtResource( 13 )]
 
 pause_mode = 0
 position = Vector2( 1761.48, 988.992 )
@@ -399,10 +448,8 @@ front_left_blood = null
 back_blood = null
 back_left_blood = null
 back_right_blood = null
-reload_right = null
-reload_left = null
 
-[node name="EvilFish4" parent="." index="40" instance=ExtResource( 10 )]
+[node name="EvilFish4" parent="." index="43" instance=ExtResource( 13 )]
 
 pause_mode = 0
 position = Vector2( 1176.85, 654.302 )
@@ -419,10 +466,8 @@ front_left_blood = null
 back_blood = null
 back_left_blood = null
 back_right_blood = null
-reload_right = null
-reload_left = null
 
-[node name="EvilFish5" parent="." index="41" instance=ExtResource( 10 )]
+[node name="EvilFish5" parent="." index="44" instance=ExtResource( 13 )]
 
 pause_mode = 0
 position = Vector2( 259.772, 135.433 )
@@ -439,10 +484,8 @@ front_left_blood = null
 back_blood = null
 back_left_blood = null
 back_right_blood = null
-reload_right = null
-reload_left = null
 
-[node name="EvilFish6" parent="." index="42" instance=ExtResource( 10 )]
+[node name="EvilFish6" parent="." index="45" instance=ExtResource( 13 )]
 
 pause_mode = 0
 position = Vector2( 1319.54, 643.575 )
@@ -459,10 +502,8 @@ front_left_blood = null
 back_blood = null
 back_left_blood = null
 back_right_blood = null
-reload_right = null
-reload_left = null
 
-[node name="EvilFish7" parent="." index="43" instance=ExtResource( 10 )]
+[node name="EvilFish7" parent="." index="46" instance=ExtResource( 13 )]
 
 pause_mode = 0
 position = Vector2( 1421.49, -383.243 )
@@ -479,10 +520,8 @@ front_left_blood = null
 back_blood = null
 back_left_blood = null
 back_right_blood = null
-reload_right = null
-reload_left = null
 
-[node name="EvilFish24" parent="." index="44" instance=ExtResource( 10 )]
+[node name="EvilFish24" parent="." index="47" instance=ExtResource( 13 )]
 
 pause_mode = 0
 position = Vector2( 1435.97, -484.18 )
@@ -499,10 +538,8 @@ front_left_blood = null
 back_blood = null
 back_left_blood = null
 back_right_blood = null
-reload_right = null
-reload_left = null
 
-[node name="EvilFish25" parent="." index="45" instance=ExtResource( 10 )]
+[node name="EvilFish25" parent="." index="48" instance=ExtResource( 13 )]
 
 pause_mode = 0
 position = Vector2( 1344.82, -443.589 )
@@ -519,10 +556,8 @@ front_left_blood = null
 back_blood = null
 back_left_blood = null
 back_right_blood = null
-reload_right = null
-reload_left = null
 
-[node name="EvilFish26" parent="." index="46" instance=ExtResource( 10 )]
+[node name="EvilFish26" parent="." index="49" instance=ExtResource( 13 )]
 
 pause_mode = 0
 position = Vector2( 1342.1, -323.879 )
@@ -539,10 +574,8 @@ front_left_blood = null
 back_blood = null
 back_left_blood = null
 back_right_blood = null
-reload_right = null
-reload_left = null
 
-[node name="EvilFish8" parent="." index="47" instance=ExtResource( 10 )]
+[node name="EvilFish8" parent="." index="50" instance=ExtResource( 13 )]
 
 pause_mode = 0
 position = Vector2( 1262.49, -852.347 )
@@ -559,10 +592,8 @@ front_left_blood = null
 back_blood = null
 back_left_blood = null
 back_right_blood = null
-reload_right = null
-reload_left = null
 
-[node name="EvilFish9" parent="." index="48" instance=ExtResource( 10 )]
+[node name="EvilFish9" parent="." index="51" instance=ExtResource( 13 )]
 
 pause_mode = 0
 position = Vector2( 574.396, 339.527 )
@@ -579,10 +610,8 @@ front_left_blood = null
 back_blood = null
 back_left_blood = null
 back_right_blood = null
-reload_right = null
-reload_left = null
 
-[node name="EvilFish10" parent="." index="49" instance=ExtResource( 10 )]
+[node name="EvilFish10" parent="." index="52" instance=ExtResource( 13 )]
 
 pause_mode = 0
 position = Vector2( 2314.14, -357.778 )
@@ -599,10 +628,8 @@ front_left_blood = null
 back_blood = null
 back_left_blood = null
 back_right_blood = null
-reload_right = null
-reload_left = null
 
-[node name="EvilFish11" parent="." index="50" instance=ExtResource( 10 )]
+[node name="EvilFish11" parent="." index="53" instance=ExtResource( 13 )]
 
 pause_mode = 0
 position = Vector2( 2636.16, 1819.4 )
@@ -619,10 +646,8 @@ front_left_blood = null
 back_blood = null
 back_left_blood = null
 back_right_blood = null
-reload_right = null
-reload_left = null
 
-[node name="EvilFish12" parent="." index="51" instance=ExtResource( 10 )]
+[node name="EvilFish12" parent="." index="54" instance=ExtResource( 13 )]
 
 pause_mode = 0
 position = Vector2( 844.232, 1463.84 )
@@ -638,11 +663,8 @@ front_right_blood = null
 front_left_blood = null
 back_blood = null
 back_left_blood = null
-back_right_blood = null
-reload_right = null
-reload_left = null
 
-[node name="EvilFish13" parent="." index="52" instance=ExtResource( 10 )]
+[node name="EvilFish13" parent="." index="55" instance=ExtResource( 13 )]
 
 pause_mode = 0
 position = Vector2( 2301.47, -234.548 )
@@ -659,10 +681,8 @@ front_left_blood = null
 back_blood = null
 back_left_blood = null
 back_right_blood = null
-reload_right = null
-reload_left = null
 
-[node name="EvilFish14" parent="." index="53" instance=ExtResource( 10 )]
+[node name="EvilFish14" parent="." index="56" instance=ExtResource( 13 )]
 
 pause_mode = 0
 position = Vector2( 259.678, 336.763 )
@@ -679,10 +699,8 @@ front_left_blood = null
 back_blood = null
 back_left_blood = null
 back_right_blood = null
-reload_right = null
-reload_left = null
 
-[node name="EvilFish15" parent="." index="54" instance=ExtResource( 10 )]
+[node name="EvilFish15" parent="." index="57" instance=ExtResource( 13 )]
 
 pause_mode = 0
 position = Vector2( 2073.93, -284.095 )
@@ -699,10 +717,8 @@ front_left_blood = null
 back_blood = null
 back_left_blood = null
 back_right_blood = null
-reload_right = null
-reload_left = null
 
-[node name="EvilFish16" parent="." index="55" instance=ExtResource( 10 )]
+[node name="EvilFish16" parent="." index="58" instance=ExtResource( 13 )]
 
 pause_mode = 0
 position = Vector2( 1462.92, 989.564 )
@@ -719,10 +735,8 @@ front_left_blood = null
 back_blood = null
 back_left_blood = null
 back_right_blood = null
-reload_right = null
-reload_left = null
 
-[node name="EvilFish17" parent="." index="56" instance=ExtResource( 10 )]
+[node name="EvilFish17" parent="." index="59" instance=ExtResource( 13 )]
 
 pause_mode = 0
 position = Vector2( 1442.49, -260.236 )
@@ -739,10 +753,8 @@ front_left_blood = null
 back_blood = null
 back_left_blood = null
 back_right_blood = null
-reload_right = null
-reload_left = null
 
-[node name="EvilFish18" parent="." index="57" instance=ExtResource( 10 )]
+[node name="EvilFish18" parent="." index="60" instance=ExtResource( 13 )]
 
 pause_mode = 0
 position = Vector2( 2109.8, -379.515 )
@@ -759,10 +771,8 @@ front_left_blood = null
 back_blood = null
 back_left_blood = null
 back_right_blood = null
-reload_right = null
-reload_left = null
 
-[node name="EvilFish19" parent="." index="58" instance=ExtResource( 10 )]
+[node name="EvilFish19" parent="." index="61" instance=ExtResource( 13 )]
 
 pause_mode = 0
 position = Vector2( 1166.41, -924.324 )
@@ -779,10 +789,8 @@ front_left_blood = null
 back_blood = null
 back_left_blood = null
 back_right_blood = null
-reload_right = null
-reload_left = null
 
-[node name="EvilFish27" parent="." index="59" instance=ExtResource( 10 )]
+[node name="EvilFish27" parent="." index="62" instance=ExtResource( 13 )]
 
 pause_mode = 0
 position = Vector2( 869.856, -1669.8 )
@@ -799,10 +807,8 @@ front_left_blood = null
 back_blood = null
 back_left_blood = null
 back_right_blood = null
-reload_right = null
-reload_left = null
 
-[node name="EvilFish28" parent="." index="60" instance=ExtResource( 10 )]
+[node name="EvilFish28" parent="." index="63" instance=ExtResource( 13 )]
 
 pause_mode = 0
 position = Vector2( 721.71, -1588.17 )
@@ -819,10 +825,8 @@ front_left_blood = null
 back_blood = null
 back_left_blood = null
 back_right_blood = null
-reload_right = null
-reload_left = null
 
-[node name="EvilFish29" parent="." index="61" instance=ExtResource( 10 )]
+[node name="EvilFish29" parent="." index="64" instance=ExtResource( 13 )]
 
 pause_mode = 0
 position = Vector2( 717.497, -1731.01 )
@@ -839,10 +843,8 @@ front_left_blood = null
 back_blood = null
 back_left_blood = null
 back_right_blood = null
-reload_right = null
-reload_left = null
 
-[node name="EvilFish30" parent="." index="62" instance=ExtResource( 10 )]
+[node name="EvilFish30" parent="." index="65" instance=ExtResource( 13 )]
 
 pause_mode = 0
 position = Vector2( 648.119, -2067.02 )
@@ -859,10 +861,8 @@ front_left_blood = null
 back_blood = null
 back_left_blood = null
 back_right_blood = null
-reload_right = null
-reload_left = null
 
-[node name="EvilFish31" parent="." index="63" instance=ExtResource( 10 )]
+[node name="EvilFish31" parent="." index="66" instance=ExtResource( 13 )]
 
 pause_mode = 0
 position = Vector2( 864.415, -2018.05 )
@@ -879,10 +879,8 @@ front_left_blood = null
 back_blood = null
 back_left_blood = null
 back_right_blood = null
-reload_right = null
-reload_left = null
 
-[node name="EvilFish32" parent="." index="64" instance=ExtResource( 10 )]
+[node name="EvilFish32" parent="." index="67" instance=ExtResource( 13 )]
 
 pause_mode = 0
 position = Vector2( 846.863, -2182.52 )
@@ -899,10 +897,8 @@ front_left_blood = null
 back_blood = null
 back_left_blood = null
 back_right_blood = null
-reload_right = null
-reload_left = null
 
-[node name="EvilFish33" parent="." index="65" instance=ExtResource( 10 )]
+[node name="EvilFish33" parent="." index="68" instance=ExtResource( 13 )]
 
 pause_mode = 0
 position = Vector2( 1545.95, -2318.81 )
@@ -919,10 +915,8 @@ front_left_blood = null
 back_blood = null
 back_left_blood = null
 back_right_blood = null
-reload_right = null
-reload_left = null
 
-[node name="EvilFish34" parent="." index="66" instance=ExtResource( 10 )]
+[node name="EvilFish34" parent="." index="69" instance=ExtResource( 13 )]
 
 pause_mode = 0
 position = Vector2( 1347.47, -2255.98 )
@@ -939,10 +933,8 @@ front_left_blood = null
 back_blood = null
 back_left_blood = null
 back_right_blood = null
-reload_right = null
-reload_left = null
 
-[node name="EvilFish35" parent="." index="67" instance=ExtResource( 10 )]
+[node name="EvilFish35" parent="." index="70" instance=ExtResource( 13 )]
 
 pause_mode = 0
 position = Vector2( 1441.2, -2392.01 )
@@ -959,10 +951,8 @@ front_left_blood = null
 back_blood = null
 back_left_blood = null
 back_right_blood = null
-reload_right = null
-reload_left = null
 
-[node name="EvilFish20" parent="." index="68" instance=ExtResource( 10 )]
+[node name="EvilFish20" parent="." index="71" instance=ExtResource( 13 )]
 
 pause_mode = 0
 position = Vector2( 842.192, 1336.79 )
@@ -979,10 +969,8 @@ front_left_blood = null
 back_blood = null
 back_left_blood = null
 back_right_blood = null
-reload_right = null
-reload_left = null
 
-[node name="EvilFish21" parent="." index="69" instance=ExtResource( 10 )]
+[node name="EvilFish21" parent="." index="72" instance=ExtResource( 13 )]
 
 pause_mode = 0
 position = Vector2( 584.533, 137.098 )
@@ -999,10 +987,8 @@ front_left_blood = null
 back_blood = null
 back_left_blood = null
 back_right_blood = null
-reload_right = null
-reload_left = null
 
-[node name="EvilFish22" parent="." index="70" instance=ExtResource( 10 )]
+[node name="EvilFish22" parent="." index="73" instance=ExtResource( 13 )]
 
 pause_mode = 0
 position = Vector2( 928.811, 1399.28 )
@@ -1019,10 +1005,8 @@ front_left_blood = null
 back_blood = null
 back_left_blood = null
 back_right_blood = null
-reload_right = null
-reload_left = null
 
-[node name="EvilFish23" parent="." index="71" instance=ExtResource( 10 )]
+[node name="EvilFish23" parent="." index="74" instance=ExtResource( 13 )]
 
 pause_mode = 0
 position = Vector2( 1086.38, -809.826 )
@@ -1039,10 +1023,8 @@ front_left_blood = null
 back_blood = null
 back_left_blood = null
 back_right_blood = null
-reload_right = null
-reload_left = null
 
-[node name="RichTextLabel2" type="RichTextLabel" parent="." index="72"]
+[node name="RichTextLabel2" type="RichTextLabel" parent="." index="75"]
 
 anchor_left = 0.0
 anchor_top = 0.0
@@ -1071,7 +1053,7 @@ selection_enabled = false
 override_selected_font_color = false
 _sections_unfolded = [ "BBCode" ]
 
-[node name="RichTextLabel3" type="RichTextLabel" parent="." index="73"]
+[node name="RichTextLabel3" type="RichTextLabel" parent="." index="76"]
 
 anchor_left = 0.0
 anchor_top = 0.0
@@ -1100,7 +1082,7 @@ selection_enabled = false
 override_selected_font_color = false
 _sections_unfolded = [ "BBCode" ]
 
-[node name="RichTextLabel4" type="RichTextLabel" parent="." index="74"]
+[node name="RichTextLabel4" type="RichTextLabel" parent="." index="77"]
 
 anchor_left = 0.0
 anchor_top = 0.0
@@ -1129,7 +1111,7 @@ selection_enabled = false
 override_selected_font_color = false
 _sections_unfolded = [ "BBCode" ]
 
-[node name="RichTextLabel1" type="RichTextLabel" parent="." index="75"]
+[node name="RichTextLabel1" type="RichTextLabel" parent="." index="78"]
 
 anchor_left = 0.0
 anchor_top = 0.0
@@ -1158,35 +1140,6 @@ selection_enabled = false
 override_selected_font_color = false
 _sections_unfolded = [ "BBCode" ]
 
-[node name="RichTextLabel5" type="RichTextLabel" parent="." index="76"]
-
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_left = 2590.0
-margin_top = 555.0
-margin_right = 2872.0
-margin_bottom = 624.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = true
-mouse_filter = 0
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 1
-bbcode_enabled = true
-bbcode_text = "Pretend there is a boss or something here."
-visible_characters = -1
-percent_visible = 1.0
-meta_underlined = true
-tab_size = 4
-text = "Pretend there is a boss or something here."
-scroll_active = true
-scroll_following = false
-selection_enabled = false
-override_selected_font_color = false
-_sections_unfolded = [ "BBCode" ]
-
 [connection signal="room_entered" from="Door" to="Fog" method="_reveal"]
 
 [connection signal="room_entered" from="Door2" to="Fog2" method="_reveal"]
@@ -1207,260 +1160,284 @@ _sections_unfolded = [ "BBCode" ]
 
 [connection signal="room_entered" from="Door10" to="Fog10" method="_reveal"]
 
-[connection signal="room_clear" from="Fog" to="Doorb" method="perma_open"]
+[connection signal="room_entered" from="Door11" to="HUD" method="start_bossbar"]
+
+[connection signal="room_entered" from="Door11" to="Fog11" method="_reveal"]
 
 [connection signal="room_clear" from="Fog" to="Door" method="perma_open"]
 
-[connection signal="room_clear" from="Fog2" to="Door2c" method="perma_open"]
-
-[connection signal="room_clear" from="Fog2" to="Door2b" method="perma_open"]
+[connection signal="room_clear" from="Fog" to="Doorb" method="perma_open"]
 
 [connection signal="room_clear" from="Fog2" to="Door2" method="perma_open"]
 
-[connection signal="room_clear" from="Fog3" to="Door3b" method="perma_open"]
+[connection signal="room_clear" from="Fog2" to="Door2b" method="perma_open"]
+
+[connection signal="room_clear" from="Fog2" to="Door2c" method="perma_open"]
 
 [connection signal="room_clear" from="Fog3" to="Door3" method="perma_open"]
+
+[connection signal="room_clear" from="Fog3" to="Door3b" method="perma_open"]
 
 [connection signal="room_clear" from="Fog4" to="Door4" method="perma_open"]
 
 [connection signal="room_clear" from="Fog4" to="Door4b" method="perma_open"]
 
-[connection signal="room_clear" from="Fog5" to="Door5" method="perma_open"]
-
 [connection signal="room_clear" from="Fog5" to="Door5b" method="perma_open"]
+
+[connection signal="room_clear" from="Fog5" to="Door5" method="perma_open"]
 
 [connection signal="room_clear" from="Fog6" to="Door6" method="perma_open"]
 
-[connection signal="room_clear" from="Fog7" to="Door7" method="perma_open"]
-
 [connection signal="room_clear" from="Fog7" to="Door7b" method="perma_open"]
 
-[connection signal="room_clear" from="Fog8" to="Door8" method="perma_open"]
+[connection signal="room_clear" from="Fog7" to="Door7" method="perma_open"]
+
+[connection signal="room_clear" from="Fog8" to="Door8c" method="perma_open"]
 
 [connection signal="room_clear" from="Fog8" to="Door8b" method="perma_open"]
 
-[connection signal="room_clear" from="Fog8" to="Door8c" method="perma_open"]
+[connection signal="room_clear" from="Fog8" to="Door8" method="perma_open"]
 
 [connection signal="room_clear" from="Fog9" to="Door9" method="perma_open"]
 
 [connection signal="room_clear" from="Fog10" to="Door10" method="perma_open"]
 
+[connection signal="room_clear" from="Fog11" to="Door11" method="perma_open"]
+
 [connection signal="ammo_changed" from="Player" to="HUD" method="update_ammobar"]
+
+[connection signal="bullet_time" from="Player" to="." method="bullet_time"]
+
+[connection signal="charge" from="Player" to="." method="_calculate_new_path"]
 
 [connection signal="clip_fly" from="Player" to="." method="_clip_fly"]
 
 [connection signal="health_changed" from="Player" to="HUD" method="update_healthbar"]
 
+[connection signal="normal_time" from="Player" to="." method="normal_time"]
+
 [connection signal="shoot" from="Player" to="." method="_on_shoot"]
+
+[connection signal="time_change" from="Player" to="HUD" method="update_timebar"]
+
+[connection signal="dead" from="BuffPuff" to="HUD" method="end_bossbar"]
+
+[connection signal="health_changed" from="BuffPuff" to="HUD" method="update_bossbar"]
+
+[connection signal="shoot" from="BuffPuff" to="." method="_on_shoot"]
+
+[connection signal="take_damage" from="BuffPuff" to="Player/Camera2D" method="shake"]
+
+[connection signal="take_damage" from="BuffPuff" to="Pause" method="pause_game"]
 
 [connection signal="shoot" from="EvilFish" to="." method="_on_shoot"]
 
-[connection signal="take_damage" from="EvilFish" to="Pause" method="pause_game"]
-
 [connection signal="take_damage" from="EvilFish" to="Player/Camera2D" method="shake"]
+
+[connection signal="take_damage" from="EvilFish" to="Pause" method="pause_game"]
 
 [connection signal="shoot" from="EvilFish2" to="." method="_on_shoot"]
 
-[connection signal="take_damage" from="EvilFish2" to="Pause" method="pause_game"]
-
 [connection signal="take_damage" from="EvilFish2" to="Player/Camera2D" method="shake"]
+
+[connection signal="take_damage" from="EvilFish2" to="Pause" method="pause_game"]
 
 [connection signal="shoot" from="EvilFish3" to="." method="_on_shoot"]
 
-[connection signal="take_damage" from="EvilFish3" to="Pause" method="pause_game"]
-
 [connection signal="take_damage" from="EvilFish3" to="Player/Camera2D" method="shake"]
+
+[connection signal="take_damage" from="EvilFish3" to="Pause" method="pause_game"]
 
 [connection signal="shoot" from="EvilFish4" to="." method="_on_shoot"]
 
-[connection signal="take_damage" from="EvilFish4" to="Pause" method="pause_game"]
-
 [connection signal="take_damage" from="EvilFish4" to="Player/Camera2D" method="shake"]
+
+[connection signal="take_damage" from="EvilFish4" to="Pause" method="pause_game"]
 
 [connection signal="shoot" from="EvilFish5" to="." method="_on_shoot"]
 
-[connection signal="take_damage" from="EvilFish5" to="Pause" method="pause_game"]
-
 [connection signal="take_damage" from="EvilFish5" to="Player/Camera2D" method="shake"]
+
+[connection signal="take_damage" from="EvilFish5" to="Pause" method="pause_game"]
 
 [connection signal="shoot" from="EvilFish6" to="." method="_on_shoot"]
 
-[connection signal="take_damage" from="EvilFish6" to="Pause" method="pause_game"]
-
 [connection signal="take_damage" from="EvilFish6" to="Player/Camera2D" method="shake"]
+
+[connection signal="take_damage" from="EvilFish6" to="Pause" method="pause_game"]
 
 [connection signal="shoot" from="EvilFish7" to="." method="_on_shoot"]
 
-[connection signal="take_damage" from="EvilFish7" to="Pause" method="pause_game"]
-
 [connection signal="take_damage" from="EvilFish7" to="Player/Camera2D" method="shake"]
+
+[connection signal="take_damage" from="EvilFish7" to="Pause" method="pause_game"]
 
 [connection signal="shoot" from="EvilFish24" to="." method="_on_shoot"]
 
-[connection signal="take_damage" from="EvilFish24" to="Pause" method="pause_game"]
-
 [connection signal="take_damage" from="EvilFish24" to="Player/Camera2D" method="shake"]
+
+[connection signal="take_damage" from="EvilFish24" to="Pause" method="pause_game"]
 
 [connection signal="shoot" from="EvilFish25" to="." method="_on_shoot"]
 
-[connection signal="take_damage" from="EvilFish25" to="Pause" method="pause_game"]
-
 [connection signal="take_damage" from="EvilFish25" to="Player/Camera2D" method="shake"]
+
+[connection signal="take_damage" from="EvilFish25" to="Pause" method="pause_game"]
 
 [connection signal="shoot" from="EvilFish26" to="." method="_on_shoot"]
 
-[connection signal="take_damage" from="EvilFish26" to="Pause" method="pause_game"]
-
 [connection signal="take_damage" from="EvilFish26" to="Player/Camera2D" method="shake"]
+
+[connection signal="take_damage" from="EvilFish26" to="Pause" method="pause_game"]
 
 [connection signal="shoot" from="EvilFish8" to="." method="_on_shoot"]
 
-[connection signal="take_damage" from="EvilFish8" to="Pause" method="pause_game"]
-
 [connection signal="take_damage" from="EvilFish8" to="Player/Camera2D" method="shake"]
+
+[connection signal="take_damage" from="EvilFish8" to="Pause" method="pause_game"]
 
 [connection signal="shoot" from="EvilFish9" to="." method="_on_shoot"]
 
-[connection signal="take_damage" from="EvilFish9" to="Pause" method="pause_game"]
-
 [connection signal="take_damage" from="EvilFish9" to="Player/Camera2D" method="shake"]
+
+[connection signal="take_damage" from="EvilFish9" to="Pause" method="pause_game"]
 
 [connection signal="shoot" from="EvilFish10" to="." method="_on_shoot"]
 
-[connection signal="take_damage" from="EvilFish10" to="Pause" method="pause_game"]
-
 [connection signal="take_damage" from="EvilFish10" to="Player/Camera2D" method="shake"]
+
+[connection signal="take_damage" from="EvilFish10" to="Pause" method="pause_game"]
 
 [connection signal="shoot" from="EvilFish11" to="." method="_on_shoot"]
 
-[connection signal="take_damage" from="EvilFish11" to="Pause" method="pause_game"]
-
 [connection signal="take_damage" from="EvilFish11" to="Player/Camera2D" method="shake"]
+
+[connection signal="take_damage" from="EvilFish11" to="Pause" method="pause_game"]
 
 [connection signal="shoot" from="EvilFish12" to="." method="_on_shoot"]
 
-[connection signal="take_damage" from="EvilFish12" to="Pause" method="pause_game"]
-
 [connection signal="take_damage" from="EvilFish12" to="Player/Camera2D" method="shake"]
+
+[connection signal="take_damage" from="EvilFish12" to="Pause" method="pause_game"]
 
 [connection signal="shoot" from="EvilFish13" to="." method="_on_shoot"]
 
-[connection signal="take_damage" from="EvilFish13" to="Pause" method="pause_game"]
-
 [connection signal="take_damage" from="EvilFish13" to="Player/Camera2D" method="shake"]
+
+[connection signal="take_damage" from="EvilFish13" to="Pause" method="pause_game"]
 
 [connection signal="shoot" from="EvilFish14" to="." method="_on_shoot"]
 
-[connection signal="take_damage" from="EvilFish14" to="Pause" method="pause_game"]
-
 [connection signal="take_damage" from="EvilFish14" to="Player/Camera2D" method="shake"]
+
+[connection signal="take_damage" from="EvilFish14" to="Pause" method="pause_game"]
 
 [connection signal="shoot" from="EvilFish15" to="." method="_on_shoot"]
 
-[connection signal="take_damage" from="EvilFish15" to="Pause" method="pause_game"]
-
 [connection signal="take_damage" from="EvilFish15" to="Player/Camera2D" method="shake"]
+
+[connection signal="take_damage" from="EvilFish15" to="Pause" method="pause_game"]
 
 [connection signal="shoot" from="EvilFish16" to="." method="_on_shoot"]
 
-[connection signal="take_damage" from="EvilFish16" to="Pause" method="pause_game"]
-
 [connection signal="take_damage" from="EvilFish16" to="Player/Camera2D" method="shake"]
+
+[connection signal="take_damage" from="EvilFish16" to="Pause" method="pause_game"]
 
 [connection signal="shoot" from="EvilFish17" to="." method="_on_shoot"]
 
-[connection signal="take_damage" from="EvilFish17" to="Pause" method="pause_game"]
-
 [connection signal="take_damage" from="EvilFish17" to="Player/Camera2D" method="shake"]
+
+[connection signal="take_damage" from="EvilFish17" to="Pause" method="pause_game"]
 
 [connection signal="shoot" from="EvilFish18" to="." method="_on_shoot"]
 
-[connection signal="take_damage" from="EvilFish18" to="Pause" method="pause_game"]
-
 [connection signal="take_damage" from="EvilFish18" to="Player/Camera2D" method="shake"]
+
+[connection signal="take_damage" from="EvilFish18" to="Pause" method="pause_game"]
 
 [connection signal="shoot" from="EvilFish19" to="." method="_on_shoot"]
 
-[connection signal="take_damage" from="EvilFish19" to="Pause" method="pause_game"]
-
 [connection signal="take_damage" from="EvilFish19" to="Player/Camera2D" method="shake"]
+
+[connection signal="take_damage" from="EvilFish19" to="Pause" method="pause_game"]
 
 [connection signal="shoot" from="EvilFish27" to="." method="_on_shoot"]
 
-[connection signal="take_damage" from="EvilFish27" to="Pause" method="pause_game"]
-
 [connection signal="take_damage" from="EvilFish27" to="Player/Camera2D" method="shake"]
+
+[connection signal="take_damage" from="EvilFish27" to="Pause" method="pause_game"]
 
 [connection signal="shoot" from="EvilFish28" to="." method="_on_shoot"]
 
-[connection signal="take_damage" from="EvilFish28" to="Pause" method="pause_game"]
-
 [connection signal="take_damage" from="EvilFish28" to="Player/Camera2D" method="shake"]
+
+[connection signal="take_damage" from="EvilFish28" to="Pause" method="pause_game"]
 
 [connection signal="shoot" from="EvilFish29" to="." method="_on_shoot"]
 
-[connection signal="take_damage" from="EvilFish29" to="Pause" method="pause_game"]
-
 [connection signal="take_damage" from="EvilFish29" to="Player/Camera2D" method="shake"]
+
+[connection signal="take_damage" from="EvilFish29" to="Pause" method="pause_game"]
 
 [connection signal="shoot" from="EvilFish30" to="." method="_on_shoot"]
 
-[connection signal="take_damage" from="EvilFish30" to="Pause" method="pause_game"]
-
 [connection signal="take_damage" from="EvilFish30" to="Player/Camera2D" method="shake"]
+
+[connection signal="take_damage" from="EvilFish30" to="Pause" method="pause_game"]
 
 [connection signal="shoot" from="EvilFish31" to="." method="_on_shoot"]
 
-[connection signal="take_damage" from="EvilFish31" to="Pause" method="pause_game"]
-
 [connection signal="take_damage" from="EvilFish31" to="Player/Camera2D" method="shake"]
+
+[connection signal="take_damage" from="EvilFish31" to="Pause" method="pause_game"]
 
 [connection signal="shoot" from="EvilFish32" to="." method="_on_shoot"]
 
-[connection signal="take_damage" from="EvilFish32" to="Pause" method="pause_game"]
-
 [connection signal="take_damage" from="EvilFish32" to="Player/Camera2D" method="shake"]
+
+[connection signal="take_damage" from="EvilFish32" to="Pause" method="pause_game"]
 
 [connection signal="shoot" from="EvilFish33" to="." method="_on_shoot"]
 
-[connection signal="take_damage" from="EvilFish33" to="Pause" method="pause_game"]
-
 [connection signal="take_damage" from="EvilFish33" to="Player/Camera2D" method="shake"]
+
+[connection signal="take_damage" from="EvilFish33" to="Pause" method="pause_game"]
 
 [connection signal="shoot" from="EvilFish34" to="." method="_on_shoot"]
 
-[connection signal="take_damage" from="EvilFish34" to="Pause" method="pause_game"]
-
 [connection signal="take_damage" from="EvilFish34" to="Player/Camera2D" method="shake"]
+
+[connection signal="take_damage" from="EvilFish34" to="Pause" method="pause_game"]
 
 [connection signal="shoot" from="EvilFish35" to="." method="_on_shoot"]
 
-[connection signal="take_damage" from="EvilFish35" to="Pause" method="pause_game"]
-
 [connection signal="take_damage" from="EvilFish35" to="Player/Camera2D" method="shake"]
+
+[connection signal="take_damage" from="EvilFish35" to="Pause" method="pause_game"]
 
 [connection signal="shoot" from="EvilFish20" to="." method="_on_shoot"]
 
-[connection signal="take_damage" from="EvilFish20" to="Pause" method="pause_game"]
-
 [connection signal="take_damage" from="EvilFish20" to="Player/Camera2D" method="shake"]
+
+[connection signal="take_damage" from="EvilFish20" to="Pause" method="pause_game"]
 
 [connection signal="shoot" from="EvilFish21" to="." method="_on_shoot"]
 
-[connection signal="take_damage" from="EvilFish21" to="Pause" method="pause_game"]
-
 [connection signal="take_damage" from="EvilFish21" to="Player/Camera2D" method="shake"]
+
+[connection signal="take_damage" from="EvilFish21" to="Pause" method="pause_game"]
 
 [connection signal="shoot" from="EvilFish22" to="." method="_on_shoot"]
 
-[connection signal="take_damage" from="EvilFish22" to="Pause" method="pause_game"]
-
 [connection signal="take_damage" from="EvilFish22" to="Player/Camera2D" method="shake"]
+
+[connection signal="take_damage" from="EvilFish22" to="Pause" method="pause_game"]
 
 [connection signal="shoot" from="EvilFish23" to="." method="_on_shoot"]
 
-[connection signal="take_damage" from="EvilFish23" to="Pause" method="pause_game"]
-
 [connection signal="take_damage" from="EvilFish23" to="Player/Camera2D" method="shake"]
+
+[connection signal="take_damage" from="EvilFish23" to="Pause" method="pause_game"]
 
 

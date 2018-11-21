@@ -225,6 +225,7 @@ func gain_life(amount):
 	emit_signal('health_changed', health)
 	
 func getrekt():
+	emit_signal('dead')
 	path = null
 	change_anim(rad2deg($Body.get_angle_to(get_global_mouse_position())), rad2deg($Weapon.global_rotation), velocity)
 	set_collision_layer_bit(5, true)
@@ -249,4 +250,6 @@ func _on_ReloadTimer_timeout():
 
 
 func _on_ClipTimer_timeout():
+	if !alive:
+		return
 	emit_signal("clip_fly", clip, $Weapon.global_position)

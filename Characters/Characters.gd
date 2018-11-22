@@ -67,11 +67,14 @@ var path = null
 
 func _ready():
 	_in_clip = clip_size
+	if name == "Player":
+		pass
+#		health = starting_health
+#		emit_signal('health_changed', health)
 	health = starting_health
 	$WeaponTimer.wait_time = weapon_cooldown
 	$ReloadTimer.wait_time = reload_timer
 	$ClipTimer.wait_time = clip_timer
-	emit_signal('health_changed', health)
 	emit_signal('ammo_changed', _in_clip)
 	
 func control(delta):

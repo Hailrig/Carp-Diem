@@ -17,6 +17,9 @@ var slow_time
 var camera_offset
 
 func _ready():
+	print (global.hp)
+	health = global.hp
+	emit_signal('health_changed', health)
 	slow_time = max_slow_time
 	emit_signal('time_change', slow_time)
 	$GraceTime.wait_time = gracetime
@@ -191,8 +194,17 @@ func take_damage(amount):
 		$Body/AnimationPlayer2.play('Invuln')
 		health -= amount
 		emit_signal('health_changed', health)
+		global.hp -= amount
 		if health <= 0:
 			getrekt()
+			
+func gain_life(amount):
+	if (health + amount) < max_health:
+		health += amount
+		global.hp += amount
+	else:
+		health = max_health
+	emit_signal('health_changed', health)
 
 func getrekt():
 #		var currentScene = get_tree().get_current_scene().get_filename()

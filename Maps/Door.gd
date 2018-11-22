@@ -3,11 +3,20 @@ extends KinematicBody2D
 signal room_entered
 
 export (String) var room
+export (bool) var locked
+export (int) var keys
+export (bool) var enemyless
 
 var door_stop = false
 
 #func _ready():
 #	connecter()
+
+func unlock():
+	keys -= 1
+	print (keys)
+	if keys <= 0:
+		locked = false
 
 func _on_Area2D_body_entered(body):
 	if body.name == "Player":
@@ -24,13 +33,16 @@ func _on_Area2D2_body_entered(body):
 		
 
 func _open():
-	if !door_stop:
+	if !door_stop and !locked and enemyless:
+		emit_signal('room_entered')
+		perma_open()
+	elif !door_stop and !locked:
 		$CollisionShape2D.disabled = true
 		$Sprite/AnimationPlayer.play('door_open')
 		$AudioStreamPlayer2D.play()
 
 func _close():
-	if !door_stop:
+	if !door_stop and !locked:
 		$CollisionShape2D.disabled = false
 		$Sprite/AnimationPlayer.play('door_close')
 		$AudioStreamPlayer2D.play()

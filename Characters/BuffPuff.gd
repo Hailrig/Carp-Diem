@@ -26,7 +26,7 @@ func shoot():
 
 func take_damage(amount):
 	if can_be_hurt:
-		#emit_signal('take_damage', 0.1)
+		emit_signal('take_damage', 0.1)
 		health -= amount
 		emit_signal('health_changed', health)
 		if health == 90 or health == 80 or health == 70 or health == 60:

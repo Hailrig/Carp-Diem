@@ -78,3 +78,7 @@ func _calculate_new_path():
 
 func calculate_new_path():
 	pass # replace with function body
+
+
+func clip_fly():
+	pass # replace with function body

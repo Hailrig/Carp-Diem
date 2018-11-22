@@ -32,6 +32,9 @@ collision/safe_margin = 0.08
 script = ExtResource( 1 )
 _sections_unfolded = [ "Collision", "Transform", "Z Index" ]
 room = null
+locked = null
+keys = 0
+enemyless = null
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." index="0"]
 

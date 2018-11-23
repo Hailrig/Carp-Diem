@@ -1,22 +1,73 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=24 format=2]
 
 [ext_resource path="res://Maps/Door.gd" type="Script" id=1]
-[ext_resource path="res://Characters/Spritesheet.png" type="Texture" id=2]
-[ext_resource path="res://Animations/door_close.tres" type="Animation" id=3]
-[ext_resource path="res://Animations/door_open.tres" type="Animation" id=4]
-[ext_resource path="res://Audio/Close_Door.wav" type="AudioStream" id=5]
+[ext_resource path="res://Maps/Doooors.png" type="Texture" id=2]
+[ext_resource path="res://Animations/Doooooor/DoorEastCloseBehind.tres" type="Animation" id=3]
+[ext_resource path="res://Animations/Doooooor/DoorEastCloseFront.tres" type="Animation" id=4]
+[ext_resource path="res://Animations/Doooooor/DoorEastOpenBehind.tres" type="Animation" id=5]
+[ext_resource path="res://Animations/Doooooor/DoorEastOpenFront.tres" type="Animation" id=6]
+[ext_resource path="res://Animations/Doooooor/DoorNorthClose.tres" type="Animation" id=7]
+[ext_resource path="res://Animations/Doooooor/DoorNorthOpen.tres" type="Animation" id=8]
+[ext_resource path="res://Animations/Doooooor/DoorSouthClose.tres" type="Animation" id=9]
+[ext_resource path="res://Animations/Doooooor/DoorSouthOpen.tres" type="Animation" id=10]
+[ext_resource path="res://Animations/Doooooor/DoorWestCloseBehind.tres" type="Animation" id=11]
+[ext_resource path="res://Animations/Doooooor/DoorWestCloseFront.tres" type="Animation" id=12]
+[ext_resource path="res://Animations/Doooooor/DoorWestOpenBehind.tres" type="Animation" id=13]
+[ext_resource path="res://Animations/Doooooor/DoorWestOpenFront.tres" type="Animation" id=14]
+[ext_resource path="res://Animations/door_close.tres" type="Animation" id=15]
+[ext_resource path="res://Animations/door_open.tres" type="Animation" id=16]
+[ext_resource path="res://Animations/Doooooor/a.tres" type="Animation" id=17]
+[ext_resource path="res://Audio/Close_Door.wav" type="AudioStream" id=18]
 
 [sub_resource type="RectangleShape2D" id=1]
 
 custom_solver_bias = 0.0
 extents = Vector2( 2.89289, 63.7339 )
 
-[sub_resource type="RectangleShape2D" id=2]
+[sub_resource type="Animation" id=4]
+
+resource_name = "door_close"
+length = 0.1
+loop = false
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ -90.0, 0.0 ]
+}
+
+[sub_resource type="Animation" id=5]
+
+resource_name = "door_open"
+length = 0.1
+loop = false
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, -90.0 ]
+}
+
+[sub_resource type="RectangleShape2D" id=6]
 
 custom_solver_bias = 0.0
 extents = Vector2( 64.0241, 2.8584 )
 
-[sub_resource type="RectangleShape2D" id=3]
+[sub_resource type="RectangleShape2D" id=7]
 
 custom_solver_bias = 0.0
 extents = Vector2( 3.23093, 63.8242 )
@@ -30,37 +81,91 @@ collision_layer = 1
 collision_mask = 6
 collision/safe_margin = 0.08
 script = ExtResource( 1 )
-_sections_unfolded = [ "Collision", "Transform", "Z Index" ]
-room = null
+_sections_unfolded = [ "Collision", "Material", "Pickable", "Transform", "Visibility", "Z Index", "collision" ]
+room = "Null"
 locked = null
 keys = 0
 enemyless = null
+enter_dir = "east"
+z_change = null
+open_behind = "DoorEastOpenBehind"
+open_front = "DoorEastOpenFront"
+close_behind = "DoorEastCloseBehind"
+close_front = "DoorEastCloseFront"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." index="0"]
 
+position = Vector2( 26.5706, -1.7519 )
 shape = SubResource( 1 )
+_sections_unfolded = [ "Transform" ]
 
-[node name="Sprite" type="Sprite" parent="." index="1"]
+[node name="BehindDoor" type="Sprite" parent="." index="1"]
 
-position = Vector2( -2.43106, -63.9321 )
+position = Vector2( -2.43106, -63.8935 )
 texture = ExtResource( 2 )
 centered = false
 region_enabled = true
-region_rect = Rect2( 141, 0, 5, 128 )
-_sections_unfolded = [ "Animation", "Offset", "Region", "Transform" ]
+region_rect = Rect2( 0, 91, 64, 91 )
+_sections_unfolded = [ "Animation", "Offset", "Region", "Transform", "Z Index" ]
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite" index="0"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="BehindDoor" index="0"]
 
 root_node = NodePath("..")
 autoplay = ""
 playback_process_mode = 1
 playback_default_blend_time = 0.0
 playback_speed = 1.0
-anims/door_close = ExtResource( 3 )
-anims/door_open = ExtResource( 4 )
+anims/DoorEastCloseBehind = ExtResource( 3 )
+anims/DoorEastCloseFront = ExtResource( 4 )
+anims/DoorEastOpenBehind = ExtResource( 5 )
+anims/DoorEastOpenFront = ExtResource( 6 )
+anims/DoorNorthClose = ExtResource( 7 )
+anims/DoorNorthOpen = ExtResource( 8 )
+anims/DoorSouthClose = ExtResource( 9 )
+anims/DoorSouthOpen = ExtResource( 10 )
+anims/DoorWestCloseBehind = ExtResource( 11 )
+anims/DoorWestCloseFront = ExtResource( 12 )
+anims/DoorWestOpenBehind = ExtResource( 13 )
+anims/DoorWestOpenFront = ExtResource( 14 )
+anims/door_close = ExtResource( 15 )
+anims/door_open = ExtResource( 16 )
 blend_times = [  ]
 
-[node name="Area2D" type="Area2D" parent="." index="2"]
+[node name="FrontDoor" type="Sprite" parent="." index="2"]
+
+position = Vector2( -2.43106, -63.9321 )
+z_index = 5
+texture = ExtResource( 2 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 328, 306, 34, 123 )
+_sections_unfolded = [ "Animation", "Offset", "Region", "Transform", "Z Index" ]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="FrontDoor" index="0"]
+
+root_node = NodePath("..")
+autoplay = ""
+playback_process_mode = 1
+playback_default_blend_time = 0.0
+playback_speed = 1.0
+anims/DoorEastCloseBehind = ExtResource( 3 )
+anims/DoorEastCloseFront = ExtResource( 4 )
+anims/DoorEastOpenBehind = ExtResource( 5 )
+anims/DoorEastOpenFront = ExtResource( 6 )
+anims/DoorNorthClose = ExtResource( 7 )
+anims/DoorNorthOpen = ExtResource( 8 )
+anims/DoorSouthClose = ExtResource( 9 )
+anims/DoorSouthOpen = ExtResource( 10 )
+anims/DoorWestCloseBehind = ExtResource( 11 )
+anims/DoorWestCloseFront = ExtResource( 12 )
+anims/DoorWestOpenBehind = ExtResource( 13 )
+anims/DoorWestOpenFront = ExtResource( 14 )
+anims/a = ExtResource( 17 )
+anims/door_close = SubResource( 4 )
+anims/door_open = SubResource( 5 )
+blend_times = [  ]
+
+[node name="Area2D" type="Area2D" parent="." index="3"]
 
 position = Vector2( -5.23012, -0.581125 )
 input_pickable = true
@@ -76,12 +181,13 @@ _sections_unfolded = [ "Collision" ]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" index="0"]
 
-position = Vector2( -9.74668, 0.86022 )
+position = Vector2( 47.6934, -1.41616 )
 rotation = 1.5708
 scale = Vector2( 1, 1.67219 )
-shape = SubResource( 2 )
+shape = SubResource( 6 )
+_sections_unfolded = [ "Material", "Transform", "Visibility", "Z Index" ]
 
-[node name="Area2D2" type="Area2D" parent="." index="3"]
+[node name="Area2D2" type="Area2D" parent="." index="4"]
 
 position = Vector2( 2.79715, 0 )
 input_pickable = true
@@ -97,12 +203,15 @@ _sections_unfolded = [ "Audio Bus", "Collision" ]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D2" index="0"]
 
-position = Vector2( 41.8504, -1.58433 )
-shape = SubResource( 3 )
+position = Vector2( -16.8581, -3.62822 )
+scale = Vector2( 1, 1.67219 )
+shape = SubResource( 7 )
+_sections_unfolded = [ "Transform" ]
 
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." index="4"]
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." index="5"]
 
-stream = ExtResource( 5 )
+position = Vector2( 0, 0.263512 )
+stream = ExtResource( 18 )
 volume_db = 0.0
 pitch_scale = 1.0
 autoplay = false

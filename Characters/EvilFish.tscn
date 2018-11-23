@@ -24,7 +24,7 @@
 [sub_resource type="RectangleShape2D" id=1]
 
 custom_solver_bias = 0.0
-extents = Vector2( 5.28081, 18.1302 )
+extents = Vector2( 10.5984, 18.1302 )
 
 [node name="EvilFish" instance=ExtResource( 1 )]
 

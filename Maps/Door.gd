@@ -112,7 +112,6 @@ func _open():
 		emit_signal('room_entered')
 		perma_open()
 	elif !door_stop and !locked:
-		print("fuckyou")
 		$CollisionShape2D.disabled = true
 		$BehindDoor/AnimationPlayer.play(open_behind)
 		$FrontDoor/AnimationPlayer.play(open_front)
@@ -120,7 +119,6 @@ func _open():
 
 func _close():
 	if !door_stop and !locked:
-		print("fuckme")
 		$CollisionShape2D.disabled = false
 		$BehindDoor/AnimationPlayer.play(close_behind)
 		$FrontDoor/AnimationPlayer.play(close_front)

@@ -17,7 +17,8 @@ var slow_time
 var camera_offset
 
 func _ready():
-	print (global.hp)
+	if global.hp == null:
+		global.hp = starting_health
 	health = global.hp
 	emit_signal('health_changed', health)
 	slow_time = max_slow_time
@@ -195,6 +196,7 @@ func take_damage(amount):
 		health -= amount
 		emit_signal('health_changed', health)
 		global.hp -= amount
+		#print(global.hp)
 		if health <= 0:
 			getrekt()
 			
@@ -204,12 +206,14 @@ func gain_life(amount):
 		global.hp += amount
 	else:
 		health = max_health
+		global.hp = max_health
 	emit_signal('health_changed', health)
 
 func getrekt():
 #		var currentScene = get_tree().get_current_scene().get_filename()
 #		get_tree().change_scene(currentScene)
-		get_tree().reload_current_scene()
+	global.hp = starting_health
+	get_tree().reload_current_scene()
 		#Loader.load_game()
 		
 func _camera_shift():

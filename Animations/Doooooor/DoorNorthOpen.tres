@@ -1,0 +1,21 @@
+[gd_resource type="Animation" format=2]
+
+[resource]
+
+resource_name = "DoorNorthOpen"
+length = 0.4
+loop = false
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ Rect2( 0, 91, 64, 91 ), Rect2( 64, 91, 64, 91 ), Rect2( 128, 91, 64, 91 ), Rect2( 192, 91, 64, 91 ), Rect2( 256, 91, 64, 91 ) ]
+}
+

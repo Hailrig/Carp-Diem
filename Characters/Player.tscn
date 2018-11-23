@@ -96,7 +96,7 @@ tracks/0/keys = {
 "values": [ Rect2( 448, 359, 32, 27 ) ]
 }
 
-[sub_resource type="RectangleShape2D" id=7]
+[sub_resource type="RectangleShape2D" id=6]
 
 custom_solver_bias = 0.0
 extents = Vector2( 10.0377, 19.6733 )
@@ -201,6 +201,7 @@ stream = ExtResource( 31 )
 [node name="Weapon" parent="." index="1"]
 
 position = Vector2( -13, 7 )
+z_index = -1
 texture = ExtResource( 5 )
 offset = Vector2( 5, -1 )
 region_enabled = true
@@ -220,7 +221,6 @@ anims/reload_left = ExtResource( 34 )
 
 [node name="AudioStreamPlayer2D" parent="Weapon" index="2"]
 
-visible = false
 stream = ExtResource( 35 )
 
 [node name="Arm" parent="." index="2"]
@@ -233,8 +233,7 @@ _sections_unfolded = [ "Animation", "Material", "Offset", "Region", "Transform",
 
 [node name="CollisionShape2D" parent="." index="3"]
 
-visible = false
-shape = SubResource( 7 )
+shape = SubResource( 6 )
 _sections_unfolded = [ "Transform" ]
 
 [node name="RollTime" type="Timer" parent="." index="7"]
@@ -274,7 +273,6 @@ autostart = false
 
 [node name="Camera2D" type="Camera2D" parent="." index="12"]
 
-visible = false
 position = Vector2( -3.8147e-006, 0.277771 )
 anchor_mode = 1
 rotating = false

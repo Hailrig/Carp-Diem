@@ -34,13 +34,13 @@ func _clip_fly(clip, _position):
 	
 func _calculate_new_path():
 	# Finds path
-		var enemies = get_tree().get_nodes_in_group("enemies")
-		for i in enemies:
-			if i.current_room == get_node("Player").get("current_room"):
-				path = $TileMap.get_path(i.position, $Player.position)
-				if path:
-					path.remove(0)
-					i.path = path
+	var enemies = get_tree().get_nodes_in_group("enemies")
+	for i in enemies:
+		if i.current_room == get_node("Player").get("current_room"):
+			path = $TileMap.get_path(i.position, $Player.position)
+			if path:
+				path.remove(0)
+				i.path = path
 
 #func save_game():
 #	var save_game = File.new()
@@ -77,4 +77,8 @@ func _calculate_new_path():
 #	save_game.close()
 
 func calculate_new_path():
+	pass # replace with function body
+
+
+func clip_fly():
 	pass # replace with function body

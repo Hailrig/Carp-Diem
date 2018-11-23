@@ -67,11 +67,14 @@ var path = null
 
 func _ready():
 	_in_clip = clip_size
+	if name == "Player":
+		pass
+#		health = starting_health
+#		emit_signal('health_changed', health)
 	health = starting_health
 	$WeaponTimer.wait_time = weapon_cooldown
 	$ReloadTimer.wait_time = reload_timer
 	$ClipTimer.wait_time = clip_timer
-	emit_signal('health_changed', health)
 	emit_signal('ammo_changed', _in_clip)
 	
 func control(delta):
@@ -225,6 +228,7 @@ func gain_life(amount):
 	emit_signal('health_changed', health)
 	
 func getrekt():
+	emit_signal('dead')
 	path = null
 	change_anim(rad2deg($Body.get_angle_to(get_global_mouse_position())), rad2deg($Weapon.global_rotation), velocity)
 	set_collision_layer_bit(5, true)
@@ -249,4 +253,6 @@ func _on_ReloadTimer_timeout():
 
 
 func _on_ClipTimer_timeout():
+	if !alive:
+		return
 	emit_signal("clip_fly", clip, $Weapon.global_position)

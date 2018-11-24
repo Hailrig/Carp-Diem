@@ -182,18 +182,32 @@ func change_anim(body_angle, angle, velocity):
 	if $ReloadTimer.time_left > 0:
 		pass
 	else:
-		if body_angle >= 105 or body_angle <= -105:
-			shot_dir = 'left'
-			$Weapon.flip_v = true
-			$Weapon.position.x = -weapon_offset
-			$Arm.position.x = weapon_offset - 3
-			$Weapon.offset.y = weapon_shift
-		elif body_angle <= 75 and body_angle >= -75:
-			shot_dir = 'right'
-			$Weapon.flip_v = false
-			$Weapon.position.x = weapon_offset
-			$Arm.position.x = -weapon_offset + 3
-			$Weapon.offset.y = -weapon_shift
+		if name == "Player":
+			if body_angle >= 105 or body_angle <= -105:
+				shot_dir = 'left'
+				$Weapon.flip_v = true
+				$Weapon.position.x = -weapon_offset
+				$Arm.position.x = weapon_offset - 3
+				$Weapon.offset.y = weapon_shift
+			elif body_angle <= 75 and body_angle >= -75:
+				shot_dir = 'right'
+				$Weapon.flip_v = false
+				$Weapon.position.x = weapon_offset
+				$Arm.position.x = -weapon_offset + 3
+				$Weapon.offset.y = -weapon_shift
+		else:
+			if angle >= 105 or angle <= -105:
+				shot_dir = 'left'
+				$Weapon.flip_v = true
+				$Weapon.position.x = -weapon_offset
+				$Arm.position.x = weapon_offset - 3
+				$Weapon.offset.y = weapon_shift
+			elif angle <= 75 and angle >= -75:
+				shot_dir = 'right'
+				$Weapon.flip_v = false
+				$Weapon.position.x = weapon_offset
+				$Arm.position.x = -weapon_offset + 3
+				$Weapon.offset.y = -weapon_shift
 		
 	if bloodied:
 		$Body.self_modulate = Color(255, 0, 0, 255)

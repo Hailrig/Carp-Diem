@@ -39,7 +39,7 @@ shader = SubResource( 1 )
 shader_param/grayscale = false
 _sections_unfolded = [ "Resource", "shader_param" ]
 
-[node name="TestMap" type="Node2D"]
+[node name="TestMap" type="Node2D" index="0"]
 
 material = SubResource( 2 )
 script = ExtResource( 1 )
@@ -422,7 +422,7 @@ _sections_unfolded = [ "Transform" ]
 
 [node name="Key2" parent="." index="39" instance=ExtResource( 9 )]
 
-position = Vector2( 1583.31, -2393.61 )
+position = Vector2( 1060.31, -2389.61 )
 _sections_unfolded = [ "Transform" ]
 
 [node name="Player" parent="." index="40" instance=ExtResource( 10 )]
@@ -1093,9 +1093,9 @@ anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_left = 833.0
-margin_top = 108.0
+margin_top = 106.0
 margin_right = 1034.0
-margin_bottom = 148.0
+margin_bottom = 146.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = true
 mouse_filter = 0
@@ -1121,10 +1121,10 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 1143.0
-margin_top = 430.0
-margin_right = 1702.0
-margin_bottom = 470.0
+margin_left = 1139.0
+margin_top = 427.0
+margin_right = 1349.0
+margin_bottom = 449.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = true
 mouse_filter = 0
@@ -1132,19 +1132,48 @@ mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
 bbcode_enabled = true
-bbcode_text = "Press Spacebar to slow time...                        ...And E to dash towards a bloodied target."
+bbcode_text = "Press Spacebar to slow time..."
 visible_characters = -1
 percent_visible = 1.0
 meta_underlined = true
 tab_size = 4
-text = "Press Spacebar to slow time...                        ...And E to dash towards a bloodied target."
-scroll_active = true
+text = "Press Spacebar to slow time..."
+scroll_active = false
 scroll_following = false
 selection_enabled = false
 override_selected_font_color = false
 _sections_unfolded = [ "BBCode" ]
 
-[node name="RichTextLabel1" type="RichTextLabel" parent="." index="80"]
+[node name="RichTextLabel5" type="RichTextLabel" parent="." index="80"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 1379.0
+margin_top = 428.0
+margin_right = 1669.0
+margin_bottom = 462.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = true
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+bbcode_enabled = true
+bbcode_text = "...Put your cursor over a reddend enemy and hit E to charge towards the scent of blood"
+visible_characters = -1
+percent_visible = 1.0
+meta_underlined = true
+tab_size = 4
+text = "...Put your cursor over a reddend enemy and hit E to charge towards the scent of blood"
+scroll_active = false
+scroll_following = false
+selection_enabled = false
+override_selected_font_color = false
+_sections_unfolded = [ "BBCode" ]
+
+[node name="RichTextLabel1" type="RichTextLabel" parent="." index="81"]
 
 anchor_left = 0.0
 anchor_top = 0.0
@@ -1209,9 +1238,9 @@ _sections_unfolded = [ "BBCode" ]
 
 [connection signal="room_clear" from="Fog3" to="Door3" method="perma_open"]
 
-[connection signal="room_clear" from="Fog4" to="Door4b" method="perma_open"]
-
 [connection signal="room_clear" from="Fog4" to="Door4" method="perma_open"]
+
+[connection signal="room_clear" from="Fog4" to="Door4b" method="perma_open"]
 
 [connection signal="room_clear" from="Fog5" to="Door5" method="perma_open"]
 
@@ -1219,15 +1248,15 @@ _sections_unfolded = [ "BBCode" ]
 
 [connection signal="room_clear" from="Fog6" to="Door6" method="perma_open"]
 
-[connection signal="room_clear" from="Fog7" to="Door7" method="perma_open"]
-
 [connection signal="room_clear" from="Fog7" to="Door7b" method="perma_open"]
 
-[connection signal="room_clear" from="Fog8" to="Door8" method="perma_open"]
+[connection signal="room_clear" from="Fog7" to="Door7" method="perma_open"]
+
+[connection signal="room_clear" from="Fog8" to="Door8c" method="perma_open"]
 
 [connection signal="room_clear" from="Fog8" to="Door8b" method="perma_open"]
 
-[connection signal="room_clear" from="Fog8" to="Door8c" method="perma_open"]
+[connection signal="room_clear" from="Fog8" to="Door8" method="perma_open"]
 
 [connection signal="room_clear" from="Fog9" to="Door9" method="perma_open"]
 

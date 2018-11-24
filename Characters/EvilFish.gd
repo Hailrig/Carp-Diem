@@ -12,6 +12,7 @@ const POINT_RADIUS = 5
 
 
 func _ready():
+	connect("clip_fly", get_parent(), "_clip_fly")
 	add_to_group(current_room)
 	add_to_group("enemies")
 	var circle = CircleShape2D.new()

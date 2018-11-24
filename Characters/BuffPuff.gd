@@ -1,6 +1,7 @@
 extends "res://Characters/EvilFish.gd"
 
 var boss_bar
+var fire_mode = null
 
 func shoot():
 #		if _in_clip >= 0:
@@ -11,18 +12,44 @@ func shoot():
 			emit_signal('ammo_changed', _in_clip)
 			can_shoot = false
 			$WeaponTimer.start()
-			var dir = Vector2(1, 0).rotated($Weapon.global_rotation)
-			emit_signal('shoot', Bullet, $Weapon/Muzzle.global_position, dir)
-			dir = Vector2(1, 0).rotated($Weapon.global_rotation + .5)
-			emit_signal('shoot', Bullet, $Weapon/Muzzle.global_position, dir)
-			dir = Vector2(1, 0).rotated($Weapon.global_rotation - .5)
-			emit_signal('shoot', Bullet, $Weapon/Muzzle.global_position, dir)
-			dir = Vector2(1, 0).rotated($Weapon.global_rotation + .25)
-			emit_signal('shoot', Bullet, $Weapon/Muzzle.global_position, dir)
-			dir = Vector2(1, 0).rotated($Weapon.global_rotation - .25)
-			emit_signal('shoot', Bullet, $Weapon/Muzzle.global_position, dir)
+			
+			
+			if health >= 80:
+				tri_shot()
+			elif fire_mode == 0:
+				tri_shot()
+			elif fire_mode == 1:
+				spin_shot()
+#			var dir = Vector2(1, 0).rotated($Weapon.global_rotation)
+#			emit_signal('shoot', Bullet, $Weapon/Muzzle.global_position, dir)
+#			dir = Vector2(1, 0).rotated($Weapon.global_rotation + .5)
+#			emit_signal('shoot', Bullet, $Weapon/Muzzle.global_position, dir)
+#			dir = Vector2(1, 0).rotated($Weapon.global_rotation - .5)
+#			emit_signal('shoot', Bullet, $Weapon/Muzzle.global_position, dir)
+#			dir = Vector2(1, 0).rotated($Weapon.global_rotation + .25)
+#			emit_signal('shoot', Bullet, $Weapon/Muzzle.global_position, dir)
+#			dir = Vector2(1, 0).rotated($Weapon.global_rotation - .25)
+#			emit_signal('shoot', Bullet, $Weapon/Muzzle.global_position, dir)
 		elif $ReloadTimer.time_left == 0:
 			reload()
+
+func tri_shot():
+	var dir = Vector2(1, 0).rotated($Weapon.global_rotation)
+	emit_signal('shoot', Bullet, $Weapon/Muzzle.global_position, dir)
+	dir = Vector2(1, 0).rotated($Weapon.global_rotation + .5)
+	emit_signal('shoot', Bullet, $Weapon/Muzzle.global_position, dir)
+	dir = Vector2(1, 0).rotated($Weapon.global_rotation - .5)
+	emit_signal('shoot', Bullet, $Weapon/Muzzle.global_position, dir)
+	dir = Vector2(1, 0).rotated($Weapon.global_rotation + .25)
+	emit_signal('shoot', Bullet, $Weapon/Muzzle.global_position, dir)
+	dir = Vector2(1, 0).rotated($Weapon.global_rotation - .25)
+	emit_signal('shoot', Bullet, $Weapon/Muzzle.global_position, dir)
+
+func spin_shot():
+	for i in 36:
+		var dir = Vector2(1, 0).rotated(i * 0.174533)
+		emit_signal('shoot', Bullet, $Weapon/Muzzle.global_position, dir)
+
 
 func take_damage(amount):
 	if can_be_hurt:
@@ -63,3 +90,7 @@ func getrekt():
 		remove_from_group(current_room)
 		$Weapon.queue_free()
 		alive = false
+
+func _on_Fireswitch_timeout():
+	fire_mode = randi()%2
+	print(fire_mode)

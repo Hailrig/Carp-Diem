@@ -18,6 +18,9 @@ export (int) var clip_size
 export (int) var reload_timer
 export (int) var weapon_shift
 export (float) var clip_timer
+export (String) var clip_anim
+export (bool) var shells
+export (String) var shell_anim
 
 export (String) var current_room
 
@@ -91,6 +94,8 @@ func shoot():
 			$WeaponTimer.start()
 			var dir = Vector2(1, 0).rotated($Weapon.global_rotation)
 			emit_signal('shoot', Bullet, $Weapon/Muzzle.global_position, dir)
+			if shells:
+				emit_signal("clip_fly", clip, $Weapon.global_position, shell_anim)
 		elif $ReloadTimer.time_left == 0:
 			reload()
 
@@ -182,18 +187,32 @@ func change_anim(body_angle, angle, velocity):
 	if $ReloadTimer.time_left > 0:
 		pass
 	else:
-		if body_angle >= 105 or body_angle <= -105:
-			shot_dir = 'left'
-			$Weapon.flip_v = true
-			$Weapon.position.x = -weapon_offset
-			$Arm.position.x = weapon_offset - 3
-			$Weapon.offset.y = weapon_shift
-		elif body_angle <= 75 and body_angle >= -75:
-			shot_dir = 'right'
-			$Weapon.flip_v = false
-			$Weapon.position.x = weapon_offset
-			$Arm.position.x = -weapon_offset + 3
-			$Weapon.offset.y = -weapon_shift
+		if name == "Player":
+			if body_angle >= 105 or body_angle <= -105:
+				shot_dir = 'left'
+				$Weapon.flip_v = true
+				$Weapon.position.x = -weapon_offset
+				$Arm.position.x = weapon_offset - 3
+				$Weapon.offset.y = weapon_shift
+			elif body_angle <= 75 and body_angle >= -75:
+				shot_dir = 'right'
+				$Weapon.flip_v = false
+				$Weapon.position.x = weapon_offset
+				$Arm.position.x = -weapon_offset + 3
+				$Weapon.offset.y = -weapon_shift
+		else:
+			if angle >= 105 or angle <= -105:
+				shot_dir = 'left'
+				$Weapon.flip_v = true
+				$Weapon.position.x = -weapon_offset
+				$Arm.position.x = weapon_offset - 3
+				$Weapon.offset.y = weapon_shift
+			elif angle <= 75 and angle >= -75:
+				shot_dir = 'right'
+				$Weapon.flip_v = false
+				$Weapon.position.x = weapon_offset
+				$Arm.position.x = -weapon_offset + 3
+				$Weapon.offset.y = -weapon_shift
 		
 	if bloodied:
 		$Body.self_modulate = Color(255, 0, 0, 255)
@@ -255,4 +274,4 @@ func _on_ReloadTimer_timeout():
 func _on_ClipTimer_timeout():
 	if !alive:
 		return
-	emit_signal("clip_fly", clip, $Weapon.global_position)
+	emit_signal("clip_fly", clip, $Weapon.global_position, clip_anim)

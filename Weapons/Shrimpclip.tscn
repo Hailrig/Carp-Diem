@@ -1,8 +1,10 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Weapons/Shrimpclip.gd" type="Script" id=1]
 [ext_resource path="res://Characters/Spritesheet.png" type="Texture" id=2]
-[ext_resource path="res://Weapons/Shrimpclip.tres" type="Animation" id=3]
+[ext_resource path="res://Animations/9mil_drop.tres" type="Animation" id=3]
+[ext_resource path="res://Weapons/shell_fly.tres" type="Animation" id=4]
+[ext_resource path="res://Weapons/Shrimpclip.tres" type="Animation" id=5]
 
 [node name="Shrimpclip" type="KinematicBody2D"]
 
@@ -11,14 +13,17 @@ collision_layer = 1
 collision_mask = 1
 collision/safe_margin = 0.08
 script = ExtResource( 1 )
-_sections_unfolded = [ "Material", "Visibility", "collision" ]
+_sections_unfolded = [ "Material", "Visibility", "Z Index", "collision" ]
 
 [node name="Sprite" type="Sprite" parent="." index="0"]
 
+position = Vector2( 15.5079, 13.9352 )
+rotation = 3.14159
+z_index = -2
 texture = ExtResource( 2 )
 region_enabled = true
-region_rect = Rect2( 324, 360, 8, 13 )
-_sections_unfolded = [ "Animation", "Offset", "Region", "Transform", "Visibility" ]
+region_rect = Rect2( 65, 63, 2, 1 )
+_sections_unfolded = [ "Animation", "Offset", "Region", "Transform", "Visibility", "Z Index" ]
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite" index="0"]
 
@@ -27,7 +32,9 @@ autoplay = ""
 playback_process_mode = 1
 playback_default_blend_time = 0.0
 playback_speed = 1.0
-anims/shrimp_toss = ExtResource( 3 )
+anims/9mil_drop = ExtResource( 3 )
+anims/shell_fly = ExtResource( 4 )
+anims/shrimp_toss = ExtResource( 5 )
 blend_times = [  ]
 
 

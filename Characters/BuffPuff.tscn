@@ -80,4 +80,13 @@ _sections_unfolded = [ "Transform" ]
 position = Vector2( 0.575382, 0.455173 )
 scale = Vector2( 1.01798, 1.0175 )
 
+[node name="Fireswitch" type="Timer" parent="." index="8"]
+
+process_mode = 1
+wait_time = 5.0
+one_shot = false
+autostart = true
+
+[connection signal="timeout" from="Fireswitch" to="." method="_on_Fireswitch_timeout"]
+
 

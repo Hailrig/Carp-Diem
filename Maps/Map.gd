@@ -26,10 +26,10 @@ func _on_shoot(bullet, _position, _direction):
 	b.start(_position, _direction)
 	pass
 	
-func _clip_fly(clip, _position):
+func _clip_fly(clip, _position, animation):
 	var s = clip.instance()
 	add_child(s)
-	s.start(_position)
+	s.start(_position, animation)
 	pass
 	
 func _calculate_new_path():

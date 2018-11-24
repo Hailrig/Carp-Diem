@@ -33,18 +33,21 @@ z_as_relative = false
 collision_layer = 4
 collision_mask = 7
 script = ExtResource( 2 )
-_sections_unfolded = [ "Collision", "Material", "Pause", "Pickable", "Visibility", "Z Index" ]
+_sections_unfolded = [ "Collision", "Material", "Pause", "Pickable", "Transform", "Visibility", "Z Index" ]
 Bullet = ExtResource( 3 )
 clip = ExtResource( 4 )
 speed = 100
 weapon_cooldown = 1.0
 max_health = 2
 starting_health = 2
-weapon_offset = 0
+weapon_offset = 13
 clip_size = 5
 reload_timer = 1
-weapon_shift = 1
+weapon_shift = 2
 clip_timer = 1.0
+clip_anim = "9mil_drop"
+shells = true
+shell_anim = "shell_fly"
 current_room = "a"
 front_idle = "front_idle_carp"
 front_right_idle = "front_right_idle_carp"
@@ -80,7 +83,7 @@ modulate = Color( 1, 1, 1, 1 )
 texture = ExtResource( 5 )
 region_enabled = true
 region_rect = Rect2( 505, 158, 22, 38 )
-_sections_unfolded = [ "Material", "Offset", "Region", "Visibility" ]
+_sections_unfolded = [ "Material", "Offset", "Region", "Transform", "Visibility" ]
 
 [node name="AnimationPlayer" parent="Body" index="0"]
 
@@ -104,28 +107,35 @@ stream = ExtResource( 19 )
 
 [node name="Weapon" parent="." index="1"]
 
+position = Vector2( -13, 0 )
+rotation = 3.14159
 texture = ExtResource( 5 )
-offset = Vector2( 20, 0 )
+centered = false
+offset = Vector2( -2, -3 )
+flip_v = true
 region_enabled = true
-region_rect = Rect2( 22, 16, 6, 5 )
+region_rect = Rect2( 218, 180, 9, 7 )
 _sections_unfolded = [ "Material", "Offset", "Transform" ]
 
 [node name="Muzzle" parent="Weapon" index="0"]
 
-position = Vector2( 24.5476, -1.98383 )
+position = Vector2( 10.9368, 1.76607 )
 _sections_unfolded = [ "Transform" ]
 
 [node name="AudioStreamPlayer2D" parent="Weapon" index="2"]
 
+visible = false
 stream = ExtResource( 20 )
 
 [node name="CollisionShape2D" parent="." index="3"]
 
+visible = false
 position = Vector2( 0.0510483, -0.765703 )
 shape = SubResource( 1 )
 
 [node name="DetectRadius" type="Area2D" parent="." index="4"]
 
+visible = false
 input_pickable = true
 gravity_vec = Vector2( 0, 1 )
 gravity = 98.0
@@ -139,6 +149,7 @@ _sections_unfolded = [ "Collision" ]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DetectRadius" index="0"]
 
+visible = false
 _sections_unfolded = [ "Transform" ]
 
 [connection signal="body_entered" from="DetectRadius" to="." method="_on_Area2D_body_entered"]

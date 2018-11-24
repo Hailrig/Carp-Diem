@@ -33,7 +33,7 @@ z_as_relative = false
 collision_layer = 4
 collision_mask = 7
 script = ExtResource( 2 )
-_sections_unfolded = [ "Collision", "Material", "Pause", "Pickable", "Visibility", "Z Index" ]
+_sections_unfolded = [ "Collision", "Material", "Pause", "Pickable", "Transform", "Visibility", "Z Index" ]
 Bullet = ExtResource( 3 )
 clip = ExtResource( 4 )
 speed = 100
@@ -80,7 +80,7 @@ modulate = Color( 1, 1, 1, 1 )
 texture = ExtResource( 5 )
 region_enabled = true
 region_rect = Rect2( 505, 158, 22, 38 )
-_sections_unfolded = [ "Material", "Offset", "Region", "Visibility" ]
+_sections_unfolded = [ "Material", "Offset", "Region", "Transform", "Visibility" ]
 
 [node name="AnimationPlayer" parent="Body" index="0"]
 
@@ -104,7 +104,7 @@ stream = ExtResource( 19 )
 
 [node name="Weapon" parent="." index="1"]
 
-position = Vector2( -13, 4.65266 )
+position = Vector2( -13, 0 )
 rotation = 3.14159
 texture = ExtResource( 5 )
 centered = false
@@ -116,7 +116,7 @@ _sections_unfolded = [ "Material", "Offset", "Transform" ]
 
 [node name="Muzzle" parent="Weapon" index="0"]
 
-position = Vector2( 10.2424, -3.02547 )
+position = Vector2( 10.9368, 1.76607 )
 _sections_unfolded = [ "Transform" ]
 
 [node name="AudioStreamPlayer2D" parent="Weapon" index="2"]

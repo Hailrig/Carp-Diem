@@ -66,7 +66,7 @@ func _ready():
 		$FrontDoor.visible = false
 	if enter_dir == "south":
 		$Area2D/CollisionShape2D.position.x = 36.423717
-		$Area2D/CollisionShape2D.position.y = -33.144161
+		$Area2D/CollisionShape2D.position.y = -50.144161
 		$Area2D/CollisionShape2D.scale.x = 0.2
 		$Area2D/CollisionShape2D.scale.y = 12
 		
@@ -108,6 +108,7 @@ func _on_Area2D2_body_entered(body):
 		
 
 func _open():
+	print (enemyless)
 	if !door_stop and !locked and enemyless:
 		emit_signal('room_entered')
 		perma_open()

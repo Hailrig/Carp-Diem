@@ -11,18 +11,25 @@ func shoot():
 			emit_signal('ammo_changed', _in_clip)
 			can_shoot = false
 			$WeaponTimer.start()
-			var dir = Vector2(1, 0).rotated($Weapon.global_rotation)
-			emit_signal('shoot', Bullet, $Weapon/Muzzle.global_position, dir)
-			dir = Vector2(1, 0).rotated($Weapon.global_rotation + .5)
-			emit_signal('shoot', Bullet, $Weapon/Muzzle.global_position, dir)
-			dir = Vector2(1, 0).rotated($Weapon.global_rotation - .5)
-			emit_signal('shoot', Bullet, $Weapon/Muzzle.global_position, dir)
-			dir = Vector2(1, 0).rotated($Weapon.global_rotation + .25)
-			emit_signal('shoot', Bullet, $Weapon/Muzzle.global_position, dir)
-			dir = Vector2(1, 0).rotated($Weapon.global_rotation - .25)
-			emit_signal('shoot', Bullet, $Weapon/Muzzle.global_position, dir)
+#			var dir = Vector2(1, 0).rotated($Weapon.global_rotation)
+#			emit_signal('shoot', Bullet, $Weapon/Muzzle.global_position, dir)
+#			dir = Vector2(1, 0).rotated($Weapon.global_rotation + .5)
+#			emit_signal('shoot', Bullet, $Weapon/Muzzle.global_position, dir)
+#			dir = Vector2(1, 0).rotated($Weapon.global_rotation - .5)
+#			emit_signal('shoot', Bullet, $Weapon/Muzzle.global_position, dir)
+#			dir = Vector2(1, 0).rotated($Weapon.global_rotation + .25)
+#			emit_signal('shoot', Bullet, $Weapon/Muzzle.global_position, dir)
+#			dir = Vector2(1, 0).rotated($Weapon.global_rotation - .25)
+#			emit_signal('shoot', Bullet, $Weapon/Muzzle.global_position, dir)
+			spin_shot()
 		elif $ReloadTimer.time_left == 0:
 			reload()
+
+func spin_shot():
+	for i in 36:
+		var dir = Vector2(1, 0).rotated(i * 0.174533)
+		emit_signal('shoot', Bullet, $Weapon/Muzzle.global_position, dir)
+
 
 func take_damage(amount):
 	if can_be_hurt:

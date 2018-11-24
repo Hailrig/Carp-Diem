@@ -18,6 +18,9 @@ export (int) var clip_size
 export (int) var reload_timer
 export (int) var weapon_shift
 export (float) var clip_timer
+export (String) var clip_anim
+export (bool) var shells
+export (String) var shell_anim
 
 export (String) var current_room
 
@@ -91,6 +94,8 @@ func shoot():
 			$WeaponTimer.start()
 			var dir = Vector2(1, 0).rotated($Weapon.global_rotation)
 			emit_signal('shoot', Bullet, $Weapon/Muzzle.global_position, dir)
+			if shells:
+				emit_signal("clip_fly", clip, $Weapon.global_position, shell_anim)
 		elif $ReloadTimer.time_left == 0:
 			reload()
 
@@ -269,4 +274,4 @@ func _on_ReloadTimer_timeout():
 func _on_ClipTimer_timeout():
 	if !alive:
 		return
-	emit_signal("clip_fly", clip, $Weapon.global_position)
+	emit_signal("clip_fly", clip, $Weapon.global_position, clip_anim)

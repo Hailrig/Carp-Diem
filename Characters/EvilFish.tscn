@@ -26,7 +26,7 @@
 custom_solver_bias = 0.0
 extents = Vector2( 10.5984, 18.1302 )
 
-[node name="EvilFish" index="0" instance=ExtResource( 1 )]
+[node name="EvilFish" instance=ExtResource( 1 )]
 
 material = null
 z_as_relative = false
@@ -45,6 +45,9 @@ clip_size = 5
 reload_timer = 1
 weapon_shift = 2
 clip_timer = 1.0
+clip_anim = "9mil_drop"
+shells = true
+shell_anim = "shell_fly"
 current_room = "a"
 front_idle = "front_idle_carp"
 front_right_idle = "front_right_idle_carp"

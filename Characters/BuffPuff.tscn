@@ -31,19 +31,19 @@ reload_timer = null
 weapon_shift = null
 clip_timer = null
 current_room = null
-front_idle = null
-front_right_idle = null
-front_left_idle = null
-back_idle = null
-back_left_idle = null
-back_right_idle = null
-front_walk = null
-front_right_walk = null
-front_left_walk = null
-back_walk = null
-back_left_walk = null
-back_right_walk = null
-front_dash = null
+front_idle = "PuffS"
+front_right_idle = "PuffSE"
+front_left_idle = "PuffSW"
+back_idle = "PuffN"
+back_left_idle = "PuffNW"
+back_right_idle = "PuffNE"
+front_walk = "PuffS"
+front_right_walk = "PuffSE"
+front_left_walk = "PuffSW"
+back_walk = "PuffN"
+back_left_walk = "PuffNW"
+back_right_walk = "PuffNE"
+front_dash = "Null"
 front_right_dash = null
 front_left_dash = null
 back_dash = null
@@ -62,11 +62,11 @@ detect_radius = null
 [node name="Body" parent="." index="0"]
 
 texture = ExtResource( 3 )
-region_rect = Rect2( 941, 140, 126, 121 )
+region_rect = Rect2( 536, 9, 133, 118 )
 
 [node name="AnimationPlayer" parent="Body" index="0"]
 
-anims/BossN = ExtResource( 4 )
+anims/PuffN = ExtResource( 4 )
 anims/PuffNE = ExtResource( 5 )
 anims/PuffNW = ExtResource( 6 )
 anims/PuffS = ExtResource( 7 )
@@ -76,7 +76,9 @@ anims/the_buff_puff = ExtResource( 10 )
 
 [node name="Weapon" parent="." index="1"]
 
+visible = false
 offset = Vector2( 60, 0 )
+_sections_unfolded = [ "Material", "Offset", "Region", "Transform", "Visibility" ]
 
 [node name="Muzzle" parent="Weapon" index="0"]
 

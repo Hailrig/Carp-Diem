@@ -172,18 +172,6 @@ weapon_shift = 1
 clip_timer = 0.6
 shells = false
 current_room = "bossroom"
-front_idle = "the_buff_puff"
-front_right_idle = "the_buff_puff"
-front_left_idle = "the_buff_puff"
-back_idle = "the_buff_puff"
-back_left_idle = "the_buff_puff"
-back_right_idle = "the_buff_puff"
-front_walk = "the_buff_puff"
-front_right_walk = "the_buff_puff"
-front_left_walk = "the_buff_puff"
-back_walk = "the_buff_puff"
-back_left_walk = "the_buff_puff"
-back_right_walk = "the_buff_puff"
 front_dash = "the_buff_puff"
 front_right_dash = "the_buff_puff"
 front_left_dash = "the_buff_puff"
@@ -225,9 +213,9 @@ target = "res://Maps/Testmap.tscn"
 
 [connection signal="time_change" from="Player" to="HUD" method="update_timebar"]
 
-[connection signal="room_clear" from="Fog" to="DoorIn" method="perma_open"]
-
 [connection signal="room_clear" from="Fog" to="DoorOut" method="perma_open"]
+
+[connection signal="room_clear" from="Fog" to="DoorIn" method="perma_open"]
 
 [connection signal="dead" from="BuffPuff" to="HUD" method="end_bossbar"]
 

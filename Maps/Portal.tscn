@@ -8,7 +8,7 @@
 custom_solver_bias = 0.0
 extents = Vector2( 18.0607, 27.041 )
 
-[node name="Area2D" type="Area2D"]
+[node name="Portal" type="Area2D"]
 
 input_pickable = true
 gravity_vec = Vector2( 0, 1 )
@@ -19,6 +19,7 @@ audio_bus_override = false
 audio_bus_name = "Master"
 script = ExtResource( 1 )
 target = null
+spawn_point = null
 
 [node name="Sprite" type="Sprite" parent="." index="0"]
 

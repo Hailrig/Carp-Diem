@@ -1224,23 +1224,23 @@ _sections_unfolded = [ "BBCode" ]
 
 [connection signal="room_entered" from="Door11" to="Fog11" method="_reveal"]
 
-[connection signal="room_clear" from="Fog" to="Doorb" method="perma_open"]
-
 [connection signal="room_clear" from="Fog" to="Door" method="perma_open"]
 
-[connection signal="room_clear" from="Fog2" to="Door2c" method="perma_open"]
+[connection signal="room_clear" from="Fog" to="Doorb" method="perma_open"]
 
 [connection signal="room_clear" from="Fog2" to="Door2" method="perma_open"]
 
 [connection signal="room_clear" from="Fog2" to="Door2b" method="perma_open"]
 
+[connection signal="room_clear" from="Fog2" to="Door2c" method="perma_open"]
+
 [connection signal="room_clear" from="Fog3" to="Door3" method="perma_open"]
 
 [connection signal="room_clear" from="Fog3" to="Door3b" method="perma_open"]
 
-[connection signal="room_clear" from="Fog4" to="Door4b" method="perma_open"]
-
 [connection signal="room_clear" from="Fog4" to="Door4" method="perma_open"]
+
+[connection signal="room_clear" from="Fog4" to="Door4b" method="perma_open"]
 
 [connection signal="room_clear" from="Fog5" to="Door5" method="perma_open"]
 
@@ -1252,11 +1252,11 @@ _sections_unfolded = [ "BBCode" ]
 
 [connection signal="room_clear" from="Fog7" to="Door7b" method="perma_open"]
 
-[connection signal="room_clear" from="Fog8" to="Door8c" method="perma_open"]
+[connection signal="room_clear" from="Fog8" to="Door8" method="perma_open"]
 
 [connection signal="room_clear" from="Fog8" to="Door8b" method="perma_open"]
 
-[connection signal="room_clear" from="Fog8" to="Door8" method="perma_open"]
+[connection signal="room_clear" from="Fog8" to="Door8c" method="perma_open"]
 
 [connection signal="room_clear" from="Fog9" to="Door9" method="perma_open"]
 

@@ -70,7 +70,7 @@ func take_damage(amount):
 func getrekt():
 	if boss_bar:
 		bloodied = false
-		$Body.self_modulate = Color(255, 255, 255, 255)
+		$Body.self_modulate = Color(1, 1, 1, 1)
 		remove_from_group('bloodied_enemies')
 		can_be_hurt = true
 		take_damage(1)

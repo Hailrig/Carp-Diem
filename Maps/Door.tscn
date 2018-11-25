@@ -24,7 +24,7 @@
 custom_solver_bias = 0.0
 extents = Vector2( 2.89289, 63.7339 )
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id=2]
 
 resource_name = "door_close"
 length = 0.1
@@ -43,7 +43,7 @@ tracks/0/keys = {
 "values": [ -90.0, 0.0 ]
 }
 
-[sub_resource type="Animation" id=5]
+[sub_resource type="Animation" id=3]
 
 resource_name = "door_open"
 length = 0.1
@@ -62,12 +62,12 @@ tracks/0/keys = {
 "values": [ 0.0, -90.0 ]
 }
 
-[sub_resource type="RectangleShape2D" id=6]
+[sub_resource type="RectangleShape2D" id=4]
 
 custom_solver_bias = 0.0
 extents = Vector2( 64.0241, 2.8584 )
 
-[sub_resource type="RectangleShape2D" id=7]
+[sub_resource type="RectangleShape2D" id=5]
 
 custom_solver_bias = 0.0
 extents = Vector2( 3.23093, 63.8242 )
@@ -105,7 +105,7 @@ position = Vector2( -2.43106, -63.8935 )
 texture = ExtResource( 2 )
 centered = false
 region_enabled = true
-region_rect = Rect2( 0, 91, 64, 91 )
+region_rect = Rect2( 158, 182, 34, 123 )
 _sections_unfolded = [ "Animation", "Offset", "Region", "Transform", "Z Index" ]
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="BehindDoor" index="0"]
@@ -161,8 +161,8 @@ anims/DoorWestCloseFront = ExtResource( 12 )
 anims/DoorWestOpenBehind = ExtResource( 13 )
 anims/DoorWestOpenFront = ExtResource( 14 )
 anims/a = ExtResource( 17 )
-anims/door_close = SubResource( 4 )
-anims/door_open = SubResource( 5 )
+anims/door_close = SubResource( 2 )
+anims/door_open = SubResource( 3 )
 blend_times = [  ]
 
 [node name="Area2D" type="Area2D" parent="." index="3"]
@@ -184,7 +184,7 @@ _sections_unfolded = [ "Collision" ]
 position = Vector2( 47.6934, -1.41616 )
 rotation = 1.5708
 scale = Vector2( 1, 1.67219 )
-shape = SubResource( 6 )
+shape = SubResource( 4 )
 _sections_unfolded = [ "Material", "Transform", "Visibility", "Z Index" ]
 
 [node name="Area2D2" type="Area2D" parent="." index="4"]
@@ -205,7 +205,7 @@ _sections_unfolded = [ "Audio Bus", "Collision" ]
 
 position = Vector2( -16.8581, -3.62822 )
 scale = Vector2( 1, 1.67219 )
-shape = SubResource( 7 )
+shape = SubResource( 5 )
 _sections_unfolded = [ "Transform" ]
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." index="5"]

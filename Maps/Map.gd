@@ -1,9 +1,13 @@
 extends Node2D
 
 var path = null
+signal perma_open
 
 func _ready():
 	normal_time()
+	if global.map1_door == true:
+		emit_signal("perma_open")
+		
 #func set_camera_limits():
 #	var map_limits = $TileMap.get_used_rect()
 #	var map_cellsize = $TileMap.cell_size
@@ -11,6 +15,10 @@ func _ready():
 #	$Player/Camera2D.limit_right = map_limits.end.x * map_cellsize.x
 #	$Player/Camera2D.limit_top = map_limits.position.y * map_cellsize.y
 #	$Player/Camera2D.limit_bottom = map_limits.end.y * map_cellsize.y
+
+func way_back(map):
+	if map == "map1":
+		global.map1_door = true
 
 func bullet_time():
 	Engine.time_scale = 0.2
@@ -76,9 +84,3 @@ func _calculate_new_path():
 #		new_object.set(i, current_line[i])
 #	save_game.close()
 
-func calculate_new_path():
-	pass # replace with function body
-
-
-func clip_fly():
-	pass # replace with function body

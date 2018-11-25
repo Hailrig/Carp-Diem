@@ -29,7 +29,9 @@ weapon_offset = null
 clip_size = null
 reload_timer = null
 weapon_shift = null
+clips = false
 clip_timer = null
+shells = false
 current_room = null
 front_idle = "PuffS"
 front_right_idle = "PuffSE"
@@ -83,6 +85,10 @@ _sections_unfolded = [ "Material", "Offset", "Region", "Transform", "Visibility"
 [node name="Muzzle" parent="Weapon" index="0"]
 
 position = Vector2( 65.808, -1.20899 )
+
+[node name="AnimationPlayer" parent="Weapon" index="1"]
+
+anims/the_buff_puff = ExtResource( 10 )
 
 [node name="CollisionShape2D" parent="." index="3"]
 

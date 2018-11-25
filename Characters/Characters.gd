@@ -89,7 +89,6 @@ func control(delta):
 	
 func gun_setup(gun_swap):
 	$Weapon/AnimationPlayer.play(gun_swap)
-	print(gun)
 	if gun_swap == "pistol_swap":
 		weapon_cooldown = 1
 		clip_size = 5

@@ -245,6 +245,7 @@ close_front = "a"
 position = Vector2( 1154.46, -1455.89 )
 room = "r6"
 enter_dir = "north"
+z_change = true
 open_behind = "DoorNorthOpen"
 open_front = "a"
 close_behind = "DoorNorthClose"
@@ -322,6 +323,7 @@ enemyless = true
 
 [node name="Fog" parent="." index="26" instance=ExtResource( 8 )]
 
+visible = false
 position = Vector2( 392.025, 206.559 )
 scale = Vector2( 15.5462, 10.9123 )
 _sections_unfolded = [ "Transform", "Visibility", "Z Index" ]
@@ -329,6 +331,7 @@ room = "r1"
 
 [node name="Fog2" parent="." index="27" instance=ExtResource( 8 )]
 
+visible = false
 position = Vector2( 1383.97, 649.648 )
 scale = Vector2( 16.2732, 10.6201 )
 _sections_unfolded = [ "Transform", "Visibility", "Z Index" ]
@@ -336,6 +339,7 @@ room = "r2"
 
 [node name="Fog3" parent="." index="28" instance=ExtResource( 8 )]
 
+visible = false
 position = Vector2( 1977.87, -313.822 )
 scale = Vector2( 26.5561, 13.1239 )
 _sections_unfolded = [ "Transform", "Visibility", "Z Index" ]
@@ -343,6 +347,7 @@ room = "r3"
 
 [node name="Fog4" parent="." index="29" instance=ExtResource( 8 )]
 
+visible = false
 position = Vector2( 1337.76, -378.482 )
 scale = Vector2( 11.4767, 14.1613 )
 _sections_unfolded = [ "Transform", "Visibility", "Z Index" ]
@@ -350,6 +355,7 @@ room = "r4"
 
 [node name="Fog5" parent="." index="30" instance=ExtResource( 8 )]
 
+visible = false
 position = Vector2( 1157.2, -901.24 )
 scale = Vector2( 10.6337, 8.21658 )
 _sections_unfolded = [ "Transform", "Visibility", "Z Index" ]
@@ -357,6 +363,7 @@ room = "r5"
 
 [node name="Fog6" parent="." index="31" instance=ExtResource( 8 )]
 
+visible = false
 position = Vector2( 1247.66, -2090.76 )
 scale = Vector2( 34.7315, 23.5797 )
 _sections_unfolded = [ "Transform", "Visibility", "Z Index" ]
@@ -364,6 +371,7 @@ room = "r6"
 
 [node name="Fog7" parent="." index="32" instance=ExtResource( 8 )]
 
+visible = false
 position = Vector2( 1613.96, 989.119 )
 scale = Vector2( 11.2042, 5.60912 )
 _sections_unfolded = [ "Transform", "Visibility", "Z Index" ]
@@ -371,6 +379,7 @@ room = "r7"
 
 [node name="Fog8" parent="." index="33" instance=ExtResource( 8 )]
 
+visible = false
 position = Vector2( 1481.69, 1562.45 )
 scale = Vector2( 18.0644, 15.4152 )
 _sections_unfolded = [ "Transform", "Visibility", "Z Index" ]
@@ -378,6 +387,7 @@ room = "r8"
 
 [node name="Fog9" parent="." index="34" instance=ExtResource( 8 )]
 
+visible = false
 position = Vector2( 833.598, 1399.83 )
 scale = Vector2( 10.9689, 10.9966 )
 _sections_unfolded = [ "Transform", "Visibility", "Z Index" ]
@@ -385,6 +395,7 @@ room = "r9"
 
 [node name="Fog10" parent="." index="35" instance=ExtResource( 8 )]
 
+visible = false
 position = Vector2( 2447.94, 1838.06 )
 scale = Vector2( 16.9361, 10.9966 )
 _sections_unfolded = [ "Transform", "Visibility", "Z Index" ]
@@ -392,6 +403,7 @@ room = "r10"
 
 [node name="Fog11" parent="." index="36" instance=ExtResource( 8 )]
 
+visible = false
 position = Vector2( 3023.33, 691.469 )
 scale = Vector2( 23.8785, 33.7169 )
 _sections_unfolded = [ "Transform", "Visibility", "Z Index" ]
@@ -399,6 +411,7 @@ room = "r11"
 
 [node name="FogBack" parent="." index="37" instance=ExtResource( 8 )]
 
+visible = false
 position = Vector2( 1815.2, -74.4673 )
 scale = Vector2( 166.209, 127.792 )
 z_index = -1000
@@ -419,13 +432,13 @@ _sections_unfolded = [ "Transform" ]
 
 pause_mode = 0
 material = null
-position = Vector2( -314.172, 197.92 )
+position = Vector2( 1186.17, -1229.66 )
 max_health = 5
 shell_anim = "Null"
 
 [node name="Portal" parent="." index="41" instance=ExtResource( 11 )]
 
-position = Vector2( 2692.94, 542.831 )
+position = Vector2( 2691.62, 549.433 )
 target = "res://Maps/Map 2.tscn"
 
 [node name="EvilFish" parent="." index="42" instance=ExtResource( 12 )]
@@ -669,6 +682,7 @@ back_right_blood = null
 pause_mode = 0
 position = Vector2( 2636.16, 1819.4 )
 clips = null
+gun_swap = "shotti_swap"
 current_room = "r10"
 front_dash = null
 front_right_dash = null
@@ -1116,9 +1130,9 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 833.0
+margin_left = 807.0
 margin_top = 106.0
-margin_right = 1034.0
+margin_right = 1135.0
 margin_bottom = 146.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = true
@@ -1127,19 +1141,48 @@ mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
 bbcode_enabled = true
-bbcode_text = "Right mouse button to dodge!"
+bbcode_text = "Right mouse button to dodge and avoid bullets!"
 visible_characters = -1
 percent_visible = 1.0
 meta_underlined = true
 tab_size = 4
-text = "Right mouse button to dodge!"
+text = "Right mouse button to dodge and avoid bullets!"
 scroll_active = true
 scroll_following = false
 selection_enabled = false
 override_selected_font_color = false
 _sections_unfolded = [ "BBCode" ]
 
-[node name="RichTextLabel4" type="RichTextLabel" parent="." index="79"]
+[node name="RichTextLabel6" type="RichTextLabel" parent="." index="79"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 2156.0
+margin_top = 1772.0
+margin_right = 2484.0
+margin_bottom = 1812.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = true
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+bbcode_enabled = true
+bbcode_text = "Use keys 1-3 to change weapons once aquired."
+visible_characters = -1
+percent_visible = 1.0
+meta_underlined = true
+tab_size = 4
+text = "Use keys 1-3 to change weapons once aquired."
+scroll_active = true
+scroll_following = false
+selection_enabled = false
+override_selected_font_color = false
+_sections_unfolded = [ "BBCode" ]
+
+[node name="RichTextLabel4" type="RichTextLabel" parent="." index="80"]
 
 anchor_left = 0.0
 anchor_top = 0.0
@@ -1168,7 +1211,7 @@ selection_enabled = false
 override_selected_font_color = false
 _sections_unfolded = [ "BBCode" ]
 
-[node name="RichTextLabel5" type="RichTextLabel" parent="." index="80"]
+[node name="RichTextLabel5" type="RichTextLabel" parent="." index="81"]
 
 anchor_left = 0.0
 anchor_top = 0.0
@@ -1197,7 +1240,7 @@ selection_enabled = false
 override_selected_font_color = false
 _sections_unfolded = [ "BBCode" ]
 
-[node name="RichTextLabel1" type="RichTextLabel" parent="." index="81"]
+[node name="RichTextLabel1" type="RichTextLabel" parent="." index="82"]
 
 anchor_left = 0.0
 anchor_top = 0.0
@@ -1226,25 +1269,43 @@ selection_enabled = false
 override_selected_font_color = false
 _sections_unfolded = [ "BBCode" ]
 
-[node name="Shotti" parent="." index="82" instance=ExtResource( 13 )]
+[node name="Shotti" parent="." index="83" instance=ExtResource( 13 )]
 
 position = Vector2( 2638.06, 1866.03 )
+
+[connection signal="perma_open" from="." to="Door11" method="perma_open"]
 
 [connection signal="room_entered" from="Door" to="Fog" method="_reveal"]
 
 [connection signal="room_entered" from="Door2" to="Fog2" method="_reveal"]
 
+[connection signal="room_entered" from="Door2b" to="Fog2" method="_reveal"]
+
+[connection signal="room_entered" from="Door2c" to="Fog2" method="_reveal"]
+
 [connection signal="room_entered" from="Door3" to="Fog3" method="_reveal"]
+
+[connection signal="room_entered" from="Door3b" to="Fog3" method="_reveal"]
 
 [connection signal="room_entered" from="Door4" to="Fog4" method="_reveal"]
 
+[connection signal="room_entered" from="Door4b" to="Fog4" method="_reveal"]
+
 [connection signal="room_entered" from="Door5" to="Fog5" method="_reveal"]
+
+[connection signal="room_entered" from="Door5b" to="Fog5" method="_reveal"]
 
 [connection signal="room_entered" from="Door6" to="Fog6" method="_reveal"]
 
 [connection signal="room_entered" from="Door7" to="Fog7" method="_reveal"]
 
+[connection signal="room_entered" from="Door7b" to="Fog7" method="_reveal"]
+
 [connection signal="room_entered" from="Door8" to="Fog8" method="_reveal"]
+
+[connection signal="room_entered" from="Door8b" to="Fog8" method="_reveal"]
+
+[connection signal="room_entered" from="Door8c" to="Fog8" method="_reveal"]
 
 [connection signal="room_entered" from="Door9" to="Fog9" method="_reveal"]
 
@@ -1252,21 +1313,21 @@ position = Vector2( 2638.06, 1866.03 )
 
 [connection signal="room_entered" from="Door11" to="Fog11" method="_reveal"]
 
-[connection signal="room_clear" from="Fog" to="Door" method="perma_open"]
-
 [connection signal="room_clear" from="Fog" to="Doorb" method="perma_open"]
 
-[connection signal="room_clear" from="Fog2" to="Door2b" method="perma_open"]
+[connection signal="room_clear" from="Fog" to="Door" method="perma_open"]
 
 [connection signal="room_clear" from="Fog2" to="Door2c" method="perma_open"]
 
-[connection signal="room_clear" from="Fog3" to="Door3" method="perma_open"]
+[connection signal="room_clear" from="Fog2" to="Door2b" method="perma_open"]
 
 [connection signal="room_clear" from="Fog3" to="Door3b" method="perma_open"]
 
-[connection signal="room_clear" from="Fog4" to="Door4" method="perma_open"]
+[connection signal="room_clear" from="Fog3" to="Door3" method="perma_open"]
 
 [connection signal="room_clear" from="Fog4" to="Door4b" method="perma_open"]
+
+[connection signal="room_clear" from="Fog4" to="Door4" method="perma_open"]
 
 [connection signal="room_clear" from="Fog5" to="Door5" method="perma_open"]
 
@@ -1308,215 +1369,217 @@ position = Vector2( 2638.06, 1866.03 )
 
 [connection signal="time_change" from="Player" to="HUD" method="update_timebar"]
 
-[connection signal="shoot" from="EvilFish" to="." method="_on_shoot"]
+[connection signal="way_back" from="Portal" to="." method="way_back"]
 
-[connection signal="take_damage" from="EvilFish" to="Pause" method="pause_game"]
+[connection signal="shoot" from="EvilFish" to="." method="_on_shoot"]
 
 [connection signal="take_damage" from="EvilFish" to="Player/Camera2D" method="shake"]
 
-[connection signal="shoot" from="EvilFish2" to="." method="_on_shoot"]
+[connection signal="take_damage" from="EvilFish" to="Pause" method="pause_game"]
 
-[connection signal="take_damage" from="EvilFish2" to="Pause" method="pause_game"]
+[connection signal="shoot" from="EvilFish2" to="." method="_on_shoot"]
 
 [connection signal="take_damage" from="EvilFish2" to="Player/Camera2D" method="shake"]
 
-[connection signal="shoot" from="EvilFish3" to="." method="_on_shoot"]
+[connection signal="take_damage" from="EvilFish2" to="Pause" method="pause_game"]
 
-[connection signal="take_damage" from="EvilFish3" to="Pause" method="pause_game"]
+[connection signal="shoot" from="EvilFish3" to="." method="_on_shoot"]
 
 [connection signal="take_damage" from="EvilFish3" to="Player/Camera2D" method="shake"]
 
-[connection signal="shoot" from="EvilFish4" to="." method="_on_shoot"]
+[connection signal="take_damage" from="EvilFish3" to="Pause" method="pause_game"]
 
-[connection signal="take_damage" from="EvilFish4" to="Pause" method="pause_game"]
+[connection signal="shoot" from="EvilFish4" to="." method="_on_shoot"]
 
 [connection signal="take_damage" from="EvilFish4" to="Player/Camera2D" method="shake"]
 
-[connection signal="shoot" from="EvilFish5" to="." method="_on_shoot"]
+[connection signal="take_damage" from="EvilFish4" to="Pause" method="pause_game"]
 
-[connection signal="take_damage" from="EvilFish5" to="Pause" method="pause_game"]
+[connection signal="shoot" from="EvilFish5" to="." method="_on_shoot"]
 
 [connection signal="take_damage" from="EvilFish5" to="Player/Camera2D" method="shake"]
 
-[connection signal="shoot" from="EvilFish6" to="." method="_on_shoot"]
+[connection signal="take_damage" from="EvilFish5" to="Pause" method="pause_game"]
 
-[connection signal="take_damage" from="EvilFish6" to="Pause" method="pause_game"]
+[connection signal="shoot" from="EvilFish6" to="." method="_on_shoot"]
 
 [connection signal="take_damage" from="EvilFish6" to="Player/Camera2D" method="shake"]
 
-[connection signal="shoot" from="EvilFish7" to="." method="_on_shoot"]
+[connection signal="take_damage" from="EvilFish6" to="Pause" method="pause_game"]
 
-[connection signal="take_damage" from="EvilFish7" to="Pause" method="pause_game"]
+[connection signal="shoot" from="EvilFish7" to="." method="_on_shoot"]
 
 [connection signal="take_damage" from="EvilFish7" to="Player/Camera2D" method="shake"]
 
-[connection signal="shoot" from="EvilFish24" to="." method="_on_shoot"]
+[connection signal="take_damage" from="EvilFish7" to="Pause" method="pause_game"]
 
-[connection signal="take_damage" from="EvilFish24" to="Pause" method="pause_game"]
+[connection signal="shoot" from="EvilFish24" to="." method="_on_shoot"]
 
 [connection signal="take_damage" from="EvilFish24" to="Player/Camera2D" method="shake"]
 
-[connection signal="shoot" from="EvilFish25" to="." method="_on_shoot"]
+[connection signal="take_damage" from="EvilFish24" to="Pause" method="pause_game"]
 
-[connection signal="take_damage" from="EvilFish25" to="Pause" method="pause_game"]
+[connection signal="shoot" from="EvilFish25" to="." method="_on_shoot"]
 
 [connection signal="take_damage" from="EvilFish25" to="Player/Camera2D" method="shake"]
 
-[connection signal="shoot" from="EvilFish26" to="." method="_on_shoot"]
+[connection signal="take_damage" from="EvilFish25" to="Pause" method="pause_game"]
 
-[connection signal="take_damage" from="EvilFish26" to="Pause" method="pause_game"]
+[connection signal="shoot" from="EvilFish26" to="." method="_on_shoot"]
 
 [connection signal="take_damage" from="EvilFish26" to="Player/Camera2D" method="shake"]
 
-[connection signal="shoot" from="EvilFish8" to="." method="_on_shoot"]
+[connection signal="take_damage" from="EvilFish26" to="Pause" method="pause_game"]
 
-[connection signal="take_damage" from="EvilFish8" to="Pause" method="pause_game"]
+[connection signal="shoot" from="EvilFish8" to="." method="_on_shoot"]
 
 [connection signal="take_damage" from="EvilFish8" to="Player/Camera2D" method="shake"]
 
-[connection signal="shoot" from="EvilFish9" to="." method="_on_shoot"]
+[connection signal="take_damage" from="EvilFish8" to="Pause" method="pause_game"]
 
-[connection signal="take_damage" from="EvilFish9" to="Pause" method="pause_game"]
+[connection signal="shoot" from="EvilFish9" to="." method="_on_shoot"]
 
 [connection signal="take_damage" from="EvilFish9" to="Player/Camera2D" method="shake"]
 
-[connection signal="shoot" from="EvilFish10" to="." method="_on_shoot"]
+[connection signal="take_damage" from="EvilFish9" to="Pause" method="pause_game"]
 
-[connection signal="take_damage" from="EvilFish10" to="Pause" method="pause_game"]
+[connection signal="shoot" from="EvilFish10" to="." method="_on_shoot"]
 
 [connection signal="take_damage" from="EvilFish10" to="Player/Camera2D" method="shake"]
 
-[connection signal="shoot" from="EvilFish11" to="." method="_on_shoot"]
+[connection signal="take_damage" from="EvilFish10" to="Pause" method="pause_game"]
 
-[connection signal="take_damage" from="EvilFish11" to="Pause" method="pause_game"]
+[connection signal="shoot" from="EvilFish11" to="." method="_on_shoot"]
 
 [connection signal="take_damage" from="EvilFish11" to="Player/Camera2D" method="shake"]
 
-[connection signal="shoot" from="EvilFish12" to="." method="_on_shoot"]
+[connection signal="take_damage" from="EvilFish11" to="Pause" method="pause_game"]
 
-[connection signal="take_damage" from="EvilFish12" to="Pause" method="pause_game"]
+[connection signal="shoot" from="EvilFish12" to="." method="_on_shoot"]
 
 [connection signal="take_damage" from="EvilFish12" to="Player/Camera2D" method="shake"]
 
-[connection signal="shoot" from="EvilFish13" to="." method="_on_shoot"]
+[connection signal="take_damage" from="EvilFish12" to="Pause" method="pause_game"]
 
-[connection signal="take_damage" from="EvilFish13" to="Pause" method="pause_game"]
+[connection signal="shoot" from="EvilFish13" to="." method="_on_shoot"]
 
 [connection signal="take_damage" from="EvilFish13" to="Player/Camera2D" method="shake"]
 
-[connection signal="shoot" from="EvilFish14" to="." method="_on_shoot"]
+[connection signal="take_damage" from="EvilFish13" to="Pause" method="pause_game"]
 
-[connection signal="take_damage" from="EvilFish14" to="Pause" method="pause_game"]
+[connection signal="shoot" from="EvilFish14" to="." method="_on_shoot"]
 
 [connection signal="take_damage" from="EvilFish14" to="Player/Camera2D" method="shake"]
 
-[connection signal="shoot" from="EvilFish15" to="." method="_on_shoot"]
+[connection signal="take_damage" from="EvilFish14" to="Pause" method="pause_game"]
 
-[connection signal="take_damage" from="EvilFish15" to="Pause" method="pause_game"]
+[connection signal="shoot" from="EvilFish15" to="." method="_on_shoot"]
 
 [connection signal="take_damage" from="EvilFish15" to="Player/Camera2D" method="shake"]
 
-[connection signal="shoot" from="EvilFish16" to="." method="_on_shoot"]
+[connection signal="take_damage" from="EvilFish15" to="Pause" method="pause_game"]
 
-[connection signal="take_damage" from="EvilFish16" to="Pause" method="pause_game"]
+[connection signal="shoot" from="EvilFish16" to="." method="_on_shoot"]
 
 [connection signal="take_damage" from="EvilFish16" to="Player/Camera2D" method="shake"]
 
-[connection signal="shoot" from="EvilFish17" to="." method="_on_shoot"]
+[connection signal="take_damage" from="EvilFish16" to="Pause" method="pause_game"]
 
-[connection signal="take_damage" from="EvilFish17" to="Pause" method="pause_game"]
+[connection signal="shoot" from="EvilFish17" to="." method="_on_shoot"]
 
 [connection signal="take_damage" from="EvilFish17" to="Player/Camera2D" method="shake"]
 
-[connection signal="shoot" from="EvilFish18" to="." method="_on_shoot"]
+[connection signal="take_damage" from="EvilFish17" to="Pause" method="pause_game"]
 
-[connection signal="take_damage" from="EvilFish18" to="Pause" method="pause_game"]
+[connection signal="shoot" from="EvilFish18" to="." method="_on_shoot"]
 
 [connection signal="take_damage" from="EvilFish18" to="Player/Camera2D" method="shake"]
 
-[connection signal="shoot" from="EvilFish19" to="." method="_on_shoot"]
+[connection signal="take_damage" from="EvilFish18" to="Pause" method="pause_game"]
 
-[connection signal="take_damage" from="EvilFish19" to="Pause" method="pause_game"]
+[connection signal="shoot" from="EvilFish19" to="." method="_on_shoot"]
 
 [connection signal="take_damage" from="EvilFish19" to="Player/Camera2D" method="shake"]
 
-[connection signal="shoot" from="EvilFish27" to="." method="_on_shoot"]
+[connection signal="take_damage" from="EvilFish19" to="Pause" method="pause_game"]
 
-[connection signal="take_damage" from="EvilFish27" to="Pause" method="pause_game"]
+[connection signal="shoot" from="EvilFish27" to="." method="_on_shoot"]
 
 [connection signal="take_damage" from="EvilFish27" to="Player/Camera2D" method="shake"]
 
-[connection signal="shoot" from="EvilFish28" to="." method="_on_shoot"]
+[connection signal="take_damage" from="EvilFish27" to="Pause" method="pause_game"]
 
-[connection signal="take_damage" from="EvilFish28" to="Pause" method="pause_game"]
+[connection signal="shoot" from="EvilFish28" to="." method="_on_shoot"]
 
 [connection signal="take_damage" from="EvilFish28" to="Player/Camera2D" method="shake"]
 
-[connection signal="shoot" from="EvilFish29" to="." method="_on_shoot"]
+[connection signal="take_damage" from="EvilFish28" to="Pause" method="pause_game"]
 
-[connection signal="take_damage" from="EvilFish29" to="Pause" method="pause_game"]
+[connection signal="shoot" from="EvilFish29" to="." method="_on_shoot"]
 
 [connection signal="take_damage" from="EvilFish29" to="Player/Camera2D" method="shake"]
 
-[connection signal="shoot" from="EvilFish30" to="." method="_on_shoot"]
+[connection signal="take_damage" from="EvilFish29" to="Pause" method="pause_game"]
 
-[connection signal="take_damage" from="EvilFish30" to="Pause" method="pause_game"]
+[connection signal="shoot" from="EvilFish30" to="." method="_on_shoot"]
 
 [connection signal="take_damage" from="EvilFish30" to="Player/Camera2D" method="shake"]
 
-[connection signal="shoot" from="EvilFish31" to="." method="_on_shoot"]
+[connection signal="take_damage" from="EvilFish30" to="Pause" method="pause_game"]
 
-[connection signal="take_damage" from="EvilFish31" to="Pause" method="pause_game"]
+[connection signal="shoot" from="EvilFish31" to="." method="_on_shoot"]
 
 [connection signal="take_damage" from="EvilFish31" to="Player/Camera2D" method="shake"]
 
-[connection signal="shoot" from="EvilFish32" to="." method="_on_shoot"]
+[connection signal="take_damage" from="EvilFish31" to="Pause" method="pause_game"]
 
-[connection signal="take_damage" from="EvilFish32" to="Pause" method="pause_game"]
+[connection signal="shoot" from="EvilFish32" to="." method="_on_shoot"]
 
 [connection signal="take_damage" from="EvilFish32" to="Player/Camera2D" method="shake"]
 
-[connection signal="shoot" from="EvilFish33" to="." method="_on_shoot"]
+[connection signal="take_damage" from="EvilFish32" to="Pause" method="pause_game"]
 
-[connection signal="take_damage" from="EvilFish33" to="Pause" method="pause_game"]
+[connection signal="shoot" from="EvilFish33" to="." method="_on_shoot"]
 
 [connection signal="take_damage" from="EvilFish33" to="Player/Camera2D" method="shake"]
 
-[connection signal="shoot" from="EvilFish34" to="." method="_on_shoot"]
+[connection signal="take_damage" from="EvilFish33" to="Pause" method="pause_game"]
 
-[connection signal="take_damage" from="EvilFish34" to="Pause" method="pause_game"]
+[connection signal="shoot" from="EvilFish34" to="." method="_on_shoot"]
 
 [connection signal="take_damage" from="EvilFish34" to="Player/Camera2D" method="shake"]
 
-[connection signal="shoot" from="EvilFish35" to="." method="_on_shoot"]
+[connection signal="take_damage" from="EvilFish34" to="Pause" method="pause_game"]
 
-[connection signal="take_damage" from="EvilFish35" to="Pause" method="pause_game"]
+[connection signal="shoot" from="EvilFish35" to="." method="_on_shoot"]
 
 [connection signal="take_damage" from="EvilFish35" to="Player/Camera2D" method="shake"]
 
-[connection signal="shoot" from="EvilFish20" to="." method="_on_shoot"]
+[connection signal="take_damage" from="EvilFish35" to="Pause" method="pause_game"]
 
-[connection signal="take_damage" from="EvilFish20" to="Pause" method="pause_game"]
+[connection signal="shoot" from="EvilFish20" to="." method="_on_shoot"]
 
 [connection signal="take_damage" from="EvilFish20" to="Player/Camera2D" method="shake"]
 
-[connection signal="shoot" from="EvilFish21" to="." method="_on_shoot"]
+[connection signal="take_damage" from="EvilFish20" to="Pause" method="pause_game"]
 
-[connection signal="take_damage" from="EvilFish21" to="Pause" method="pause_game"]
+[connection signal="shoot" from="EvilFish21" to="." method="_on_shoot"]
 
 [connection signal="take_damage" from="EvilFish21" to="Player/Camera2D" method="shake"]
 
-[connection signal="shoot" from="EvilFish22" to="." method="_on_shoot"]
+[connection signal="take_damage" from="EvilFish21" to="Pause" method="pause_game"]
 
-[connection signal="take_damage" from="EvilFish22" to="Pause" method="pause_game"]
+[connection signal="shoot" from="EvilFish22" to="." method="_on_shoot"]
 
 [connection signal="take_damage" from="EvilFish22" to="Player/Camera2D" method="shake"]
 
+[connection signal="take_damage" from="EvilFish22" to="Pause" method="pause_game"]
+
 [connection signal="shoot" from="EvilFish23" to="." method="_on_shoot"]
 
-[connection signal="take_damage" from="EvilFish23" to="Pause" method="pause_game"]
-
 [connection signal="take_damage" from="EvilFish23" to="Player/Camera2D" method="shake"]
+
+[connection signal="take_damage" from="EvilFish23" to="Pause" method="pause_game"]
 
 [connection signal="get_shotti" from="Shotti" to="Player" method="gun_own"]
 

@@ -39,7 +39,7 @@ shader = SubResource( 1 )
 shader_param/grayscale = false
 _sections_unfolded = [ "Resource", "shader_param" ]
 
-[node name="Map 2" type="Node2D" index="0"]
+[node name="Map 2" type="Node2D"]
 
 material = SubResource( 2 )
 script = ExtResource( 1 )
@@ -170,7 +170,7 @@ clip_size = 20
 reload_timer = 1
 weapon_shift = 1
 clip_timer = 0.6
-shells = false
+gun_swap = "the_buff_puff"
 current_room = "bossroom"
 front_dash = "the_buff_puff"
 front_right_dash = "the_buff_puff"
@@ -190,8 +190,9 @@ detect_radius = 1500
 
 [node name="Portal" parent="." index="11" instance=ExtResource( 12 )]
 
-position = Vector2( -635.027, 159.144 )
+position = Vector2( -635.22, 164.984 )
 target = "res://Maps/Testmap.tscn"
+spawn_point = Vector2( 2586.08, 561.757 )
 
 [connection signal="room_entered" from="DoorIn" to="HUD" method="start_bossbar"]
 

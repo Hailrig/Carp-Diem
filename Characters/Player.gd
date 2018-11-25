@@ -15,9 +15,13 @@ var charge_target_free = null
 var time_stop = false
 var slow_time
 var camera_offset
-var shotti = false
+var shotti
 
 func _ready():
+	if global.player_pos:
+		position = global.player_pos
+		global.player_pos = null
+	shotti = global.shotti
 	if global.hp == null:
 		global.hp = starting_health
 	health = global.hp
@@ -125,6 +129,7 @@ func control(delta):
 func gun_own(gun):
 	if gun == "shotti":
 		shotti = true
+		global.shotti = true
 	
 func dont_shoot_yourself(gun_face):
 	if gun_face == 'right':

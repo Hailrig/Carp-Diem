@@ -6,7 +6,7 @@
 [ext_resource path="res://Weapons/shell_fly.tres" type="Animation" id=4]
 [ext_resource path="res://Weapons/Shrimpclip.tres" type="Animation" id=5]
 
-[node name="Shrimpclip" type="KinematicBody2D"]
+[node name="Shrimpclip" type="KinematicBody2D" index="0"]
 
 input_pickable = false
 collision_layer = 1
@@ -17,12 +17,10 @@ _sections_unfolded = [ "Material", "Visibility", "Z Index", "collision" ]
 
 [node name="Sprite" type="Sprite" parent="." index="0"]
 
-position = Vector2( 15.5079, 13.9352 )
-rotation = 3.14159
 z_index = -2
 texture = ExtResource( 2 )
 region_enabled = true
-region_rect = Rect2( 65, 63, 2, 1 )
+region_rect = Rect2( 61, 62, 2, 5 )
 _sections_unfolded = [ "Animation", "Offset", "Region", "Transform", "Visibility", "Z Index" ]
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite" index="0"]

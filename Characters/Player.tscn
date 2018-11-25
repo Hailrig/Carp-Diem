@@ -157,8 +157,8 @@ max_slow_time = 400
 modulate = Color( 1, 1, 1, 1 )
 texture = ExtResource( 5 )
 region_enabled = true
-region_rect = Rect2( 60, 126, 22, 39 )
-_sections_unfolded = [ "Animation", "Material", "Offset", "Region", "Visibility" ]
+region_rect = Rect2( 62, 174, 22, 40 )
+_sections_unfolded = [ "Animation", "Material", "Offset", "Region", "Transform", "Visibility" ]
 
 [node name="AnimationPlayer" parent="Body" index="0"]
 

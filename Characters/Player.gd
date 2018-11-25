@@ -147,6 +147,10 @@ func blood_dash():
 				print('hey')
 				var space_state = get_world_2d().direct_space_state
 				var result = space_state.intersect_ray(position, i.position, [self], collision_mask)
+				print(position)
+				print(i.position)
+				print([self])
+				print(collision_mask)
 				#var hit_pos = result.position
 				#draw_circle((hit_pos - position).rotated(-rotation), 5, Color(1.0, .329, .298))
 				print(result)

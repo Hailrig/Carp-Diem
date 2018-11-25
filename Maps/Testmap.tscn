@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://Maps/Map.gd" type="Script" id=1]
 [ext_resource path="res://HUD/Pause.tscn" type="PackedScene" id=2]
@@ -12,6 +12,7 @@
 [ext_resource path="res://Characters/Player.tscn" type="PackedScene" id=10]
 [ext_resource path="res://Maps/Portal.tscn" type="PackedScene" id=11]
 [ext_resource path="res://Characters/EvilFish.tscn" type="PackedScene" id=12]
+[ext_resource path="res://Maps/Shotti.tscn" type="PackedScene" id=13]
 
 [sub_resource type="Shader" id=1]
 
@@ -39,7 +40,7 @@ shader = SubResource( 1 )
 shader_param/grayscale = false
 _sections_unfolded = [ "Resource", "shader_param" ]
 
-[node name="TestMap" type="Node2D"]
+[node name="TestMap" type="Node2D" index="0"]
 
 material = SubResource( 2 )
 script = ExtResource( 1 )
@@ -430,11 +431,9 @@ _sections_unfolded = [ "Transform" ]
 
 pause_mode = 0
 material = null
-position = Vector2( -443.028, 201.893 )
+position = Vector2( 1730.53, 1807.46 )
 max_health = 5
-clips = null
 shell_anim = "Null"
-gun_swap = "shotti_swap"
 
 [node name="Portal" parent="." index="41" instance=ExtResource( 11 )]
 
@@ -1239,6 +1238,10 @@ selection_enabled = false
 override_selected_font_color = false
 _sections_unfolded = [ "BBCode" ]
 
+[node name="Shotti" parent="." index="82" instance=ExtResource( 13 )]
+
+position = Vector2( 2638.06, 1866.03 )
+
 [connection signal="room_entered" from="Door" to="Fog" method="_reveal"]
 
 [connection signal="room_entered" from="Door2" to="Fog2" method="_reveal"]
@@ -1261,37 +1264,37 @@ _sections_unfolded = [ "BBCode" ]
 
 [connection signal="room_entered" from="Door11" to="Fog11" method="_reveal"]
 
-[connection signal="room_clear" from="Fog" to="Door" method="perma_open"]
-
 [connection signal="room_clear" from="Fog" to="Doorb" method="perma_open"]
 
-[connection signal="room_clear" from="Fog2" to="Door2" method="perma_open"]
-
-[connection signal="room_clear" from="Fog2" to="Door2b" method="perma_open"]
+[connection signal="room_clear" from="Fog" to="Door" method="perma_open"]
 
 [connection signal="room_clear" from="Fog2" to="Door2c" method="perma_open"]
 
-[connection signal="room_clear" from="Fog3" to="Door3" method="perma_open"]
+[connection signal="room_clear" from="Fog2" to="Door2b" method="perma_open"]
+
+[connection signal="room_clear" from="Fog2" to="Door2" method="perma_open"]
 
 [connection signal="room_clear" from="Fog3" to="Door3b" method="perma_open"]
 
-[connection signal="room_clear" from="Fog4" to="Door4" method="perma_open"]
+[connection signal="room_clear" from="Fog3" to="Door3" method="perma_open"]
 
 [connection signal="room_clear" from="Fog4" to="Door4b" method="perma_open"]
 
-[connection signal="room_clear" from="Fog5" to="Door5" method="perma_open"]
+[connection signal="room_clear" from="Fog4" to="Door4" method="perma_open"]
 
 [connection signal="room_clear" from="Fog5" to="Door5b" method="perma_open"]
 
-[connection signal="room_clear" from="Fog6" to="Door6" method="perma_open"]
+[connection signal="room_clear" from="Fog5" to="Door5" method="perma_open"]
 
-[connection signal="room_clear" from="Fog7" to="Door7" method="perma_open"]
+[connection signal="room_clear" from="Fog6" to="Door6" method="perma_open"]
 
 [connection signal="room_clear" from="Fog7" to="Door7b" method="perma_open"]
 
-[connection signal="room_clear" from="Fog8" to="Door8" method="perma_open"]
+[connection signal="room_clear" from="Fog7" to="Door7" method="perma_open"]
 
 [connection signal="room_clear" from="Fog8" to="Door8b" method="perma_open"]
+
+[connection signal="room_clear" from="Fog8" to="Door8" method="perma_open"]
 
 [connection signal="room_clear" from="Fog8" to="Door8c" method="perma_open"]
 
@@ -1528,5 +1531,7 @@ _sections_unfolded = [ "BBCode" ]
 [connection signal="take_damage" from="EvilFish23" to="Pause" method="pause_game"]
 
 [connection signal="take_damage" from="EvilFish23" to="Player/Camera2D" method="shake"]
+
+[connection signal="get_shotti" from="Shotti" to="Player" method="gun_own"]
 
 

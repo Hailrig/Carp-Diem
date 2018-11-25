@@ -81,13 +81,13 @@ func _ready():
 #	$ReloadTimer.wait_time = reload_timer
 #	$ClipTimer.wait_time = clip_timer
 #	_in_clip = clip_size
-	gun_setup()
+	gun_setup(gun_swap)
 #	emit_signal('ammo_changed', _in_clip)
 	
 func control(delta):
 	pass
 	
-func gun_setup():
+func gun_setup(gun_swap):
 	$Weapon/AnimationPlayer.play(gun_swap)
 	print(gun)
 	if gun_swap == "pistol_swap":

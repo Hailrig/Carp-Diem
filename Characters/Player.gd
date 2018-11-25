@@ -15,6 +15,7 @@ var charge_target_free = null
 var time_stop = false
 var slow_time
 var camera_offset
+var shotti = false
 
 func _ready():
 	if global.hp == null:
@@ -73,6 +74,14 @@ func control(delta):
 		
 	dont_shoot_yourself(shot_dir)
 	
+	if Input.is_action_just_pressed('pistol_use'):
+		if gun != "shrimp":
+			gun_setup("shrimp_swap")
+		
+	if Input.is_action_just_pressed('shotti_use'):
+		if shotti == true and gun != "shotti":
+			gun_setup("shotti_swap")
+	
 	if Input.is_action_just_pressed('blood_dash'):
 		blood_dash()
 	
@@ -99,6 +108,7 @@ func control(delta):
 			normal_time()
 		else:
 			time_stop()
+			
 	
 	if time_stop:
 		slow_time -= 4
@@ -111,6 +121,10 @@ func control(delta):
 		normal_time()
 	
 	_camera_shift()
+	
+func gun_own(gun):
+	if gun == "shotti":
+		shotti = true
 	
 func dont_shoot_yourself(gun_face):
 	if gun_face == 'right':

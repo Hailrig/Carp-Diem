@@ -17,10 +17,13 @@ export (int) var weapon_offset
 export (int) var clip_size
 export (int) var reload_timer
 export (int) var weapon_shift
+export (bool) var clips
 export (float) var clip_timer
 export (String) var clip_anim
 export (bool) var shells
 export (String) var shell_anim
+export (String) var gun_swap
+export (String) var gun
 
 export (String) var current_room
 
@@ -69,19 +72,60 @@ var zoom = false
 var path = null
 
 func _ready():
-	_in_clip = clip_size
-	if name == "Player":
-		pass
+#	if name == "Player":
+#		pass
 #		health = starting_health
 #		emit_signal('health_changed', health)
 	health = starting_health
-	$WeaponTimer.wait_time = weapon_cooldown
-	$ReloadTimer.wait_time = reload_timer
-	$ClipTimer.wait_time = clip_timer
-	emit_signal('ammo_changed', _in_clip)
+#	$WeaponTimer.wait_time = weapon_cooldown
+#	$ReloadTimer.wait_time = reload_timer
+#	$ClipTimer.wait_time = clip_timer
+#	_in_clip = clip_size
+	gun_setup(gun_swap)
+#	emit_signal('ammo_changed', _in_clip)
 	
 func control(delta):
 	pass
+	
+func gun_setup(gun_swap):
+	$Weapon/AnimationPlayer.play(gun_swap)
+	print(gun)
+	if gun_swap == "pistol_swap":
+		weapon_cooldown = 1
+		clip_size = 5
+		reload_timer = 1
+		clips = true
+		clip_anim = "9mil_drop"
+		shells = true
+		shell_anim = "shell_fly"
+		reload_right = "a"
+		reload_left = "a"
+	if gun_swap == "shrimp_swap":
+		weapon_cooldown = 0.3
+		clip_size = 8
+		reload_timer = 1
+		clips = true
+		clip_anim = "shrimp_toss"
+		shells = false
+		shell_anim = null
+		reload_right = "reload"
+		reload_left = "reload_left"
+	if gun_swap == "shotti_swap":
+		weapon_cooldown = 0.6
+		clip_size = 5
+		reload_timer = 1
+		clips = false
+		clip_anim = "shrimp_toss"
+		shells = true
+		shell_anim = "shell_fly"
+		reload_right = "a"
+		reload_left = "a"
+		
+	$WeaponTimer.wait_time = weapon_cooldown
+	$ReloadTimer.wait_time = reload_timer
+	$ClipTimer.wait_time = clip_timer
+	_in_clip = clip_size
+	emit_signal('ammo_changed', _in_clip)
 	
 func shoot():
 #		if _in_clip >= 0:
@@ -92,12 +136,29 @@ func shoot():
 			emit_signal('ammo_changed', _in_clip)
 			can_shoot = false
 			$WeaponTimer.start()
-			var dir = Vector2(1, 0).rotated($Weapon.global_rotation)
-			emit_signal('shoot', Bullet, $Weapon/Muzzle.global_position, dir)
+#			var dir = Vector2(1, 0).rotated($Weapon.global_rotation)
+#			emit_signal('shoot', Bullet, $Weapon/Muzzle.global_position, dir)
+			if gun == "pistol" or gun == "shrimp":
+				pistol()
+			if gun == "shotti":
+				shotti()
 			if shells:
 				emit_signal("clip_fly", clip, $Weapon.global_position, shell_anim)
 		elif $ReloadTimer.time_left == 0:
 			reload()
+
+func pistol():
+	var dir = Vector2(1, 0).rotated($Weapon.global_rotation)
+	emit_signal('shoot', Bullet, $Weapon/Muzzle.global_position, dir)
+	
+func shotti():
+	var dir = Vector2(1, 0).rotated($Weapon.global_rotation - 0.25)
+	emit_signal('shoot', Bullet, $Weapon/Muzzle.global_position, dir)
+	dir = Vector2(1, 0).rotated($Weapon.global_rotation + 0.25)
+	emit_signal('shoot', Bullet, $Weapon/Muzzle.global_position, dir)
+	dir = Vector2(1, 0).rotated($Weapon.global_rotation)
+	emit_signal('shoot', Bullet, $Weapon/Muzzle.global_position, dir)
+	
 
 func _physics_process(delta):
 	if not alive:
@@ -225,7 +286,8 @@ func reload():
 		$Weapon/AnimationPlayer.play(reload_left)
 #		pass play left offset animation
 #	emit_signal("clip_fly", clip, $Weapon.global_position)
-	$ClipTimer.start()
+	if clips:
+		$ClipTimer.start()
 	$ReloadTimer.start()
 	
 func take_damage(amount):
@@ -247,6 +309,9 @@ func gain_life(amount):
 	emit_signal('health_changed', health)
 	
 func getrekt():
+	if !alive:
+		return
+	alive = false
 	emit_signal('dead')
 	path = null
 	change_anim(rad2deg($Body.get_angle_to(get_global_mouse_position())), rad2deg($Weapon.global_rotation), velocity)
@@ -260,7 +325,6 @@ func getrekt():
 	remove_from_group('bloodied_enemies')
 	remove_from_group(current_room)
 	$Weapon.queue_free()
-	alive = false
 
 func _on_WeaponTimer_timeout():
 	can_shoot = true

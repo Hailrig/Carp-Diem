@@ -16,7 +16,7 @@
 custom_solver_bias = 0.0
 radius = 44.3402
 
-[node name="BuffPuff" index="0" instance=ExtResource( 1 )]
+[node name="BuffPuff" instance=ExtResource( 1 )]
 
 script = ExtResource( 2 )
 Bullet = null

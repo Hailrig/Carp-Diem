@@ -39,7 +39,7 @@ shader = SubResource( 1 )
 shader_param/grayscale = false
 _sections_unfolded = [ "Resource", "shader_param" ]
 
-[node name="TestMap" type="Node2D" index="0"]
+[node name="TestMap" type="Node2D"]
 
 material = SubResource( 2 )
 script = ExtResource( 1 )
@@ -1242,9 +1242,9 @@ _sections_unfolded = [ "BBCode" ]
 
 [connection signal="room_clear" from="Fog4" to="Door4b" method="perma_open"]
 
-[connection signal="room_clear" from="Fog5" to="Door5b" method="perma_open"]
-
 [connection signal="room_clear" from="Fog5" to="Door5" method="perma_open"]
+
+[connection signal="room_clear" from="Fog5" to="Door5b" method="perma_open"]
 
 [connection signal="room_clear" from="Fog6" to="Door6" method="perma_open"]
 
@@ -1252,11 +1252,11 @@ _sections_unfolded = [ "BBCode" ]
 
 [connection signal="room_clear" from="Fog7" to="Door7b" method="perma_open"]
 
-[connection signal="room_clear" from="Fog8" to="Door8c" method="perma_open"]
-
 [connection signal="room_clear" from="Fog8" to="Door8" method="perma_open"]
 
 [connection signal="room_clear" from="Fog8" to="Door8b" method="perma_open"]
+
+[connection signal="room_clear" from="Fog8" to="Door8c" method="perma_open"]
 
 [connection signal="room_clear" from="Fog9" to="Door9" method="perma_open"]
 

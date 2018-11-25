@@ -1,8 +1,15 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Characters/EvilFish.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Characters/BuffPuff.gd" type="Script" id=2]
-[ext_resource path="res://Animations/Puffer/the_buff_puff.tres" type="Animation" id=3]
+[ext_resource path="res://Characters/Puffboss.png" type="Texture" id=3]
+[ext_resource path="res://Animations/Puffer/PuffN.tres" type="Animation" id=4]
+[ext_resource path="res://Animations/Puffer/PuffNE.tres" type="Animation" id=5]
+[ext_resource path="res://Animations/Puffer/PuffNW.tres" type="Animation" id=6]
+[ext_resource path="res://Animations/Puffer/PuffS.tres" type="Animation" id=7]
+[ext_resource path="res://Animations/Puffer/PuffSE.tres" type="Animation" id=8]
+[ext_resource path="res://Animations/Puffer/PuffSW.tres" type="Animation" id=9]
+[ext_resource path="res://Animations/Puffer/the_buff_puff.tres" type="Animation" id=10]
 
 [sub_resource type="CircleShape2D" id=1]
 
@@ -24,19 +31,19 @@ reload_timer = null
 weapon_shift = null
 clip_timer = null
 current_room = null
-front_idle = null
-front_right_idle = null
-front_left_idle = null
-back_idle = null
-back_left_idle = null
-back_right_idle = null
-front_walk = null
-front_right_walk = null
-front_left_walk = null
-back_walk = null
-back_left_walk = null
-back_right_walk = null
-front_dash = null
+front_idle = "PuffS"
+front_right_idle = "PuffSE"
+front_left_idle = "PuffSW"
+back_idle = "PuffN"
+back_left_idle = "PuffNW"
+back_right_idle = "PuffNE"
+front_walk = "PuffS"
+front_right_walk = "PuffSE"
+front_left_walk = "PuffSW"
+back_walk = "PuffN"
+back_left_walk = "PuffNW"
+back_right_walk = "PuffNE"
+front_dash = "Null"
 front_right_dash = null
 front_left_dash = null
 back_dash = null
@@ -54,15 +61,24 @@ detect_radius = null
 
 [node name="Body" parent="." index="0"]
 
-region_rect = Rect2( 492, 301, 112, 102 )
+texture = ExtResource( 3 )
+region_rect = Rect2( 536, 9, 133, 118 )
 
 [node name="AnimationPlayer" parent="Body" index="0"]
 
-anims/the_buff_puff = ExtResource( 3 )
+anims/PuffN = ExtResource( 4 )
+anims/PuffNE = ExtResource( 5 )
+anims/PuffNW = ExtResource( 6 )
+anims/PuffS = ExtResource( 7 )
+anims/PuffSE = ExtResource( 8 )
+anims/PuffSW = ExtResource( 9 )
+anims/the_buff_puff = ExtResource( 10 )
 
 [node name="Weapon" parent="." index="1"]
 
+visible = false
 offset = Vector2( 60, 0 )
+_sections_unfolded = [ "Material", "Offset", "Region", "Transform", "Visibility" ]
 
 [node name="Muzzle" parent="Weapon" index="0"]
 

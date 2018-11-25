@@ -39,7 +39,7 @@ shader = SubResource( 1 )
 shader_param/grayscale = false
 _sections_unfolded = [ "Resource", "shader_param" ]
 
-[node name="TestMap" type="Node2D" index="0"]
+[node name="TestMap" type="Node2D"]
 
 material = SubResource( 2 )
 position = Vector2( 14.7328, 2.45551 )
@@ -354,6 +354,7 @@ room = "r4"
 
 [node name="Fog5" parent="." index="30" instance=ExtResource( 8 )]
 
+visible = false
 position = Vector2( 1157.2, -901.24 )
 scale = Vector2( 10.6337, 8.21658 )
 _sections_unfolded = [ "Transform", "Visibility", "Z Index" ]
@@ -432,7 +433,6 @@ pause_mode = 0
 material = null
 position = Vector2( -408.996, 227.812 )
 max_health = 5
-shells = null
 shell_anim = "Null"
 
 [node name="Portal" parent="." index="41" instance=ExtResource( 11 )]
@@ -504,7 +504,7 @@ back_right_blood = null
 [node name="EvilFish5" parent="." index="46" instance=ExtResource( 12 )]
 
 pause_mode = 0
-position = Vector2( 259.772, 136.335 )
+position = Vector2( 260.88, 138.443 )
 current_room = "r1"
 front_dash = null
 front_right_dash = null
@@ -1225,23 +1225,23 @@ _sections_unfolded = [ "BBCode" ]
 
 [connection signal="room_entered" from="Door11" to="Fog11" method="_reveal"]
 
-[connection signal="room_clear" from="Fog" to="Door" method="perma_open"]
-
 [connection signal="room_clear" from="Fog" to="Doorb" method="perma_open"]
+
+[connection signal="room_clear" from="Fog" to="Door" method="perma_open"]
 
 [connection signal="room_clear" from="Fog2" to="Door2c" method="perma_open"]
 
-[connection signal="room_clear" from="Fog2" to="Door2" method="perma_open"]
-
 [connection signal="room_clear" from="Fog2" to="Door2b" method="perma_open"]
+
+[connection signal="room_clear" from="Fog2" to="Door2" method="perma_open"]
 
 [connection signal="room_clear" from="Fog3" to="Door3b" method="perma_open"]
 
 [connection signal="room_clear" from="Fog3" to="Door3" method="perma_open"]
 
-[connection signal="room_clear" from="Fog4" to="Door4" method="perma_open"]
-
 [connection signal="room_clear" from="Fog4" to="Door4b" method="perma_open"]
+
+[connection signal="room_clear" from="Fog4" to="Door4" method="perma_open"]
 
 [connection signal="room_clear" from="Fog5" to="Door5b" method="perma_open"]
 
@@ -1253,9 +1253,9 @@ _sections_unfolded = [ "BBCode" ]
 
 [connection signal="room_clear" from="Fog7" to="Door7" method="perma_open"]
 
-[connection signal="room_clear" from="Fog8" to="Door8c" method="perma_open"]
-
 [connection signal="room_clear" from="Fog8" to="Door8b" method="perma_open"]
+
+[connection signal="room_clear" from="Fog8" to="Door8c" method="perma_open"]
 
 [connection signal="room_clear" from="Fog8" to="Door8" method="perma_open"]
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://Characters/Characters.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Characters/EvilFish.gd" type="Script" id=2]
@@ -21,7 +21,38 @@
 [ext_resource path="res://Audio/roblox_death.wav" type="AudioStream" id=19]
 [ext_resource path="res://Audio/BLAM.wav" type="AudioStream" id=20]
 
-[sub_resource type="RectangleShape2D" id=1]
+[sub_resource type="Animation" id=1]
+
+resource_name = "pistol_swap"
+length = 1.0
+loop = false
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Rect2( 218, 180, 9, 7 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("..:gun")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ "pistol" ]
+}
+
+[sub_resource type="RectangleShape2D" id=2]
 
 custom_solver_bias = 0.0
 extents = Vector2( 10.9342, 17.9968 )
@@ -44,10 +75,13 @@ weapon_offset = 13
 clip_size = 5
 reload_timer = 1
 weapon_shift = 2
+clips = true
 clip_timer = 1.0
 clip_anim = "9mil_drop"
 shells = true
 shell_anim = "shell_fly"
+gun_swap = "pistol_swap"
+gun = "pistol"
 current_room = "a"
 front_idle = "front_idle_carp"
 front_right_idle = "front_right_idle_carp"
@@ -115,12 +149,16 @@ offset = Vector2( -2, -3 )
 flip_v = true
 region_enabled = true
 region_rect = Rect2( 218, 180, 9, 7 )
-_sections_unfolded = [ "Material", "Offset", "Transform" ]
+_sections_unfolded = [ "Material", "Offset", "Region", "Transform" ]
 
 [node name="Muzzle" parent="Weapon" index="0"]
 
 position = Vector2( 10.9368, 1.76607 )
 _sections_unfolded = [ "Transform" ]
+
+[node name="AnimationPlayer" parent="Weapon" index="1"]
+
+anims/pistol_swap = SubResource( 1 )
 
 [node name="AudioStreamPlayer2D" parent="Weapon" index="2"]
 
@@ -129,7 +167,7 @@ stream = ExtResource( 20 )
 [node name="CollisionShape2D" parent="." index="3"]
 
 position = Vector2( 0.0510483, -0.765703 )
-shape = SubResource( 1 )
+shape = SubResource( 2 )
 
 [node name="DetectRadius" type="Area2D" parent="." index="4"]
 

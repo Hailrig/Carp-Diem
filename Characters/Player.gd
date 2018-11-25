@@ -144,16 +144,22 @@ func blood_dash():
 	for i in bloodied_enemies:
 		if (i.position.x - mouse_pos.x < 50) and (i.position.x - mouse_pos.x > -50):
 			if (i.position.y - mouse_pos.y < 50) and (i.position.y - mouse_pos.y > -50):
-					var space_state = get_world_2d().direct_space_state
-					var result = space_state.intersect_ray(position, i.position, [self], collision_mask)
-					#var hit_pos = result.position
-					#draw_circle((hit_pos - position).rotated(-rotation), 5, Color(1.0, .329, .298))
-					if result:
-						if result.collider == i:
-							charge_target = i;
-							charge_target_free = weakref(i);
-							can_be_hurt = false
-							zoom = true
+				print('hey')
+				var space_state = get_world_2d().direct_space_state
+				var result = space_state.intersect_ray(position, i.position, [self], collision_mask)
+				print(position)
+				print(i.position)
+				print([self])
+				print(collision_mask)
+				#var hit_pos = result.position
+				#draw_circle((hit_pos - position).rotated(-rotation), 5, Color(1.0, .329, .298))
+				print(result)
+				if result:
+					if result.collider == i:
+						charge_target = i;
+						charge_target_free = weakref(i);
+						can_be_hurt = false
+						zoom = true
 
 				
 func chomp(delta):

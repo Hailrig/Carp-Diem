@@ -24,7 +24,7 @@
 [sub_resource type="RectangleShape2D" id=1]
 
 custom_solver_bias = 0.0
-extents = Vector2( 10.5984, 18.1302 )
+extents = Vector2( 10.9342, 17.9968 )
 
 [node name="EvilFish" instance=ExtResource( 1 )]
 
@@ -124,18 +124,15 @@ _sections_unfolded = [ "Transform" ]
 
 [node name="AudioStreamPlayer2D" parent="Weapon" index="2"]
 
-visible = false
 stream = ExtResource( 20 )
 
 [node name="CollisionShape2D" parent="." index="3"]
 
-visible = false
 position = Vector2( 0.0510483, -0.765703 )
 shape = SubResource( 1 )
 
 [node name="DetectRadius" type="Area2D" parent="." index="4"]
 
-visible = false
 input_pickable = true
 gravity_vec = Vector2( 0, 1 )
 gravity = 98.0
@@ -149,7 +146,7 @@ _sections_unfolded = [ "Collision" ]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DetectRadius" index="0"]
 
-visible = false
+disabled = true
 _sections_unfolded = [ "Transform" ]
 
 [connection signal="body_entered" from="DetectRadius" to="." method="_on_Area2D_body_entered"]

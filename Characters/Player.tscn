@@ -101,7 +101,7 @@ tracks/0/keys = {
 custom_solver_bias = 0.0
 extents = Vector2( 10.0377, 19.6733 )
 
-[node name="Player" index="0" instance=ExtResource( 1 )]
+[node name="Player" instance=ExtResource( 1 )]
 
 z_index = 1
 collision_layer = 2
@@ -120,6 +120,7 @@ reload_timer = 1
 weapon_shift = 1
 clip_timer = 0.6
 clip_anim = "shrimp_toss"
+shells = null
 shell_anim = null
 current_room = "start"
 front_idle = "front_idle"
@@ -156,8 +157,8 @@ max_slow_time = 400
 modulate = Color( 1, 1, 1, 1 )
 texture = ExtResource( 5 )
 region_enabled = true
-region_rect = Rect2( 60, 126, 22, 39 )
-_sections_unfolded = [ "Animation", "Material", "Offset", "Region", "Visibility" ]
+region_rect = Rect2( 62, 174, 22, 40 )
+_sections_unfolded = [ "Animation", "Material", "Offset", "Region", "Transform", "Visibility" ]
 
 [node name="AnimationPlayer" parent="Body" index="0"]
 
@@ -273,7 +274,14 @@ wait_time = 1.0
 one_shot = false
 autostart = false
 
-[node name="Camera2D" type="Camera2D" parent="." index="12"]
+[node name="PostChomp" type="Timer" parent="." index="12"]
+
+process_mode = 1
+wait_time = 0.1
+one_shot = true
+autostart = false
+
+[node name="Camera2D" type="Camera2D" parent="." index="13"]
 
 position = Vector2( -3.8147e-006, 0.277771 )
 anchor_mode = 1

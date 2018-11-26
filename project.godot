@@ -11,7 +11,7 @@ config_version=3
 [application]
 
 config/name="IGMC 2018 Game"
-run/main_scene="res://Maps/Testmap.tscn"
+run/main_scene="res://Maps/Intro.tscn"
 config/icon="res://icon.png"
 
 [autoload]

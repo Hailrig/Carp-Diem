@@ -1,0 +1,76 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://RichTextLabel.gd" type="Script" id=1]
+[ext_resource path="res://Audio/Typewriter.wav" type="AudioStream" id=2]
+[ext_resource path="res://Maps/Tilesheet.png" type="Texture" id=3]
+
+[node name="Intro" type="Node2D"]
+
+[node name="RichTextLabel" type="RichTextLabel" parent="." index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 136.0
+margin_top = 118.0
+margin_right = 514.0
+margin_bottom = 209.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = true
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+bbcode_enabled = true
+bbcode_text = ""
+visible_characters = -1
+percent_visible = 1.0
+meta_underlined = true
+tab_size = 4
+text = ""
+scroll_active = false
+scroll_following = false
+selection_enabled = false
+override_selected_font_color = false
+script = ExtResource( 1 )
+_sections_unfolded = [ "BBCode" ]
+
+[node name="LetterCounter" type="Timer" parent="RichTextLabel" index="1"]
+
+process_mode = 1
+wait_time = 0.05
+one_shot = false
+autostart = true
+
+[node name="ReadMe" type="Timer" parent="RichTextLabel" index="2"]
+
+process_mode = 1
+wait_time = 1.0
+one_shot = false
+autostart = false
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="RichTextLabel" index="3"]
+
+stream = ExtResource( 2 )
+volume_db = 0.0
+pitch_scale = 1.0
+autoplay = true
+mix_target = 0
+bus = "Master"
+
+[node name="Sprite" type="Sprite" parent="." index="1"]
+
+position = Vector2( 330.948, 224.606 )
+scale = Vector2( 22.1372, 16.5943 )
+z_index = -1000
+texture = ExtResource( 3 )
+region_enabled = true
+region_rect = Rect2( -9, -5, 59, 55 )
+_sections_unfolded = [ "Region", "Z Index" ]
+
+[connection signal="timeout" from="RichTextLabel/LetterCounter" to="RichTextLabel" method="_on_LetterCounter_timeout"]
+
+[connection signal="timeout" from="RichTextLabel/ReadMe" to="RichTextLabel" method="_on_ReadMe_timeout"]
+
+

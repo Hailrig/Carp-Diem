@@ -40,7 +40,7 @@ shader = SubResource( 1 )
 shader_param/grayscale = false
 _sections_unfolded = [ "Resource", "shader_param" ]
 
-[node name="Map4" type="Node2D" index="0"]
+[node name="Map4" type="Node2D"]
 
 material = SubResource( 2 )
 script = ExtResource( 1 )
@@ -132,14 +132,16 @@ room = "boss"
 
 [node name="Door" parent="." index="5" instance=ExtResource( 6 )]
 
-position = Vector2( -703.861, -26.3792 )
+position = Vector2( -704.914, -26.3792 )
 room = "boss"
+texture = "res://Maps/PrettyDoors.png"
 
 [node name="Door2" parent="." index="6" instance=ExtResource( 6 )]
 
-position = Vector2( 672.782, -26.0082 )
+position = Vector2( 672.782, -24.7158 )
 room = "boss"
 enter_dir = "west"
+texture = "res://Maps/PrettyDoors.png"
 
 [node name="HUD" parent="." index="7" instance=ExtResource( 7 )]
 

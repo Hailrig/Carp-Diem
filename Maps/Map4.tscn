@@ -164,17 +164,11 @@ gun_swap = "auto_swap"
 position = Vector2( -999.029, -58.7734 )
 target = "res://Maps/Map3.tscn"
 spawn_point = Vector2( -43.2245, 5550.49 )
+map = null
 
 [node name="JellyWitch" parent="." index="12" instance=ExtResource( 11 )]
 
-pause_mode = 2
-position = Vector2( 221.004, -46.4929 )
-z_as_relative = false
-input_pickable = false
-collision_layer = 4
-collision_mask = 7
-collision/safe_margin = 0.08
-_sections_unfolded = [ "Collision", "Material", "Pause", "Pickable", "Transform", "Visibility", "Z Index" ]
+position = Vector2( 221.861, -46.4929 )
 Bullet = ExtResource( 12 )
 clip = ExtResource( 13 )
 speed = 100
@@ -219,9 +213,11 @@ reload_right = "the_buff_puff"
 reload_left = "the_buff_puff"
 detect_radius = 0
 
+[connection signal="room_clear" from="Fog" to="Door" method="perma_open"]
+
 [connection signal="room_clear" from="Fog" to="Door2" method="perma_open"]
 
-[connection signal="room_clear" from="Fog" to="Door" method="perma_open"]
+[connection signal="room_entered" from="Door" to="HUD" method="start_bossbar"]
 
 [connection signal="room_entered" from="Door" to="Fog" method="_reveal"]
 
@@ -244,6 +240,10 @@ detect_radius = 0
 [connection signal="shoot" from="Player" to="." method="_on_shoot"]
 
 [connection signal="time_change" from="Player" to="HUD" method="update_timebar"]
+
+[connection signal="dead" from="JellyWitch" to="HUD" method="end_bossbar"]
+
+[connection signal="health_changed" from="JellyWitch" to="HUD" method="update_bossbar"]
 
 [connection signal="shoot" from="JellyWitch" to="." method="_on_shoot"]
 

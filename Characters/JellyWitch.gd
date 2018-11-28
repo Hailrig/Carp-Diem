@@ -15,7 +15,7 @@ func spin_shot():
 	emit_signal('shoot', rico, $Weapon/Muzzle.global_position, dir)
 	
 func tri_shot():
-	i += .1
+	i += .05
 	$WeaponTimer.wait_time = 0.05
 	clip_size = 50
 	var dir = Vector2(1, 0).rotated($Weapon.global_rotation + i)

@@ -135,6 +135,7 @@ material = null
 position = Vector2( -563.334, 188.021 )
 max_health = 5
 shell_anim = "Null"
+gun_swap = "auto_swap"
 
 [node name="HUD" parent="." index="6" instance=ExtResource( 6 )]
 
@@ -195,12 +196,14 @@ detect_radius = 1500
 position = Vector2( -635.22, 164.984 )
 target = "res://Maps/Testmap.tscn"
 spawn_point = Vector2( 2586.08, 561.757 )
+map = null
 
 [node name="Portal2" parent="." index="12" instance=ExtResource( 12 )]
 
 position = Vector2( 1593.39, 164.694 )
 target = "res://Maps/Map3.tscn"
 spawn_point = Vector2( 0, 0 )
+map = null
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." index="13"]
 
@@ -223,6 +226,8 @@ bus = "Master"
 
 [connection signal="bullet_time" from="Player" to="." method="bullet_time"]
 
+[connection signal="change_ammo" from="Player" to="HUD" method="change_ammobar"]
+
 [connection signal="charge" from="Player" to="." method="_calculate_new_path"]
 
 [connection signal="clip_fly" from="Player" to="." method="_clip_fly"]
@@ -235,9 +240,9 @@ bus = "Master"
 
 [connection signal="time_change" from="Player" to="HUD" method="update_timebar"]
 
-[connection signal="room_clear" from="Fog" to="DoorIn" method="perma_open"]
-
 [connection signal="room_clear" from="Fog" to="DoorOut" method="perma_open"]
+
+[connection signal="room_clear" from="Fog" to="DoorIn" method="perma_open"]
 
 [connection signal="dead" from="BuffPuff" to="HUD" method="end_bossbar"]
 

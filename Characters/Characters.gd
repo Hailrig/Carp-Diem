@@ -6,6 +6,7 @@ signal dead
 signal ammo_changed
 signal take_damage
 signal clip_fly
+signal change_ammo
 
 export (PackedScene) var Bullet
 export (PackedScene) var clip
@@ -109,6 +110,7 @@ func gun_setup(gun_swap):
 		shell_anim = null
 		reload_right = "reload"
 		reload_left = "reload_left"
+		emit_signal("change_ammo", "res://HUD/Pistolshrimpammo.png", 8)
 	if gun_swap == "shotti_swap":
 		weapon_cooldown = 0.6
 		clip_size = 5
@@ -119,6 +121,18 @@ func gun_setup(gun_swap):
 		shell_anim = "shell_fly"
 		reload_right = "a"
 		reload_left = "a"
+		emit_signal("change_ammo", "res://HUD/Shotammo.png", 5)
+	if gun_swap == "auto_swap":
+		weapon_cooldown = 0.1
+		clip_size = 15
+		reload_timer = 2
+		clips = true
+		clip_anim = "9mil_drop"
+		shells = true
+		shell_anim = "shell_fly"
+		reload_right = "a"
+		reload_left = "a"
+		emit_signal("change_ammo", "res://HUD/SMGammo.png", 15)
 		
 	$WeaponTimer.wait_time = weapon_cooldown
 	$ReloadTimer.wait_time = reload_timer
@@ -139,6 +153,8 @@ func shoot():
 #			emit_signal('shoot', Bullet, $Weapon/Muzzle.global_position, dir)
 			if gun == "pistol" or gun == "shrimp":
 				pistol()
+			if gun =="auto":
+				auto()
 			if gun == "shotti":
 				shotti()
 			if shells:
@@ -148,6 +164,10 @@ func shoot():
 
 func pistol():
 	var dir = Vector2(1, 0).rotated($Weapon.global_rotation)
+	emit_signal('shoot', Bullet, $Weapon/Muzzle.global_position, dir)
+	
+func auto():
+	var dir = Vector2(1, 0).rotated($Weapon.global_rotation + rand_range(-0.25, 0.25))
 	emit_signal('shoot', Bullet, $Weapon/Muzzle.global_position, dir)
 	
 func shotti():

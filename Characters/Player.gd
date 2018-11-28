@@ -16,12 +16,14 @@ var time_stop = false
 var slow_time
 var camera_offset
 var shotti
+var auto
 
 func _ready():
 	if global.player_pos:
 		position = global.player_pos
 		global.player_pos = null
 	shotti = global.shotti
+	auto = global.auto
 	if global.hp == null:
 		global.hp = starting_health
 	health = global.hp
@@ -85,11 +87,18 @@ func control(delta):
 	if Input.is_action_just_pressed('shotti_use'):
 		if shotti == true and gun != "shotti":
 			gun_setup("shotti_swap")
+			
+	if Input.is_action_just_pressed('auto_use'):
+		if auto == true and gun != "auto":
+			gun_setup("auto_swap")
 	
 	if Input.is_action_just_pressed('blood_dash'):
 		blood_dash()
 	
 	if Input.is_action_just_pressed('fire'):
+		shoot()
+	
+	if Input.is_action_pressed('fire') and gun == "auto":
 		shoot()
 		
 	if Input.is_action_just_pressed('reload'):
@@ -130,6 +139,9 @@ func gun_own(gun):
 	if gun == "shotti":
 		shotti = true
 		global.shotti = true
+	if gun == "auto":
+		auto = true
+		global.auto = true
 	
 func dont_shoot_yourself(gun_face):
 	if gun_face == 'right':
@@ -163,16 +175,10 @@ func blood_dash():
 	for i in bloodied_enemies:
 		if (i.position.x - mouse_pos.x < 50) and (i.position.x - mouse_pos.x > -50):
 			if (i.position.y - mouse_pos.y < 50) and (i.position.y - mouse_pos.y > -50):
-				print('hey')
 				var space_state = get_world_2d().direct_space_state
 				var result = space_state.intersect_ray(position, i.position, [self], collision_mask)
-				print(position)
-				print(i.position)
-				print([self])
-				print(collision_mask)
 				#var hit_pos = result.position
 				#draw_circle((hit_pos - position).rotated(-rotation), 5, Color(1.0, .329, .298))
-				print(result)
 				if result:
 					if result.collider == i:
 						charge_target = i;

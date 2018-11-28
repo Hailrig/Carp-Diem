@@ -14,7 +14,7 @@
 [sub_resource type="CircleShape2D" id=1]
 
 custom_solver_bias = 0.0
-radius = 44.3402
+radius = 45.0
 
 [node name="BuffPuff" instance=ExtResource( 1 )]
 

@@ -24,6 +24,7 @@ func _process(delta):
 		return
 	if current_room != get_parent().get_node("Player").get("current_room"):
 		return
+	target = get_parent().get_node("Player")
 	if target:
 		aim()
 #		var target_dir = (target.global_position - global_position).normalized()

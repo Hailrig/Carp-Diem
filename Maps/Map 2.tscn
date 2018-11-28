@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://Maps/Map.gd" type="Script" id=1]
 [ext_resource path="res://Maps/Tileset.tres" type="TileSet" id=2]
@@ -12,6 +12,7 @@
 [ext_resource path="res://Weapons/EnemyBullet.tscn" type="PackedScene" id=10]
 [ext_resource path="res://Weapons/Shrimpclip.tscn" type="PackedScene" id=11]
 [ext_resource path="res://Maps/Portal.tscn" type="PackedScene" id=12]
+[ext_resource path="res://Audio/Main_Theme.ogg" type="AudioStream" id=13]
 
 [sub_resource type="Shader" id=1]
 
@@ -120,6 +121,7 @@ _sections_unfolded = [ "Cell", "Material", "Z Index" ]
 
 position = Vector2( 1270.15, 197.542 )
 room = "bossroom"
+enter_dir = "west"
 
 [node name="DoorIn" parent="." index="4" instance=ExtResource( 4 )]
 
@@ -130,7 +132,7 @@ room = "bossroom"
 
 pause_mode = 0
 material = null
-position = Vector2( -503.209, 186.351 )
+position = Vector2( -563.334, 188.021 )
 max_health = 5
 shell_anim = "Null"
 
@@ -194,6 +196,25 @@ position = Vector2( -635.22, 164.984 )
 target = "res://Maps/Testmap.tscn"
 spawn_point = Vector2( 2586.08, 561.757 )
 
+[node name="Portal2" parent="." index="12" instance=ExtResource( 12 )]
+
+position = Vector2( 1593.39, 164.694 )
+target = "res://Maps/Map3.tscn"
+spawn_point = Vector2( 0, 0 )
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." index="13"]
+
+stream = ExtResource( 13 )
+volume_db = 0.0
+pitch_scale = 1.0
+autoplay = true
+mix_target = 0
+bus = "Master"
+
+[connection signal="room_entered" from="DoorOut" to="HUD" method="start_bossbar"]
+
+[connection signal="room_entered" from="DoorOut" to="Fog" method="_reveal"]
+
 [connection signal="room_entered" from="DoorIn" to="HUD" method="start_bossbar"]
 
 [connection signal="room_entered" from="DoorIn" to="Fog" method="_reveal"]
@@ -214,9 +235,9 @@ spawn_point = Vector2( 2586.08, 561.757 )
 
 [connection signal="time_change" from="Player" to="HUD" method="update_timebar"]
 
-[connection signal="room_clear" from="Fog" to="DoorOut" method="perma_open"]
-
 [connection signal="room_clear" from="Fog" to="DoorIn" method="perma_open"]
+
+[connection signal="room_clear" from="Fog" to="DoorOut" method="perma_open"]
 
 [connection signal="dead" from="BuffPuff" to="HUD" method="end_bossbar"]
 

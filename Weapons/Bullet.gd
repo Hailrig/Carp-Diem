@@ -11,6 +11,7 @@ func start(_position, _direction):
 	rotation = _direction.angle()
 	$Lifetime.wait_time = lifetime
 	velocity = _direction * speed
+	$AnimationPlayer.play("flash")
 	
 func _process(delta):
 	position += velocity * delta

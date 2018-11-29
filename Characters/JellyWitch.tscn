@@ -1,9 +1,16 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Characters/BuffPuff.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Characters/JellyWitch.gd" type="Script" id=2]
 [ext_resource path="res://Weapons/Rico.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Weapons/lightning.tres" type="Animation" id=4]
+[ext_resource path="res://Characters/Jelly Belly.png" type="Texture" id=4]
+[ext_resource path="res://Animations/Jelly/JellyGoDown.tres" type="Animation" id=5]
+[ext_resource path="res://Animations/Jelly/JellyGoLeftDown.tres" type="Animation" id=6]
+[ext_resource path="res://Animations/Jelly/JellyGoLeftUp.tres" type="Animation" id=7]
+[ext_resource path="res://Animations/Jelly/JellyGoRightDown.tres" type="Animation" id=8]
+[ext_resource path="res://Animations/Jelly/JellyGoRightUp.tres" type="Animation" id=9]
+[ext_resource path="res://Animations/Jelly/JellyGoUp.tres" type="Animation" id=10]
+[ext_resource path="res://Weapons/lightning.tres" type="Animation" id=11]
 
 [node name="JellyWitch" instance=ExtResource( 1 )]
 
@@ -20,14 +27,29 @@ front_left_idle = null
 back_idle = null
 back_left_idle = null
 back_right_idle = null
-front_walk = null
-front_right_walk = null
-front_left_walk = null
-back_walk = null
-back_left_walk = null
-back_right_walk = null
+front_walk = "JellyGoDown"
+front_right_walk = "JellyGoRightDown"
+front_left_walk = "JellyGoLeftDown"
+back_walk = "JellyGoUp"
+back_left_walk = "JellyGoLeftUp"
+back_right_walk = "JellyGoRightUp"
 front_dash = null
 rico = ExtResource( 3 )
+
+[node name="Body" parent="." index="0"]
+
+texture = ExtResource( 4 )
+offset = Vector2( 0, 1 )
+region_rect = Rect2( 2, 1, 96, 98 )
+
+[node name="AnimationPlayer" parent="Body" index="0"]
+
+anims/JellyGoDown = ExtResource( 5 )
+anims/JellyGoLeftDown = ExtResource( 6 )
+anims/JellyGoLeftUp = ExtResource( 7 )
+anims/JellyGoRightDown = ExtResource( 8 )
+anims/JellyGoRightUp = ExtResource( 9 )
+anims/JellyGoUp = ExtResource( 10 )
 
 [node name="Weapon" parent="." index="1"]
 
@@ -35,6 +57,6 @@ region_rect = Rect2( 112, 30, 16, 16 )
 
 [node name="AnimationPlayer" parent="Weapon" index="1"]
 
-anims/lightning = ExtResource( 4 )
+anims/lightning = ExtResource( 11 )
 
 

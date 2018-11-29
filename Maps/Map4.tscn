@@ -229,9 +229,9 @@ map = null
 
 [connection signal="room_clear" from="Fog" to="Door2" method="perma_open"]
 
-[connection signal="room_entered" from="Door" to="HUD" method="start_bossbar"]
-
 [connection signal="room_entered" from="Door" to="Fog" method="_reveal"]
+
+[connection signal="room_entered" from="Door" to="HUD" method="start_bossbar"]
 
 [connection signal="room_entered" from="Door2" to="Fog" method="_reveal"]
 

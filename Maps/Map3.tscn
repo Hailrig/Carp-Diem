@@ -1763,13 +1763,13 @@ _sections_unfolded = [ "Textures" ]
 
 [connection signal="room_entered" from="Door1c" to="Fog" method="_reveal"]
 
-[connection signal="room_entered" from="Door2" to="Fog2b" method="_reveal"]
-
 [connection signal="room_entered" from="Door2" to="Fog2" method="_reveal"]
 
-[connection signal="room_entered" from="Door2b" to="Fog2b" method="_reveal"]
+[connection signal="room_entered" from="Door2" to="Fog2b" method="_reveal"]
 
 [connection signal="room_entered" from="Door2b" to="Fog2" method="_reveal"]
+
+[connection signal="room_entered" from="Door2b" to="Fog2b" method="_reveal"]
 
 [connection signal="room_entered" from="Door3" to="Fog3" method="_reveal"]
 
@@ -1857,21 +1857,21 @@ _sections_unfolded = [ "Textures" ]
 
 [connection signal="room_entered" from="Door20" to="Fog10" method="_reveal"]
 
+[connection signal="room_clear" from="Fog" to="Door1c" method="perma_open"]
+
 [connection signal="room_clear" from="Fog" to="Door1" method="perma_open"]
 
 [connection signal="room_clear" from="Fog" to="Door1b" method="perma_open"]
 
-[connection signal="room_clear" from="Fog" to="Door1c" method="perma_open"]
+[connection signal="room_clear" from="Fog2" to="Door2" method="perma_open"]
 
 [connection signal="room_clear" from="Fog2" to="Door2b" method="perma_open"]
 
-[connection signal="room_clear" from="Fog2" to="Door2" method="perma_open"]
-
 [connection signal="room_clear" from="Fog3" to="Door3c" method="perma_open"]
 
-[connection signal="room_clear" from="Fog3" to="Door3b" method="perma_open"]
-
 [connection signal="room_clear" from="Fog3" to="Door3" method="perma_open"]
+
+[connection signal="room_clear" from="Fog3" to="Door3b" method="perma_open"]
 
 [connection signal="room_clear" from="Fog4" to="Door4b" method="perma_open"]
 
@@ -1893,13 +1893,13 @@ _sections_unfolded = [ "Textures" ]
 
 [connection signal="room_clear" from="Fog8" to="Door8" method="perma_open"]
 
-[connection signal="room_clear" from="Fog9" to="Door9b" method="perma_open"]
-
 [connection signal="room_clear" from="Fog9" to="Door9" method="perma_open"]
 
-[connection signal="room_clear" from="Fog10" to="Door10" method="perma_open"]
+[connection signal="room_clear" from="Fog9" to="Door9b" method="perma_open"]
 
 [connection signal="room_clear" from="Fog10" to="Door10b" method="perma_open"]
+
+[connection signal="room_clear" from="Fog10" to="Door10" method="perma_open"]
 
 [connection signal="room_clear" from="Fog11" to="Door11b" method="perma_open"]
 
@@ -1915,27 +1915,27 @@ _sections_unfolded = [ "Textures" ]
 
 [connection signal="room_clear" from="Fog13" to="Door13" method="perma_open"]
 
-[connection signal="room_clear" from="Fog14" to="Door14c" method="perma_open"]
+[connection signal="room_clear" from="Fog14" to="Door14" method="perma_open"]
 
 [connection signal="room_clear" from="Fog14" to="Door14b" method="perma_open"]
 
-[connection signal="room_clear" from="Fog14" to="Door14" method="perma_open"]
+[connection signal="room_clear" from="Fog14" to="Door14c" method="perma_open"]
 
 [connection signal="room_clear" from="Fog15" to="Door15b" method="perma_open"]
 
 [connection signal="room_clear" from="Fog15" to="Door15" method="perma_open"]
 
-[connection signal="room_clear" from="Fog16" to="Door16b" method="perma_open"]
-
 [connection signal="room_clear" from="Fog16" to="Door16" method="perma_open"]
 
-[connection signal="room_clear" from="Fog17" to="Door17b" method="perma_open"]
+[connection signal="room_clear" from="Fog16" to="Door16b" method="perma_open"]
 
 [connection signal="room_clear" from="Fog17" to="Door17" method="perma_open"]
 
-[connection signal="room_clear" from="Fog18" to="Door18b" method="perma_open"]
+[connection signal="room_clear" from="Fog17" to="Door17b" method="perma_open"]
 
 [connection signal="room_clear" from="Fog18" to="Door18" method="perma_open"]
+
+[connection signal="room_clear" from="Fog18" to="Door18b" method="perma_open"]
 
 [connection signal="room_clear" from="Fog19" to="Door19" method="perma_open"]
 

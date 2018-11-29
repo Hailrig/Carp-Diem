@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://Maps/Map.gd" type="Script" id=1]
 [ext_resource path="res://Maps/Tileset.tres" type="TileSet" id=2]
@@ -7,14 +7,15 @@
 [ext_resource path="res://HUD/Pause.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Characters/Player.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Maps/Portal.tscn" type="PackedScene" id=7]
-[ext_resource path="res://Maps/Door.tscn" type="PackedScene" id=8]
-[ext_resource path="res://Maps/Fog.tscn" type="PackedScene" id=9]
-[ext_resource path="res://Characters/EvilFish.tscn" type="PackedScene" id=10]
-[ext_resource path="res://Maps/Key.tscn" type="PackedScene" id=11]
-[ext_resource path="res://Weapons/Auto.tscn" type="PackedScene" id=12]
-[ext_resource path="res://HUD/KeyBack3.png" type="Texture" id=13]
-[ext_resource path="res://HUD/KeyProgress3.png" type="Texture" id=14]
-[ext_resource path="res://Maps/KeyProgress.gd" type="Script" id=15]
+[ext_resource path="res://Audio/Second_Theme.ogg" type="AudioStream" id=8]
+[ext_resource path="res://Maps/Door.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Maps/Fog.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Characters/EvilFish.tscn" type="PackedScene" id=11]
+[ext_resource path="res://Maps/Key.tscn" type="PackedScene" id=12]
+[ext_resource path="res://Weapons/Auto.tscn" type="PackedScene" id=13]
+[ext_resource path="res://HUD/KeyBack3.png" type="Texture" id=14]
+[ext_resource path="res://HUD/KeyProgress3.png" type="Texture" id=15]
+[ext_resource path="res://Maps/KeyProgress.gd" type="Script" id=16]
 
 [sub_resource type="Shader" id=1]
 
@@ -144,14 +145,14 @@ map = "Map2"
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." index="8"]
 
-stream = null
+stream = ExtResource( 8 )
 volume_db = 0.0
 pitch_scale = 1.0
-autoplay = false
+autoplay = true
 mix_target = 0
 bus = "Master"
 
-[node name="Door1" parent="." index="9" instance=ExtResource( 8 )]
+[node name="Door1" parent="." index="9" instance=ExtResource( 9 )]
 
 position = Vector2( 353.87, 547.67 )
 room = "r1"
@@ -162,13 +163,13 @@ open_front = "a"
 close_behind = "DoorSouthClose"
 close_front = "a"
 
-[node name="Door1b" parent="." index="10" instance=ExtResource( 8 )]
+[node name="Door1b" parent="." index="10" instance=ExtResource( 9 )]
 
 position = Vector2( -159.62, 773.134 )
 room = "r1"
 texture = "res://Maps/PrettyDoors.png"
 
-[node name="Door1c" parent="." index="11" instance=ExtResource( 8 )]
+[node name="Door1c" parent="." index="11" instance=ExtResource( 9 )]
 
 position = Vector2( 1055.55, 773.081 )
 room = "r1"
@@ -179,7 +180,7 @@ open_front = "DoorWestOpenFront"
 close_behind = "DoorWestCloseBehind"
 close_front = "DoorWestCloseFront"
 
-[node name="Door2" parent="." index="12" instance=ExtResource( 8 )]
+[node name="Door2" parent="." index="12" instance=ExtResource( 9 )]
 
 position = Vector2( 1116.62, 773.354 )
 room = "r2"
@@ -189,7 +190,7 @@ open_front = "DoorWestOpenFront"
 close_behind = "DoorWestCloseBehind"
 close_front = "DoorWestCloseFront"
 
-[node name="Door2b" parent="." index="13" instance=ExtResource( 8 )]
+[node name="Door2b" parent="." index="13" instance=ExtResource( 9 )]
 
 position = Vector2( 1185.01, 1601.31 )
 room = "r2"
@@ -200,7 +201,7 @@ open_front = "DoorWestOpenFront"
 close_behind = "DoorWestCloseBehind"
 close_front = "DoorWestCloseFront"
 
-[node name="Door3" parent="." index="14" instance=ExtResource( 8 )]
+[node name="Door3" parent="." index="14" instance=ExtResource( 9 )]
 
 position = Vector2( 609.093, 2213.67 )
 room = "r3"
@@ -211,7 +212,7 @@ open_front = "DoorWestOpenFront"
 close_behind = "DoorWestCloseBehind"
 close_front = "DoorWestCloseFront"
 
-[node name="Door3b" parent="." index="15" instance=ExtResource( 8 )]
+[node name="Door3b" parent="." index="15" instance=ExtResource( 9 )]
 
 position = Vector2( 1280.1, 2566.04 )
 room = "r3"
@@ -223,7 +224,7 @@ open_front = "DoorWestOpenFront"
 close_behind = "DoorWestCloseBehind"
 close_front = "DoorWestCloseFront"
 
-[node name="Door3c" parent="." index="16" instance=ExtResource( 8 )]
+[node name="Door3c" parent="." index="16" instance=ExtResource( 9 )]
 
 position = Vector2( 703.996, 3008.38 )
 room = "r3"
@@ -234,7 +235,7 @@ open_front = "DoorWestOpenFront"
 close_behind = "DoorWestCloseBehind"
 close_front = "DoorWestCloseFront"
 
-[node name="Door4" parent="." index="17" instance=ExtResource( 8 )]
+[node name="Door4" parent="." index="17" instance=ExtResource( 9 )]
 
 position = Vector2( 1762.35, 2566.46 )
 room = "r4"
@@ -244,7 +245,7 @@ open_front = "DoorWestOpenFront"
 close_behind = "DoorWestCloseBehind"
 close_front = "DoorWestCloseFront"
 
-[node name="Door4b" parent="." index="18" instance=ExtResource( 8 )]
+[node name="Door4b" parent="." index="18" instance=ExtResource( 9 )]
 
 position = Vector2( 2464.2, 3045.37 )
 room = "r4"
@@ -255,7 +256,7 @@ open_front = "DoorWestOpenFront"
 close_behind = "DoorWestCloseBehind"
 close_front = "DoorWestCloseFront"
 
-[node name="Door5" parent="." index="19" instance=ExtResource( 8 )]
+[node name="Door5" parent="." index="19" instance=ExtResource( 9 )]
 
 position = Vector2( 3424.31, 2592.78 )
 room = "r5"
@@ -266,7 +267,7 @@ open_front = "DoorWestOpenFront"
 close_behind = "DoorWestCloseBehind"
 close_front = "DoorWestCloseFront"
 
-[node name="Door5b" parent="." index="20" instance=ExtResource( 8 )]
+[node name="Door5b" parent="." index="20" instance=ExtResource( 9 )]
 
 position = Vector2( 4128.09, 2053.39 )
 room = "r5"
@@ -277,7 +278,7 @@ open_front = "DoorWestOpenFront"
 close_behind = "DoorWestCloseBehind"
 close_front = "DoorWestCloseFront"
 
-[node name="Door6" parent="." index="21" instance=ExtResource( 8 )]
+[node name="Door6" parent="." index="21" instance=ExtResource( 9 )]
 
 position = Vector2( 4128.85, 1857.79 )
 room = "r6"
@@ -288,7 +289,7 @@ open_front = "DoorWestOpenFront"
 close_behind = "DoorWestCloseBehind"
 close_front = "DoorWestCloseFront"
 
-[node name="Door6b" parent="." index="22" instance=ExtResource( 8 )]
+[node name="Door6b" parent="." index="22" instance=ExtResource( 9 )]
 
 position = Vector2( 4829.5, 1541.56 )
 room = "r6"
@@ -299,7 +300,7 @@ open_front = "DoorWestOpenFront"
 close_behind = "DoorWestCloseBehind"
 close_front = "DoorWestCloseFront"
 
-[node name="Door7" parent="." index="23" instance=ExtResource( 8 )]
+[node name="Door7" parent="." index="23" instance=ExtResource( 9 )]
 
 position = Vector2( 5407.39, 1542.16 )
 room = "r7"
@@ -309,7 +310,7 @@ open_front = "DoorWestOpenFront"
 close_behind = "DoorWestCloseBehind"
 close_front = "DoorWestCloseFront"
 
-[node name="Door7b" parent="." index="24" instance=ExtResource( 8 )]
+[node name="Door7b" parent="." index="24" instance=ExtResource( 9 )]
 
 position = Vector2( 5439.88, 2174.54 )
 room = "r7"
@@ -320,7 +321,7 @@ open_front = "DoorWestOpenFront"
 close_behind = "DoorWestCloseBehind"
 close_front = "DoorWestCloseFront"
 
-[node name="Door8" parent="." index="25" instance=ExtResource( 8 )]
+[node name="Door8" parent="." index="25" instance=ExtResource( 9 )]
 
 position = Vector2( 3424.9, 3587.36 )
 room = "r8"
@@ -332,7 +333,7 @@ open_front = "DoorWestOpenFront"
 close_behind = "DoorWestCloseBehind"
 close_front = "DoorWestCloseFront"
 
-[node name="Door8b" parent="." index="26" instance=ExtResource( 8 )]
+[node name="Door8b" parent="." index="26" instance=ExtResource( 9 )]
 
 position = Vector2( 4000.24, 3718.06 )
 room = "r8"
@@ -344,7 +345,7 @@ open_front = "DoorWestOpenFront"
 close_behind = "DoorWestCloseBehind"
 close_front = "DoorWestCloseFront"
 
-[node name="Door9" parent="." index="27" instance=ExtResource( 8 )]
+[node name="Door9" parent="." index="27" instance=ExtResource( 9 )]
 
 position = Vector2( 704.839, 3654.26 )
 room = "r9"
@@ -356,7 +357,7 @@ open_front = "DoorWestOpenFront"
 close_behind = "DoorWestCloseBehind"
 close_front = "DoorWestCloseFront"
 
-[node name="Door9b" parent="." index="28" instance=ExtResource( 8 )]
+[node name="Door9b" parent="." index="28" instance=ExtResource( 9 )]
 
 position = Vector2( 192.389, 4323.5 )
 room = "r9"
@@ -369,7 +370,7 @@ open_front = "DoorWestOpenFront"
 close_behind = "DoorWestCloseBehind"
 close_front = "DoorWestCloseFront"
 
-[node name="Door10" parent="." index="29" instance=ExtResource( 8 )]
+[node name="Door10" parent="." index="29" instance=ExtResource( 9 )]
 
 position = Vector2( -511.957, 4451.05 )
 room = "r10"
@@ -382,7 +383,7 @@ open_front = "DoorWestOpenFront"
 close_behind = "DoorWestCloseBehind"
 close_front = "DoorWestCloseFront"
 
-[node name="Door10b" parent="." index="30" instance=ExtResource( 8 )]
+[node name="Door10b" parent="." index="30" instance=ExtResource( 9 )]
 
 position = Vector2( -1728.56, 3653.35 )
 room = "r10"
@@ -395,7 +396,7 @@ open_front = "DoorWestOpenFront"
 close_behind = "DoorWestCloseBehind"
 close_front = "DoorWestCloseFront"
 
-[node name="Door11" parent="." index="31" instance=ExtResource( 8 )]
+[node name="Door11" parent="." index="31" instance=ExtResource( 9 )]
 
 position = Vector2( -800.685, 3523.15 )
 room = "r11"
@@ -407,7 +408,7 @@ open_front = "DoorWestOpenFront"
 close_behind = "DoorWestCloseBehind"
 close_front = "DoorWestCloseFront"
 
-[node name="Door11b" parent="." index="32" instance=ExtResource( 8 )]
+[node name="Door11b" parent="." index="32" instance=ExtResource( 9 )]
 
 position = Vector2( -798.427, 3045.36 )
 room = "r11"
@@ -419,7 +420,7 @@ open_front = "DoorWestOpenFront"
 close_behind = "DoorWestCloseBehind"
 close_front = "DoorWestCloseFront"
 
-[node name="Door12" parent="." index="33" instance=ExtResource( 8 )]
+[node name="Door12" parent="." index="33" instance=ExtResource( 9 )]
 
 position = Vector2( -1312.16, 3045.38 )
 room = "r12"
@@ -432,7 +433,7 @@ open_front = "DoorWestOpenFront"
 close_behind = "DoorWestCloseBehind"
 close_front = "DoorWestCloseFront"
 
-[node name="Door12b" parent="." index="34" instance=ExtResource( 8 )]
+[node name="Door12b" parent="." index="34" instance=ExtResource( 9 )]
 
 position = Vector2( -1374.84, 2755.99 )
 room = "r12"
@@ -445,7 +446,7 @@ open_front = "DoorWestOpenFront"
 close_behind = "DoorWestCloseBehind"
 close_front = "DoorWestCloseFront"
 
-[node name="Door12c" parent="." index="35" instance=ExtResource( 8 )]
+[node name="Door12c" parent="." index="35" instance=ExtResource( 9 )]
 
 position = Vector2( -1630.19, 2916.93 )
 room = "r12"
@@ -457,7 +458,7 @@ open_front = "DoorWestOpenFront"
 close_behind = "DoorWestCloseBehind"
 close_front = "DoorWestCloseFront"
 
-[node name="Door13" parent="." index="36" instance=ExtResource( 8 )]
+[node name="Door13" parent="." index="36" instance=ExtResource( 9 )]
 
 position = Vector2( -927.118, 1444.08 )
 room = "r13"
@@ -470,7 +471,7 @@ open_front = "DoorWestOpenFront"
 close_behind = "DoorWestCloseBehind"
 close_front = "DoorWestCloseFront"
 
-[node name="Door13b" parent="." index="37" instance=ExtResource( 8 )]
+[node name="Door13b" parent="." index="37" instance=ExtResource( 9 )]
 
 position = Vector2( -1375.15, 2239.27 )
 room = "r13"
@@ -484,7 +485,7 @@ open_front = "DoorWestOpenFront"
 close_behind = "DoorWestCloseBehind"
 close_front = "DoorWestCloseFront"
 
-[node name="Door14" parent="." index="38" instance=ExtResource( 8 )]
+[node name="Door14" parent="." index="38" instance=ExtResource( 9 )]
 
 position = Vector2( -2329.37, 2917.52 )
 room = "r14"
@@ -497,7 +498,7 @@ open_front = "DoorWestOpenFront"
 close_behind = "DoorWestCloseBehind"
 close_front = "DoorWestCloseFront"
 
-[node name="Door14b" parent="." index="39" instance=ExtResource( 8 )]
+[node name="Door14b" parent="." index="39" instance=ExtResource( 9 )]
 
 position = Vector2( -2751.71, 2435.54 )
 room = "r14"
@@ -510,7 +511,7 @@ open_front = "DoorWestOpenFront"
 close_behind = "DoorWestCloseBehind"
 close_front = "DoorWestCloseFront"
 
-[node name="Door14c" parent="." index="40" instance=ExtResource( 8 )]
+[node name="Door14c" parent="." index="40" instance=ExtResource( 9 )]
 
 position = Vector2( -2752.08, 3295.95 )
 room = "r14"
@@ -523,7 +524,7 @@ open_front = "DoorWestOpenFront"
 close_behind = "DoorWestCloseBehind"
 close_front = "DoorWestCloseFront"
 
-[node name="Door15" parent="." index="41" instance=ExtResource( 8 )]
+[node name="Door15" parent="." index="41" instance=ExtResource( 9 )]
 
 position = Vector2( -2750.81, 3653.28 )
 room = "r15"
@@ -536,7 +537,7 @@ open_front = "DoorWestOpenFront"
 close_behind = "DoorWestCloseBehind"
 close_front = "DoorWestCloseFront"
 
-[node name="Door15b" parent="." index="42" instance=ExtResource( 8 )]
+[node name="Door15b" parent="." index="42" instance=ExtResource( 9 )]
 
 position = Vector2( -3167.02, 3813.9 )
 room = "r15"
@@ -548,7 +549,7 @@ open_front = "DoorWestOpenFront"
 close_behind = "DoorWestCloseBehind"
 close_front = "DoorWestCloseFront"
 
-[node name="Door16" parent="." index="43" instance=ExtResource( 8 )]
+[node name="Door16" parent="." index="43" instance=ExtResource( 9 )]
 
 position = Vector2( -3870.24, 3813.14 )
 room = "r16"
@@ -561,7 +562,7 @@ open_front = "DoorWestOpenFront"
 close_behind = "DoorWestCloseBehind"
 close_front = "DoorWestCloseFront"
 
-[node name="Door16b" parent="." index="44" instance=ExtResource( 8 )]
+[node name="Door16b" parent="." index="44" instance=ExtResource( 9 )]
 
 position = Vector2( -4959.03, 3297.31 )
 room = "r16"
@@ -574,7 +575,7 @@ open_front = "DoorWestOpenFront"
 close_behind = "DoorWestCloseBehind"
 close_front = "DoorWestCloseFront"
 
-[node name="Door17" parent="." index="45" instance=ExtResource( 8 )]
+[node name="Door17" parent="." index="45" instance=ExtResource( 9 )]
 
 position = Vector2( -3327.42, 1925.02 )
 room = "r17"
@@ -587,7 +588,7 @@ open_front = "DoorWestOpenFront"
 close_behind = "DoorWestCloseBehind"
 close_front = "DoorWestCloseFront"
 
-[node name="Door17b" parent="." index="46" instance=ExtResource( 8 )]
+[node name="Door17b" parent="." index="46" instance=ExtResource( 9 )]
 
 position = Vector2( -3966.62, 1188.7 )
 room = "r17"
@@ -599,7 +600,7 @@ open_front = "DoorWestOpenFront"
 close_behind = "DoorWestCloseBehind"
 close_front = "DoorWestCloseFront"
 
-[node name="Door18" parent="." index="47" instance=ExtResource( 8 )]
+[node name="Door18" parent="." index="47" instance=ExtResource( 9 )]
 
 position = Vector2( -4703.05, 1188.77 )
 room = "r18"
@@ -612,7 +613,7 @@ open_front = "DoorWestOpenFront"
 close_behind = "DoorWestCloseBehind"
 close_front = "DoorWestCloseFront"
 
-[node name="Door18b" parent="." index="48" instance=ExtResource( 8 )]
+[node name="Door18b" parent="." index="48" instance=ExtResource( 9 )]
 
 position = Vector2( -4959.67, 2110.31 )
 room = "r18"
@@ -625,7 +626,7 @@ open_front = "DoorWestOpenFront"
 close_behind = "DoorWestCloseBehind"
 close_front = "DoorWestCloseFront"
 
-[node name="Door19" parent="." index="49" instance=ExtResource( 8 )]
+[node name="Door19" parent="." index="49" instance=ExtResource( 9 )]
 
 position = Vector2( -159.885, 5157.44 )
 room = "r19"
@@ -638,7 +639,7 @@ open_front = "DoorWestOpenFront"
 close_behind = "DoorWestCloseBehind"
 close_front = "DoorWestCloseFront"
 
-[node name="Door19b" parent="." index="50" instance=ExtResource( 8 )]
+[node name="Door19b" parent="." index="50" instance=ExtResource( 9 )]
 
 position = Vector2( -160.206, 5472.39 )
 room = "r19"
@@ -651,7 +652,7 @@ open_front = "DoorWestOpenFront"
 close_behind = "DoorWestCloseBehind"
 close_front = "DoorWestCloseFront"
 
-[node name="Door20" parent="." index="51" instance=ExtResource( 8 )]
+[node name="Door20" parent="." index="51" instance=ExtResource( 9 )]
 
 position = Vector2( -96.2341, 5573.58 )
 room = "r20"
@@ -664,188 +665,188 @@ open_front = "DoorWestOpenFront"
 close_behind = "DoorWestCloseBehind"
 close_front = "DoorWestCloseFront"
 
-[node name="FogBack" parent="." index="52" instance=ExtResource( 9 )]
+[node name="FogBack" parent="." index="52" instance=ExtResource( 10 )]
 
 position = Vector2( 371.874, 2669.32 )
 scale = Vector2( 357.279, 198.437 )
 z_index = -1000
 room = "All"
 
-[node name="Fog" parent="." index="53" instance=ExtResource( 9 )]
+[node name="Fog" parent="." index="53" instance=ExtResource( 10 )]
 
 position = Vector2( 370.266, 804.944 )
 scale = Vector2( 31.1065, 10.5154 )
 room = "r1"
 
-[node name="Fog2" parent="." index="54" instance=ExtResource( 9 )]
+[node name="Fog2" parent="." index="54" instance=ExtResource( 10 )]
 
 position = Vector2( 1459.44, 1043.24 )
 scale = Vector2( 13.5413, 19.9454 )
 room = "r2"
 
-[node name="Fog2b" parent="." index="55" instance=ExtResource( 9 )]
+[node name="Fog2b" parent="." index="55" instance=ExtResource( 10 )]
 
 position = Vector2( 870.458, 1393.46 )
 scale = Vector2( 10.0704, 10.9383 )
 room = "r2"
 
-[node name="Fog3" parent="." index="56" instance=ExtResource( 9 )]
+[node name="Fog3" parent="." index="56" instance=ExtResource( 10 )]
 
 position = Vector2( 928.145, 2575.25 )
 scale = Vector2( 42.0172, 14.8375 )
 room = "r3"
 
-[node name="Fog4" parent="." index="57" instance=ExtResource( 9 )]
+[node name="Fog4" parent="." index="57" instance=ExtResource( 10 )]
 
 position = Vector2( 2410.33, 2656.43 )
 scale = Vector2( 24.6719, 27.4789 )
 room = "r4"
 
-[node name="Fog5" parent="." index="58" instance=ExtResource( 9 )]
+[node name="Fog5" parent="." index="58" instance=ExtResource( 10 )]
 
 position = Vector2( 4170.4, 2087.75 )
 scale = Vector2( 42.406, 17.7097 )
 room = "r5"
 
-[node name="Fog6" parent="." index="59" instance=ExtResource( 9 )]
+[node name="Fog6" parent="." index="59" instance=ExtResource( 10 )]
 
 position = Vector2( 4590.15, 1353.67 )
 scale = Vector2( 52.0984, 17.7097 )
 room = "r6"
 
-[node name="Fog7" parent="." index="60" instance=ExtResource( 9 )]
+[node name="Fog7" parent="." index="60" instance=ExtResource( 10 )]
 
 position = Vector2( 6328.85, 1662.3 )
 scale = Vector2( 35.5513, 36.026 )
 room = "r7"
 
-[node name="Fog8" parent="." index="61" instance=ExtResource( 9 )]
+[node name="Fog8" parent="." index="61" instance=ExtResource( 10 )]
 
 position = Vector2( 3476.15, 4476.95 )
 scale = Vector2( 35.5513, 36.026 )
 room = "r8"
 
-[node name="Fog9" parent="." index="62" instance=ExtResource( 9 )]
+[node name="Fog9" parent="." index="62" instance=ExtResource( 10 )]
 
 position = Vector2( 759.487, 3962.36 )
 scale = Vector2( 37.513, 12.5638 )
 room = "r9"
 
-[node name="Fog10" parent="." index="63" instance=ExtResource( 9 )]
+[node name="Fog10" parent="." index="63" instance=ExtResource( 10 )]
 
 position = Vector2( -1072.4, 4012.96 )
 scale = Vector2( 35.5513, 14.8731 )
 room = "r10"
 
-[node name="Fog11" parent="." index="64" instance=ExtResource( 9 )]
+[node name="Fog11" parent="." index="64" instance=ExtResource( 10 )]
 
 position = Vector2( -388.768, 3183.31 )
 scale = Vector2( 15.5338, 14.8731 )
 room = "r11"
 
-[node name="Fog12" parent="." index="65" instance=ExtResource( 9 )]
+[node name="Fog12" parent="." index="65" instance=ExtResource( 10 )]
 
 position = Vector2( -1766.4, 3068.15 )
 scale = Vector2( 18.1419, 12.7467 )
 room = "r12"
 
-[node name="Fog13" parent="." index="66" instance=ExtResource( 9 )]
+[node name="Fog13" parent="." index="66" instance=ExtResource( 10 )]
 
 position = Vector2( -943.889, 1810.27 )
 scale = Vector2( 32.1496, 14.9367 )
 room = "r13"
 
-[node name="Fog14" parent="." index="67" instance=ExtResource( 9 )]
+[node name="Fog14" parent="." index="67" instance=ExtResource( 10 )]
 
 position = Vector2( -2796.63, 2844.67 )
 scale = Vector2( 19.6658, 16.1057 )
 room = "r14"
 
-[node name="Fog15" parent="." index="68" instance=ExtResource( 9 )]
+[node name="Fog15" parent="." index="68" instance=ExtResource( 10 )]
 
 position = Vector2( -2466.18, 4045.49 )
 scale = Vector2( 26.8393, 15.9392 )
 room = "r15"
 
-[node name="Fog16" parent="." index="69" instance=ExtResource( 9 )]
+[node name="Fog16" parent="." index="69" instance=ExtResource( 10 )]
 
 position = Vector2( -4714.83, 3945.14 )
 scale = Vector2( 33.7628, 26.1542 )
 room = "r16"
 
-[node name="Fog17" parent="." index="70" instance=ExtResource( 9 )]
+[node name="Fog17" parent="." index="70" instance=ExtResource( 10 )]
 
 position = Vector2( -3633.23, 1149.05 )
 scale = Vector2( 12.1432, 39.2286 )
 room = "r17"
 
-[node name="Fog18" parent="." index="71" instance=ExtResource( 9 )]
+[node name="Fog18" parent="." index="71" instance=ExtResource( 10 )]
 
 position = Vector2( -5871.03, 1048.47 )
 scale = Vector2( 46.7001, 40.1831 )
 room = "r18"
 
-[node name="Fog19" parent="." index="72" instance=ExtResource( 9 )]
+[node name="Fog19" parent="." index="72" instance=ExtResource( 10 )]
 
 position = Vector2( -153.74, 5297.56 )
 scale = Vector2( 46.7001, 5.89837 )
 room = "r19"
 
-[node name="Fog19b" parent="." index="73" instance=ExtResource( 9 )]
+[node name="Fog19b" parent="." index="73" instance=ExtResource( 10 )]
 
 position = Vector2( -820.638, 5914.62 )
 scale = Vector2( 24.0614, 24.3353 )
 room = "r19"
 
-[node name="Fog19c" parent="." index="74" instance=ExtResource( 9 )]
+[node name="Fog19c" parent="." index="74" instance=ExtResource( 10 )]
 
 position = Vector2( 695.181, 5938.47 )
 scale = Vector2( 24.0614, 24.3353 )
 room = "r19"
 
-[node name="EvilFish" parent="." index="75" instance=ExtResource( 10 )]
+[node name="EvilFish" parent="." index="75" instance=ExtResource( 11 )]
 
 pause_mode = 0
 position = Vector2( 293.176, 845.128 )
 clips = null
 current_room = "r1"
 
-[node name="EvilFish84" parent="." index="76" instance=ExtResource( 10 )]
+[node name="EvilFish84" parent="." index="76" instance=ExtResource( 11 )]
 
 pause_mode = 0
 position = Vector2( 510.55, 853.061 )
 clips = null
 current_room = "r1"
 
-[node name="EvilFish85" parent="." index="77" instance=ExtResource( 10 )]
+[node name="EvilFish85" parent="." index="77" instance=ExtResource( 11 )]
 
 pause_mode = 0
 position = Vector2( 700.951, 911.768 )
 clips = null
 current_room = "r1"
 
-[node name="EvilFish87" parent="." index="78" instance=ExtResource( 10 )]
+[node name="EvilFish87" parent="." index="78" instance=ExtResource( 11 )]
 
 pause_mode = 0
 position = Vector2( 142.442, 926.048 )
 clips = null
 current_room = "r1"
 
-[node name="EvilFish88" parent="." index="79" instance=ExtResource( 10 )]
+[node name="EvilFish88" parent="." index="79" instance=ExtResource( 11 )]
 
 pause_mode = 0
 position = Vector2( -19.3987, 1024.42 )
 clips = null
 current_room = "r1"
 
-[node name="EvilFish86" parent="." index="80" instance=ExtResource( 10 )]
+[node name="EvilFish86" parent="." index="80" instance=ExtResource( 11 )]
 
 pause_mode = 0
 position = Vector2( 856.445, 1027.59 )
 clips = null
 current_room = "r1"
 
-[node name="EvilFish2" parent="." index="81" instance=ExtResource( 10 )]
+[node name="EvilFish2" parent="." index="81" instance=ExtResource( 11 )]
 
 pause_mode = 0
 position = Vector2( 837.126, 1225.91 )
@@ -853,7 +854,7 @@ clips = null
 gun_swap = "shotti_swap"
 current_room = "r2"
 
-[node name="EvilFish89" parent="." index="82" instance=ExtResource( 10 )]
+[node name="EvilFish89" parent="." index="82" instance=ExtResource( 11 )]
 
 pause_mode = 0
 position = Vector2( 915.354, 1258.54 )
@@ -861,7 +862,7 @@ clips = null
 gun_swap = "shotti_swap"
 current_room = "r2"
 
-[node name="EvilFish90" parent="." index="83" instance=ExtResource( 10 )]
+[node name="EvilFish90" parent="." index="83" instance=ExtResource( 11 )]
 
 pause_mode = 0
 position = Vector2( 836.857, 1299.08 )
@@ -869,28 +870,28 @@ clips = null
 gun_swap = "shotti_swap"
 current_room = "r2"
 
-[node name="EvilFish91" parent="." index="84" instance=ExtResource( 10 )]
+[node name="EvilFish91" parent="." index="84" instance=ExtResource( 11 )]
 
 pause_mode = 0
 position = Vector2( 1299.5, 1130.97 )
 clips = null
 current_room = "r2"
 
-[node name="EvilFish92" parent="." index="85" instance=ExtResource( 10 )]
+[node name="EvilFish92" parent="." index="85" instance=ExtResource( 11 )]
 
 pause_mode = 0
 position = Vector2( 1522.78, 1036.04 )
 clips = null
 current_room = "r2"
 
-[node name="EvilFish3" parent="." index="86" instance=ExtResource( 10 )]
+[node name="EvilFish3" parent="." index="86" instance=ExtResource( 11 )]
 
 pause_mode = 0
 position = Vector2( 175.173, 2273.01 )
 clips = null
 current_room = "r3"
 
-[node name="EvilFish80" parent="." index="87" instance=ExtResource( 10 )]
+[node name="EvilFish80" parent="." index="87" instance=ExtResource( 11 )]
 
 pause_mode = 0
 position = Vector2( 171.487, 2403.1 )
@@ -898,7 +899,7 @@ clips = null
 gun_swap = "shotti_swap"
 current_room = "r3"
 
-[node name="EvilFish81" parent="." index="88" instance=ExtResource( 10 )]
+[node name="EvilFish81" parent="." index="88" instance=ExtResource( 11 )]
 
 pause_mode = 0
 position = Vector2( 163.696, 2564.64 )
@@ -906,7 +907,7 @@ clips = null
 gun_swap = "auto_swap"
 current_room = "r3"
 
-[node name="EvilFish82" parent="." index="89" instance=ExtResource( 10 )]
+[node name="EvilFish82" parent="." index="89" instance=ExtResource( 11 )]
 
 pause_mode = 0
 position = Vector2( 167.23, 2706.84 )
@@ -914,161 +915,161 @@ clips = null
 gun_swap = "shotti_swap"
 current_room = "r3"
 
-[node name="EvilFish83" parent="." index="90" instance=ExtResource( 10 )]
+[node name="EvilFish83" parent="." index="90" instance=ExtResource( 11 )]
 
 pause_mode = 0
 position = Vector2( 163.696, 2839.46 )
 clips = null
 current_room = "r3"
 
-[node name="EvilFish4" parent="." index="91" instance=ExtResource( 10 )]
+[node name="EvilFish4" parent="." index="91" instance=ExtResource( 11 )]
 
 pause_mode = 0
 position = Vector2( 2045.87, 2231.66 )
 clips = null
 current_room = "r4"
 
-[node name="EvilFish93" parent="." index="92" instance=ExtResource( 10 )]
+[node name="EvilFish93" parent="." index="92" instance=ExtResource( 11 )]
 
 pause_mode = 0
 position = Vector2( 2184.61, 2346.89 )
 clips = null
 current_room = "r4"
 
-[node name="EvilFish94" parent="." index="93" instance=ExtResource( 10 )]
+[node name="EvilFish94" parent="." index="93" instance=ExtResource( 11 )]
 
 pause_mode = 0
 position = Vector2( 2364.89, 2455.49 )
 clips = null
 current_room = "r4"
 
-[node name="EvilFish95" parent="." index="94" instance=ExtResource( 10 )]
+[node name="EvilFish95" parent="." index="94" instance=ExtResource( 11 )]
 
 pause_mode = 0
 position = Vector2( 1853.68, 2907.72 )
 clips = null
 current_room = "r4"
 
-[node name="EvilFish96" parent="." index="95" instance=ExtResource( 10 )]
+[node name="EvilFish96" parent="." index="95" instance=ExtResource( 11 )]
 
 pause_mode = 0
 position = Vector2( 1970.67, 2992.11 )
 clips = null
 current_room = "r4"
 
-[node name="EvilFish97" parent="." index="96" instance=ExtResource( 10 )]
+[node name="EvilFish97" parent="." index="96" instance=ExtResource( 11 )]
 
 pause_mode = 0
 position = Vector2( 2087.11, 3087.04 )
 clips = null
 current_room = "r4"
 
-[node name="EvilFish5" parent="." index="97" instance=ExtResource( 10 )]
+[node name="EvilFish5" parent="." index="97" instance=ExtResource( 11 )]
 
 pause_mode = 0
 position = Vector2( 4726.14, 2499.37 )
 clips = null
 current_room = "r5"
 
-[node name="EvilFish105" parent="." index="98" instance=ExtResource( 10 )]
+[node name="EvilFish105" parent="." index="98" instance=ExtResource( 11 )]
 
 pause_mode = 0
 position = Vector2( 4718.35, 2368.64 )
 clips = null
 current_room = "r5"
 
-[node name="EvilFish106" parent="." index="99" instance=ExtResource( 10 )]
+[node name="EvilFish106" parent="." index="99" instance=ExtResource( 11 )]
 
 pause_mode = 0
 position = Vector2( 4722.24, 2236.18 )
 clips = null
 current_room = "r5"
 
-[node name="EvilFish107" parent="." index="100" instance=ExtResource( 10 )]
+[node name="EvilFish107" parent="." index="100" instance=ExtResource( 11 )]
 
 pause_mode = 0
 position = Vector2( 4724.19, 2113.88 )
 clips = null
 current_room = "r5"
 
-[node name="EvilFish108" parent="." index="101" instance=ExtResource( 10 )]
+[node name="EvilFish108" parent="." index="101" instance=ExtResource( 11 )]
 
 pause_mode = 0
 position = Vector2( 4868.34, 2188.11 )
 clips = null
 current_room = "r5"
 
-[node name="EvilFish109" parent="." index="102" instance=ExtResource( 10 )]
+[node name="EvilFish109" parent="." index="102" instance=ExtResource( 11 )]
 
 pause_mode = 0
 position = Vector2( 4880.46, 2420.82 )
 clips = null
 current_room = "r5"
 
-[node name="EvilFish6" parent="." index="103" instance=ExtResource( 10 )]
+[node name="EvilFish6" parent="." index="103" instance=ExtResource( 11 )]
 
 pause_mode = 0
 position = Vector2( 3976.73, 1530.17 )
 clips = null
 current_room = "r6"
 
-[node name="EvilFish110" parent="." index="104" instance=ExtResource( 10 )]
+[node name="EvilFish110" parent="." index="104" instance=ExtResource( 11 )]
 
 pause_mode = 0
 position = Vector2( 4091.93, 1486.2 )
 clips = null
 current_room = "r6"
 
-[node name="EvilFish111" parent="." index="105" instance=ExtResource( 10 )]
+[node name="EvilFish111" parent="." index="105" instance=ExtResource( 11 )]
 
 pause_mode = 0
 position = Vector2( 4223.38, 1494.04 )
 clips = null
 current_room = "r6"
 
-[node name="EvilFish113" parent="." index="106" instance=ExtResource( 10 )]
+[node name="EvilFish113" parent="." index="106" instance=ExtResource( 11 )]
 
 pause_mode = 0
 position = Vector2( 4331.03, 1535.83 )
 clips = null
 current_room = "r6"
 
-[node name="EvilFish114" parent="." index="107" instance=ExtResource( 10 )]
+[node name="EvilFish114" parent="." index="107" instance=ExtResource( 11 )]
 
 pause_mode = 0
 position = Vector2( 4401.35, 1630.77 )
 clips = null
 current_room = "r6"
 
-[node name="EvilFish112" parent="." index="108" instance=ExtResource( 10 )]
+[node name="EvilFish112" parent="." index="108" instance=ExtResource( 11 )]
 
 pause_mode = 0
 position = Vector2( 3910.84, 1635.64 )
 clips = null
 current_room = "r6"
 
-[node name="EvilFish7" parent="." index="109" instance=ExtResource( 10 )]
+[node name="EvilFish7" parent="." index="109" instance=ExtResource( 11 )]
 
 pause_mode = 0
 position = Vector2( 6204.52, 1701.34 )
 clips = null
 current_room = "r7"
 
-[node name="EvilFish115" parent="." index="110" instance=ExtResource( 10 )]
+[node name="EvilFish115" parent="." index="110" instance=ExtResource( 11 )]
 
 pause_mode = 0
 position = Vector2( 6176.96, 1607.42 )
 clips = null
 current_room = "r7"
 
-[node name="EvilFish116" parent="." index="111" instance=ExtResource( 10 )]
+[node name="EvilFish116" parent="." index="111" instance=ExtResource( 11 )]
 
 pause_mode = 0
 position = Vector2( 6263.63, 1544.55 )
 clips = null
 current_room = "r7"
 
-[node name="EvilFish117" parent="." index="112" instance=ExtResource( 10 )]
+[node name="EvilFish117" parent="." index="112" instance=ExtResource( 11 )]
 
 pause_mode = 0
 position = Vector2( 6357.7, 1620.15 )
@@ -1076,7 +1077,7 @@ clips = null
 gun_swap = "auto_swap"
 current_room = "r7"
 
-[node name="EvilFish119" parent="." index="113" instance=ExtResource( 10 )]
+[node name="EvilFish119" parent="." index="113" instance=ExtResource( 11 )]
 
 pause_mode = 0
 position = Vector2( 5937.94, 1795.35 )
@@ -1084,7 +1085,7 @@ clips = null
 gun_swap = "shotti_swap"
 current_room = "r7"
 
-[node name="EvilFish120" parent="." index="114" instance=ExtResource( 10 )]
+[node name="EvilFish120" parent="." index="114" instance=ExtResource( 11 )]
 
 pause_mode = 0
 position = Vector2( 5951.6, 1434.39 )
@@ -1092,7 +1093,7 @@ clips = null
 gun_swap = "shotti_swap"
 current_room = "r7"
 
-[node name="EvilFish121" parent="." index="115" instance=ExtResource( 10 )]
+[node name="EvilFish121" parent="." index="115" instance=ExtResource( 11 )]
 
 pause_mode = 0
 position = Vector2( 5866.26, 1602.91 )
@@ -1100,14 +1101,14 @@ clips = null
 gun_swap = "shotti_swap"
 current_room = "r7"
 
-[node name="EvilFish118" parent="." index="116" instance=ExtResource( 10 )]
+[node name="EvilFish118" parent="." index="116" instance=ExtResource( 11 )]
 
 pause_mode = 0
 position = Vector2( 6320.48, 1701.69 )
 clips = null
 current_room = "r7"
 
-[node name="EvilFish8" parent="." index="117" instance=ExtResource( 10 )]
+[node name="EvilFish8" parent="." index="117" instance=ExtResource( 11 )]
 
 pause_mode = 0
 position = Vector2( 3436.09, 4180.18 )
@@ -1115,91 +1116,91 @@ clips = null
 gun_swap = "shotti_swap"
 current_room = "r8"
 
-[node name="EvilFish98" parent="." index="118" instance=ExtResource( 10 )]
+[node name="EvilFish98" parent="." index="118" instance=ExtResource( 11 )]
 
 pause_mode = 0
 position = Vector2( 3329.49, 4205.94 )
 clips = null
 current_room = "r8"
 
-[node name="EvilFish99" parent="." index="119" instance=ExtResource( 10 )]
+[node name="EvilFish99" parent="." index="119" instance=ExtResource( 11 )]
 
 pause_mode = 0
 position = Vector2( 3207.77, 4293.29 )
 clips = null
 current_room = "r8"
 
-[node name="EvilFish102" parent="." index="120" instance=ExtResource( 10 )]
+[node name="EvilFish102" parent="." index="120" instance=ExtResource( 11 )]
 
 pause_mode = 0
 position = Vector2( 3568.63, 4204.83 )
 clips = null
 current_room = "r8"
 
-[node name="EvilFish103" parent="." index="121" instance=ExtResource( 10 )]
+[node name="EvilFish103" parent="." index="121" instance=ExtResource( 11 )]
 
 pause_mode = 0
 position = Vector2( 3703.23, 4292.18 )
 clips = null
 current_room = "r8"
 
-[node name="EvilFish104" parent="." index="122" instance=ExtResource( 10 )]
+[node name="EvilFish104" parent="." index="122" instance=ExtResource( 11 )]
 
 pause_mode = 0
 position = Vector2( 3833.54, 4393.53 )
 clips = null
 current_room = "r8"
 
-[node name="EvilFish100" parent="." index="123" instance=ExtResource( 10 )]
+[node name="EvilFish100" parent="." index="123" instance=ExtResource( 11 )]
 
 pause_mode = 0
 position = Vector2( 3067.99, 4413.44 )
 clips = null
 current_room = "r8"
 
-[node name="EvilFish9" parent="." index="124" instance=ExtResource( 10 )]
+[node name="EvilFish9" parent="." index="124" instance=ExtResource( 11 )]
 
 pause_mode = 0
 position = Vector2( 642.561, 4202.96 )
 clips = null
 current_room = "r9"
 
-[node name="EvilFish29" parent="." index="125" instance=ExtResource( 10 )]
+[node name="EvilFish29" parent="." index="125" instance=ExtResource( 11 )]
 
 pause_mode = 0
 position = Vector2( 1140.49, 3951.78 )
 clips = null
 current_room = "r9"
 
-[node name="EvilFish30" parent="." index="126" instance=ExtResource( 10 )]
+[node name="EvilFish30" parent="." index="126" instance=ExtResource( 11 )]
 
 pause_mode = 0
 position = Vector2( 350.251, 3949.87 )
 clips = null
 current_room = "r9"
 
-[node name="EvilFish31" parent="." index="127" instance=ExtResource( 10 )]
+[node name="EvilFish31" parent="." index="127" instance=ExtResource( 11 )]
 
 pause_mode = 0
 position = Vector2( 888.096, 4203.28 )
 clips = null
 current_room = "r9"
 
-[node name="EvilFish32" parent="." index="128" instance=ExtResource( 10 )]
+[node name="EvilFish32" parent="." index="128" instance=ExtResource( 11 )]
 
 pause_mode = 0
 position = Vector2( 262.871, 3689.64 )
 clips = null
 current_room = "r9"
 
-[node name="EvilFish33" parent="." index="129" instance=ExtResource( 10 )]
+[node name="EvilFish33" parent="." index="129" instance=ExtResource( 11 )]
 
 pause_mode = 0
 position = Vector2( 1270.53, 3715.77 )
 clips = null
 current_room = "r9"
 
-[node name="EvilFish10" parent="." index="130" instance=ExtResource( 10 )]
+[node name="EvilFish10" parent="." index="130" instance=ExtResource( 11 )]
 
 pause_mode = 0
 position = Vector2( 264.75, 5950.35 )
@@ -1207,7 +1208,7 @@ clips = null
 gun_swap = "shotti_swap"
 current_room = "r19"
 
-[node name="EvilFish20" parent="." index="131" instance=ExtResource( 10 )]
+[node name="EvilFish20" parent="." index="131" instance=ExtResource( 11 )]
 
 pause_mode = 0
 position = Vector2( 270.177, 5834.7 )
@@ -1215,14 +1216,14 @@ clips = null
 gun_swap = "auto_swap"
 current_room = "r19"
 
-[node name="EvilFish21" parent="." index="132" instance=ExtResource( 10 )]
+[node name="EvilFish21" parent="." index="132" instance=ExtResource( 11 )]
 
 pause_mode = 0
 position = Vector2( 373.603, 5958.45 )
 clips = null
 current_room = "r19"
 
-[node name="EvilFish22" parent="." index="133" instance=ExtResource( 10 )]
+[node name="EvilFish22" parent="." index="133" instance=ExtResource( 11 )]
 
 pause_mode = 0
 position = Vector2( 258.2, 6045.01 )
@@ -1230,7 +1231,7 @@ clips = null
 gun_swap = "auto_swap"
 current_room = "r19"
 
-[node name="EvilFish23" parent="." index="134" instance=ExtResource( 10 )]
+[node name="EvilFish23" parent="." index="134" instance=ExtResource( 11 )]
 
 pause_mode = 0
 position = Vector2( 421.079, 5892.27 )
@@ -1238,7 +1239,7 @@ clips = null
 gun_swap = "shotti_swap"
 current_room = "r19"
 
-[node name="EvilFish24" parent="." index="135" instance=ExtResource( 10 )]
+[node name="EvilFish24" parent="." index="135" instance=ExtResource( 11 )]
 
 pause_mode = 0
 position = Vector2( -509.043, 5916.79 )
@@ -1246,7 +1247,7 @@ clips = null
 gun_swap = "shotti_swap"
 current_room = "r19"
 
-[node name="EvilFish25" parent="." index="136" instance=ExtResource( 10 )]
+[node name="EvilFish25" parent="." index="136" instance=ExtResource( 11 )]
 
 pause_mode = 0
 position = Vector2( -624.007, 5843.75 )
@@ -1254,14 +1255,14 @@ clips = null
 gun_swap = "shotti_swap"
 current_room = "r19"
 
-[node name="EvilFish26" parent="." index="137" instance=ExtResource( 10 )]
+[node name="EvilFish26" parent="." index="137" instance=ExtResource( 11 )]
 
 pause_mode = 0
 position = Vector2( -669.468, 6068.69 )
 clips = null
 current_room = "r19"
 
-[node name="EvilFish27" parent="." index="138" instance=ExtResource( 10 )]
+[node name="EvilFish27" parent="." index="138" instance=ExtResource( 11 )]
 
 pause_mode = 0
 position = Vector2( -508.983, 6039.73 )
@@ -1269,7 +1270,7 @@ clips = null
 gun_swap = "auto_swap"
 current_room = "r19"
 
-[node name="EvilFish28" parent="." index="139" instance=ExtResource( 10 )]
+[node name="EvilFish28" parent="." index="139" instance=ExtResource( 11 )]
 
 pause_mode = 0
 position = Vector2( -641.665, 5961.89 )
@@ -1277,14 +1278,14 @@ clips = null
 gun_swap = "auto_swap"
 current_room = "r19"
 
-[node name="EvilFish11" parent="." index="140" instance=ExtResource( 10 )]
+[node name="EvilFish11" parent="." index="140" instance=ExtResource( 11 )]
 
 pause_mode = 0
 position = Vector2( -845.621, 4321.44 )
 clips = null
 current_room = "r10"
 
-[node name="EvilFish34" parent="." index="141" instance=ExtResource( 10 )]
+[node name="EvilFish34" parent="." index="141" instance=ExtResource( 11 )]
 
 pause_mode = 0
 position = Vector2( -708.347, 4131.69 )
@@ -1292,21 +1293,21 @@ clips = null
 gun_swap = "shotti_swap"
 current_room = "r10"
 
-[node name="EvilFish35" parent="." index="142" instance=ExtResource( 10 )]
+[node name="EvilFish35" parent="." index="142" instance=ExtResource( 11 )]
 
 pause_mode = 0
 position = Vector2( -429.107, 4189.35 )
 clips = null
 current_room = "r10"
 
-[node name="EvilFish36" parent="." index="143" instance=ExtResource( 10 )]
+[node name="EvilFish36" parent="." index="143" instance=ExtResource( 11 )]
 
 pause_mode = 0
 position = Vector2( -1349.67, 3716.56 )
 clips = null
 current_room = "r10"
 
-[node name="EvilFish37" parent="." index="144" instance=ExtResource( 10 )]
+[node name="EvilFish37" parent="." index="144" instance=ExtResource( 11 )]
 
 pause_mode = 0
 position = Vector2( -1454.1, 3850.71 )
@@ -1314,49 +1315,49 @@ clips = null
 gun_swap = "shotti_swap"
 current_room = "r10"
 
-[node name="EvilFish38" parent="." index="145" instance=ExtResource( 10 )]
+[node name="EvilFish38" parent="." index="145" instance=ExtResource( 11 )]
 
 pause_mode = 0
 position = Vector2( -1666.52, 3928.97 )
 clips = null
 current_room = "r10"
 
-[node name="EvilFish12" parent="." index="146" instance=ExtResource( 10 )]
+[node name="EvilFish12" parent="." index="146" instance=ExtResource( 11 )]
 
 pause_mode = 0
 position = Vector2( -465.406, 3190.2 )
 clips = null
 current_room = "r11"
 
-[node name="EvilFish39" parent="." index="147" instance=ExtResource( 10 )]
+[node name="EvilFish39" parent="." index="147" instance=ExtResource( 11 )]
 
 pause_mode = 0
 position = Vector2( -551.459, 3296.92 )
 clips = null
 current_room = "r11"
 
-[node name="EvilFish40" parent="." index="148" instance=ExtResource( 10 )]
+[node name="EvilFish40" parent="." index="148" instance=ExtResource( 11 )]
 
 pause_mode = 0
 position = Vector2( -456.799, 3392.8 )
 clips = null
 current_room = "r11"
 
-[node name="EvilFish13" parent="." index="149" instance=ExtResource( 10 )]
+[node name="EvilFish13" parent="." index="149" instance=ExtResource( 11 )]
 
 pause_mode = 0
 position = Vector2( -1397.08, 2973.6 )
 clips = null
 current_room = "r12"
 
-[node name="EvilFish41" parent="." index="150" instance=ExtResource( 10 )]
+[node name="EvilFish41" parent="." index="150" instance=ExtResource( 11 )]
 
 pause_mode = 0
 position = Vector2( -1502.63, 2844.36 )
 clips = null
 current_room = "r12"
 
-[node name="EvilFish14" parent="." index="151" instance=ExtResource( 10 )]
+[node name="EvilFish14" parent="." index="151" instance=ExtResource( 11 )]
 
 pause_mode = 0
 position = Vector2( -2636.09, 2820.52 )
@@ -1364,49 +1365,49 @@ clips = null
 gun_swap = "shotti_swap"
 current_room = "r14"
 
-[node name="EvilFish42" parent="." index="152" instance=ExtResource( 10 )]
+[node name="EvilFish42" parent="." index="152" instance=ExtResource( 11 )]
 
 pause_mode = 0
 position = Vector2( -2961.12, 3074.03 )
 clips = null
 current_room = "r14"
 
-[node name="EvilFish43" parent="." index="153" instance=ExtResource( 10 )]
+[node name="EvilFish43" parent="." index="153" instance=ExtResource( 11 )]
 
 pause_mode = 0
 position = Vector2( -2979.04, 2558.73 )
 clips = null
 current_room = "r14"
 
-[node name="EvilFish44" parent="." index="154" instance=ExtResource( 10 )]
+[node name="EvilFish44" parent="." index="154" instance=ExtResource( 11 )]
 
 pause_mode = 0
 position = Vector2( -2500.5, 2560.5 )
 clips = null
 current_room = "r14"
 
-[node name="EvilFish45" parent="." index="155" instance=ExtResource( 10 )]
+[node name="EvilFish45" parent="." index="155" instance=ExtResource( 11 )]
 
 pause_mode = 0
 position = Vector2( -2409.08, 3070.52 )
 clips = null
 current_room = "r14"
 
-[node name="EvilFish46" parent="." index="156" instance=ExtResource( 10 )]
+[node name="EvilFish46" parent="." index="156" instance=ExtResource( 11 )]
 
 pause_mode = 0
 position = Vector2( -2712.05, 2880.64 )
 clips = null
 current_room = "r14"
 
-[node name="EvilFish47" parent="." index="157" instance=ExtResource( 10 )]
+[node name="EvilFish47" parent="." index="157" instance=ExtResource( 11 )]
 
 pause_mode = 0
 position = Vector2( -2716.91, 2782.02 )
 clips = null
 current_room = "r14"
 
-[node name="EvilFish48" parent="." index="158" instance=ExtResource( 10 )]
+[node name="EvilFish48" parent="." index="158" instance=ExtResource( 11 )]
 
 pause_mode = 0
 position = Vector2( -2798.13, 2823.1 )
@@ -1414,7 +1415,7 @@ clips = null
 gun_swap = "shotti_swap"
 current_room = "r14"
 
-[node name="EvilFish15" parent="." index="159" instance=ExtResource( 10 )]
+[node name="EvilFish15" parent="." index="159" instance=ExtResource( 11 )]
 
 pause_mode = 0
 position = Vector2( -2184, 3806.38 )
@@ -1422,42 +1423,42 @@ clips = null
 gun_swap = "auto_swap"
 current_room = "r15"
 
-[node name="EvilFish49" parent="." index="160" instance=ExtResource( 10 )]
+[node name="EvilFish49" parent="." index="160" instance=ExtResource( 11 )]
 
 pause_mode = 0
 position = Vector2( -2854.52, 3912.92 )
 clips = null
 current_room = "r15"
 
-[node name="EvilFish50" parent="." index="161" instance=ExtResource( 10 )]
+[node name="EvilFish50" parent="." index="161" instance=ExtResource( 11 )]
 
 pause_mode = 0
 position = Vector2( -2611.37, 3792.92 )
 clips = null
 current_room = "r15"
 
-[node name="EvilFish16" parent="." index="162" instance=ExtResource( 10 )]
+[node name="EvilFish16" parent="." index="162" instance=ExtResource( 11 )]
 
 pause_mode = 0
 position = Vector2( -4531.32, 3846.54 )
 clips = null
 current_room = "r16"
 
-[node name="EvilFish51" parent="." index="163" instance=ExtResource( 10 )]
+[node name="EvilFish51" parent="." index="163" instance=ExtResource( 11 )]
 
 pause_mode = 0
 position = Vector2( -4660.19, 3774.94 )
 clips = null
 current_room = "r16"
 
-[node name="EvilFish52" parent="." index="164" instance=ExtResource( 10 )]
+[node name="EvilFish52" parent="." index="164" instance=ExtResource( 11 )]
 
 pause_mode = 0
 position = Vector2( -4528.45, 3668.97 )
 clips = null
 current_room = "r16"
 
-[node name="EvilFish54" parent="." index="165" instance=ExtResource( 10 )]
+[node name="EvilFish54" parent="." index="165" instance=ExtResource( 11 )]
 
 pause_mode = 0
 position = Vector2( -4914.54, 4127.53 )
@@ -1465,7 +1466,7 @@ clips = null
 gun_swap = "auto_swap"
 current_room = "r16"
 
-[node name="EvilFish55" parent="." index="166" instance=ExtResource( 10 )]
+[node name="EvilFish55" parent="." index="166" instance=ExtResource( 11 )]
 
 pause_mode = 0
 position = Vector2( -4882.76, 3450.03 )
@@ -1473,7 +1474,7 @@ clips = null
 gun_swap = "auto_swap"
 current_room = "r16"
 
-[node name="EvilFish56" parent="." index="167" instance=ExtResource( 10 )]
+[node name="EvilFish56" parent="." index="167" instance=ExtResource( 11 )]
 
 pause_mode = 0
 position = Vector2( -4056.89, 3420.57 )
@@ -1481,7 +1482,7 @@ clips = null
 gun_swap = "shotti_swap"
 current_room = "r16"
 
-[node name="EvilFish57" parent="." index="168" instance=ExtResource( 10 )]
+[node name="EvilFish57" parent="." index="168" instance=ExtResource( 11 )]
 
 pause_mode = 0
 position = Vector2( -4061.92, 4136.53 )
@@ -1489,14 +1490,14 @@ clips = null
 gun_swap = "shotti_swap"
 current_room = "r16"
 
-[node name="EvilFish53" parent="." index="169" instance=ExtResource( 10 )]
+[node name="EvilFish53" parent="." index="169" instance=ExtResource( 11 )]
 
 pause_mode = 0
 position = Vector2( -4390.98, 3764.61 )
 clips = null
 current_room = "r16"
 
-[node name="EvilFish17" parent="." index="170" instance=ExtResource( 10 )]
+[node name="EvilFish17" parent="." index="170" instance=ExtResource( 11 )]
 
 pause_mode = 0
 position = Vector2( -1027.83, 1721.27 )
@@ -1504,21 +1505,21 @@ clips = null
 gun_swap = "shotti_swap"
 current_room = "r13"
 
-[node name="EvilFish73" parent="." index="171" instance=ExtResource( 10 )]
+[node name="EvilFish73" parent="." index="171" instance=ExtResource( 11 )]
 
 pause_mode = 0
 position = Vector2( -1187.93, 1886.52 )
 clips = null
 current_room = "r13"
 
-[node name="EvilFish74" parent="." index="172" instance=ExtResource( 10 )]
+[node name="EvilFish74" parent="." index="172" instance=ExtResource( 11 )]
 
 pause_mode = 0
 position = Vector2( -965.215, 1791.09 )
 clips = null
 current_room = "r13"
 
-[node name="EvilFish75" parent="." index="173" instance=ExtResource( 10 )]
+[node name="EvilFish75" parent="." index="173" instance=ExtResource( 11 )]
 
 pause_mode = 0
 position = Vector2( -895.941, 1858.81 )
@@ -1526,35 +1527,35 @@ clips = null
 gun_swap = "shotti_swap"
 current_room = "r13"
 
-[node name="EvilFish76" parent="." index="174" instance=ExtResource( 10 )]
+[node name="EvilFish76" parent="." index="174" instance=ExtResource( 11 )]
 
 pause_mode = 0
 position = Vector2( -1115.75, 1951.62 )
 clips = null
 current_room = "r13"
 
-[node name="EvilFish79" parent="." index="175" instance=ExtResource( 10 )]
+[node name="EvilFish79" parent="." index="175" instance=ExtResource( 11 )]
 
 pause_mode = 0
 position = Vector2( -1049.01, 2013.09 )
 clips = null
 current_room = "r13"
 
-[node name="EvilFish77" parent="." index="176" instance=ExtResource( 10 )]
+[node name="EvilFish77" parent="." index="176" instance=ExtResource( 11 )]
 
 pause_mode = 0
 position = Vector2( -1256.66, 1806.17 )
 clips = null
 current_room = "r13"
 
-[node name="EvilFish78" parent="." index="177" instance=ExtResource( 10 )]
+[node name="EvilFish78" parent="." index="177" instance=ExtResource( 11 )]
 
 pause_mode = 0
 position = Vector2( -1079.89, 1664.89 )
 clips = null
 current_room = "r13"
 
-[node name="EvilFish18" parent="." index="178" instance=ExtResource( 10 )]
+[node name="EvilFish18" parent="." index="178" instance=ExtResource( 11 )]
 
 pause_mode = 0
 position = Vector2( -3539.65, 694.388 )
@@ -1562,7 +1563,7 @@ clips = null
 gun_swap = "auto_swap"
 current_room = "r17"
 
-[node name="EvilFish68" parent="." index="179" instance=ExtResource( 10 )]
+[node name="EvilFish68" parent="." index="179" instance=ExtResource( 11 )]
 
 pause_mode = 0
 position = Vector2( -3734.28, 721.102 )
@@ -1570,7 +1571,7 @@ clips = null
 gun_swap = "shotti_swap"
 current_room = "r17"
 
-[node name="EvilFish69" parent="." index="180" instance=ExtResource( 10 )]
+[node name="EvilFish69" parent="." index="180" instance=ExtResource( 11 )]
 
 pause_mode = 0
 position = Vector2( -3632.56, 529.953 )
@@ -1578,28 +1579,28 @@ clips = null
 gun_swap = "shotti_swap"
 current_room = "r17"
 
-[node name="EvilFish70" parent="." index="181" instance=ExtResource( 10 )]
+[node name="EvilFish70" parent="." index="181" instance=ExtResource( 11 )]
 
 pause_mode = 0
 position = Vector2( -3776.44, 1856.11 )
 clips = null
 current_room = "r17"
 
-[node name="EvilFish71" parent="." index="182" instance=ExtResource( 10 )]
+[node name="EvilFish71" parent="." index="182" instance=ExtResource( 11 )]
 
 pause_mode = 0
 position = Vector2( -3455.65, 1585.31 )
 clips = null
 current_room = "r17"
 
-[node name="EvilFish72" parent="." index="183" instance=ExtResource( 10 )]
+[node name="EvilFish72" parent="." index="183" instance=ExtResource( 11 )]
 
 pause_mode = 0
 position = Vector2( -3675.68, 1653.49 )
 clips = null
 current_room = "r17"
 
-[node name="EvilFish19" parent="." index="184" instance=ExtResource( 10 )]
+[node name="EvilFish19" parent="." index="184" instance=ExtResource( 11 )]
 
 pause_mode = 0
 position = Vector2( -5604.35, 981.342 )
@@ -1607,7 +1608,7 @@ clips = null
 gun_swap = "auto_swap"
 current_room = "r18"
 
-[node name="EvilFish58" parent="." index="185" instance=ExtResource( 10 )]
+[node name="EvilFish58" parent="." index="185" instance=ExtResource( 11 )]
 
 pause_mode = 0
 position = Vector2( -5644.87, 1285 )
@@ -1615,7 +1616,7 @@ clips = null
 gun_swap = "auto_swap"
 current_room = "r18"
 
-[node name="EvilFish59" parent="." index="186" instance=ExtResource( 10 )]
+[node name="EvilFish59" parent="." index="186" instance=ExtResource( 11 )]
 
 pause_mode = 0
 position = Vector2( -5154.46, 790.074 )
@@ -1623,7 +1624,7 @@ clips = null
 gun_swap = "auto_swap"
 current_room = "r18"
 
-[node name="EvilFish61" parent="." index="187" instance=ExtResource( 10 )]
+[node name="EvilFish61" parent="." index="187" instance=ExtResource( 11 )]
 
 pause_mode = 0
 position = Vector2( -4884.6, 605.184 )
@@ -1631,7 +1632,7 @@ clips = null
 gun_swap = "auto_swap"
 current_room = "r18"
 
-[node name="EvilFish62" parent="." index="188" instance=ExtResource( 10 )]
+[node name="EvilFish62" parent="." index="188" instance=ExtResource( 11 )]
 
 pause_mode = 0
 position = Vector2( -5008.17, 690.224 )
@@ -1639,7 +1640,7 @@ clips = null
 gun_swap = "auto_swap"
 current_room = "r18"
 
-[node name="EvilFish63" parent="." index="189" instance=ExtResource( 10 )]
+[node name="EvilFish63" parent="." index="189" instance=ExtResource( 11 )]
 
 pause_mode = 0
 position = Vector2( -5130.78, 637.896 )
@@ -1647,7 +1648,7 @@ clips = null
 gun_swap = "auto_swap"
 current_room = "r18"
 
-[node name="EvilFish64" parent="." index="190" instance=ExtResource( 10 )]
+[node name="EvilFish64" parent="." index="190" instance=ExtResource( 11 )]
 
 pause_mode = 0
 position = Vector2( -5492.23, 842.741 )
@@ -1655,7 +1656,7 @@ clips = null
 gun_swap = "auto_swap"
 current_room = "r18"
 
-[node name="EvilFish65" parent="." index="191" instance=ExtResource( 10 )]
+[node name="EvilFish65" parent="." index="191" instance=ExtResource( 11 )]
 
 pause_mode = 0
 position = Vector2( -5669.21, 1121.99 )
@@ -1663,7 +1664,7 @@ clips = null
 gun_swap = "auto_swap"
 current_room = "r18"
 
-[node name="EvilFish66" parent="." index="192" instance=ExtResource( 10 )]
+[node name="EvilFish66" parent="." index="192" instance=ExtResource( 11 )]
 
 pause_mode = 0
 position = Vector2( -5523.53, 1124.68 )
@@ -1671,7 +1672,7 @@ clips = null
 gun_swap = "auto_swap"
 current_room = "r18"
 
-[node name="EvilFish67" parent="." index="193" instance=ExtResource( 10 )]
+[node name="EvilFish67" parent="." index="193" instance=ExtResource( 11 )]
 
 pause_mode = 0
 position = Vector2( -5384.07, 963.006 )
@@ -1679,7 +1680,7 @@ clips = null
 gun_swap = "auto_swap"
 current_room = "r18"
 
-[node name="EvilFish60" parent="." index="194" instance=ExtResource( 10 )]
+[node name="EvilFish60" parent="." index="194" instance=ExtResource( 11 )]
 
 pause_mode = 0
 position = Vector2( -5333.45, 724.769 )
@@ -1687,19 +1688,19 @@ clips = null
 gun_swap = "auto_swap"
 current_room = "r18"
 
-[node name="Key1" parent="." index="195" instance=ExtResource( 11 )]
+[node name="Key1" parent="." index="195" instance=ExtResource( 12 )]
 
 position = Vector2( -4531.11, 3766.75 )
 
-[node name="Key2" parent="." index="196" instance=ExtResource( 11 )]
+[node name="Key2" parent="." index="196" instance=ExtResource( 12 )]
 
 position = Vector2( 3451.28, 4299.83 )
 
-[node name="Key3" parent="." index="197" instance=ExtResource( 11 )]
+[node name="Key3" parent="." index="197" instance=ExtResource( 12 )]
 
 position = Vector2( 5824.16, 1553.86 )
 
-[node name="Auto" parent="." index="198" instance=ExtResource( 12 )]
+[node name="Auto" parent="." index="198" instance=ExtResource( 13 )]
 
 position = Vector2( -4868.88, 1367.56 )
 
@@ -1726,13 +1727,13 @@ page = 0.0
 value = 0.0
 exp_edit = false
 rounded = false
-texture_under = ExtResource( 13 )
+texture_under = ExtResource( 14 )
 texture_over = null
-texture_progress = ExtResource( 14 )
+texture_progress = ExtResource( 15 )
 radial_fill_degrees = 360.0
 radial_center_offset = Vector2( 0, 0 )
 nine_patch_stretch = false
-script = ExtResource( 15 )
+script = ExtResource( 16 )
 _sections_unfolded = [ "Textures" ]
 
 [connection signal="perma_open" from="." to="Door20" method="perma_open"]
@@ -1841,17 +1842,17 @@ _sections_unfolded = [ "Textures" ]
 
 [connection signal="room_entered" from="Door18b" to="Fog18" method="_reveal"]
 
-[connection signal="room_entered" from="Door19" to="Fog19c" method="_reveal"]
+[connection signal="room_entered" from="Door19" to="Fog19" method="_reveal"]
 
 [connection signal="room_entered" from="Door19" to="Fog19b" method="_reveal"]
 
-[connection signal="room_entered" from="Door19" to="Fog19" method="_reveal"]
+[connection signal="room_entered" from="Door19" to="Fog19c" method="_reveal"]
 
-[connection signal="room_entered" from="Door19b" to="Fog19c" method="_reveal"]
+[connection signal="room_entered" from="Door19b" to="Fog19" method="_reveal"]
 
 [connection signal="room_entered" from="Door19b" to="Fog19b" method="_reveal"]
 
-[connection signal="room_entered" from="Door19b" to="Fog19" method="_reveal"]
+[connection signal="room_entered" from="Door19b" to="Fog19c" method="_reveal"]
 
 [connection signal="key_progress" from="Door20" to="KeyProgress" method="key_progress"]
 
@@ -1859,61 +1860,61 @@ _sections_unfolded = [ "Textures" ]
 
 [connection signal="room_clear" from="Fog" to="Door1c" method="perma_open"]
 
-[connection signal="room_clear" from="Fog" to="Door1" method="perma_open"]
-
 [connection signal="room_clear" from="Fog" to="Door1b" method="perma_open"]
+
+[connection signal="room_clear" from="Fog" to="Door1" method="perma_open"]
 
 [connection signal="room_clear" from="Fog2" to="Door2" method="perma_open"]
 
 [connection signal="room_clear" from="Fog2" to="Door2b" method="perma_open"]
 
-[connection signal="room_clear" from="Fog3" to="Door3c" method="perma_open"]
-
 [connection signal="room_clear" from="Fog3" to="Door3" method="perma_open"]
 
 [connection signal="room_clear" from="Fog3" to="Door3b" method="perma_open"]
 
-[connection signal="room_clear" from="Fog4" to="Door4b" method="perma_open"]
+[connection signal="room_clear" from="Fog3" to="Door3c" method="perma_open"]
 
 [connection signal="room_clear" from="Fog4" to="Door4" method="perma_open"]
 
-[connection signal="room_clear" from="Fog5" to="Door5b" method="perma_open"]
+[connection signal="room_clear" from="Fog4" to="Door4b" method="perma_open"]
 
 [connection signal="room_clear" from="Fog5" to="Door5" method="perma_open"]
 
-[connection signal="room_clear" from="Fog6" to="Door6b" method="perma_open"]
+[connection signal="room_clear" from="Fog5" to="Door5b" method="perma_open"]
 
 [connection signal="room_clear" from="Fog6" to="Door6" method="perma_open"]
 
-[connection signal="room_clear" from="Fog7" to="Door7b" method="perma_open"]
+[connection signal="room_clear" from="Fog6" to="Door6b" method="perma_open"]
 
 [connection signal="room_clear" from="Fog7" to="Door7" method="perma_open"]
 
-[connection signal="room_clear" from="Fog8" to="Door8b" method="perma_open"]
+[connection signal="room_clear" from="Fog7" to="Door7b" method="perma_open"]
 
 [connection signal="room_clear" from="Fog8" to="Door8" method="perma_open"]
+
+[connection signal="room_clear" from="Fog8" to="Door8b" method="perma_open"]
 
 [connection signal="room_clear" from="Fog9" to="Door9" method="perma_open"]
 
 [connection signal="room_clear" from="Fog9" to="Door9b" method="perma_open"]
 
-[connection signal="room_clear" from="Fog10" to="Door10b" method="perma_open"]
-
 [connection signal="room_clear" from="Fog10" to="Door10" method="perma_open"]
 
-[connection signal="room_clear" from="Fog11" to="Door11b" method="perma_open"]
+[connection signal="room_clear" from="Fog10" to="Door10b" method="perma_open"]
 
 [connection signal="room_clear" from="Fog11" to="Door11" method="perma_open"]
 
-[connection signal="room_clear" from="Fog12" to="Door12c" method="perma_open"]
-
-[connection signal="room_clear" from="Fog12" to="Door12b" method="perma_open"]
+[connection signal="room_clear" from="Fog11" to="Door11b" method="perma_open"]
 
 [connection signal="room_clear" from="Fog12" to="Door12" method="perma_open"]
 
-[connection signal="room_clear" from="Fog13" to="Door13b" method="perma_open"]
+[connection signal="room_clear" from="Fog12" to="Door12b" method="perma_open"]
+
+[connection signal="room_clear" from="Fog12" to="Door12c" method="perma_open"]
 
 [connection signal="room_clear" from="Fog13" to="Door13" method="perma_open"]
+
+[connection signal="room_clear" from="Fog13" to="Door13b" method="perma_open"]
 
 [connection signal="room_clear" from="Fog14" to="Door14" method="perma_open"]
 
@@ -1921,9 +1922,9 @@ _sections_unfolded = [ "Textures" ]
 
 [connection signal="room_clear" from="Fog14" to="Door14c" method="perma_open"]
 
-[connection signal="room_clear" from="Fog15" to="Door15b" method="perma_open"]
-
 [connection signal="room_clear" from="Fog15" to="Door15" method="perma_open"]
+
+[connection signal="room_clear" from="Fog15" to="Door15b" method="perma_open"]
 
 [connection signal="room_clear" from="Fog16" to="Door16" method="perma_open"]
 

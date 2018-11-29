@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://Maps/Map.gd" type="Script" id=1]
 [ext_resource path="res://Maps/Standonmyface.tres" type="TileSet" id=2]
@@ -8,11 +8,12 @@
 [ext_resource path="res://Maps/Door.tscn" type="PackedScene" id=6]
 [ext_resource path="res://HUD/HUD.tscn" type="PackedScene" id=7]
 [ext_resource path="res://HUD/Pause.tscn" type="PackedScene" id=8]
-[ext_resource path="res://Characters/Player.tscn" type="PackedScene" id=9]
-[ext_resource path="res://Maps/Portal.tscn" type="PackedScene" id=10]
-[ext_resource path="res://Characters/JellyWitch.tscn" type="PackedScene" id=11]
-[ext_resource path="res://Weapons/EnemyBullet.tscn" type="PackedScene" id=12]
-[ext_resource path="res://Weapons/Shrimpclip.tscn" type="PackedScene" id=13]
+[ext_resource path="res://Audio/Second_Theme.ogg" type="AudioStream" id=9]
+[ext_resource path="res://Characters/Player.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Maps/Portal.tscn" type="PackedScene" id=11]
+[ext_resource path="res://Characters/JellyWitch.tscn" type="PackedScene" id=12]
+[ext_resource path="res://Weapons/EnemyBullet.tscn" type="PackedScene" id=13]
+[ext_resource path="res://Weapons/Shrimpclip.tscn" type="PackedScene" id=14]
 
 [sub_resource type="Shader" id=1]
 
@@ -40,7 +41,7 @@ shader = SubResource( 1 )
 shader_param/grayscale = false
 _sections_unfolded = [ "Resource", "shader_param" ]
 
-[node name="Map4" type="Node2D" index="0"]
+[node name="Map4" type="Node2D"]
 
 material = SubResource( 2 )
 script = ExtResource( 1 )
@@ -152,30 +153,30 @@ title_texture = "res://HUD/Buff_Puff.png"
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." index="9"]
 
-stream = null
+stream = ExtResource( 9 )
 volume_db = 0.0
 pitch_scale = 1.0
-autoplay = false
+autoplay = true
 mix_target = 0
 bus = "Master"
 
-[node name="Player" parent="." index="10" instance=ExtResource( 9 )]
+[node name="Player" parent="." index="10" instance=ExtResource( 10 )]
 
-position = Vector2( -858.122, -41.3553 )
+position = Vector2( -851.984, -37.6005 )
 gun_swap = "ak_swap"
 
-[node name="Portal" parent="." index="11" instance=ExtResource( 10 )]
+[node name="Portal" parent="." index="11" instance=ExtResource( 11 )]
 
 position = Vector2( -999.029, -58.7734 )
 target = "res://Maps/Map3.tscn"
 spawn_point = Vector2( -43.2245, 5550.49 )
 map = null
 
-[node name="JellyWitch" parent="." index="12" instance=ExtResource( 11 )]
+[node name="JellyWitch" parent="." index="12" instance=ExtResource( 12 )]
 
 position = Vector2( 221.861, -46.4929 )
-Bullet = ExtResource( 12 )
-clip = ExtResource( 13 )
+Bullet = ExtResource( 13 )
+clip = ExtResource( 14 )
 speed = 100
 weapon_cooldown = 0.2
 max_health = 200
@@ -218,9 +219,15 @@ reload_right = "the_buff_puff"
 reload_left = "the_buff_puff"
 detect_radius = 0
 
-[connection signal="room_clear" from="Fog" to="Door2" method="perma_open"]
+[node name="Portal2" parent="." index="13" instance=ExtResource( 11 )]
+
+position = Vector2( 970.43, -58.9798 )
+target = "res://Maps/Fin.tscn"
+map = null
 
 [connection signal="room_clear" from="Fog" to="Door" method="perma_open"]
+
+[connection signal="room_clear" from="Fog" to="Door2" method="perma_open"]
 
 [connection signal="room_entered" from="Door" to="HUD" method="start_bossbar"]
 

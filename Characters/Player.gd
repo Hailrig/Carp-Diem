@@ -135,6 +135,21 @@ func control(delta):
 	
 	_camera_shift()
 	
+	
+	
+func reload():
+	_in_clip = 0
+	if shot_dir == 'right':
+		$Weapon/AnimationPlayer.play(reload_right)
+	elif shot_dir == 'left':
+		$Weapon/AnimationPlayer.play(reload_left)
+#		pass play left offset animation
+#	emit_signal("clip_fly", clip, $Weapon.global_position)
+	if clips:
+		$ClipTimer.start()
+	$ReloadTimer.start()
+	$Weapon/AudioStreamPlayer2D2.play()
+	
 func gun_own(gun):
 	if gun == "shotti":
 		shotti = true

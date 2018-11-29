@@ -42,7 +42,7 @@ shader = SubResource( 1 )
 shader_param/grayscale = false
 _sections_unfolded = [ "Resource", "shader_param" ]
 
-[node name="Map3" type="Node2D" index="0"]
+[node name="Map3" type="Node2D"]
 
 material = SubResource( 2 )
 script = ExtResource( 1 )
@@ -118,6 +118,9 @@ tile_data = PoolIntArray( -1, 4, 0, -65536, 4, 0, -65535, 4, 0, -65534, 4, 0, -6
 _sections_unfolded = [ "Cell", "Material", "Transform", "Z Index" ]
 
 [node name="HUD" parent="." index="3" instance=ExtResource( 4 )]
+
+max_val = null
+title_texture = null
 
 [node name="Pause" parent="." index="4" instance=ExtResource( 5 )]
 
@@ -672,7 +675,6 @@ room = "All"
 
 [node name="Fog" parent="." index="53" instance=ExtResource( 9 )]
 
-visible = false
 position = Vector2( 414.98, 968.899 )
 scale = Vector2( 57.5428, 17.0136 )
 room = "r1"

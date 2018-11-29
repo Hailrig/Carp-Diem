@@ -20,16 +20,6 @@ func shoot():
 				tri_shot()
 			elif fire_mode == 1:
 				spin_shot()
-#			var dir = Vector2(1, 0).rotated($Weapon.global_rotation)
-#			emit_signal('shoot', Bullet, $Weapon/Muzzle.global_position, dir)
-#			dir = Vector2(1, 0).rotated($Weapon.global_rotation + .5)
-#			emit_signal('shoot', Bullet, $Weapon/Muzzle.global_position, dir)
-#			dir = Vector2(1, 0).rotated($Weapon.global_rotation - .5)
-#			emit_signal('shoot', Bullet, $Weapon/Muzzle.global_position, dir)
-#			dir = Vector2(1, 0).rotated($Weapon.global_rotation + .25)
-#			emit_signal('shoot', Bullet, $Weapon/Muzzle.global_position, dir)
-#			dir = Vector2(1, 0).rotated($Weapon.global_rotation - .25)
-#			emit_signal('shoot', Bullet, $Weapon/Muzzle.global_position, dir)
 		elif $ReloadTimer.time_left == 0:
 			reload()
 
@@ -92,5 +82,9 @@ func getrekt():
 		alive = false
 
 func _on_Fireswitch_timeout():
-	fire_mode = randi()%2
-	print(fire_mode)
+#	fire_mode = randi()%2
+#	print(fire_mode)
+	if fire_mode == 1:
+		fire_mode = 0
+	else:
+		fire_mode = 1

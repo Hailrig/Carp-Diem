@@ -1601,23 +1601,23 @@ _sections_unfolded = [ "Textures" ]
 
 [connection signal="room_clear" from="Fog" to="Doorb" method="perma_open"]
 
-[connection signal="room_clear" from="Fog2" to="Door2" method="perma_open"]
-
 [connection signal="room_clear" from="Fog2" to="Door2b" method="perma_open"]
 
 [connection signal="room_clear" from="Fog2" to="Door2c" method="perma_open"]
+
+[connection signal="room_clear" from="Fog2" to="Door2" method="perma_open"]
 
 [connection signal="room_clear" from="Fog3" to="Door3" method="perma_open"]
 
 [connection signal="room_clear" from="Fog3" to="Door3b" method="perma_open"]
 
-[connection signal="room_clear" from="Fog4" to="Door4" method="perma_open"]
-
 [connection signal="room_clear" from="Fog4" to="Door4b" method="perma_open"]
 
-[connection signal="room_clear" from="Fog5" to="Door5" method="perma_open"]
+[connection signal="room_clear" from="Fog4" to="Door4" method="perma_open"]
 
 [connection signal="room_clear" from="Fog5" to="Door5b" method="perma_open"]
+
+[connection signal="room_clear" from="Fog5" to="Door5" method="perma_open"]
 
 [connection signal="room_clear" from="Fog6" to="Door6" method="perma_open"]
 

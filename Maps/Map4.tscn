@@ -40,7 +40,7 @@ shader = SubResource( 1 )
 shader_param/grayscale = false
 _sections_unfolded = [ "Resource", "shader_param" ]
 
-[node name="Map4" type="Node2D"]
+[node name="Map4" type="Node2D" index="0"]
 
 material = SubResource( 2 )
 script = ExtResource( 1 )
@@ -132,7 +132,7 @@ room = "boss"
 
 [node name="Door" parent="." index="5" instance=ExtResource( 6 )]
 
-position = Vector2( -704.914, -26.3792 )
+position = Vector2( -704.914, -24.7925 )
 room = "boss"
 texture = "res://Maps/PrettyDoors.png"
 
@@ -144,6 +144,9 @@ enter_dir = "west"
 texture = "res://Maps/PrettyDoors.png"
 
 [node name="HUD" parent="." index="7" instance=ExtResource( 7 )]
+
+max_val = 200
+title_texture = "res://HUD/Buff_Puff.png"
 
 [node name="Pause" parent="." index="8" instance=ExtResource( 8 )]
 
@@ -175,8 +178,8 @@ Bullet = ExtResource( 12 )
 clip = ExtResource( 13 )
 speed = 100
 weapon_cooldown = 0.2
-max_health = 100
-starting_health = 100
+max_health = 200
+starting_health = 200
 weapon_offset = 0
 clip_size = 20
 reload_timer = 1
@@ -215,9 +218,9 @@ reload_right = "the_buff_puff"
 reload_left = "the_buff_puff"
 detect_radius = 0
 
-[connection signal="room_clear" from="Fog" to="Door" method="perma_open"]
-
 [connection signal="room_clear" from="Fog" to="Door2" method="perma_open"]
+
+[connection signal="room_clear" from="Fog" to="Door" method="perma_open"]
 
 [connection signal="room_entered" from="Door" to="HUD" method="start_bossbar"]
 

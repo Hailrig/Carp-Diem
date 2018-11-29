@@ -17,6 +17,8 @@ rotation = 0.0
 scale = Vector2( 1, 1 )
 transform = Transform2D( 1, 0, 0, 1, 0, 0 )
 script = ExtResource( 1 )
+max_val = null
+title_texture = null
 
 [node name="MarginContainer" type="MarginContainer" parent="." index="0"]
 

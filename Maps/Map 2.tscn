@@ -44,7 +44,7 @@ _sections_unfolded = [ "Resource", "shader_param" ]
 
 material = SubResource( 2 )
 script = ExtResource( 1 )
-_sections_unfolded = [ "Material", "Pause", "Visibility" ]
+_sections_unfolded = [ "Material", "Pause", "Transform", "Visibility" ]
 
 [node name="TileMap" type="TileMap" parent="." index="0"]
 
@@ -138,6 +138,9 @@ shell_anim = "Null"
 gun_swap = "auto_swap"
 
 [node name="HUD" parent="." index="6" instance=ExtResource( 6 )]
+
+max_val = 100
+title_texture = "res://HUD/Buff_Puff.png"
 
 [node name="Pause" parent="." index="7" instance=ExtResource( 7 )]
 
@@ -240,9 +243,9 @@ bus = "Master"
 
 [connection signal="time_change" from="Player" to="HUD" method="update_timebar"]
 
-[connection signal="room_clear" from="Fog" to="DoorOut" method="perma_open"]
-
 [connection signal="room_clear" from="Fog" to="DoorIn" method="perma_open"]
+
+[connection signal="room_clear" from="Fog" to="DoorOut" method="perma_open"]
 
 [connection signal="dead" from="BuffPuff" to="HUD" method="end_bossbar"]
 

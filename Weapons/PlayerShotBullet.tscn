@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Weapons/PlayerBullet.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Weapons/shot_flash.tres" type="Animation" id=2]
+
+[node name="PlayerBullet" instance=ExtResource( 1 )]
+
+[node name="Sprite" parent="." index="0"]
+
+region_rect = Rect2( 95, 16, 20, 12 )
+
+[node name="AnimationPlayer" parent="." index="4"]
+
+anims/shot_flash = ExtResource( 2 )
+
+

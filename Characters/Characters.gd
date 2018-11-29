@@ -71,6 +71,7 @@ var bloodied = false
 var dashing = false
 var zoom = false
 var path = null
+var flash = "flash"
 
 func _ready():
 #	if name == "Player":
@@ -100,6 +101,7 @@ func gun_setup(gun_swap):
 		shell_anim = "shell_fly"
 		reload_right = "a"
 		reload_left = "a"
+		flash = "flash"
 	if gun_swap == "shrimp_swap":
 		weapon_cooldown = 0.3
 		clip_size = 8
@@ -110,28 +112,55 @@ func gun_setup(gun_swap):
 		shell_anim = null
 		reload_right = "reload"
 		reload_left = "reload_left"
+		flash = "flash"
 		emit_signal("change_ammo", "res://HUD/Pistolshrimpammo.png", 8)
 	if gun_swap == "shotti_swap":
-		weapon_cooldown = 0.6
+		weapon_cooldown = 1
 		clip_size = 5
 		reload_timer = 1
 		clips = false
 		clip_anim = "shrimp_toss"
 		shells = true
-		shell_anim = "shell_fly"
+		shell_anim = "shot_shell_fly"
+		reload_right = "shotti_reload"
+		reload_left = "shotti_reload"
+		flash = "shot_flash"
+		emit_signal("change_ammo", "res://HUD/Shotammo.png", 5)
+	if gun_swap == "tri_swap":
+		weapon_cooldown = 0.6
+		clip_size = 5
+		reload_timer = 1
+		clips = true
+		clip_anim = "tri_drop"
+		shells = true
+		shell_anim = "shot_shell_fly"
 		reload_right = "a"
 		reload_left = "a"
+		flash = "shot_flash"
 		emit_signal("change_ammo", "res://HUD/Shotammo.png", 5)
 	if gun_swap == "auto_swap":
 		weapon_cooldown = 0.1
 		clip_size = 15
 		reload_timer = 2
 		clips = true
-		clip_anim = "9mil_drop"
+		clip_anim = "mp40_drop"
 		shells = true
 		shell_anim = "shell_fly"
-		reload_right = "a"
-		reload_left = "a"
+		reload_right = "auto_reload"
+		reload_left = "auto_reload"
+		flash = "auto_flash"
+		emit_signal("change_ammo", "res://HUD/SMGammo.png", 15)
+	if gun_swap == "ak_swap":
+		weapon_cooldown = 0.1
+		clip_size = 15
+		reload_timer = 2
+		clips = true
+		clip_anim = "ak_drop"
+		shells = true
+		shell_anim = "shell_fly"
+		reload_right = "ak_reload"
+		reload_left = "ak_reload"
+		flash = "auto_flash"
 		emit_signal("change_ammo", "res://HUD/SMGammo.png", 15)
 		
 	$WeaponTimer.wait_time = weapon_cooldown
@@ -153,30 +182,40 @@ func shoot():
 #			emit_signal('shoot', Bullet, $Weapon/Muzzle.global_position, dir)
 			if gun == "pistol" or gun == "shrimp":
 				pistol()
-			if gun =="auto":
+			if gun =="auto" or gun == "ak":
 				auto()
-			if gun == "shotti":
+			if gun == "shotti" or gun == "tri":
 				shotti()
 			if shells:
-				emit_signal("clip_fly", clip, $Weapon.global_position, shell_anim)
+				if gun == "tri":
+					var pos =  $Weapon.global_position
+					pos.y += 2
+					emit_signal("clip_fly", clip, pos, shell_anim)
+					pos.y = $Weapon.global_position.y
+					pos.x += 2
+					emit_signal("clip_fly", clip, pos, shell_anim)
+					pos.x -= 4
+					emit_signal("clip_fly", clip, pos, shell_anim)
+				else:
+					emit_signal("clip_fly", clip, $Weapon.global_position, shell_anim)
 		elif $ReloadTimer.time_left == 0:
 			reload()
 
 func pistol():
 	var dir = Vector2(1, 0).rotated($Weapon.global_rotation)
-	emit_signal('shoot', Bullet, $Weapon/Muzzle.global_position, dir)
+	emit_signal('shoot', Bullet, $Weapon/Muzzle.global_position, dir, flash)
 	
 func auto():
 	var dir = Vector2(1, 0).rotated($Weapon.global_rotation + rand_range(-0.25, 0.25))
-	emit_signal('shoot', Bullet, $Weapon/Muzzle.global_position, dir)
+	emit_signal('shoot', Bullet, $Weapon/Muzzle.global_position, dir, flash)
 	
 func shotti():
 	var dir = Vector2(1, 0).rotated($Weapon.global_rotation - 0.25)
-	emit_signal('shoot', Bullet, $Weapon/Muzzle.global_position, dir)
+	emit_signal('shoot', Bullet, $Weapon/Muzzle.global_position, dir, flash)
 	dir = Vector2(1, 0).rotated($Weapon.global_rotation + 0.25)
-	emit_signal('shoot', Bullet, $Weapon/Muzzle.global_position, dir)
+	emit_signal('shoot', Bullet, $Weapon/Muzzle.global_position, dir, flash)
 	dir = Vector2(1, 0).rotated($Weapon.global_rotation)
-	emit_signal('shoot', Bullet, $Weapon/Muzzle.global_position, dir)
+	emit_signal('shoot', Bullet, $Weapon/Muzzle.global_position, dir, flash)
 	
 
 func _physics_process(delta):

@@ -1,4 +1,4 @@
-[gd_scene load_steps=46 format=2]
+[gd_scene load_steps=49 format=2]
 
 [ext_resource path="res://Characters/Characters.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Characters/Player.gd" type="Script" id=2]
@@ -31,14 +31,15 @@
 [ext_resource path="res://Animations/front_right_walk.tres" type="Animation" id=29]
 [ext_resource path="res://Animations/front_walk.tres" type="Animation" id=30]
 [ext_resource path="res://Audio/roblox_death.wav" type="AudioStream" id=31]
-[ext_resource path="res://Weapons/auto_swap.tres" type="Animation" id=32]
-[ext_resource path="res://Animations/idle_arms.tres" type="Animation" id=33]
-[ext_resource path="res://Animations/reload.tres" type="Animation" id=34]
-[ext_resource path="res://Animations/reload_left.tres" type="Animation" id=35]
-[ext_resource path="res://Weapons/shotti_swap.tres" type="Animation" id=36]
-[ext_resource path="res://Weapons/shrimp_swap.tres" type="Animation" id=37]
-[ext_resource path="res://Audio/BLAM.wav" type="AudioStream" id=38]
-[ext_resource path="res://Characters/Camera2D.gd" type="Script" id=39]
+[ext_resource path="res://Weapons/ak_swap.tres" type="Animation" id=32]
+[ext_resource path="res://Weapons/auto_swap.tres" type="Animation" id=33]
+[ext_resource path="res://Animations/idle_arms.tres" type="Animation" id=34]
+[ext_resource path="res://Animations/reload.tres" type="Animation" id=35]
+[ext_resource path="res://Animations/reload_left.tres" type="Animation" id=36]
+[ext_resource path="res://Weapons/shotti_swap.tres" type="Animation" id=37]
+[ext_resource path="res://Weapons/shrimp_swap.tres" type="Animation" id=38]
+[ext_resource path="res://Audio/BLAM.wav" type="AudioStream" id=39]
+[ext_resource path="res://Characters/Camera2D.gd" type="Script" id=40]
 
 [sub_resource type="Animation" id=1]
 
@@ -99,7 +100,57 @@ tracks/0/keys = {
 "values": [ Rect2( 448, 359, 32, 27 ) ]
 }
 
-[sub_resource type="RectangleShape2D" id=6]
+[sub_resource type="Animation" id=8]
+
+resource_name = "ak_reload"
+length = 1.0
+loop = false
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ Rect2( 67, 404, 19, 9 ), Rect2( 67, 456, 19, 9 ), Rect2( 67, 404, 19, 9 ) ]
+}
+
+[sub_resource type="Animation" id=6]
+
+resource_name = "tri_swap"
+length = 1.0
+loop = false
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("..:gun")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ "tri" ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:region_rect")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Rect2( 23, 391, 13, 13 ) ]
+}
+
+[sub_resource type="RectangleShape2D" id=7]
 
 custom_solver_bias = 0.0
 extents = Vector2( 10.0377, 19.6733 )
@@ -127,7 +178,7 @@ clip_anim = "shrimp_toss"
 shells = null
 shell_anim = null
 gun_swap = "shrimp_swap"
-gun = "auto"
+gun = "ak"
 current_room = "start"
 front_idle = "front_idle"
 front_right_idle = "front_right_idle"
@@ -214,7 +265,7 @@ z_index = -1
 texture = ExtResource( 5 )
 offset = Vector2( 5, -1 )
 region_enabled = true
-region_rect = Rect2( 14, 265, 17, 7 )
+region_rect = Rect2( 67, 404, 19, 9 )
 _sections_unfolded = [ "Animation", "Material", "Offset", "Region", "Transform", "Visibility", "Z Index" ]
 
 [node name="Muzzle" parent="Weapon" index="0"]
@@ -224,16 +275,19 @@ _sections_unfolded = [ "Material", "Transform", "Visibility" ]
 
 [node name="AnimationPlayer" parent="Weapon" index="1"]
 
-anims/auto_swap = ExtResource( 32 )
-anims/idle_arms = ExtResource( 33 )
-anims/reload = ExtResource( 34 )
-anims/reload_left = ExtResource( 35 )
-anims/shotti_swap = ExtResource( 36 )
-anims/shrimp_swap = ExtResource( 37 )
+anims/ak_reload = SubResource( 8 )
+anims/ak_swap = ExtResource( 32 )
+anims/auto_swap = ExtResource( 33 )
+anims/idle_arms = ExtResource( 34 )
+anims/reload = ExtResource( 35 )
+anims/reload_left = ExtResource( 36 )
+anims/shotti_swap = ExtResource( 37 )
+anims/shrimp_swap = ExtResource( 38 )
+anims/tri_swap = SubResource( 6 )
 
 [node name="AudioStreamPlayer2D" parent="Weapon" index="2"]
 
-stream = ExtResource( 38 )
+stream = ExtResource( 39 )
 
 [node name="Arm" parent="." index="2"]
 
@@ -245,7 +299,7 @@ _sections_unfolded = [ "Animation", "Material", "Offset", "Region", "Transform",
 
 [node name="CollisionShape2D" parent="." index="3"]
 
-shape = SubResource( 6 )
+shape = SubResource( 7 )
 _sections_unfolded = [ "Transform" ]
 
 [node name="RollTime" type="Timer" parent="." index="7"]
@@ -315,7 +369,7 @@ drag_margin_bottom = 0.2
 editor_draw_screen = true
 editor_draw_limits = false
 editor_draw_drag_margin = false
-script = ExtResource( 39 )
+script = ExtResource( 40 )
 _sections_unfolded = [ "Drag Margin", "Editor", "Limit", "Material", "Offset", "Pause", "Smoothing", "Transform", "Visibility", "Z Index" ]
 
 [node name="ShakeTween" type="Tween" parent="Camera2D" index="0"]

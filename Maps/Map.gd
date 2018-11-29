@@ -35,10 +35,10 @@ func normal_time():
 	Engine.time_scale = 1
 	self.material.set_shader_param("grayscale", false)
 	
-func _on_shoot(bullet, _position, _direction):
+func _on_shoot(bullet, _position, _direction, flash):
 	var b = bullet.instance()
 	add_child(b)
-	b.start(_position, _direction)
+	b.start(_position, _direction, flash)
 	pass
 	
 func _clip_fly(clip, _position, animation):

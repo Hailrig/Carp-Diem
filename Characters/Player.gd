@@ -85,12 +85,12 @@ func control(delta):
 			gun_setup("shrimp_swap")
 		
 	if Input.is_action_just_pressed('shotti_use'):
-		if shotti == true and gun != "shotti":
-			gun_setup("shotti_swap")
+		if shotti == true and gun != "tri":
+			gun_setup("tri_swap")
 			
 	if Input.is_action_just_pressed('auto_use'):
-		if auto == true and gun != "auto":
-			gun_setup("auto_swap")
+		if auto == true and gun != "ak":
+			gun_setup("ak_swap")
 	
 	if Input.is_action_just_pressed('blood_dash'):
 		blood_dash()
@@ -98,7 +98,7 @@ func control(delta):
 	if Input.is_action_just_pressed('fire'):
 		shoot()
 	
-	if Input.is_action_pressed('fire') and gun == "auto":
+	if Input.is_action_pressed('fire') and gun == "ak":
 		shoot()
 		
 	if Input.is_action_just_pressed('reload'):

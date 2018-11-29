@@ -28,24 +28,24 @@ func spin_shot():
 	$WeaponTimer.wait_time = 0.2
 	clip_size = 20
 	var dir = Vector2(1, 0).rotated($Weapon.global_rotation)
-	emit_signal('shoot', rico, $Weapon/Muzzle.global_position, dir)
+	emit_signal('shoot', rico, $Weapon/Muzzle.global_position, dir, flash)
 	dir = Vector2(1, 0).rotated($Weapon.global_rotation + .5)
-	emit_signal('shoot', rico, $Weapon/Muzzle.global_position, dir)
+	emit_signal('shoot', rico, $Weapon/Muzzle.global_position, dir, flash)
 	dir = Vector2(1, 0).rotated($Weapon.global_rotation - .5)
-	emit_signal('shoot', rico, $Weapon/Muzzle.global_position, dir)
+	emit_signal('shoot', rico, $Weapon/Muzzle.global_position, dir, flash)
 	
 func tri_shot():
 	i += .05
 	$WeaponTimer.wait_time = 0.05
 	clip_size = 50
 	var dir = Vector2(1, 0).rotated(i)
-	emit_signal('shoot', Bullet, $Weapon/Muzzle.global_position, dir)
+	emit_signal('shoot', Bullet, $Weapon/Muzzle.global_position, dir, flash)
 	dir = Vector2(1, 0).rotated(1.5708 + i)
-	emit_signal('shoot', Bullet, $Weapon/Muzzle.global_position, dir)
+	emit_signal('shoot', Bullet, $Weapon/Muzzle.global_position, dir, flash)
 	dir = Vector2(1, 0).rotated(3.14159 + i)
-	emit_signal('shoot', Bullet, $Weapon/Muzzle.global_position, dir)
+	emit_signal('shoot', Bullet, $Weapon/Muzzle.global_position, dir, flash)
 	dir = Vector2(1, 0).rotated(4.71239 + i)
-	emit_signal('shoot', Bullet, $Weapon/Muzzle.global_position, dir)
+	emit_signal('shoot', Bullet, $Weapon/Muzzle.global_position, dir, flash)
 	
 func take_damage(amount):
 	if can_be_hurt:

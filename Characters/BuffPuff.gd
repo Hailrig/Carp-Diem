@@ -25,20 +25,20 @@ func shoot():
 
 func tri_shot():
 	var dir = Vector2(1, 0).rotated($Weapon.global_rotation)
-	emit_signal('shoot', Bullet, $Weapon/Muzzle.global_position, dir)
+	emit_signal('shoot', Bullet, $Weapon/Muzzle.global_position, dir, flash)
 	dir = Vector2(1, 0).rotated($Weapon.global_rotation + .5)
-	emit_signal('shoot', Bullet, $Weapon/Muzzle.global_position, dir)
+	emit_signal('shoot', Bullet, $Weapon/Muzzle.global_position, dir, flash)
 	dir = Vector2(1, 0).rotated($Weapon.global_rotation - .5)
-	emit_signal('shoot', Bullet, $Weapon/Muzzle.global_position, dir)
+	emit_signal('shoot', Bullet, $Weapon/Muzzle.global_position, dir, flash)
 	dir = Vector2(1, 0).rotated($Weapon.global_rotation + .25)
-	emit_signal('shoot', Bullet, $Weapon/Muzzle.global_position, dir)
+	emit_signal('shoot', Bullet, $Weapon/Muzzle.global_position, dir, flash)
 	dir = Vector2(1, 0).rotated($Weapon.global_rotation - .25)
-	emit_signal('shoot', Bullet, $Weapon/Muzzle.global_position, dir)
+	emit_signal('shoot', Bullet, $Weapon/Muzzle.global_position, dir, flash)
 
 func spin_shot():
 	for i in 36:
 		var dir = Vector2(1, 0).rotated(i * 0.174533)
-		emit_signal('shoot', Bullet, $Weapon/Muzzle.global_position, dir)
+		emit_signal('shoot', Bullet, $Weapon/Muzzle.global_position, dir, flash)
 
 
 func take_damage(amount):

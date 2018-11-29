@@ -1,6 +1,7 @@
 extends KinematicBody2D
 
 signal room_entered
+signal key_progress
 
 export (String) var room
 export (bool) var locked
@@ -8,6 +9,7 @@ export (int) var keys
 export (bool) var enemyless
 export (String) var enter_dir
 export (bool) var z_change
+export (String) var texture
 
 export (String) var open_behind
 export (String) var open_front
@@ -15,8 +17,13 @@ export (String) var close_behind
 export (String) var close_front
 
 var door_stop = false
+var unlocker
 
 func _ready():
+	unlocker = keys
+	var image = load(texture)
+	$BehindDoor.texture = image
+	$FrontDoor.texture = image
 	if enter_dir == "east":
 		$Area2D/CollisionShape2D.position.x = -9.74668
 		$Area2D/CollisionShape2D.position.y = 0.86022
@@ -32,6 +39,11 @@ func _ready():
 		$CollisionShape2D.position.y = 0
 		$CollisionShape2D.scale.x = 1
 		$CollisionShape2D.scale.y = 1
+		
+		open_behind = "DoorEastOpenBehind"
+		open_front = "DoorEastOpenFront"
+		close_behind = "DoorEastCloseBehind"
+		close_front = "DoorEastCloseFront"
 	if enter_dir == "west":
 		$Area2D/CollisionShape2D.position.x = 47.693378
 		$Area2D/CollisionShape2D.position.y = -0.891688
@@ -47,6 +59,11 @@ func _ready():
 		$CollisionShape2D.position.y = 0
 		$CollisionShape2D.scale.x = 1
 		$CollisionShape2D.scale.y = 1
+		
+		open_behind = "DoorWestOpenBehind"
+		open_front = "DoorWestOpenFront"
+		close_behind = "DoorWestCloseBehind"
+		close_front = "DoorWestCloseFront"
 	if enter_dir == "north":
 		$Area2D/CollisionShape2D.position.x = 36.423717
 		$Area2D/CollisionShape2D.position.y = 27.738504
@@ -62,6 +79,13 @@ func _ready():
 		$CollisionShape2D.position.y = 12.128963
 		$CollisionShape2D.scale.x = 12
 		$CollisionShape2D.scale.y = 0.05
+		
+		open_behind = "DoorNorthOpen"
+		open_front = "a"
+		close_behind = "DoorNorthClose"
+		close_front = "a"
+		
+		z_change = true
 		
 		$FrontDoor.visible = false
 	if enter_dir == "south":
@@ -80,6 +104,11 @@ func _ready():
 		$CollisionShape2D.scale.x = 12
 		$CollisionShape2D.scale.y = 0.05
 		
+		open_behind = "DoorSouthOpen"
+		open_front = "a"
+		close_behind = "DoorSouthClose"
+		close_front = "a"
+		
 		$FrontDoor.visible = false
 	
 	if z_change:
@@ -89,8 +118,9 @@ func _ready():
 	$FrontDoor/AnimationPlayer.play(close_front)
 
 func unlock():
-	keys -= 1
-	if keys <= 0:
+	unlocker -= 1
+	emit_signal("key_progress", (keys-unlocker))
+	if unlocker <= 0:
 		locked = false
 
 func _on_Area2D_body_entered(body):
@@ -108,7 +138,6 @@ func _on_Area2D2_body_entered(body):
 		
 
 func _open():
-	print (enemyless)
 	if !door_stop and !locked and enemyless:
 		emit_signal('room_entered')
 		perma_open()
@@ -150,6 +179,3 @@ func save():
 #func connecter():
 #	connect("room_entered", get_parent().get_node("Fog"), "_reveal")
 #	print(name)
-
-func _reveal():
-	pass # replace with function body

@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=2]
+[gd_scene load_steps=25 format=2]
 
 [ext_resource path="res://Characters/Characters.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Characters/EvilFish.gd" type="Script" id=2]
@@ -19,8 +19,9 @@
 [ext_resource path="res://Animations/Carp/front_right_walk_carp.tres" type="Animation" id=17]
 [ext_resource path="res://Animations/Carp/front_walk_carp.tres" type="Animation" id=18]
 [ext_resource path="res://Audio/roblox_death.wav" type="AudioStream" id=19]
-[ext_resource path="res://Weapons/shotti_swap.tres" type="Animation" id=20]
-[ext_resource path="res://Audio/BLAM.wav" type="AudioStream" id=21]
+[ext_resource path="res://Weapons/auto_swap.tres" type="Animation" id=20]
+[ext_resource path="res://Weapons/shotti_swap.tres" type="Animation" id=21]
+[ext_resource path="res://Audio/BLAM.wav" type="AudioStream" id=22]
 
 [sub_resource type="Animation" id=1]
 
@@ -110,7 +111,7 @@ back_left_blood = "evil_fish_test"
 back_right_blood = "evil_fish_test"
 reload_right = "a"
 reload_left = "a"
-detect_radius = 1500
+detect_radius = 0
 
 [node name="Body" parent="." index="0"]
 
@@ -159,12 +160,13 @@ _sections_unfolded = [ "Transform" ]
 
 [node name="AnimationPlayer" parent="Weapon" index="1"]
 
+anims/auto_swap = ExtResource( 20 )
 anims/pistol_swap = SubResource( 1 )
-anims/shotti_swap = ExtResource( 20 )
+anims/shotti_swap = ExtResource( 21 )
 
 [node name="AudioStreamPlayer2D" parent="Weapon" index="2"]
 
-stream = ExtResource( 21 )
+stream = ExtResource( 22 )
 
 [node name="CollisionShape2D" parent="." index="3"]
 

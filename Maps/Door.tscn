@@ -88,6 +88,7 @@ keys = 0
 enemyless = null
 enter_dir = "east"
 z_change = null
+texture = "res://Maps/Doooors.png"
 open_behind = "DoorEastOpenBehind"
 open_front = "DoorEastOpenFront"
 close_behind = "DoorEastCloseBehind"

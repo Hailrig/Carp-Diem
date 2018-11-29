@@ -4,8 +4,12 @@ var path = null
 signal perma_open
 
 func _ready():
+	print(name)
+	print (global.map1_door)
 	normal_time()
-	if global.map1_door == true:
+	if global.map1_door == true and name == "TestMap":
+		emit_signal("perma_open")
+	if global.map2_door == true and name == "Map3":
 		emit_signal("perma_open")
 		
 #func set_camera_limits():
@@ -17,8 +21,11 @@ func _ready():
 #	$Player/Camera2D.limit_bottom = map_limits.end.y * map_cellsize.y
 
 func way_back(map):
-	if map == "map1":
+	if map == "Map1":
 		global.map1_door = true
+		print ('hi')
+	if map == "Map2":
+		global.map2_door = true
 
 func bullet_time():
 	Engine.time_scale = 0.2

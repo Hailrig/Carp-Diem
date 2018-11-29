@@ -1,8 +1,10 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Weapons/Bullet.gd" type="Script" id=1]
 [ext_resource path="res://Weapons/auto_flash.tres" type="Animation" id=2]
-[ext_resource path="res://Weapons/shot_flash.tres" type="Animation" id=3]
+[ext_resource path="res://Weapons/bubbles.tres" type="Animation" id=3]
+[ext_resource path="res://Weapons/lightning.tres" type="Animation" id=4]
+[ext_resource path="res://Weapons/shot_flash.tres" type="Animation" id=5]
 
 [sub_resource type="Animation" id=1]
 
@@ -98,9 +100,11 @@ playback_process_mode = 1
 playback_default_blend_time = 0.0
 playback_speed = 1.0
 anims/auto_flash = ExtResource( 2 )
+anims/bubbles = ExtResource( 3 )
 anims/flash = SubResource( 1 )
 anims/hit = SubResource( 2 )
-anims/shot_flash = ExtResource( 3 )
+anims/lightning = ExtResource( 4 )
+anims/shot_flash = ExtResource( 5 )
 blend_times = [  ]
 
 [connection signal="body_entered" from="." to="." method="_on_Bullet_body_entered"]

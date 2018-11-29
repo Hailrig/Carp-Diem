@@ -4,10 +4,9 @@ signal explode
 
 export (PackedScene) var bullet
 
-var flash
+var flash = "lightning"
 
 func _ready():
-	flash = "flash"
 	connect("explode", get_parent(), "_on_shoot")
 
 func _explode():

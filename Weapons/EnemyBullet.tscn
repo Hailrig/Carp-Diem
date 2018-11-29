@@ -26,7 +26,7 @@ lifetime = 10.0
 
 texture = ExtResource( 3 )
 region_enabled = true
-region_rect = Rect2( 95, 6, 20, 8 )
+region_rect = Rect2( 112, 30, 16, 16 )
 _sections_unfolded = [ "Region" ]
 
 [node name="CollisionShape2D" parent="." index="1"]

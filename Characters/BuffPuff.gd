@@ -3,6 +3,9 @@ extends "res://Characters/EvilFish.gd"
 var boss_bar
 var fire_mode = null
 
+func _ready():
+	flash = "bubbles"
+
 func shoot():
 #		if _in_clip >= 0:
 	if can_shoot:
@@ -80,6 +83,7 @@ func getrekt():
 		remove_from_group(current_room)
 		$Weapon.queue_free()
 		alive = false
+		$Body/AnimationPlayer.stop()
 
 func _on_Fireswitch_timeout():
 #	fire_mode = randi()%2

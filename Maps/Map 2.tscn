@@ -164,10 +164,7 @@ room = "Allmap"
 
 [node name="BuffPuff" parent="." index="10" instance=ExtResource( 9 )]
 
-pause_mode = 2
 position = Vector2( 761.614, 182.937 )
-input_pickable = false
-collision/safe_margin = 0.08
 Bullet = ExtResource( 10 )
 clip = ExtResource( 11 )
 speed = 100

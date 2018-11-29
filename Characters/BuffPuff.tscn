@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Characters/EvilFish.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Characters/BuffPuff.gd" type="Script" id=2]
@@ -10,6 +10,7 @@
 [ext_resource path="res://Animations/Puffer/PuffSE.tres" type="Animation" id=8]
 [ext_resource path="res://Animations/Puffer/PuffSW.tres" type="Animation" id=9]
 [ext_resource path="res://Animations/Puffer/the_buff_puff.tres" type="Animation" id=10]
+[ext_resource path="res://Weapons/bubbles.tres" type="Animation" id=11]
 
 [sub_resource type="CircleShape2D" id=1]
 
@@ -80,6 +81,7 @@ anims/the_buff_puff = ExtResource( 10 )
 
 visible = false
 offset = Vector2( 60, 0 )
+region_rect = Rect2( 94, 30, 16, 16 )
 _sections_unfolded = [ "Material", "Offset", "Region", "Transform", "Visibility" ]
 
 [node name="Muzzle" parent="Weapon" index="0"]
@@ -88,6 +90,7 @@ position = Vector2( 65.808, -1.20899 )
 
 [node name="AnimationPlayer" parent="Weapon" index="1"]
 
+anims/bubbles = ExtResource( 11 )
 anims/the_buff_puff = ExtResource( 10 )
 
 [node name="CollisionShape2D" parent="." index="3"]

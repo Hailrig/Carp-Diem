@@ -40,7 +40,7 @@ shader = SubResource( 1 )
 shader_param/grayscale = false
 _sections_unfolded = [ "Resource", "shader_param" ]
 
-[node name="Map4" type="Node2D"]
+[node name="Map4" type="Node2D" index="0"]
 
 material = SubResource( 2 )
 script = ExtResource( 1 )
@@ -173,10 +173,7 @@ map = null
 
 [node name="JellyWitch" parent="." index="12" instance=ExtResource( 11 )]
 
-pause_mode = 2
 position = Vector2( 221.861, -46.4929 )
-input_pickable = false
-collision/safe_margin = 0.08
 Bullet = ExtResource( 12 )
 clip = ExtResource( 13 )
 speed = 100
@@ -221,9 +218,9 @@ reload_right = "the_buff_puff"
 reload_left = "the_buff_puff"
 detect_radius = 0
 
-[connection signal="room_clear" from="Fog" to="Door" method="perma_open"]
-
 [connection signal="room_clear" from="Fog" to="Door2" method="perma_open"]
+
+[connection signal="room_clear" from="Fog" to="Door" method="perma_open"]
 
 [connection signal="room_entered" from="Door" to="HUD" method="start_bossbar"]
 

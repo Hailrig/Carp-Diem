@@ -4,6 +4,9 @@ export (PackedScene) var rico
 
 var i = 0
 
+func _ready():
+	flash = "lightning"
+
 func shoot():
 #		if _in_clip >= 0:
 	if can_shoot:

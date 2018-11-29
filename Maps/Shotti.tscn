@@ -6,7 +6,7 @@
 [sub_resource type="RectangleShape2D" id=1]
 
 custom_solver_bias = 0.0
-extents = Vector2( 8.07704, 3.09045 )
+extents = Vector2( 6.32572, 6.63136 )
 
 [node name="Area2D" type="Area2D"]
 
@@ -23,7 +23,7 @@ script = ExtResource( 1 )
 
 texture = ExtResource( 2 )
 region_enabled = true
-region_rect = Rect2( 18, 247, 16, 6 )
+region_rect = Rect2( 80, 391, 12, 13 )
 _sections_unfolded = [ "Region" ]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." index="1"]

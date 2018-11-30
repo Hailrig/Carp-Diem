@@ -1,0 +1,4 @@
+Assorted music and sound effects from Zapsplat https://www.zapsplat.com/
+Typewriter and door sound effects from Soundbible http://soundbible.com/
+
+Made in Godot

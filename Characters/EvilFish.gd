@@ -63,6 +63,25 @@ func aim():
 			#$Weapon.rotation = (target.position - position).angle()
 			shoot()
 
+func getrekt():
+	if !alive:
+		return
+	alive = false
+	emit_signal('dead')
+	path = null
+	change_anim(rad2deg($Body.get_angle_to(get_global_mouse_position())), rad2deg($Weapon.global_rotation), velocity)
+	set_collision_layer_bit(5, true)
+	set_collision_layer_bit(2, false)
+	set_collision_mask_bit(1, false)
+	set_collision_mask_bit(2, false)
+	$Body.self_modulate = Color(1, 1, 1, .5)
+#	$Body/AudioStreamPlayer2D.play()
+	remove_from_group('enemies')
+	remove_from_group('bloodied_enemies')
+	remove_from_group(current_room)
+	$Weapon.queue_free()
+	$Body/AnimationPlayer.play("fish_dead")
+
 func _on_Area2D_body_entered(body):
 	if body.name == "Player":
 		target = body

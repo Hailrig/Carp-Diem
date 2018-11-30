@@ -84,7 +84,7 @@ func getrekt():
 		remove_from_group(current_room)
 		$Weapon.queue_free()
 		alive = false
-		$Body/AnimationPlayer.stop()
+		$Body/AnimationPlayer.play("PuffDead")
 
 func _on_Fireswitch_timeout():
 #	fire_mode = randi()%2

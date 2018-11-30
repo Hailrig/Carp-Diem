@@ -243,9 +243,9 @@ bus = "Master"
 
 [connection signal="time_change" from="Player" to="HUD" method="update_timebar"]
 
-[connection signal="room_clear" from="Fog" to="DoorOut" method="perma_open"]
-
 [connection signal="room_clear" from="Fog" to="DoorIn" method="perma_open"]
+
+[connection signal="room_clear" from="Fog" to="DoorOut" method="perma_open"]
 
 [connection signal="dead" from="BuffPuff" to="HUD" method="end_bossbar"]
 

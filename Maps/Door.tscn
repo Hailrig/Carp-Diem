@@ -65,7 +65,7 @@ tracks/0/keys = {
 [sub_resource type="RectangleShape2D" id=4]
 
 custom_solver_bias = 0.0
-extents = Vector2( 64.0241, 2.8584 )
+extents = Vector2( 101.232, 2.8584 )
 
 [sub_resource type="RectangleShape2D" id=5]
 

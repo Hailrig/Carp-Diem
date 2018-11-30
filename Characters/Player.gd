@@ -212,7 +212,7 @@ func chomp(delta):
 				i.knockback = true
 	charge_target.getrekt()
 	charge_target = null
-	can_be_hurt = true
+	$PostChomp.start()
 	emit_signal('bullet_time')
 	$BloodTimer.start()
 	zoom = false
@@ -276,4 +276,7 @@ func _on_RollTime_timeout():
 	dashing = false
 
 func _on_GraceTime_timeout():
+	can_be_hurt = true
+
+func _on_PostChomp_timeout():
 	can_be_hurt = true

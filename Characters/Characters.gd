@@ -126,16 +126,16 @@ func gun_setup(gun_swap):
 		reload_left = "shotti_reload"
 		flash = "shot_flash"
 		emit_signal("change_ammo", "res://HUD/Shotammo.png", 5)
-	if gun_swap == "tri_swap":
+	if gun_swap == "double_swap":
 		weapon_cooldown = 0.6
 		clip_size = 5
 		reload_timer = 1
 		clips = true
-		clip_anim = "tri_drop"
-		shells = true
+		clip_anim = "shot_shell_fly"
+		shells = false
 		shell_anim = "shot_shell_fly"
-		reload_right = "a"
-		reload_left = "a"
+		reload_right = "double_reload"
+		reload_left = "double_reload"
 		flash = "shot_flash"
 		emit_signal("change_ammo", "res://HUD/Shotammo.png", 5)
 	if gun_swap == "auto_swap":

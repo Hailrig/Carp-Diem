@@ -118,7 +118,6 @@ _sections_unfolded = [ "Cell", "Material", "Z Index" ]
 
 [node name="FogBack" parent="." index="3" instance=ExtResource( 5 )]
 
-visible = false
 position = Vector2( 23.7888, 41.6804 )
 scale = Vector2( 83.2825, 54.4535 )
 z_index = -1000
@@ -126,7 +125,6 @@ room = "All"
 
 [node name="Fog" parent="." index="4" instance=ExtResource( 5 )]
 
-visible = false
 position = Vector2( 45.0677, -36.8529 )
 scale = Vector2( 28.7158, 22.2155 )
 room = "boss"
@@ -154,7 +152,7 @@ title_texture = "res://HUD/Buff_Puff.png"
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." index="9"]
 
 stream = ExtResource( 9 )
-volume_db = 0.0
+volume_db = -5.0
 pitch_scale = 1.0
 autoplay = true
 mix_target = 0
@@ -163,7 +161,7 @@ bus = "Master"
 [node name="Player" parent="." index="10" instance=ExtResource( 10 )]
 
 position = Vector2( -851.984, -37.6005 )
-gun_swap = "ak_swap"
+gun = "tri"
 
 [node name="Portal" parent="." index="11" instance=ExtResource( 11 )]
 
@@ -191,18 +189,12 @@ shell_anim = "the_buff_puff"
 gun_swap = "the_buff_puff"
 gun = "the_buff_puff"
 current_room = "boss"
-front_idle = "PuffS"
-front_right_idle = "PuffSE"
-front_left_idle = "PuffSW"
-back_idle = "PuffN"
-back_left_idle = "PuffNW"
-back_right_idle = "PuffNE"
-front_walk = "PuffS"
-front_right_walk = "PuffSE"
-front_left_walk = "PuffSW"
-back_walk = "PuffN"
-back_left_walk = "PuffNW"
-back_right_walk = "PuffNE"
+front_idle = "JellyGoDown"
+front_right_idle = "JellyGoRightDown"
+front_left_idle = "JellyGoLeftDown"
+back_idle = "JellyGoUp"
+back_left_idle = "JellyGoLeftUp"
+back_right_idle = "JellyGoRightUp"
 front_dash = "the_buff_puff"
 front_right_dash = "the_buff_puff"
 front_left_dash = "the_buff_puff"
@@ -229,9 +221,9 @@ map = null
 
 [connection signal="room_clear" from="Fog" to="Door2" method="perma_open"]
 
-[connection signal="room_entered" from="Door" to="Fog" method="_reveal"]
-
 [connection signal="room_entered" from="Door" to="HUD" method="start_bossbar"]
+
+[connection signal="room_entered" from="Door" to="Fog" method="_reveal"]
 
 [connection signal="room_entered" from="Door2" to="Fog" method="_reveal"]
 

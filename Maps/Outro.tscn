@@ -1,10 +1,11 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Outro.gd" type="Script" id=1]
 [ext_resource path="res://Audio/Typewriter.wav" type="AudioStream" id=2]
 [ext_resource path="res://Maps/Tilesheet.png" type="Texture" id=3]
+[ext_resource path="res://Maps/End.png" type="Texture" id=4]
 
-[node name="Outro" type="Node2D" index="0"]
+[node name="Outro" type="Node2D"]
 
 [node name="RichTextLabel" type="RichTextLabel" parent="." index="0"]
 
@@ -43,14 +44,21 @@ wait_time = 0.05
 one_shot = false
 autostart = true
 
-[node name="Timer2" type="Timer" parent="RichTextLabel" index="1"]
+[node name="ReadTime" type="Timer" parent="RichTextLabel" index="1"]
 
 process_mode = 1
-wait_time = 1.0
+wait_time = 3.0
+one_shot = true
+autostart = false
+
+[node name="KillTime" type="Timer" parent="RichTextLabel" index="3"]
+
+process_mode = 1
+wait_time = 5.0
 one_shot = false
 autostart = false
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="RichTextLabel" index="3"]
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="RichTextLabel" index="4"]
 
 stream = ExtResource( 2 )
 volume_db = 0.0
@@ -69,6 +77,17 @@ region_enabled = true
 region_rect = Rect2( 0, 0, 50, 50 )
 _sections_unfolded = [ "Material", "Region", "Transform", "Visibility", "Z Index" ]
 
+[node name="Sprite2" type="Sprite" parent="." index="2"]
+
+visible = false
+position = Vector2( 322.44, 180.611 )
+texture = ExtResource( 4 )
+_sections_unfolded = [ "Visibility" ]
+
 [connection signal="timeout" from="RichTextLabel/LetterCounter" to="RichTextLabel" method="_on_LetterCounter_timeout"]
+
+[connection signal="timeout" from="RichTextLabel/ReadTime" to="RichTextLabel" method="_on_ReadTime_timeout"]
+
+[connection signal="timeout" from="RichTextLabel/KillTime" to="RichTextLabel" method="_on_KillTime_timeout"]
 
 

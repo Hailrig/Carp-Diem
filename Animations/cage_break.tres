@@ -4,10 +4,10 @@
 
 resource_name = "Cage Break"
 length = 1.0
-loop = true
+loop = false
 step = 0.1
 tracks/0/type = "value"
-tracks/0/path = NodePath("Body:region_rect")
+tracks/0/path = NodePath(".:region_rect")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -17,5 +17,17 @@ tracks/0/keys = {
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
 "update": 1,
 "values": [ Rect2( 81, 0, 80, 46 ), Rect2( 162, 0, 80, 46 ), Rect2( 0, 47, 80, 46 ), Rect2( 81, 47, 80, 46 ), Rect2( 162, 47, 80, 46 ), Rect2( 0, 94, 80, 46 ), Rect2( 81, 94, 80, 46 ), Rect2( 162, 94, 80, 46 ), Rect2( 0, 0, 80, 46 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:region_rect")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = false
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Rect2( 102, 3, 30, 43 ) ]
 }
 

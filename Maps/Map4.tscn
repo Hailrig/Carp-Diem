@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://Maps/Map.gd" type="Script" id=1]
 [ext_resource path="res://Maps/Standonmyface.tres" type="TileSet" id=2]
@@ -14,6 +14,7 @@
 [ext_resource path="res://Characters/JellyWitch.tscn" type="PackedScene" id=12]
 [ext_resource path="res://Weapons/EnemyBullet.tscn" type="PackedScene" id=13]
 [ext_resource path="res://Weapons/Shrimpclip.tscn" type="PackedScene" id=14]
+[ext_resource path="res://Maps/Cage.tscn" type="PackedScene" id=15]
 
 [sub_resource type="Shader" id=1]
 
@@ -41,7 +42,7 @@ shader = SubResource( 1 )
 shader_param/grayscale = false
 _sections_unfolded = [ "Resource", "shader_param" ]
 
-[node name="Map4" type="Node2D"]
+[node name="Map4" type="Node2D" index="0"]
 
 material = SubResource( 2 )
 script = ExtResource( 1 )
@@ -160,7 +161,7 @@ bus = "Master"
 
 [node name="Player" parent="." index="10" instance=ExtResource( 10 )]
 
-position = Vector2( -851.984, -37.6005 )
+position = Vector2( 809.68, -31.7564 )
 gun_swap = "ak_swap"
 
 [node name="Portal" parent="." index="11" instance=ExtResource( 11 )]
@@ -174,12 +175,8 @@ map = null
 
 pause_mode = 2
 position = Vector2( 221.861, -46.4929 )
-z_as_relative = false
 input_pickable = false
-collision_layer = 4
-collision_mask = 7
 collision/safe_margin = 0.08
-_sections_unfolded = [ "Collision", "Material", "Pause", "Pickable", "Transform", "Visibility", "Z Index" ]
 Bullet = ExtResource( 13 )
 clip = ExtResource( 14 )
 speed = 100
@@ -218,19 +215,17 @@ reload_right = "the_buff_puff"
 reload_left = "the_buff_puff"
 detect_radius = 0
 
-[node name="Portal2" parent="." index="13" instance=ExtResource( 11 )]
+[node name="Cage" parent="." index="13" instance=ExtResource( 15 )]
 
-position = Vector2( 970.43, -58.9798 )
-target = "res://Maps/Fin.tscn"
-map = null
-
-[connection signal="room_clear" from="Fog" to="Door" method="perma_open"]
+position = Vector2( 984.965, -53.2982 )
 
 [connection signal="room_clear" from="Fog" to="Door2" method="perma_open"]
 
-[connection signal="room_entered" from="Door" to="Fog" method="_reveal"]
+[connection signal="room_clear" from="Fog" to="Door" method="perma_open"]
 
 [connection signal="room_entered" from="Door" to="HUD" method="start_bossbar"]
+
+[connection signal="room_entered" from="Door" to="Fog" method="_reveal"]
 
 [connection signal="room_entered" from="Door2" to="Fog" method="_reveal"]
 
@@ -259,5 +254,9 @@ map = null
 [connection signal="shoot" from="JellyWitch" to="." method="_on_shoot"]
 
 [connection signal="take_damage" from="JellyWitch" to="Player/Camera2D" method="shake"]
+
+[connection signal="bullet_time" from="Cage" to="." method="bullet_time"]
+
+[connection signal="normal_time" from="Cage" to="." method="normal_time"]
 
 

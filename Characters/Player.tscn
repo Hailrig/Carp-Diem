@@ -120,7 +120,7 @@ tracks/0/keys = {
 "values": [ Rect2( 67, 404, 19, 9 ), Rect2( 67, 456, 19, 9 ), Rect2( 67, 404, 19, 9 ) ]
 }
 
-[sub_resource type="Animation" id=10]
+[sub_resource type="Animation" id=7]
 
 resource_name = "double_reload"
 length = 1.0
@@ -139,7 +139,7 @@ tracks/0/keys = {
 "values": [ Rect2( 7, 528, 20, 8 ), Rect2( 7, 536, 20, 9 ), Rect2( 7, 545, 14, 12 ), Rect2( 7, 536, 19, 9 ), Rect2( 7, 528, 20, 8 ), Rect2( 7, 557, 20, 11 ), Rect2( 7, 528, 20, 8 ) ]
 }
 
-[sub_resource type="Animation" id=9]
+[sub_resource type="Animation" id=8]
 
 resource_name = "double_swap"
 length = 1.0
@@ -170,7 +170,7 @@ tracks/1/keys = {
 "values": [ Rect2( 7, 528, 20, 8 ) ]
 }
 
-[sub_resource type="Animation" id=7]
+[sub_resource type="Animation" id=9]
 
 length = 1.0
 loop = false
@@ -200,7 +200,7 @@ tracks/1/keys = {
 "values": [ Rect2( 23, 391, 13, 13 ) ]
 }
 
-[sub_resource type="RectangleShape2D" id=8]
+[sub_resource type="RectangleShape2D" id=10]
 
 custom_solver_bias = 0.0
 extents = Vector2( 10.0377, 19.6733 )
@@ -328,14 +328,14 @@ _sections_unfolded = [ "Material", "Transform", "Visibility" ]
 anims/ak_reload = SubResource( 6 )
 anims/ak_swap = ExtResource( 32 )
 anims/auto_swap = ExtResource( 33 )
-anims/double_reload = SubResource( 10 )
-anims/double_swap = SubResource( 9 )
+anims/double_reload = SubResource( 7 )
+anims/double_swap = SubResource( 8 )
 anims/idle_arms = ExtResource( 34 )
 anims/reload = ExtResource( 35 )
 anims/reload_left = ExtResource( 36 )
 anims/shotti_swap = ExtResource( 37 )
 anims/shrimp_swap = ExtResource( 38 )
-anims/tri_swap = SubResource( 7 )
+anims/tri_swap = SubResource( 9 )
 
 [node name="AudioStreamPlayer2D" parent="Weapon" index="2"]
 
@@ -362,7 +362,7 @@ _sections_unfolded = [ "Animation", "Material", "Offset", "Region", "Transform",
 
 [node name="CollisionShape2D" parent="." index="3"]
 
-shape = SubResource( 8 )
+shape = SubResource( 10 )
 _sections_unfolded = [ "Transform" ]
 
 [node name="RollTime" type="Timer" parent="." index="7"]

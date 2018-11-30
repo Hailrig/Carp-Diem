@@ -18,12 +18,12 @@
 [ext_resource path="res://Animations/Carp/front_right_idle_carp.tres" type="Animation" id=16]
 [ext_resource path="res://Animations/Carp/front_right_walk_carp.tres" type="Animation" id=17]
 [ext_resource path="res://Animations/Carp/front_walk_carp.tres" type="Animation" id=18]
-[ext_resource path="res://Audio/roblox_death.wav" type="AudioStream" id=19]
+[ext_resource path="res://Audio/hit.wav" type="AudioStream" id=19]
 [ext_resource path="res://Weapons/auto_swap.tres" type="Animation" id=20]
 [ext_resource path="res://Weapons/shotti_swap.tres" type="Animation" id=21]
 [ext_resource path="res://Audio/BLAM.wav" type="AudioStream" id=22]
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id=1]
 
 resource_name = "auto_reload"
 length = 1.0
@@ -42,9 +42,8 @@ tracks/0/keys = {
 "values": [ Rect2( 52, 422, 12, 9 ), Rect2( 52, 431, 12, 8 ), Rect2( 52, 422, 11, 9 ) ]
 }
 
-[sub_resource type="Animation" id=1]
+[sub_resource type="Animation" id=2]
 
-resource_name = "pistol_swap"
 length = 1.0
 loop = false
 step = 0.1
@@ -92,7 +91,7 @@ tracks/0/keys = {
 "values": [ Rect2( 52, 391, 15, 8 ), Rect2( 52, 399, 15, 8 ), Rect2( 52, 407, 15, 8 ), Rect2( 52, 399, 15, 8 ), Rect2( 52, 391, 15, 8 ) ]
 }
 
-[sub_resource type="RectangleShape2D" id=2]
+[sub_resource type="RectangleShape2D" id=4]
 
 custom_solver_bias = 0.0
 extents = Vector2( 10.9342, 17.9968 )
@@ -198,9 +197,9 @@ _sections_unfolded = [ "Transform" ]
 
 [node name="AnimationPlayer" parent="Weapon" index="1"]
 
-anims/auto_reload = SubResource( 4 )
+anims/auto_reload = SubResource( 1 )
 anims/auto_swap = ExtResource( 20 )
-anims/pistol_swap = SubResource( 1 )
+anims/pistol_swap = SubResource( 2 )
 anims/shotti_reload = SubResource( 3 )
 anims/shotti_swap = ExtResource( 21 )
 
@@ -211,7 +210,7 @@ stream = ExtResource( 22 )
 [node name="CollisionShape2D" parent="." index="3"]
 
 position = Vector2( 0.0510483, -0.765703 )
-shape = SubResource( 2 )
+shape = SubResource( 4 )
 
 [node name="DetectRadius" type="Area2D" parent="." index="4"]
 

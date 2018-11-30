@@ -131,7 +131,7 @@ room = "boss"
 
 [node name="Door" parent="." index="5" instance=ExtResource( 6 )]
 
-position = Vector2( -704.914, -24.7925 )
+position = Vector2( -701.045, -25.5662 )
 room = "boss"
 texture = "res://Maps/PrettyDoors.png"
 
@@ -161,7 +161,7 @@ bus = "Master"
 [node name="Player" parent="." index="10" instance=ExtResource( 10 )]
 
 position = Vector2( -851.984, -37.6005 )
-gun = "tri"
+gun_swap = "ak_swap"
 
 [node name="Portal" parent="." index="11" instance=ExtResource( 11 )]
 
@@ -172,7 +172,14 @@ map = null
 
 [node name="JellyWitch" parent="." index="12" instance=ExtResource( 12 )]
 
+pause_mode = 2
 position = Vector2( 221.861, -46.4929 )
+z_as_relative = false
+input_pickable = false
+collision_layer = 4
+collision_mask = 7
+collision/safe_margin = 0.08
+_sections_unfolded = [ "Collision", "Material", "Pause", "Pickable", "Transform", "Visibility", "Z Index" ]
 Bullet = ExtResource( 13 )
 clip = ExtResource( 14 )
 speed = 100
@@ -221,9 +228,9 @@ map = null
 
 [connection signal="room_clear" from="Fog" to="Door2" method="perma_open"]
 
-[connection signal="room_entered" from="Door" to="HUD" method="start_bossbar"]
-
 [connection signal="room_entered" from="Door" to="Fog" method="_reveal"]
+
+[connection signal="room_entered" from="Door" to="HUD" method="start_bossbar"]
 
 [connection signal="room_entered" from="Door2" to="Fog" method="_reveal"]
 

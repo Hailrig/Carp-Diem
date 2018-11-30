@@ -46,6 +46,7 @@ func spin_shot():
 
 func take_damage(amount):
 	if can_be_hurt:
+		$Body/AudioStreamPlayer2D.play()
 		emit_signal('take_damage', 0.1)
 		health -= amount
 		emit_signal('health_changed', health)

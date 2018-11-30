@@ -4,7 +4,6 @@ var path = null
 signal perma_open
 
 func _ready():
-	print(name)
 	print (global.map1_door)
 	normal_time()
 	if global.map1_door == true and name == "TestMap":
@@ -23,7 +22,6 @@ func _ready():
 func way_back(map):
 	if map == "Map1":
 		global.map1_door = true
-		print ('hi')
 	if map == "Map2":
 		global.map2_door = true
 

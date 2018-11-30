@@ -351,6 +351,7 @@ func reload():
 func take_damage(amount):
 	if can_be_hurt:
 		emit_signal('take_damage', 0.1)
+		$Body/AudioStreamPlayer2D.play()
 		health -= amount
 		emit_signal('health_changed', health)
 		if health <= 0:
@@ -378,7 +379,7 @@ func getrekt():
 	set_collision_mask_bit(1, false)
 	set_collision_mask_bit(2, false)
 	$Body.self_modulate = Color(1, 1, 1, .5)
-	$Body/AudioStreamPlayer2D.play()
+#	$Body/AudioStreamPlayer2D.play()
 	remove_from_group('enemies')
 	remove_from_group('bloodied_enemies')
 	remove_from_group(current_room)

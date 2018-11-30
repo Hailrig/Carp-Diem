@@ -81,6 +81,7 @@ func getrekt():
 	remove_from_group(current_room)
 	$Weapon.queue_free()
 	$Body/AnimationPlayer.play("fish_dead")
+	$Body/AudioStreamPlayer2D.play()
 
 func _on_Area2D_body_entered(body):
 	if body.name == "Player":

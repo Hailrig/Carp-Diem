@@ -23,7 +23,7 @@ script = ExtResource( 1 )
 
 texture = ExtResource( 2 )
 region_enabled = true
-region_rect = Rect2( 80, 391, 12, 13 )
+region_rect = Rect2( 7, 528, 20, 8 )
 _sections_unfolded = [ "Region" ]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." index="1"]

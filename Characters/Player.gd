@@ -86,7 +86,7 @@ func control(delta):
 		
 	if Input.is_action_just_pressed('shotti_use'):
 		if shotti == true and gun != "tri":
-			gun_setup("tri_swap")
+			gun_setup("double_swap")
 			
 	if Input.is_action_just_pressed('auto_use'):
 		if auto == true and gun != "ak":
